@@ -35,24 +35,24 @@
   <!-- The slideshow/carousel -->
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="../images/특별상-윤환-대동하늘공원의-.jpg" alt="대동하늘공원" class="d-block" style="width:100%">
+      <img src="../images/banner/특별상-윤환-대동하늘공원의-.jpg" alt="대동하늘공원" class="d-block" style="width:100%">
     </div>
     
     <div class="carousel-item">
-      <img src="../images/5-가작-김미영-한밭수목원의.jpg" alt="한밭수목원" class="d-block" style="width:100%">
+      <img src="../images/banner/5-가작-김미영-한밭수목원의.jpg" alt="한밭수목원" class="d-block" style="width:100%">
     </div>
     
     <div class="carousel-item">
-      <img src="../images/5-가작-이영춘-반영-1.jpg" alt="한밭수목원" class="d-block" style="width:100%">
+      <img src="../images/banner/5-가작-이영춘-반영-1.jpg" alt="한밭수목원" class="d-block" style="width:100%">
     </div>
     
     
     <div class="carousel-item">
-      <img src="../images/2-은상-성순용-역사탐방.jpg" alt="역사탐방" class="d-block" style="width:100%">
+      <img src="../images/banner/2-은상-성순용-역사탐방.jpg" alt="역사탐방" class="d-block" style="width:100%">
     </div>
     
     <div class="carousel-item">
-      <img src="../images/3-특별상-노희완-장태산에서.jpg" alt="장태산" class="d-block" style="width:100%">
+      <img src="../images/banner/3-특별상-노희완-장태산에서.jpg" alt="장태산" class="d-block" style="width:100%">
     </div>
   </div>
   
