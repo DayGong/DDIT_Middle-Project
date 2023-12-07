@@ -6,20 +6,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>대전 관광 홈페이지</title>
 
-<!-- 메인 이미지 슬라이드 css -->
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/banner.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
 <% 
 	String path = request.getContextPath();	// 상위 경로를 변수로 선언
 %>
+
+<!-- 메인 이미지 슬라이드 css -->
+<link rel="stylesheet" href="<%= path %>/css/banner.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- 다음 script를 주석과 함께 추가해주시면 됩니당(추가할 때 이거 지워주세요) -->
 
 </head>
 <body>
 
+<!-- 메인 이미지 슬라이드 css 시작 -->
 <div class="carousel-container">
 	<div class="fix-text"><!-- 이미지 위에 올라가는 고정 텍스트  -->
 		<h3>DAEJEON<br>TRIP ROAD</h3>
@@ -74,7 +75,7 @@
 			<span class="carousel-control-next-icon"></span>
 		</button>
 	</div>
-</div>
+</div><!-- 메인 이미지 슬라이드 css 끝 -->
 
 </body>
 </html>
