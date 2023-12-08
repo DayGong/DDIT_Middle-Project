@@ -6,6 +6,6 @@ public class ReserveVO {
 	private String rsv_date;
 	private int rsv_count;
 	private int rsv_state;
-	private String mem_id;
+	private String mem_id;	// 회원가입 
 	private int comp_no;
 }
