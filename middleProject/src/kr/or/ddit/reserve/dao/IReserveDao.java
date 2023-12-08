@@ -1,5 +1,6 @@
 package kr.or.ddit.reserve.dao;
 
+import kr.or.ddit.vo.CompanyVO;
 import kr.or.ddit.vo.ReserveVO;
 
 public interface IReserveDao 
@@ -13,4 +14,11 @@ public interface IReserveDao
 	 */
 	public int reserveRestaurant(ReserveVO reserveVo);
 
+	/**
+	 * 업체 번호로 호텔의 상세 정보를 검색해 ReserveVO객체로 반환하는 메서드
+	 * 
+	 * @param comp_no 검색할 업체 번호
+	 * @return 호텔의 상세 정보가 담긴 CompanyVO객체
+	 */
+	public CompanyVO getHotelInfo(int comp_no);
 }

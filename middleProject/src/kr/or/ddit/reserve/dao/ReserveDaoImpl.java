@@ -3,6 +3,7 @@ package kr.or.ddit.reserve.dao;
 import org.apache.ibatis.session.SqlSession;
 
 import kr.or.ddit.util.MybatisUtil;
+import kr.or.ddit.vo.CompanyVO;
 import kr.or.ddit.vo.ReserveVO;
 
 public class ReserveDaoImpl implements IReserveDao 
@@ -48,6 +49,12 @@ public class ReserveDaoImpl implements IReserveDao
 		}
 		
 		return res;
+	}
+
+	@Override
+	public CompanyVO getHotelInfo(int comp_no) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	
