@@ -39,7 +39,7 @@
 </head>
 <body>
 
-<button type="button" class="hotelModalBtn" onclick="moveToHotelDetail()">버튼</button>
+<button type="button" class="hotelModalBtn">버튼</button>
 
 <!-- 호텔의 상세 정보를 출력하는 모달창 시작 -->
 <div class="modal" id="hotelDetailModal">

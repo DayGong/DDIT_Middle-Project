@@ -9,7 +9,7 @@ moveToHotelDetail = function()
 		url: `${path}/reserve/returnToHotelReserveVo.do`,
 		type: 'post',
 		data: {
-			"comp_no" : 1
+			"comp_no" : 1	// DB 내용을 가져오기 위한 임시 데이터
 		},
 		success: function(res)
 		{

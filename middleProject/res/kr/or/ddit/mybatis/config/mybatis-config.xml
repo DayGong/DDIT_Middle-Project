@@ -42,9 +42,9 @@
 	<!-- DB에서 사용되는 SQL문이 작성된 mapper파일을 등록한다. -->
 	<mappers>
 		<!-- 형식: <mapper resource="경로명/mapper파일명.xml" -->
-		<mapper resource="kr/or/ddit/mybatis/mapper/member-mapper.xml"/>
-		<mapper resource="kr/or/ddit/mybatis/mapper/reserve-mapper.xml"/>
-		<mapper resource="kr/or/ddit/mybatis/mapper/company-mapper.xml"/>
+		<mapper resource="kr/or/ddit/mybatis/mappers/member-mapper.xml"/>
+		<mapper resource="kr/or/ddit/mybatis/mappers/reserve-mapper.xml"/>
+		<mapper resource="kr/or/ddit/mybatis/mappers/company-mapper.xml"/>
 	</mappers>
 	
 </configuration>
