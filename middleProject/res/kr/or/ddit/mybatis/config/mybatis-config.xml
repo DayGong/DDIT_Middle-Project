@@ -19,6 +19,7 @@
 	<typeAliases>
 		<!-- 형식: <typeAlias type="전체 이름" alias="별칭이름"/> -->
 		<typeAlias type="kr.or.ddit.vo.MemberVO" alias="memVo"/>
+		<typeAlias type="kr.or.ddit.vo.ReserveVO" alias="reserveVo"/>
 	</typeAliases>
 
 	<!-- DB 연결을 위한 설정 -->
@@ -41,6 +42,7 @@
 	<mappers>
 		<!-- 형식: <mapper resource="경로명/mapper파일명.xml" -->
 		<mapper resource="kr/or/ddit/mybatis/mapper/member-mapper.xml"/>
+		<mapper resource="kr/or/ddit/mybatis/mapper/reserve-mapper.xml"/>
 	</mappers>
 	
 </configuration>
