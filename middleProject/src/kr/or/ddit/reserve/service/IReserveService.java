@@ -2,7 +2,8 @@ package kr.or.ddit.reserve.service;
 
 import kr.or.ddit.vo.ReserveVO;
 
-public interface IReserveService {
+public interface IReserveService 
+{
 
 	/**
 	 * ReserveVO객체를 받아 예약 테이블에 정보를 저장을 하는 메서드

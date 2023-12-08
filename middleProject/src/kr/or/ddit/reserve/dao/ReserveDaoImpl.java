@@ -31,6 +31,11 @@ public class ReserveDaoImpl implements IReserveDao
 		try 
 		{
 			session = MybatisUtil.getSqlSession();
+			
+			res = session.insert("reserveVo.reserveRestaurant", reserveVo);
+			
+			session.commit();
+			
 		} catch (Exception e) 
 		{
 			e.printStackTrace();
