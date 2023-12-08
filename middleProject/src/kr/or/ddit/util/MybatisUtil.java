@@ -1,4 +1,4 @@
-package kr.or.ddit.mybatis.config;
+package kr.or.ddit.util;
 
 import java.io.IOException;
 import java.io.InputStream;
