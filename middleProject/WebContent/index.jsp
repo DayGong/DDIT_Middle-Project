@@ -171,7 +171,7 @@
 			<span class="carousel-control-next-icon"></span>
 		</button>
 	</div>
-</div><!-- 메인 이미지 슬라이드 css 끝 -->
+</div><!-- 메인 이미지 슬라이드 css 끝ㅁㄴㅇㄻㄴㅇ\-->
 
 </body>
 </html>
