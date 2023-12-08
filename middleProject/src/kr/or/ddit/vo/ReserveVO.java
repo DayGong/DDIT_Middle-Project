@@ -1,11 +1,10 @@
 package kr.or.ddit.vo;
 
 public class ReserveVO {
-	private int rsv_no;
-	private String rsv_name;
-	private String rsv_date;
-	private int rsv_count;
-	private int rsv_state;
+	private int rsv_no;		// 예약번호
+	private String rsv_date;	// 예약날짜
+	private int rsv_count;		// 인원수
+	private int rsv_state;		// 취소여부
 	private String mem_id; 		// 회원 테이블의 기본키_회원아이디
 	private int comp_no; 		// 업체 테이블의 기본키_업체번호
 
@@ -15,14 +14,6 @@ public class ReserveVO {
 
 	public void setRsv_no(int rsv_no) {
 		this.rsv_no = rsv_no;
-	}
-
-	public String getRsv_name() {
-		return rsv_name;
-	}
-
-	public void setRsv_name(String rsv_name) {
-		this.rsv_name = rsv_name;
 	}
 
 	public String getRsv_date() {
