@@ -15,7 +15,6 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- 다음 script를 주석과 함께 추가해주시면 됩니당(추가할 때 이거 지워주세요) -->
 
 </head>
 <body>
@@ -27,10 +26,10 @@
 		<p>우리 지금, 대전가유~!<br> 돌도 굴러가유~~!</p>
 	</div>
 
-	<!-- Carousel(주석 수정 부탁드립니당) -->
+	<!-- 배너를 캐러셀Carousel -반응형슬라이드로 만들어줌- 설정. -->
 	<div id="banner" class="carousel slide" data-bs-ride="carousel">
 
-		<!-- Indicators/dots(주석 수정 부탁드립니당) -->
+		<!-- 배너 중앙 아래 / 슬라이드가 지나갈때마다 같이 지나가는 버튼 생성-->
 		<div class="carousel-indicators">
 			<button type="button" data-bs-target="#banner" data-bs-slide-to="0" class="active"></button>
 			<button type="button" data-bs-target="#banner" data-bs-slide-to="1"></button>
@@ -39,7 +38,7 @@
 			<button type="button" data-bs-target="#banner" data-bs-slide-to="4"></button>
 		</div>
 		
-		<!-- The slideshow/carousel(주석 수정 부탁드립니당) -->
+		<!-- 캐러셀(슬라이드) 이미지삽입 -->
 		<div class="carousel-inner">
 			<div class="carousel-item active">
 				<img src="<%= path %>/images/banner/특별상-윤환-대동하늘공원의-.jpg" 
@@ -67,7 +66,7 @@
 			</div>
 		</div>
   
-		<!-- Left and right controls/icons(주석 수정 부탁드립니당) -->
+		<!-- 캐러셀 왼쪽 오른쪽 슬라이드기능 버튼 생성 -->
 		<button class="carousel-control-prev" type="button" data-bs-target="#banner" data-bs-slide="prev">
 			<span class="carousel-control-prev-icon"></span>
 		</button>
