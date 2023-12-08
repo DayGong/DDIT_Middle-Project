@@ -11,14 +11,108 @@
 %>
 
 <!-- 메인 이미지 슬라이드 css -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
 <link rel="stylesheet" href="<%= path %>/css/banner.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="<%=path %>/js/header.js"></script>
+<link rel= "stylesheet"  href="<%=path %>/css/common.css"> <!-- 공통으로 사용할 js입니다 -->
+<!-- jquery와 common.css, header.js추가   -->
 
 <!-- 다음 script를 주석과 함께 추가해주시면 됩니당(추가할 때 이거 지워주세요) -->
 
 </head>
 <body>
+
+<!--  헤더 시작   -->
+<header>
+	<div id ="leftHeader">
+		<div class="blank"></div>
+
+<!--  로고 자리입니다   -->
+	<div id="logo">
+		<img src= "<%=path %>/images/header/대전관광.png" alt="대전관광">
+	</div>
+		<div class="blank"></div>
+	</div>
+
+<div id="rightHeader">
+  
+  
+ <!--  메뉴들의 자리입니다   --> 
+<div id="menu">
+	<ul>
+		<li class="menu"><a href="#">MENU1</a>
+			<ul>
+				<li  ><a href="#">SUB_MENU</a></li>
+				<li ><a href="#">SUB_MENU2</a></li>
+				<li ><a href="#">SUB_MENU3</a></li>
+			</ul>
+		</li>
+		<li class="menu"><a  href="#">MENU2</a>
+			<ul>
+				<li ><a href="#">SUB_MENU</a></li>
+				<li ><a href="#">SUB_MENU2</a></li>
+				<li ><a href="#">SUB_MENU3</a></li>
+			</ul>
+		</li>
+		<li class="menu"><a href="#">MENU3</a>
+			<ul>
+				<li ><a href="#">SUB_MENU</a></li>
+				<li ><a href="#">SUB_MENU2</a></li>
+				<li ><a href="#">SUB_MENU3</a></li>
+			</ul>
+		</li>
+		<li class="menu"><a  href="#">MENU4</a>
+			<ul>
+				<li ><a href="#">SUB_MENU</a></li>
+				<li ><a href="#">SUB_MENU2</a></li>
+				<li ><a href="#">SUB_MENU3</a></li>
+			</ul>
+		</li>
+		<li class="menu"><a href="#">MENU5</a>
+			<ul>
+				<li ><a href="#">SUB_MENU</a></li>
+				<li ><a href="#">SUB_MENU2</a></li>
+				<li ><a href="#">SUB_MENU3</a></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+   <!--  링크들을 넣은 자리입니다   -->
+	<div id="links">
+		<a href="" target="_blank" >
+			<img src="<%=path %>/images/header/daejeon.jpg" alt="daejeon.jpg">
+		</a>
+		<a href="" target="_blank" >
+			<img src="<%=path %>/images/header/인스타그램_아이콘.png" alt="인스타그램_아이콘.png">
+		</a>
+		<a href="" target="_blank" >
+			<img src="<%=path %>/images/header/11.png" alt="11.png">
+		</a>
+		<a href="" target="_blank" >
+			<img src="<%=path %>/images/header/블로그1.png" alt="블로그1.png">
+		</a>
+	</div>
+  
+  <!--   로그인 폼입니다    -->
+	<div id="loginForm">
+		<form class="login-form" action="#">
+ 			 <input type="text" placeholder="아이디">
+             <input type="password" placeholder="비밀번호">
+             <input type="button" value="로그인">
+             <input type="button" value="회원가입">
+       </form>
+  	</div>
+</div>
+</header>
+<hr>
+<!--  헤더의 끝입니다   -->
+
+
+
 
 <!-- 메인 이미지 슬라이드 css 시작 -->
 <div class="carousel-container">
