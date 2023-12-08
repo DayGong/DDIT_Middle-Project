@@ -45,7 +45,7 @@
 		<ul>
 			<li class="menu"><a href="#">MENU1</a>
 				<ul>
-					<li  ><a href="#">SUB_MENU</a></li>
+					<li ><a href="#">SUB_MENU</a></li>
 					<li ><a href="#">SUB_MENU2</a></li>
 					<li ><a href="#">SUB_MENU3</a></li>
 				</ul>

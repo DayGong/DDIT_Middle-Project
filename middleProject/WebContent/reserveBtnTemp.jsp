@@ -17,7 +17,7 @@
 <!-- 모달창 script - 예약에서 사용 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
+  
 <script>
 	path = '<%= request.getContextPath() %>';
 	
@@ -43,18 +43,18 @@
 
 <!-- 호텔의 상세 정보를 출력하는 모달창 시작 -->
 <div class="modal" id="hotelDetailModal">
-	<div class="modal-dialog modal-dialog-centered">
+	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 		
 			<!-- 모달 헤더 -->
 			<div class="modal-header" id="hotelModalHeader">
-				<h4 class="modal-title">Modal Heading</h4>
-				<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+				<!-- <h4 class="modal-title">Modal Heading</h4>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"></button> -->
 			</div>
 
 			<!-- 모달 몸통(내용 출력) -->
 			<div class="modal-body" id="hotelModalBody">
-				Modal body..
+				<!-- reserve.js에서 구현 -->
 			</div>
 
 			<!-- 모달 하단 Close버튼 -->

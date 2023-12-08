@@ -5,6 +5,8 @@
     pageEncoding="UTF-8"%>
 
 <%
+	System.out.print("여기있어요00");
+
 	// 서블릿에서 저장한 데이터 꺼내기
 	CompanyVO companyVo = (CompanyVO)request.getAttribute("companyVo");
 

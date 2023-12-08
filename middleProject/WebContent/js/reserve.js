@@ -15,9 +15,19 @@ moveToHotelDetail = function()
 		{
 			$('#hotelDetailModal').modal('show');
 				
-			console.log(res);
-				
-			// $('#hotelModalBody').html('출력test');
+			// console.log(res);
+			
+			headerCode = `
+				<h4 class="modal-title">${res.comp_name}</h4>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"></button>`;
+			$('#hotelModalHeader').html(headerCode);
+			
+			bodyCode = `
+				<span id="hotelImg">
+					<img src="${path}/images/hotel/${res.comp_img}" alt="res.comp_name">
+				</span>
+			`;
+			$('#hotelModalBody').html(bodyCode);
 		},
 		error: function(xhr)
 		{
