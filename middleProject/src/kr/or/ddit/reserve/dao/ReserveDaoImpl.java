@@ -53,8 +53,23 @@ public class ReserveDaoImpl implements IReserveDao
 
 	@Override
 	public CompanyVO getHotelInfo(int comp_no) {
-		// TODO Auto-generated method stub
-		return null;
+		CompanyVO companyVo = null;
+		SqlSession session = null;
+		
+		try {
+			session = MybatisUtil.getSqlSession();
+			
+			companyVo = session.selectOne("companyVo.getHotelInfo", comp_no);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if ( session != null ) {
+				session.close();
+			}
+		}
+		
+		return companyVo;
 	}
 	
 	

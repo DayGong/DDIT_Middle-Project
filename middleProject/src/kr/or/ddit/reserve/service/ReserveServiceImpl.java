@@ -32,8 +32,7 @@ public class ReserveServiceImpl implements IReserveService
 
 	@Override
 	public CompanyVO getHotelInfo(int comp_no) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.getHotelInfo(comp_no);
 	}
 
 }

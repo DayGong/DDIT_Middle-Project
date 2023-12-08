@@ -8,7 +8,7 @@ $(function()
 	{
 		$.ajax
 		({
-			url: `${path}/reserve/returnToHotelReserveVo.do`,
+			url: '<%= request.getContextPath() %>/reserve/returnToHotelReserveVo.do',
 			type: 'post',
 			success: function(res)
 			{
@@ -16,7 +16,7 @@ $(function()
 				
 				console.log(res);
 				
-				$('#hotelModalBody').html('출력test');
+				// $('#hotelModalBody').html('출력test');
 			},
 			error: function(xhr)
 			{
