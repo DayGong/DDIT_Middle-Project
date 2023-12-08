@@ -25,6 +25,8 @@ public class ReturnToHotelReserveVo extends HttpServlet {
 		CompanyVO companyVo = service.getHotelInfo(comp_no);
 		
 		request.setAttribute("companyVo", companyVo);
+		
+		request.getRequestDispatcher("WEB-INF/view/reserve/hotelInfoReturn.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

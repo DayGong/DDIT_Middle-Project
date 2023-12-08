@@ -18,39 +18,52 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
+<script>
+	path = '<%= request.getContextPath() %>';
+	
+	$(function() 
+	{
+		$(document).on('click', '.hotelModalBtn', function()
+		{
+			compNo = $(this).attr('boardNo');	// 글번호
+			
+			// 다른 함수 영역으로 넘어갔을 때 
+			// 클릭한 요소 객체를 사용하기 위해서 전역 변수로 설정한다.
+			gthis = this;
+			
+			moveToHotelDetail();
+		})
+	})
+</script>
+
 </head>
 <body>
 
-<!-- DB의 내용을 읽어 숙소의 List 출력 -->
-<!-- <div id="hotelDiv" onclick="moveToHotelDetail()">
-	<p>div 클릭 테스트</p>
-</div> -->
-
-<button type="button" id="hotelModalBtn">버튼</button>
+<button type="button" class="hotelModalBtn" onclick="moveToHotelDetail()">버튼</button>
 
 <!-- 호텔의 상세 정보를 출력하는 모달창 시작 -->
 <div class="modal" id="hotelDetailModal">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+		
+			<!-- 모달 헤더 -->
+			<div class="modal-header" id="hotelModalHeader">
+				<h4 class="modal-title">Modal Heading</h4>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+			</div>
 
-      <!-- 모달 헤더 -->
-      <div class="modal-header" id="hotelModalHeader">
-        <h4 class="modal-title">Modal Heading</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
+			<!-- 모달 몸통(내용 출력) -->
+			<div class="modal-body" id="hotelModalBody">
+				Modal body..
+			</div>
 
-      <!-- Modal body -->
-      <div class="modal-body" id="hotelModalBody">
-        Modal body..
-      </div>
+			<!-- 모달 하단 Close버튼 -->
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+			</div>
 
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-      </div>
-
-    </div>
-  </div>
+		</div>
+	</div>
 </div>
 
 </body>
