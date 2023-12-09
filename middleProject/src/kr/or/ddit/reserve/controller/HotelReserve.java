@@ -12,8 +12,8 @@ import kr.or.ddit.reserve.service.IReserveService;
 import kr.or.ddit.reserve.service.ReserveServiceImpl;
 import kr.or.ddit.vo.CompanyVO;
 
-@WebServlet("/reserve/returnToHotelVo.do")
-public class ReturnToHotelReserveVo extends HttpServlet {
+@WebServlet("/reserve/hotelReserve.do")
+public class HotelReserve extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -31,7 +31,7 @@ public class ReturnToHotelReserveVo extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		
 	}
 
 }
