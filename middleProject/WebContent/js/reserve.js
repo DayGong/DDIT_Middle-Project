@@ -6,28 +6,42 @@ moveToHotelDetail = function()
 {
 	$.ajax
 	({
-		url: `${path}/reserve/returnToHotelReserveVo.do`,
-		type: 'post',
+		url: `${path}/reserve/returnToHotelVo.do`,
+		type: 'GET',
 		data: {
-			"comp_no" : 1	// DB 내용을 가져오기 위한 임시 데이터
+			"comp_no" : compNo
 		},
 		success: function(res)
 		{
 			$('#hotelDetailModal').modal('show');
 				
-			// console.log(res);
+			console.log(res);
 			
 			headerCode = `
-				<h4 class="modal-title">${res.comp_name}</h4>
-				<button type="button" class="btn-close" data-bs-dismiss="modal"></button>`;
+			<div class="headerImg" style="background-image: url('${path}/images/hotel/${res.comp_img}');">
+				<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+				<h4 class="modal-title fix-text">${res.comp_name}</h4>
+				<div>
+					<table>
+						<tr>
+							<td>주소</td>
+							<td>| ${res.comp_addr}</td>
+						</tr>
+						<tr>
+							<td>전화번호</td>
+							<td>| ${res.comp_tel}</td>
+						</tr>
+						<tr>
+							<td>운영시간</td>
+							<td>| ${res.comp_time}</td>
+						</tr>
+					</table>
+				</div>
+			</div>`;
+
 			$('#hotelModalHeader').html(headerCode);
 			
-			bodyCode = `
-				<span id="hotelImg">
-					<img src="${path}/images/hotel/${res.comp_img}" alt="res.comp_name">
-				</span>
-			`;
-			$('#hotelModalBody').html(bodyCode);
+			openReserveForm();
 		},
 		error: function(xhr)
 		{
@@ -35,4 +49,10 @@ moveToHotelDetail = function()
 		},
 		dataType: 'json'
 	})
+}
+
+openReserveForm = function() 
+{
+	
+	$('#hotelDetailModal .modal-body').load("form/reserve/HotelReserveForm.jsp");
 }
