@@ -9,6 +9,7 @@ public class MemberVO {
 	private String mem_mail;	// 회원 이메일
 	private int mem_state;		// 회원 탈퇴 여부
 	
+	
 	public String getMem_id() {
 		return mem_id;
 	}
