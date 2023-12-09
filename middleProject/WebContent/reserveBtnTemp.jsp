@@ -17,19 +17,6 @@
 <!-- 모달창 script - 예약에서 사용 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  
-<script>
-	path = '<%= request.getContextPath() %>';
-	compNo = 1; // DB 내용을 가져오기 위한 임시 데이터(업체번호)
-	
-	$(function() 
-	{
-		$(document).on('click', '.hotelModalBtn', function()
-		{
-			moveToHotelDetail();
-		})
-	})
-</script>
 
 </head>
 <body>
@@ -53,7 +40,7 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div> <!-- 호텔의 상세 정보를 출력하는 모달창 끝 -->
 
 </body>
 </html>
