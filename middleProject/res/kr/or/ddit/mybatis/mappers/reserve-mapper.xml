@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="reserveVo">
+
+	<insert id="reserveRestaurant" parameterType="reserveVo">
+		INSERT INTO reserve (rsv_no, rsv_date, rsv_count, rsv_state, mem_id, comp_no)
+		VALUES (#{rsv_no}, #{rsv_date}, #{rsv_count}, #{rsv_state}, #{mem_id}, #{comp_no})
+	</insert>
+	
+</mapper>

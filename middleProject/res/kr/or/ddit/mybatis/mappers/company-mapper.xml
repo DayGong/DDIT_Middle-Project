@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="companyVo">
+
+	<select id="getHotelInfo" parameterType="int" resultType="companyVo">
+		SELECT * FROM company WHERE comp_no = #{comp_no}
+	</select>
+
+</mapper>
