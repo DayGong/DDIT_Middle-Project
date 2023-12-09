@@ -100,12 +100,12 @@
 	<!--   로그인 폼입니다    -->
 	<div id="loginForm">
 		<form class="login-form" action="#">
- 			 <input type="text" placeholder="아이디">
-             <input type="password" placeholder="비밀번호">
-             <input type="button" value="로그인">
-             <input type="button" value="회원가입">
+			<input type="text" placeholder="아이디">
+            <input type="password" placeholder="비밀번호">
+            <input type="button" value="로그인">
+            <input type="button" value="회원가입">
 		</form>
-  	</div>
+	</div>
 </div>
 </header>
 <!--  메인 상단 메뉴바(헤더)의 끝  -->
