@@ -10,6 +10,7 @@ public class MemberVO {
 	private int mem_state;		// 회원 탈퇴 여부
 	
 	
+	
 	public String getMem_id() {
 		return mem_id;
 	}
