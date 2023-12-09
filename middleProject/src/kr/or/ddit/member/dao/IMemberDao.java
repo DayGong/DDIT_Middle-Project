@@ -28,6 +28,7 @@ public interface IMemberDao {
 	 * @return 성공 시 반환값: 1, 실패 시 반환값: 0
 	 */
 	public int deleteMember(String memId);
+	   
 	
 	/**
 	 * 회원의 정보를 읽어 MemberVO객체로 반환하는 메서드

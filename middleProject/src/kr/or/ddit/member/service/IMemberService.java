@@ -1,7 +1,7 @@
 package kr.or.ddit.member.service;
 
 import kr.or.ddit.vo.MemberVO;
-
+ 
 public interface IMemberService {
 	/**
 	 * MemberVO객체를 받아 회원의 정보를 저장하는 메서드
