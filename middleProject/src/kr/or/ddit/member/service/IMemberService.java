@@ -1,9 +1,8 @@
-package kr.or.ddit.member.dao;
+package kr.or.ddit.member.service;
 
 import kr.or.ddit.vo.MemberVO;
 
-public interface IMemberDao {
-	
+public interface IMemberService {
 	/**
 	 * MemberVO객체를 받아 회원의 정보를 저장하는 메서드
 	 * 
@@ -46,4 +45,3 @@ public interface IMemberDao {
 	 */
 	public String selectById(String memId);
 }
-

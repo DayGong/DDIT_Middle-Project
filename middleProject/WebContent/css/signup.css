@@ -1,0 +1,85 @@
+@charset "UTF-8";
+
+body{
+	display:flex;
+	flex-direction:row;
+	justify-content:center;
+}
+
+input{
+	display:inline-block;
+}
+
+select{
+	border:1px solid #c9c9c9;
+	border-radius: 5px;
+	width: 180px;
+	height: 40px;
+}
+
+.container{
+	display:inline-block;
+	flex-direction:row;
+	align-items:center;
+	width:600px;
+	height:1080px;
+	margin:60px;
+	padding:30px;
+	background:#ffffff;
+	border:1px solid #aacdff;
+	box-shadow: 7px 7px 39px rgba(0, 104, 255, 0.25);
+	border-radius: 20px;
+}
+
+.header{
+   font-size: 26px;
+   color:#3a89fc;
+   line-height: 1.5;
+}
+
+.id-check{
+	display:inline-block;
+	text-align:center;
+}
+
+.form-group input {
+	width: 300px;
+	border-bottom: 1px solid #cfcfcf;
+}
+
+.form-group #add1,
+.form-group #add2 {
+	width: 400px;
+}
+
+.ziptr:hover {
+	background: pink;
+}
+
+.email-input-group{
+	display:flex;
+	flex-direction:row;
+}
+
+#checkid{
+	width: 100px;
+	height: 40px;
+}
+
+#joinbtn{
+	width: 200px;
+	height: 50px;
+	font-weight: 400;
+	font-size: 18px;
+	line-height: 27px;
+	text-align: center;
+	color: #0068ff;
+	background: #ffffff;
+	border: 1px solid #0068ff;
+	border-radius: 10px;
+}
+
+#at{
+	font-size: 20px;
+	margin: 5px;
+}
