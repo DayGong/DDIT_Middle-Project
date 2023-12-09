@@ -1,6 +1,7 @@
 package kr.or.ddit.reserve.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,7 +12,7 @@ import kr.or.ddit.reserve.service.IReserveService;
 import kr.or.ddit.reserve.service.ReserveServiceImpl;
 import kr.or.ddit.vo.CompanyVO;
 
-@WebServlet("/reserve/returnToHotelReserveVo.do")
+@WebServlet("/reserve/returnToHotelVo.do")
 public class ReturnToHotelReserveVo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

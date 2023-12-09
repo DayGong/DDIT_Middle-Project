@@ -20,17 +20,12 @@
   
 <script>
 	path = '<%= request.getContextPath() %>';
+	compNo = 1; // DB 내용을 가져오기 위한 임시 데이터(업체번호)
 	
 	$(function() 
 	{
 		$(document).on('click', '.hotelModalBtn', function()
 		{
-			compNo = $(this).attr('boardNo');	// 글번호
-			
-			// 다른 함수 영역으로 넘어갔을 때 
-			// 클릭한 요소 객체를 사용하기 위해서 전역 변수로 설정한다.
-			gthis = this;
-			
 			moveToHotelDetail();
 		})
 	})
@@ -47,15 +42,10 @@
 		<div class="modal-content">
 		
 			<!-- 모달 헤더 -->
-			<div class="modal-header" id="hotelModalHeader">
-				<!-- <h4 class="modal-title">Modal Heading</h4>
-				<button type="button" class="btn-close" data-bs-dismiss="modal"></button> -->
-			</div>
+			<div class="modal-header" id="hotelModalHeader"></div>
 
 			<!-- 모달 몸통(내용 출력) -->
-			<div class="modal-body" id="hotelModalBody">
-				<!-- reserve.js에서 구현 -->
-			</div>
+			<div class="modal-body" id="hotelModalBody"></div>
 
 			<!-- 모달 하단 Close버튼 -->
 			<div class="modal-footer">
