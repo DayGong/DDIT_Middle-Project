@@ -90,7 +90,7 @@ showHotelDetailInfo = function(res)
 // 오늘 이전의 날짜는 입력 불가하게 설정하기위해 오늘 날짜를 변수로 설정
 const date = new Date();
 const year = date.getFullYear()
-const month = date.getMonth()+1;
+const month = date.getMonth() + 1;
 const day= String(date.getDate());
 
 // 일자가 한 자리 수인 경우 앞에 0을 붙여 두자리 숫자로 만들어준다. ex) 2023-12-09
@@ -101,12 +101,13 @@ var dayCnt = 0; // 날짜 폼 추가,삭제 Count
 // 모달창 바디에 숙박 예약폼을 띄운다.
 openReserveForm = function(res) 
 {
-	
+	let peopleMin = 1;	// 인원수 최소값
+	let peopleMax = 4;	// 인원수 최대값
 	let bodyCode = `
 	<form action="${path}/reserve/hotelReserve.do" method="POST">
 		<div>
 			<h2>인원 선택</h2>
-			<input type="number" name="rsv_count" min="1" max="4" value="1">
+			<input type="number" name="rsv_count" min="${peopleMin}" max="${peopleMax}" value="${peopleMin}">
 		</div>
 		<div>
 			<h2>숙박 날짜 선택</h2>
@@ -149,7 +150,7 @@ addDateForm = function()
 	if (dayCnt < 5) 
 	{
 		let addedDiv = document.createElement("div"); 		// 폼 생성
-		addedDiv.setAttribute("id", "dateForm"+dayCnt);
+		addedDiv.setAttribute("id", "dateForm" + dayCnt);
 		addedDiv.innerHTML = addForm; 						// 폼 div에 html 삽입
 		addDateDiv.appendChild(addedDiv); 					// 삽입할 div에 생성한 폼 삽입
 		
@@ -198,7 +199,7 @@ addRoomForm = function()
 	`;
 	
 	let addedDiv = document.createElement("div"); // 폼 생성
-	addedDiv.setAttribute("id", "roomForm"+dayCnt);
+	addedDiv.setAttribute("id", "roomForm" + dayCnt);
 	addedDiv.innerHTML = addForm; // 폼 div에 html 삽입
 	addRoomDiv.appendChild(addedDiv); // 삽입할 div에 생성한 폼 삽입
 }
