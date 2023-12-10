@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>logOut</title>
-</head>
+</head> 
 <body>
 
 </body>

@@ -20,7 +20,7 @@
 
 		<a href="<%=request.getContextPath()%>/logOut.jsp">로그아웃</a>
 <%
-	}
+	} 
 %>
 
 </body>
