@@ -3,7 +3,7 @@
 <!DOCTYPE configuration 
 	PUBLIC "-//mybatis.org/DTD Config 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-config.dtd">
- 
+  
 <configuration>
 	<!-- DB 연결 정보가 저장된 'dbinfo.properties' 파일에 대한 정보 구성하기 -->
 	<properties resource="kr/or/ddit/mybatis/config/dbinfo.properties"/>
