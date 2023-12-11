@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -38,6 +39,8 @@ public class LoginMember extends HttpServlet {
 		MemberVO LoginMemberVo = service.getLoginMember(memVo);
 		
 		HttpSession session = request.getSession();
+		
+
 		
 		//로그인성공+저장
 		if(LoginMemberVo!=null) {
