@@ -43,7 +43,7 @@
 				<div id="right-modal-body"></div> 	<!-- 예약 입력 폼 -->
 			</div>
 
-			<!-- 모달 하단 Close버튼 -->
+			<!-- 모달 하단(후기 출력) -->
 			<div class="modal-footer">
 				<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
 			</div>

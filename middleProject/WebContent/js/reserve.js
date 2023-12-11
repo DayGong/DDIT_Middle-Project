@@ -181,6 +181,11 @@ changeRoomState = function()
 // 해당하는 날짜에 남은 객실 수를 확인하는 메서드
 checkRoom = function()
 {
+	$.ajax
+	({
+		url: `${path}/reserve/hotelRoomCheck.do`,
+		
+	})
 	
 }
 
@@ -223,16 +228,6 @@ requestPay = function()
 	}
 	
 	let totalAmt = hotelInfo.hotel_amount * peopleCnt * betweenDate;
-		
-	let reserveInfo = {
-		startDate : `${startDate}`,
-		endDate : `${endDate}`,
-		peopleCnt : `${peopleCnt}`,
-		room : `${room}`,
-		mem_id : `${mem_id}`,
-		hotel_no : `${hotel_no}`,
-		hotel_totalamt : `${totalAmt}`
-	} ;
 
 	IMP.request_pay
 	({
@@ -244,16 +239,24 @@ requestPay = function()
 		buyer_name : hotelInfo.hotel_name,
 		buyer_tel : hotelInfo.hotel_tel,
 		buyer_addr : hotelInfo.hotel_addr,
-		custom_data : 
-		{
-			"reserveInfo" : reserveInfo
-		}
 	}, function (rsp) 
 	{
 		if (rsp.success) 
 		{
+			console.log(rsp);
  			// 서버 결제 API 성공시 로직
-			payAfterReserveHotel(rsp);
+ 			let reserveInfo = {
+				"imp_uid" : rsp.imp_uid,
+				"startDate" : `${startDate}`,
+				"endDate" : `${endDate}`,
+				"peopleCnt" : `${peopleCnt}`,
+				"room" : `${room}`,
+				"mem_id" : `${mem_id}`,
+				"hotel_no" : `${hotel_no}`,
+				"hotel_totalamt" : `${totalAmt}`
+			} ;
+			
+			payAfterReserveHotel(reserveInfo);
 		} else 
 		{
 			alert(`결제에 실패하였습니다. 에러 내용: ${rsp.error_msg}`);
@@ -262,22 +265,28 @@ requestPay = function()
 }
 
 // 카카오 페이 API를 통해 결제 진행 후 숙소 예약 정보를 저장하는 메서드
-payAfterReserveHotel = function(rsp) 
+payAfterReserveHotel = function(reserveInfo) 
 {
-	console.log(rsp);
 	$.ajax
 	({
 		url: `${path}/reserve/hotelReserve.do`,
 		type: 'POST',
 		data: {
-			'imp_uid' : rsp.imp_uid,
-			'reserveInfo' : rsp.reserveInfo
+			"hotel_rsv_no" : reserveInfo.imp_uid,
+			"hotel_rsv_startdate" : reserveInfo.startDate,
+			"hotel_rsv_enddate" : reserveInfo.endDate,
+			"hotel_rsv_count" : reserveInfo.peopleCnt,
+			"hotel_rsv_room" : reserveInfo.room,
+			"hotel_rsv_state" : "1",
+			"mem_id" : reserveInfo.mem_id,
+			"hotel_no" : reserveInfo.hotel_no,
+			"hotel_totalamt" : reserveInfo.hotel_totalamt
 		},
 		success: function(res) {
-			console.log('res');
+			console.log(res);
 		},
 		error: function(xhr) {
-			console.log(xhr);
+			alert(`예약에 실패하였습니다. 에러 내용: ${xhr.status}`);
 		},
 		dataType: 'json'
 	})

@@ -3,17 +3,17 @@
 	PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
-<mapper namespace="HotelRsvVo">
+<mapper namespace="hotelRsvVo">
 
-	<insert id="reserveHotel" parameterType="HotelRsvVo">
+	<insert id="reserveHotel" parameterType="hotelRsvVo">
 		INSERT INTO hotel_reserve (
 						hotel_rsv_no, hotel_rsv_startdate, hotel_rsv_enddate, 
 						hotel_rsv_count, hotel_rsv_room, hotel_rsv_state, 
-						mem_id, hotel_no)
+						mem_id, hotel_no, hotel_totalamt)
 		VALUES (
 						#{hotel_rsv_no}, #{hotel_rsv_startdate}, #{hotel_rsv_enddate}, 
 						#{hotel_rsv_count}, #{hotel_rsv_room}, #{hotel_rsv_state}, 
-						#{mem_id}, #{hotel_no})
+						#{mem_id}, #{hotel_no}, #{hotel_totalamt})
 	</insert>
 	
 </mapper>

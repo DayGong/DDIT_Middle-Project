@@ -33,7 +33,7 @@ public class ReserveDaoImpl implements IReserveDao
 		{
 			session = MybatisUtil.getSqlSession();
 			
-			res = session.insert("HotelRsvVo.reserveHotel", hotelRsvVo);
+			res = session.insert("hotelRsvVo.reserveHotel", hotelRsvVo);
 			
 			session.commit();
 			
