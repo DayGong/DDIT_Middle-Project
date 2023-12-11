@@ -24,7 +24,7 @@ public class ReserveDaoImpl implements IReserveDao
 	}
 	
 	@Override
-	public int reserveRestaurant(HotelReserveVO hotelRsvVo) 
+	public int reserveHotel(HotelReserveVO hotelRsvVo) 
 	{
 		int res = 0; // 결과값을 저장하는 변수
 		SqlSession session = null;
@@ -33,7 +33,7 @@ public class ReserveDaoImpl implements IReserveDao
 		{
 			session = MybatisUtil.getSqlSession();
 			
-			res = session.insert("hotelRsvVo.reserveRestaurant", hotelRsvVo);
+			res = session.insert("reserveVo.reserveHotel", hotelRsvVo);
 			
 			session.commit();
 			
@@ -66,7 +66,8 @@ public class ReserveDaoImpl implements IReserveDao
 		} catch (Exception e) 
 		{
 			e.printStackTrace();
-		} finally {
+		} finally 
+		{
 			if ( session != null ) 
 			{
 				session.close();

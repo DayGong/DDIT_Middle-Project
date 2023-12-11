@@ -6,6 +6,7 @@ public class HotelVO {
 	private String hotel_addr;		// 주소
 	private String hotel_tel;		// 전화번호
 	private String hotel_time;		// 운영시간
+	private int hotel_room_count;	// 객실수
 	private String hotel_img;		// 이미지파일명
 
 	public int getHotel_no() {
@@ -48,6 +49,14 @@ public class HotelVO {
 		this.hotel_time = hotel_time;
 	}
 
+	public int getHotel_room_count() {
+		return hotel_room_count;
+	}
+	
+	public void setHotel_room_count(int hotel_room_count) {
+		this.hotel_room_count = hotel_room_count;
+	}
+	
 	public String getHotel_img() {
 		return hotel_img;
 	}

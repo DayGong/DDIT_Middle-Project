@@ -3,11 +3,19 @@
 	PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
+<!-- 숙소, 식당 예약을 통합한 mapper -->
+	
 <mapper namespace="reserveVo">
 
-	<insert id="reserveRestaurant" parameterType="reserveVo">
-		INSERT INTO reserve (rsv_no, rsv_date, rsv_count, rsv_state, mem_id, comp_no)
-		VALUES (#{rsv_no}, #{rsv_date}, #{rsv_count}, #{rsv_state}, #{mem_id}, #{comp_no})
+	<insert id="reserveHotel" parameterType="HotelReserveVO">
+		INSERT INTO hotel_reserve (
+						hotel_rsv_no, hotel_rsv_startdate, hotel_rsv_enddate, 
+						hotel_rsv_count, hotel_rsv_room, hotel_rsv_state, 
+						mem_id, hotel_no)
+		VALUES (
+						#{hotel_rsv_no}, #{hotel_rsv_startdate}, #{hotel_rsv_enddate}, 
+						#{hotel_rsv_count}, #{hotel_rsv_room}, #{hotel_rsv_state}, 
+						#{mem_id}, #{hotel_no})
 	</insert>
 	
 </mapper>

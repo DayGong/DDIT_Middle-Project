@@ -16,12 +16,6 @@ $(function()
 	{
 		moveToHotelDetail();
 	})
-	
-	// 날짜를 선택하면 객실을 선택할 수 있게하는 이벤트
-	$(document).on('change', '.selectDate', function()
-	{
-		//alert('change test');		
-	})
 })
 
 // 호텔 상세보기 모달창 설정
@@ -202,21 +196,6 @@ addRoomForm = function()
 	addedDiv.setAttribute("id", "roomForm" + dayCnt);
 	addedDiv.innerHTML = addForm; // 폼 div에 html 삽입
 	addRoomDiv.appendChild(addedDiv); // 삽입할 div에 생성한 폼 삽입
-}
-
-// 객실 선택을 지우는 메소드
-deleteRoomForm = function()
-{
-	// 마지막으로 생성된 폼의 ID를 통해 div객체를 가져옴
-	let roomDiv = document.getElementById("roomForm" + dayCnt);
-	
-	if ( dayCnt > 0 ) 
-	{
-		roomDiv.remove();	// 폼 삭제
-	} else 
-	{
-		roomDiv.empty();	// 폼 내용 삭제
-	}
 }
 
 // 카카오 페이 API를 통해 결제 진행 후 숙소 예약 정보를 저장하는 메서드

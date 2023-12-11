@@ -25,9 +25,9 @@ public class ReserveServiceImpl implements IReserveService
 	}
 
 	@Override
-	public int reserveRestaurant(HotelReserveVO hotelRsvVo) 
+	public int reserveHotel(HotelReserveVO hotelRsvVo) 
 	{
-		return dao.reserveRestaurant(hotelRsvVo);
+		return dao.reserveHotel(hotelRsvVo);
 	}
 
 	@Override
