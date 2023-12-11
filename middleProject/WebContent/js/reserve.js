@@ -7,7 +7,7 @@ const origin = window.location.origin;
 
 const path = origin + pathName;
 
-compNo = 1; // DB 내용을 가져오기 위한 임시 데이터(업체번호)
+hotel_no = 1; // DB 내용을 가져오기 위한 임시 데이터(업체번호)
 	
 $(function() 
 {
@@ -27,7 +27,7 @@ moveToHotelDetail = function()
 		type: 'GET',
 		data: 
 		{
-			"comp_no" : compNo
+			"hotel_no" : hotel_no
 		},
 		success: function(res)
 		{
@@ -39,7 +39,7 @@ moveToHotelDetail = function()
 			showHotelDetailInfo(res);
 			
 			// 모달창 바디에 숙박 예약폼을 띄우는 메소드
-			openReserveForm(res);
+			openHotelReserveForm(res);
 		},
 		error: function(xhr)
 		{
@@ -53,26 +53,22 @@ moveToHotelDetail = function()
 showHotelDetailInfo = function(res) 
 {
 	let headerCode = `
-	<div class="headerImg" style="background-image: url('${path}/images/hotel/${res.comp_img}');">
+	<div class="headerImg" style="background-image: url('${path}/images/hotel/${res.hotel_img}');">
 		<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-		<h4 class="modal-title fix-text">${res.comp_name}</h4>
+		<h4 class="modal-title fix-text">${res.hotel_name}</h4>
 		<div>
 			<table>
 				<tr>
 					<td>주소</td>
-					<td>| ${res.comp_addr}</td>
+					<td>| ${res.hotel_addr}</td>
 				</tr>
 				<tr>
 					<td>전화번호</td>
-					<td>| ${res.comp_tel}</td>
+					<td>| ${res.hotel_tel}</td>
 				</tr>
 				<tr>
 					<td>운영시간</td>
-					<td>| ${res.comp_time}</td>
-				</tr>
-				<tr>
-					<td>잔여객실 수</td>
-					<td>| ${res.comp_room}</td>
+					<td>| ${res.hotel_time}</td>
 				</tr>
 			</table>
 		</div>
@@ -93,7 +89,7 @@ const dayZero = day.padStart(2, "0");
 var dayCnt = 0; // 날짜 폼 추가,삭제 Count
 	
 // 모달창 바디에 숙박 예약폼을 띄운다.
-openReserveForm = function(res) 
+openHotelReserveForm = function(res) 
 {
 	let peopleMin = 1;	// 인원수 최소값
 	let peopleMax = 4;	// 인원수 최대값

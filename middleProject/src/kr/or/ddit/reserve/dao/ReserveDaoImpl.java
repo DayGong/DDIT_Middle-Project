@@ -62,6 +62,7 @@ public class ReserveDaoImpl implements IReserveDao
 			session = MybatisUtil.getSqlSession();
 			
 			hotelVo = session.selectOne("hotelVo.getHotelInfo", hotel_no);
+			System.out.println(hotelVo);
 			
 		} catch (Exception e) 
 		{

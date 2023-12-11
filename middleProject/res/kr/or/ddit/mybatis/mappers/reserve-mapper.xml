@@ -7,15 +7,6 @@
 	
 <mapper namespace="reserveVo">
 
-	<insert id="reserveHotel" parameterType="HotelReserveVO">
-		INSERT INTO hotel_reserve (
-						hotel_rsv_no, hotel_rsv_startdate, hotel_rsv_enddate, 
-						hotel_rsv_count, hotel_rsv_room, hotel_rsv_state, 
-						mem_id, hotel_no)
-		VALUES (
-						#{hotel_rsv_no}, #{hotel_rsv_startdate}, #{hotel_rsv_enddate}, 
-						#{hotel_rsv_count}, #{hotel_rsv_room}, #{hotel_rsv_state}, 
-						#{mem_id}, #{hotel_no})
-	</insert>
+	
 	
 </mapper>
