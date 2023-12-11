@@ -3,8 +3,8 @@ package kr.or.ddit.reserve.dao;
 import org.apache.ibatis.session.SqlSession;
 
 import kr.or.ddit.util.MybatisUtil;
-import kr.or.ddit.vo.CompanyVO;
-import kr.or.ddit.vo.ReserveVO;
+import kr.or.ddit.vo.HotelReserveVO;
+import kr.or.ddit.vo.HotelVO;
 
 public class ReserveDaoImpl implements IReserveDao 
 {
@@ -24,7 +24,7 @@ public class ReserveDaoImpl implements IReserveDao
 	}
 	
 	@Override
-	public int reserveRestaurant(ReserveVO reserveVo) 
+	public int reserveRestaurant(HotelReserveVO hotelRsvVo) 
 	{
 		int res = 0; // 결과값을 저장하는 변수
 		SqlSession session = null;
@@ -33,7 +33,7 @@ public class ReserveDaoImpl implements IReserveDao
 		{
 			session = MybatisUtil.getSqlSession();
 			
-			res = session.insert("reserveVo.reserveRestaurant", reserveVo);
+			res = session.insert("hotelRsvVo.reserveRestaurant", hotelRsvVo);
 			
 			session.commit();
 			
@@ -52,25 +52,28 @@ public class ReserveDaoImpl implements IReserveDao
 	}
 
 	@Override
-	public CompanyVO getHotelInfo(int comp_no) {
-		CompanyVO companyVo = null;
+	public HotelVO getHotelInfo(int hotel_no) 
+	{
+		HotelVO hotelVo = null;
 		SqlSession session = null;
 		
-		try {
+		try 
+		{
 			session = MybatisUtil.getSqlSession();
 			
-			companyVo = session.selectOne("companyVo.getHotelInfo", comp_no);
+			hotelVo = session.selectOne("hotelVo.getHotelInfo", hotel_no);
 			
-		} catch (Exception e) {
+		} catch (Exception e) 
+		{
 			e.printStackTrace();
 		} finally {
-			if ( session != null ) {
+			if ( session != null ) 
+			{
 				session.close();
 			}
 		}
 		
-		return companyVo;
+		return hotelVo;
 	}
-	
 	
 }

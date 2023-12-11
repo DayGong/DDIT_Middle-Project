@@ -2,8 +2,8 @@ package kr.or.ddit.reserve.service;
 
 import kr.or.ddit.reserve.dao.IReserveDao;
 import kr.or.ddit.reserve.dao.ReserveDaoImpl;
-import kr.or.ddit.vo.CompanyVO;
-import kr.or.ddit.vo.ReserveVO;
+import kr.or.ddit.vo.HotelReserveVO;
+import kr.or.ddit.vo.HotelVO;
 
 public class ReserveServiceImpl implements IReserveService 
 {
@@ -25,14 +25,15 @@ public class ReserveServiceImpl implements IReserveService
 	}
 
 	@Override
-	public int reserveRestaurant(ReserveVO reserveVo) 
+	public int reserveRestaurant(HotelReserveVO hotelRsvVo) 
 	{
-		return dao.reserveRestaurant(reserveVo);
+		return dao.reserveRestaurant(hotelRsvVo);
 	}
 
 	@Override
-	public CompanyVO getHotelInfo(int comp_no) {
-		return dao.getHotelInfo(comp_no);
+	public HotelVO getHotelInfo(int hotel_no) 
+	{
+		return dao.getHotelInfo(hotel_no);
 	}
 
 }

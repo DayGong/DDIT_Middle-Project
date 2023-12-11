@@ -20,7 +20,8 @@
 		<!-- 형식: <typeAlias type="전체 이름" alias="별칭이름"/> -->
 		<typeAlias type="kr.or.ddit.vo.MemberVO" alias="memVo"/>
 		<typeAlias type="kr.or.ddit.vo.ReserveVO" alias="reserveVo"/>
-		<typeAlias type="kr.or.ddit.vo.CompanyVO" alias="companyVo"/>
+		<typeAlias type="kr.or.ddit.vo.HotelVO" alias="hotelVo"/>
+		<typeAlias type="kr.or.ddit.vo.RestaurantVO" alias="restaurantVo"/>
 	</typeAliases>
 
 	<!-- DB 연결을 위한 설정 -->
@@ -44,7 +45,8 @@
 		<!-- 형식: <mapper resource="경로명/mapper파일명.xml" -->
 		<mapper resource="kr/or/ddit/mybatis/mappers/member-mapper.xml"/>
 		<mapper resource="kr/or/ddit/mybatis/mappers/reserve-mapper.xml"/>
-		<mapper resource="kr/or/ddit/mybatis/mappers/company-mapper.xml"/>
+		<mapper resource="kr/or/ddit/mybatis/mappers/hotel-mapper.xml"/>
+		<mapper resource="kr/or/ddit/mybatis/mappers/restaurant-mapper.xml"/>
 	</mappers>
 	
 </configuration>

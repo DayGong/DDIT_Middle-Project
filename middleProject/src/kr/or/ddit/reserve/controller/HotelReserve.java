@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.ddit.reserve.service.IReserveService;
 import kr.or.ddit.reserve.service.ReserveServiceImpl;
-import kr.or.ddit.vo.CompanyVO;
+import kr.or.ddit.vo.HotelVO;
 
 @WebServlet("/reserve/hotelReserve.do")
 public class HotelReserve extends HttpServlet {
@@ -21,13 +21,13 @@ public class HotelReserve extends HttpServlet {
 		
 		IReserveService service = ReserveServiceImpl.getInstance();
 		
-		int comp_no = Integer.parseInt(request.getParameter("comp_no"));
+		int hotel_no = Integer.parseInt(request.getParameter("hotel_no"));
 		
-		CompanyVO companyVo = service.getHotelInfo(comp_no);
+		HotelVO hotelVo = service.getHotelInfo(hotel_no);
 		
-		request.setAttribute("companyVo", companyVo);
+		request.setAttribute("hotelVo", hotelVo);
 		
-		request.getRequestDispatcher("/WEB-INF/view/reserve/hotelInfoReturn.jsp").forward(request, response);
+		request.getRequestDispatcher("/view/reserve/hotelInfoReturn.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

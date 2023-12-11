@@ -1,25 +1,25 @@
 package kr.or.ddit.reserve.service;
 
-import kr.or.ddit.vo.CompanyVO;
-import kr.or.ddit.vo.ReserveVO;
+import kr.or.ddit.vo.HotelReserveVO;
+import kr.or.ddit.vo.HotelVO;
 
 public interface IReserveService 
 {
 
 	/**
-	 * ReserveVO객체를 받아 예약 테이블에 정보를 저장을 하는 메서드
+	 * HotelReserveVO객체를 받아 숙소 예약 테이블에 정보를 저장을 하는 메서드
 	 * 
-	 * @param reserveVo 예약 정보가 담긴 ReserveVO객체
+	 * @param hotelRsvVo 숙소 예약 정보가 담긴 HotelReserveVO객체
 	 * @return 반환값 성공 시: 1, 실패 시: 0
 	 */
-	public int reserveRestaurant(ReserveVO reserveVo);
-	
+	public int reserveRestaurant(HotelReserveVO hotelRsvVo);
+
 	/**
-	 * 업체 번호로 호텔의 상세 정보를 검색해 ReserveVO객체로 반환하는 메서드
+	 * 숙소 번호로 호텔의 상세 정보를 검색해 HotelReserveVO객체로 반환하는 메서드
 	 * 
-	 * @param comp_no 검색할 업체 번호
-	 * @return 호텔의 상세 정보가 담긴 CompanyVO객체
+	 * @param hotel_no 검색할 숙소 번호
+	 * @return 숙소의 상세 정보가 담긴 HotelVO객체
 	 */
-	public CompanyVO getHotelInfo(int comp_no);
+	public HotelVO getHotelInfo(int hotel_no);
 	
 }
