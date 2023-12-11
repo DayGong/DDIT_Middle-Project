@@ -21,8 +21,8 @@
 			아이디 <input type="text" name="memId" placeholder="아이디"><br><br>
 			비밀번호 <input type="text" name="pass" placeholder="비밀번호"><br><br>
          	<input type="submit" value="로그인"><br><br>
-		 	<a href="<%=request.getContextPath()%>/forgetPass" class="login_forgot">비밀번호를 잊으셨나요? </a><br><br>
-			<a href="<%=request.getContextPath()%>/member/signupMember.do">회원가입</a>
+		 	<a href="<%=request.getContextPath()%>/forgetPass" class="login_forgot">비밀번호 까먹었슈? </a><br><br>
+			<a href="<%=request.getContextPath()%>/view/signup/memberSignup.jsp">회원가입</a>
 	</form>
 <%
 	}else{
