@@ -9,4 +9,13 @@
 		SELECT * FROM hotel WHERE hotel_no = #{hotel_no}
 	</select>
 	
+	<update id="subtractHotelRoom" parameterType="int">
+		UPDATE hotel SET hotel_room_count = hotel_room_count - 1
+		WHERE hotel_no = #{hotel_no}
+	</update>
+	
+	<select id="getHotelRoom" parameterType="Map" resultType="int">
+				
+	</select>
+	
 </mapper>

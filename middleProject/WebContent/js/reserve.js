@@ -2,12 +2,10 @@
  * 숙소 예약, 식당 예약에 사용하는 js
  */
 
+// 경로 path 설정
 const pathName = "/" + window.location.pathname.split("/")[1];
 const origin = window.location.origin;
-
 const path = origin + pathName;
-
-hotel_no = 1; // DB 내용을 가져오기 위한 임시 데이터(업체번호)
 
 // mem_id = (String)session.getAttribute("mem_id");
 mem_id = "a001"; // 회원 아이디 임시 데이터(세션 회원 아이디)
@@ -17,6 +15,7 @@ $(function()
 	// 호텔 모달창을 띄우는 이벤트
 	$(document).on('click', '.hotelModalBtn', function()
 	{
+		hotel_no = $(this).attr('id');
 		moveToHotelDetail();
 	})
 	
@@ -35,9 +34,9 @@ $(function()
 	})
 	
 	// 빈 객실 수를 구해 표시하는 이벤트
-	$(document).on('input', '#rsv_count', function()
+	$(document).on('input', '#select_end_date', function()
 	{
-		
+		checkRoom();
 	})
 	
 	// 카카오페이API를 호출하는 메서드
@@ -63,7 +62,6 @@ moveToHotelDetail = function()
 			$('#hotelDetailModal').modal('show');
 				
 			hotelInfo = res;	// 카카오페이 API에 판매자 정보를 보내기 위해 전역 변수에 저장
-			console.log(hotelInfo);
 			
 			// 모달창 헤더에 숙박 업체의 상세 정보를 띄우는 메소드
 			showHotelDetailInfo(res);
@@ -171,9 +169,11 @@ changeRoomState = function()
 {
 	let peopleCnt = $('#rsv_count').val();
 		
-	if(peopleCnt <= 2) {
+	if(peopleCnt <= 2) 
+	{
 		$('#room_two').prop('checked', true);
-	} else {
+	} else 
+	{
 		$('#room_four').prop('checked', true);
 	}	
 }
@@ -184,13 +184,27 @@ checkRoom = function()
 	$.ajax
 	({
 		url: `${path}/reserve/hotelRoomCheck.do`,
-		
+		type: 'GET',
+		data:
+		{
+			"startDate" : $('#select_start_date').val(),
+			"endDate" : $('#select_end_date').val()
+		},
+		success: function(res)
+		{
+			console.log(res)
+		},
+		error: function(xhr)
+		{
+			console.log(xhr)
+		}
 	})
 	
 }
 
 // 두 날짜 사이의 일수를 구하는 메서드
-getDateDiff = (startDate, endDate) => {
+getDateDiff = (startDate, endDate) => 
+{
   let start = new Date(startDate);
   let end = new Date(endDate);
   
@@ -243,9 +257,9 @@ requestPay = function()
 	{
 		if (rsp.success) 
 		{
-			console.log(rsp);
  			// 서버 결제 API 성공시 로직
- 			let reserveInfo = {
+ 			let reserveInfo = 
+ 			{
 				"imp_uid" : rsp.imp_uid,
 				"startDate" : `${startDate}`,
 				"endDate" : `${endDate}`,
@@ -271,7 +285,8 @@ payAfterReserveHotel = function(reserveInfo)
 	({
 		url: `${path}/reserve/hotelReserve.do`,
 		type: 'POST',
-		data: {
+		data: 
+		{
 			"hotel_rsv_no" : reserveInfo.imp_uid,
 			"hotel_rsv_startdate" : reserveInfo.startDate,
 			"hotel_rsv_enddate" : reserveInfo.endDate,
@@ -282,12 +297,36 @@ payAfterReserveHotel = function(reserveInfo)
 			"hotel_no" : reserveInfo.hotel_no,
 			"hotel_totalamt" : reserveInfo.hotel_totalamt
 		},
-		success: function(res) {
-			console.log(res);
+		success: function(res) 
+		{
+			subtractHotelRoom(reserveInfo.hotel_no);
 		},
-		error: function(xhr) {
+		error: function(xhr) 
+		{
 			alert(`예약에 실패하였습니다. 에러 내용: ${xhr.status}`);
 		},
 		dataType: 'json'
+	})
+}
+
+// 예약 완료 후 객실의 수를 -1하는 메서드 
+subtractHotelRoom = function(hotel_no)
+{
+	$.ajax
+	({
+		url: `${path}/reserve/hotelRoomCheck.do`,
+		type: 'POST',
+		data: 
+		{
+			"hotel_no" : hotel_no
+		},
+		success: function(res)
+		{
+			console.log(res);
+		},
+		error: function(xhr)
+		{
+			console.log(xhr);
+		}
 	})
 }

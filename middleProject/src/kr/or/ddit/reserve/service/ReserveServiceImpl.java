@@ -1,5 +1,7 @@
 package kr.or.ddit.reserve.service;
 
+import java.util.Map;
+
 import kr.or.ddit.reserve.dao.IReserveDao;
 import kr.or.ddit.reserve.dao.ReserveDaoImpl;
 import kr.or.ddit.vo.HotelReserveVO;
@@ -34,6 +36,16 @@ public class ReserveServiceImpl implements IReserveService
 	public HotelVO getHotelInfo(int hotel_no) 
 	{
 		return dao.getHotelInfo(hotel_no);
+	}
+
+	@Override
+	public int subtractHotelRoom(int hotel_no) {
+		return dao.subtractHotelRoom(hotel_no);
+	}
+
+	@Override
+	public int getHotelRoom(Map<String, String> date) {
+		return dao.getHotelRoom(date);
 	}
 
 }

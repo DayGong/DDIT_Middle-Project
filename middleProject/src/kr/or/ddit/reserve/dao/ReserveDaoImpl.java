@@ -1,5 +1,7 @@
 package kr.or.ddit.reserve.dao;
 
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 
 import kr.or.ddit.util.MybatisUtil;
@@ -75,6 +77,60 @@ public class ReserveDaoImpl implements IReserveDao
 		}
 		
 		return hotelVo;
+	}
+
+	@Override
+	public int subtractHotelRoom(int hotel_no) 
+	{
+		SqlSession session = null;
+		int res = 0; // 결과값을 저장할 변수
+		
+		try 
+		{
+			session = MybatisUtil.getSqlSession();
+			
+			res = session.update("hotelVo.subtractHotelRoom", hotel_no);
+			
+			session.commit();
+			
+		} catch (Exception e) 
+		{
+			e.printStackTrace();
+		} finally 
+		{
+			if ( session != null )
+			{
+				session.close();
+			}
+		}
+		
+		return res;
+	}
+
+	@Override
+	public int getHotelRoom(Map<String, String> date) 
+	{
+		SqlSession session = null;
+		int res = 0;	// 결과값을 저장할 변수
+		
+		try 
+		{
+			session = MybatisUtil.getSqlSession();
+			
+			res = session.selectOne("hotelVo.getHotelRoom", date);
+			
+		} catch (Exception e) 
+		{
+			e.printStackTrace();
+		} finally 
+		{
+			if ( session != null )
+			{
+				session.close();
+			}
+		}
+		
+		return res;
 	}
 	
 }
