@@ -1,6 +1,6 @@
 package kr.or.ddit.member.controller;
 
-import java.io.IOException; 
+import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,7 +30,7 @@ public class CheckIdMember extends HttpServlet {
 		request.setAttribute("res", res);
 		
 		// view페이지로 이동
-		request.getRequestDispatcher("member/checkId.jsp");
+		request.getRequestDispatcher("/view/signup/checkId.jsp").forward(request, response);
 	}
 
 
