@@ -8,11 +8,11 @@
  
 	<!-- 회원가입 / mem_state : 가입(1), 탈퇴(0) -->
 	<insert id="insertMember" parameterType="memVo">
-		INSERT INTO member (
+		insert into member (
 			mem_id, mem_name, mem_pass,
 			mem_addr, mem_tel, mem_mail, mem_state
 			)
-		VALUES(
+		values(
 			#{mem_id}, #{mem_name}, #{mem_pass},
 			#{mem_addr}, #{mem_tel}, #{mem_mail}, 1
 			)
@@ -20,11 +20,11 @@
 	
 	<!-- 아이디 중복검사 -->
 	<select id="selectById" resultType="String" parameterType="String">
-		SELECT mem_id FROM member WHERE mem_id = #{mem_id}
+		select mem_id from member where mem_id = #{mem_id}
 	</select>
 	
 	<select id="getLoginMember" resultType="memVo" parameterType="memVo">
-		SELECT* FROM member WEHER mem_id=#{mem_id} and mem_pass=#{mem_pass} 
+		select* from member where mem_id=#{mem_id} and mem_pass=#{mem_pass} 
 	</select>
 	
 

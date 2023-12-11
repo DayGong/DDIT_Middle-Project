@@ -4,22 +4,18 @@ import kr.or.ddit.member.dao.IMemberDao;
 import kr.or.ddit.member.dao.MemberDaoImpl;
 import kr.or.ddit.vo.MemberVO;
  
-public class MemberServiceImpl implements IMemberService
-{
+public class MemberServiceImpl implements IMemberService {
 	
 	private static IMemberDao dao = MemberDaoImpl.getInstance();
 	
-	private static IMemberService service = null;
+	private static MemberServiceImpl service;
 	
-	private MemberServiceImpl() {}
+	private MemberServiceImpl() {
+		dao = MemberDaoImpl.getInstance();
+	}
 	
-	public static IMemberService getInstance()
-	{
-		if( service == null )
-		{
-			service = new MemberServiceImpl();
-		}
-		
+	public static IMemberService getInstance() {
+		if(service==null) service = new MemberServiceImpl();
 		return service;
 	}
 	

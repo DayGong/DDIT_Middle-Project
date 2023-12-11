@@ -19,10 +19,10 @@ public class LoginMember extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("utf-8");
 		
 		// id, password 가져오기
-		String memid = request.getParameter("memId");
+		String memId = request.getParameter("memId");
 		String pass = request.getParameter("pass");
 		
 		// Service객체 생성
@@ -30,20 +30,20 @@ public class LoginMember extends HttpServlet {
 		
 		// 가져온 id와 pass를 MemberVO객체에 저장한다.
 		MemberVO memVo = new MemberVO();
-		memVo.setMem_id(memid);
+		memVo.setMem_id(memId);
 		memVo.setMem_pass(pass);
 		
 		// DB에 ID와 PASS를 보내서 해당 조건에 맞는 회원정보를 가져온다.
 		// 해당 조건에 맞지 않으면 null값이 반환된다.
-		MemberVO loginMemberVo = service.getLoginMember(memVo);
+		MemberVO LoginMemberVo = service.getLoginMember(memVo);
 		
 		HttpSession session = request.getSession();
 		
 		//로그인성공+저장
-		if(loginMemberVo!=null) {
-			session.setAttribute("loginMember", loginMemberVo);
+		if(LoginMemberVo!=null) {
+			session.setAttribute("loginMember", LoginMemberVo);
 		}
-		response.sendRedirect(request.getContextPath()+"/WEB-INF/view/login_out/login.jsp");
+		response.sendRedirect(request.getContextPath()+"/view/login_out/loginMain.jsp");
 	}
 
 

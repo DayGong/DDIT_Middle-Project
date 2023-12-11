@@ -5,23 +5,18 @@ import org.apache.ibatis.session.SqlSession;
 import kr.or.ddit.util.MybatisUtil;
 import kr.or.ddit.vo.MemberVO;
 
-public class MemberDaoImpl implements IMemberDao
-{
+public class MemberDaoImpl implements IMemberDao{
 	private SqlSession session;
 	
-	private static IMemberDao dao;
+	private static MemberDaoImpl dao;
 	
 	private MemberDaoImpl() {}
 	
-	public static IMemberDao getInstance()
-	{
-		if ( dao == null )
-		{
-			dao = new MemberDaoImpl();
-		}
-		
+	public static MemberDaoImpl getInstance() {
+		if(dao==null) dao = new MemberDaoImpl();
 		return dao;
-	} // 싱글톤 끝.
+	}
+	// 싱글톤 끝.
 	
 	@Override
 	public int insertMember(MemberVO memVo)
@@ -89,7 +84,7 @@ public class MemberDaoImpl implements IMemberDao
 	@Override
 	public MemberVO getLoginMember(MemberVO memVo) {
 		MemberVO loginMemberVo = null;
-		SqlSession session = MybatisUtil.getSqlSession();
+		session = MybatisUtil.getSqlSession();
 		
 		try {
 			loginMemberVo = session.selectOne("member.getLoginMember", memVo);

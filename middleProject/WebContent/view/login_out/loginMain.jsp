@@ -15,22 +15,21 @@
 
 <body>
 <%
-	if (memVo == null) {
+	if(memVo == null){
 %>
 	<form action="<%=request.getContextPath()%>/member/loginMember.do" method="post">
 			아이디 <input type="text" name="memId" placeholder="아이디"><br><br>
-			비밀번호<input type="text" name="pass" placeholder="비밀번호"><br><br>
-		 	<a href="<%=request.getContextPath()%>/forgetPass" class="login_forgot">비밀번호를 잊으셨나요? </a><br><br>
+			비밀번호 <input type="text" name="pass" placeholder="비밀번호"><br><br>
          	<input type="submit" value="로그인"><br><br>
+		 	<a href="<%=request.getContextPath()%>/forgetPass" class="login_forgot">비밀번호를 잊으셨나요? </a><br><br>
 			<a href="<%=request.getContextPath()%>/member/signupMember.do">회원가입</a>
 	</form>
 <%
 	}else{
 %>
-	<h3><</h3><br>
-		out.println(memId+"님 어서오슈~");
+	<h3><%=memVo.getMem_name()%>님 어서오슈~</h3><br>
 
-		<a href="<%=request.getContextPath()%>/member/logoutMember.do">로그아웃</a>
+	<a href="<%=request.getContextPath()%>/member/logoutMember.do">로그아웃</a>
 <%
 	} 
 %>
