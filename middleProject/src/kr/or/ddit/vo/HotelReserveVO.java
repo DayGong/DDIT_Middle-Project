@@ -9,6 +9,15 @@ public class HotelReserveVO {
 	private int hotel_rsv_state;			// 취소여부
 	private String mem_id;					// 회원아이디
 	private int hotel_no;					// 숙소번호
+	private int hotel_totalamt;			// 결제금액
+
+	public int getHotel_totalamt() {
+		return hotel_totalamt;
+	}
+
+	public void setHotel_totalamt(int hotel_totalamt) {
+		this.hotel_totalamt = hotel_totalamt;
+	}
 
 	public int getHotel_rsv_no() {
 		return hotel_rsv_no;

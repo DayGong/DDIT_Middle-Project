@@ -8,6 +8,9 @@ const origin = window.location.origin;
 const path = origin + pathName;
 
 hotel_no = 1; // DB 내용을 가져오기 위한 임시 데이터(업체번호)
+
+// mem_id = (String)session.getAttribute("mem_id");
+mem_id = "a001"; // 회원 아이디 임시 데이터(세션 회원 아이디)
 	
 $(function() 
 {
@@ -15,6 +18,31 @@ $(function()
 	$(document).on('click', '.hotelModalBtn', function()
 	{
 		moveToHotelDetail();
+	})
+	
+	// 시작일을 입력하면 종료일 달력에 시작일 이전이 선택되지않게하는 이벤트
+	$(document).on('input', '#select_start_date', function()
+	{
+		let startdate = $('#select_start_date').val();
+		$('#select_end_date').attr('min', startdate);
+	})
+	
+	// 인원 수가 바뀔 때마다 객실이 바뀌는 이벤트
+	$(document).on('input', '#rsv_count', function()
+	{
+		changeRoomState();
+	})
+	
+	// 빈 객실 수를 구해 표시하는 이벤트
+	$(document).on('input', '#rsv_count', function()
+	{
+		
+	})
+	
+	// 카카오페이API를 호출하는 메서드
+	$(document).on('click', '#payBtn', function()
+	{
+		requestPay();
 	})
 })
 
@@ -33,13 +61,14 @@ moveToHotelDetail = function()
 		{
 			$('#hotelDetailModal').modal('show');
 				
-			console.log(res);
+			hotelInfo = res;	// 카카오페이 API에 판매자 정보를 보내기 위해 전역 변수에 저장
+			console.log(hotelInfo);
 			
 			// 모달창 헤더에 숙박 업체의 상세 정보를 띄우는 메소드
 			showHotelDetailInfo(res);
 			
 			// 모달창 바디에 숙박 예약폼을 띄우는 메소드
-			openHotelReserveForm(res);
+			openHotelReserveForm();
 		},
 		error: function(xhr)
 		{
@@ -49,12 +78,11 @@ moveToHotelDetail = function()
 	})
 }
 
-// 모달창 헤더에 숙박 업체의 상세 정보를 띄우는 메소드
+// 모달창 바디에 숙박 업체의 상세 정보를 띄우는 메소드
 showHotelDetailInfo = function(res) 
 {
-	let headerCode = `
+	let infoCode = `
 	<div class="headerImg" style="background-image: url('${path}/images/hotel/${res.hotel_img}');">
-		<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 		<h4 class="modal-title fix-text">${res.hotel_name}</h4>
 		<div>
 			<table>
@@ -72,9 +100,13 @@ showHotelDetailInfo = function(res)
 				</tr>
 			</table>
 		</div>
-	</div>`;
+	</div>
+	<div> <!-- 카카오페이API 버튼 -->
+		<img src="${path}/images/icon/payment_icon_yellow_medium.png" id="payBtn">
+	</div>
+	`;
 
-	$('#hotelModalHeader').html(headerCode);
+	$('#right-modal-body').html(infoCode);
 }
 
 // 오늘 이전의 날짜는 입력 불가하게 설정하기위해 오늘 날짜를 변수로 설정
@@ -86,116 +118,145 @@ const day= String(date.getDate());
 // 일자가 한 자리 수인 경우 앞에 0을 붙여 두자리 숫자로 만들어준다. ex) 2023-12-09
 const dayZero = day.padStart(2, "0");
 	
-var dayCnt = 0; // 날짜 폼 추가,삭제 Count
-	
-// 모달창 바디에 숙박 예약폼을 띄운다.
-openHotelReserveForm = function(res) 
+// 모달창 바디에 숙박 예약폼을 띄우는 메소드
+openHotelReserveForm = function() 
 {
 	let peopleMin = 1;	// 인원수 최소값
 	let peopleMax = 4;	// 인원수 최대값
+	
 	let bodyCode = `
-	<form action="${path}/reserve/hotelReserve.do" method="POST">
-		<div>
-			<h2>인원 선택</h2>
-			<input type="number" name="rsv_count" min="${peopleMin}" max="${peopleMax}" value="${peopleMin}">
-		</div>
-		<div>
-			<h2>숙박 날짜 선택</h2>
-			<div id="addDateDiv">
-				<div id="dateForm${dayCnt}">
-					<input type="date" id="selectDate${dayCnt}" name="rsv_date${dayCnt}" min="${year}-${month}-${dayZero}">
-					<input type="button" value="날짜 추가" onclick="addDateForm()">
-				</div>
+	<div>
+		<h2>인원 선택</h2>
+		<input type="number" id="rsv_count" name="rsv_count" min="${peopleMin}" max="${peopleMax}" value="${peopleMin}">
+	</div>
+	<div>
+		<h2>숙박 날짜 선택</h2>
+		<div id="addDateDiv">
+			<div id="dateStartForm">
+				<h5>시작일</h5>
+				<input type="date" id="select_start_date" name="hotel_rsv_startdate" min="${year}-${month}-${dayZero}">
 			</div>
-			<div id="addRoomDiv">
-				<div id="roomForm${dayCnt}">
-					<label>
-						<input type="radio" name="rsv_room${dayCnt}" value="2인실">
-						<span>2인실</span>
-					</label>
-					<label>
-						<input type="radio" name="rsv_room${dayCnt}" value="4인실">
-						<span>4인실</span>
-					</label>
-				</div>
+			<div id="dateEndForm">
+				<h5>종료일</h5>
+				<input type="date" id="select_end_date" name="hotel_rsv_enddate">
 			</div>
 		</div>
-	</form>
+		<div id="addRoomDiv">
+			<label for="hotel_rsv_room" class="form-label">
+				객실 선택
+			</label>
+			<div class="empty_room">
+				<p>잔여 객실 수: </p>
+			</div>
+			<div class="form_radio_btn">
+				<input type="radio" id="room_two" name="hotel_rsv_room" value="2인실" checked disabled>
+				<label for="room_two">2인실</label>
+			</div>
+			<div class="form_radio_btn">
+				<input type="radio" id="room_four" name="hotel_rsv_room" value="4인실" disabled>
+				<label for="room_four">4인실</label>
+			</div>
+		</div>
+	</div>
 	`;
 	
-	$('#hotelModalBody').html(bodyCode);
+	$('#left-modal-body').html(bodyCode);
 }
 
-// id가 addDateDiv인 <div>폼에 날짜 폼을 추가하는 메서드
-addDateForm = function()
+changeRoomState = function() 
 {
-	dayCnt++;
-	
-	let addForm = `
-	<input type="date" id="selectDate${dayCnt}" name="rsv_date${dayCnt}" min="${year}-${month}-${dayZero}">
-	<input type="button" value="날짜 삭제" onclick="deleteDateForm()">
-	<br>
-	`;
-	
-	if (dayCnt < 5) 
-	{
-		let addedDiv = document.createElement("div"); 		// 폼 생성
-		addedDiv.setAttribute("id", "dateForm" + dayCnt);
-		addedDiv.innerHTML = addForm; 						// 폼 div에 html 삽입
-		addDateDiv.appendChild(addedDiv); 					// 삽입할 div에 생성한 폼 삽입
+	let peopleCnt = $('#rsv_count').val();
 		
-		// 날짜 선택이 추가되면 객실 선택 폼을 추가
-		addRoomForm(); 							
-	} else 
-	{
-		alert('날짜 추가는 최대 5번까지 가능합니다.');
-		dayCnt--;
-	}
+	if(peopleCnt <= 2) {
+		$('#room_two').prop('checked', true);
+	} else {
+		$('#room_four').prop('checked', true);
+	}	
 }
 
-// 추가한 날짜 폼을 삭제하는 메서드
-deleteDateForm = function()
+// 해당하는 날짜에 남은 객실 수를 확인하는 메서드
+checkRoom = function()
 {
-	// 마지막으로 생성된 폼의 ID를 통해 div객체를 가져옴
-	let dateDiv = document.getElementById("dateForm" + dayCnt);
 	
-	if ( dayCnt > 0 ) 
-	{
-		dateDiv.remove();	// 폼 삭제
-	} else 
-	{
-		dateDiv.empty();	// 폼 내용 삭제
-	}
-	
-	// 날짜 선택이 삭제되면 객실 선택 폼을 삭제
-	deleteRoomForm();
-	
-	dayCnt--;
-}
-
-// 객실 선택을 id가 addRoomDiv인 <div>에 띄우는 메소드
-addRoomForm = function()
-{
-	let addForm = `
-	<label>
-		<input type="radio" name="rsv_room${dayCnt}" value="2인실">
-		<span>2인실</span>
-	</label>
-	<label>
-		<input type="radio" name="rsv_room${dayCnt}" value="4인실">
-		<span>4인실</span>
-	</label>
-	<br>
-	`;
-	
-	let addedDiv = document.createElement("div"); // 폼 생성
-	addedDiv.setAttribute("id", "roomForm" + dayCnt);
-	addedDiv.innerHTML = addForm; // 폼 div에 html 삽입
-	addRoomDiv.appendChild(addedDiv); // 삽입할 div에 생성한 폼 삽입
 }
 
 // 카카오 페이 API를 통해 결제 진행 후 숙소 예약 정보를 저장하는 메서드
-hotelReserve = function() 
+payAfterReserveHotel = function() 
 {
-	// alert('test')
+	
+
+	$.ajax({
+		url: `${path}/reserve/hotelReserve.do`,
+		type: 'POST',
+		data: {
+			'reserveInfo' : reserveInfo
+		},
+		success: function(res) {
+			console.log('pay성공');
+		},
+		error: function(xhr) {
+			onsole.log(xhr);
+		},
+		dataType: 'json'
+	})
+	
+}
+
+requestPay = function() 
+{
+	var IMP = window.IMP; 
+	IMP.init("imp67011510");	// 테스트용 가맹점ID(변경 X)
+
+	/* 
+		주문번호 = 같은 값은 사용 불가(결제 할 때마다 새로운 값 필요)
+		주문번호 만들 때 "코드" + 현재 시간 등으로 만들기 위한 makemerchantUid
+	*/
+	var today = new Date();   
+	var hours = today.getHours(); // 시
+	var minutes = today.getMinutes();  // 분
+	var seconds = today.getSeconds();  // 초
+	var milliseconds = today.getMilliseconds();
+	var makeMerchantUid = hours +  minutes + seconds + milliseconds;
+	
+	let startDate = $('#select_start_date').val();
+	let endDate = $('#select_end_date').val();
+	let peopleCnt = $('#rsv_count').val();
+	let room = $('input[name=hotel_rsv_room]:checked').val();
+		
+	let reserveInfo = {
+		startDate : `${startDate}`,
+		endDate : `${endDate}`,
+		peopleCnt : `${peopleCnt}`,
+		room : `${room}`,
+		mem_id : `${mem_id}`,
+		hotel_no : `${hotel_no}`
+	} ;
+
+	IMP.request_pay
+	({
+		pg : 'kakaopay', 							// kcp: 미리 등록한 카드로 결제, kakaopay
+		pay_method : 'card',
+		merchant_uid: hotel_no +makeMerchantUid,  	// 주문번호
+		name : "[" + hotelInfo.hotel_name + "]" + room + startDate + "~" + endDate,		// 상품명
+		amount : hotelInfo.hotel_amount,			// 가격(결제 금액)
+		buyer_email : '판매자 이메일',
+		buyer_name : hotelInfo.hotel_name,
+		buyer_tel : hotelInfo.hotel_tel,
+		buyer_addr : hotelInfo.hotel_addr,
+		buyer_postcode : '판매자 우편번호(예)123-456)',
+		custom_data : 
+		{
+			"reserveInfo" : reserveInfo
+		}
+	}, function (rsp) 
+	{
+		if (rsp.success) 
+		{
+ 			// 서버 결제 API 성공시 로직
+			console.log(rsp);
+		} else 
+		{
+			alert(`결제에 실패하였습니다. 에러 내용: ${rsp.error_msg}`);
+		}
+	});
 }
