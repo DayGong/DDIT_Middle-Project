@@ -3,10 +3,5 @@
 	PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
-<!-- 숙소, 식당 예약을 통합한 mapper -->
-	
-<mapper namespace="reserveVo">
-
-	
-	
+<mapper namespace="restRevVo">
 </mapper>
