@@ -1,3 +1,4 @@
+<%@page import="kr.or.ddit.vo.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -6,19 +7,30 @@
 <meta charset="UTF-8">
 <title>Login</title>
 </head>
-<body>
-<%
-    if (session.getAttribute("memId") == null) {
-%>
-        <a href="<%=request.getContextPath()%>/login.jsp">로그인</a>
-        <a href="<%=request.getContextPath()%>/member/memberSignup.jsp">회원가입</a>
-<%
-	}else{
-		String memId = (String)session.getAttribute("memId");
-		out.println(memId+"님 어서오슈~");
+
+<%	// 세션에 저장한 데이터 가져오기
+	MemberVO memVo = (MemberVO)session.getAttribute("loginMember");
+	//로그인 실패때는 null값이 나온다 -> null일때 아래 body의 내용이나오게하기
 %>
 
-		<a href="<%=request.getContextPath()%>/logOut.jsp">로그아웃</a>
+<body>
+<%
+	if (memVo == null) {
+%>
+	<form action="<%=request.getContextPath()%>/member/loginMember.do" method="post">
+			아이디 <input type="text" name="memId" placeholder="아이디"><br><br>
+			비밀번호<input type="text" name="pass" placeholder="비밀번호"><br><br>
+		 	<a href="<%=request.getContextPath()%>/forgetPass" class="login_forgot">비밀번호를 잊으셨나요? </a><br><br>
+         	<input type="submit" value="로그인"><br><br>
+			<a href="<%=request.getContextPath()%>/member/signupMember.do">회원가입</a>
+	</form>
+<%
+	}else{
+%>
+	<h3><</h3><br>
+		out.println(memId+"님 어서오슈~");
+
+		<a href="<%=request.getContextPath()%>/member/logoutMember.do">로그아웃</a>
 <%
 	} 
 %>

@@ -22,5 +22,10 @@
 	<select id="selectById" resultType="String" parameterType="String">
 		SELECT mem_id FROM member WHERE mem_id = #{mem_id}
 	</select>
+	
+	<select id="getLoginMember" resultType="memVo" parameterType="memVo">
+		SELECT* FROM member WEHER mem_id=#{mem_id} and mem_pass=#{mem_pass} 
+	</select>
+	
 
 </mapper>

@@ -53,4 +53,9 @@ public class MemberServiceImpl implements IMemberService
 		return dao.selectById(memId);
 	}
 
+	@Override
+	public MemberVO getLoginMember(MemberVO memVo) {
+		return dao.getLoginMember(memVo);
+	}
+
 }

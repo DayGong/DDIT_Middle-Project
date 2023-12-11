@@ -46,5 +46,14 @@ public interface IMemberDao {
 	 * 			없으면 null반환
 	 */
 	public String selectById(String memId);
-}
 
+	/**
+	 * 회원  ID,PASSWORD가 저장된 MemeberVo객체를 인수값으로 받아서 해당회원을
+	 * 검색하여 반환하는 메서드
+	 * 
+	 * @param memVo 검색할 회원ID,PASS가 저장된 MemberVO객체
+	 * @return 검색된 회원정보가 저장된 MemberVO객체
+	 */
+	public MemberVO getLoginMember(MemberVO memVo);
+
+}
