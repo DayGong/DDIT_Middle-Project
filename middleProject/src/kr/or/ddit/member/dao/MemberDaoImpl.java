@@ -7,7 +7,7 @@ import kr.or.ddit.vo.MemberVO;
 
 public class MemberDaoImpl implements IMemberDao{
 	private SqlSession session;
-	
+	 
 	private static MemberDaoImpl dao;
 	
 	private MemberDaoImpl() {}

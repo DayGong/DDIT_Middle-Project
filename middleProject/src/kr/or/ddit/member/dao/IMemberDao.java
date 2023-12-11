@@ -4,7 +4,7 @@ import kr.or.ddit.vo.MemberVO;
 
 public interface IMemberDao {
 	
-	/**
+	/** 
 	 * MemberVO객체를 받아 회원의 정보를 저장하는 메서드
 	 * 
 	 * @param memVo 회원의 정보가 있는 MemberVO객체
