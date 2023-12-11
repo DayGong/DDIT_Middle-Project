@@ -10,12 +10,7 @@
 /* 헤더의 배경 이미지(안 먹힘) */
 #headerImg {
 	width: 100%;
-	height: 400px;
-}
-
-/* 헤더의 닫기 엑스버튼(안 먹힘) */
-#headerImg .btn-close {
-	text-align: right;
+	height: 100%;
 }
 
 /* 모달창 중간 부분 폼과 상세정보가 양옆으로 나오도록 구역 설정*/
@@ -26,6 +21,7 @@
 #left-modal-body, #right-modal-body {
 	flex-direction: row;
 	width:50%;
+	height:100%;
 }
 
 /* 카카오 페이 버튼에 마우스 커서를 손가락 모양으로 변경 */

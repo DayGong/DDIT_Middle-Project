@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.ddit.reserve.service.IReserveService;
 import kr.or.ddit.reserve.service.ReserveServiceImpl;
+import kr.or.ddit.vo.HotelReserveVO;
 import kr.or.ddit.vo.HotelVO;
 
 @WebServlet("/reserve/hotelReserve.do")
@@ -34,7 +35,9 @@ public class HotelReserve extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		
-		// HotelReserveVO hotelRsvVo = new HotelReserveVO();
+		IReserveService service = ReserveServiceImpl.getInstance();
+		
+		HotelReserveVO hotelRsvVo = new HotelReserveVO();
 		
 		// hotelRsvVo = request.getParameterMap();
 		// hotelRsvVo.set

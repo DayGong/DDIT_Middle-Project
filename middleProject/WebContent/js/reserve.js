@@ -25,6 +25,7 @@ $(function()
 	{
 		let startdate = $('#select_start_date').val();
 		$('#select_end_date').attr('min', startdate);
+		$('#select_end_date').attr('value', startdate);
 	})
 	
 	// 인원 수가 바뀔 때마다 객실이 바뀌는 이벤트
@@ -101,12 +102,9 @@ showHotelDetailInfo = function(res)
 			</table>
 		</div>
 	</div>
-	<div> <!-- 카카오페이API 버튼 -->
-		<img src="${path}/images/icon/payment_icon_yellow_medium.png" id="payBtn">
-	</div>
 	`;
 
-	$('#right-modal-body').html(infoCode);
+	$('#left-modal-body').html(infoCode);
 }
 
 // 오늘 이전의 날짜는 입력 불가하게 설정하기위해 오늘 날짜를 변수로 설정
@@ -134,13 +132,16 @@ openHotelReserveForm = function()
 		<div id="addDateDiv">
 			<div id="dateStartForm">
 				<h5>시작일</h5>
-				<input type="date" id="select_start_date" name="hotel_rsv_startdate" min="${year}-${month}-${dayZero}">
+				<input type="date" id="select_start_date" name="hotel_rsv_startdate" 
+						min="${year}-${month}-${dayZero}" value="${year}-${month}-${dayZero}">
 			</div>
 			<div id="dateEndForm">
 				<h5>종료일</h5>
-				<input type="date" id="select_end_date" name="hotel_rsv_enddate">
+				<input type="date" id="select_end_date" name="hotel_rsv_enddate" value="${year}-${month}-${dayZero}">
 			</div>
 		</div>
+	</div>
+	<div>
 		<div id="addRoomDiv">
 			<label for="hotel_rsv_room" class="form-label">
 				객실 선택
@@ -158,9 +159,12 @@ openHotelReserveForm = function()
 			</div>
 		</div>
 	</div>
+	<div> <!-- 카카오페이API 버튼 -->
+		<img src="${path}/images/icon/payment_icon_yellow_medium.png" id="payBtn">
+	</div>
 	`;
 	
-	$('#left-modal-body').html(bodyCode);
+	$('#right-modal-body').html(bodyCode);
 }
 
 changeRoomState = function() 
@@ -180,28 +184,17 @@ checkRoom = function()
 	
 }
 
-// 카카오 페이 API를 통해 결제 진행 후 숙소 예약 정보를 저장하는 메서드
-payAfterReserveHotel = function() 
-{
-	
-
-	$.ajax({
-		url: `${path}/reserve/hotelReserve.do`,
-		type: 'POST',
-		data: {
-			'reserveInfo' : reserveInfo
-		},
-		success: function(res) {
-			console.log('pay성공');
-		},
-		error: function(xhr) {
-			onsole.log(xhr);
-		},
-		dataType: 'json'
-	})
-	
+// 두 날짜 사이의 일수를 구하는 메서드
+getDateDiff = (startDate, endDate) => {
+  let start = new Date(startDate);
+  let end = new Date(endDate);
+  
+  let diffDate = start.getTime() - end.getTime();
+  
+  return Math.abs(diffDate / (1000 * 60 * 60 * 24)); // 밀리세컨 * 초 * 분 * 시 = 일
 }
 
+// 카카오페이를 요청하는 메서드
 requestPay = function() 
 {
 	var IMP = window.IMP; 
@@ -222,6 +215,14 @@ requestPay = function()
 	let endDate = $('#select_end_date').val();
 	let peopleCnt = $('#rsv_count').val();
 	let room = $('input[name=hotel_rsv_room]:checked').val();
+	
+	let betweenDate = getDateDiff(startDate, endDate);
+	if (betweenDate == 0) 
+	{
+		betweenDate = 1;	// 당일 숙박은 1일과 같은 것으로 처리
+	}
+	
+	let totalAmt = hotelInfo.hotel_amount * peopleCnt * betweenDate;
 		
 	let reserveInfo = {
 		startDate : `${startDate}`,
@@ -229,7 +230,8 @@ requestPay = function()
 		peopleCnt : `${peopleCnt}`,
 		room : `${room}`,
 		mem_id : `${mem_id}`,
-		hotel_no : `${hotel_no}`
+		hotel_no : `${hotel_no}`,
+		hotel_totalamt : `${totalAmt}`
 	} ;
 
 	IMP.request_pay
@@ -238,12 +240,10 @@ requestPay = function()
 		pay_method : 'card',
 		merchant_uid: hotel_no +makeMerchantUid,  	// 주문번호
 		name : "[" + hotelInfo.hotel_name + "]" + room + startDate + "~" + endDate,		// 상품명
-		amount : hotelInfo.hotel_amount,			// 가격(결제 금액)
-		buyer_email : '판매자 이메일',
+		amount : totalAmt,							// 가격(결제 금액)
 		buyer_name : hotelInfo.hotel_name,
 		buyer_tel : hotelInfo.hotel_tel,
 		buyer_addr : hotelInfo.hotel_addr,
-		buyer_postcode : '판매자 우편번호(예)123-456)',
 		custom_data : 
 		{
 			"reserveInfo" : reserveInfo
@@ -253,10 +253,32 @@ requestPay = function()
 		if (rsp.success) 
 		{
  			// 서버 결제 API 성공시 로직
-			console.log(rsp);
+			payAfterReserveHotel(rsp);
 		} else 
 		{
 			alert(`결제에 실패하였습니다. 에러 내용: ${rsp.error_msg}`);
 		}
 	});
+}
+
+// 카카오 페이 API를 통해 결제 진행 후 숙소 예약 정보를 저장하는 메서드
+payAfterReserveHotel = function(rsp) 
+{
+	console.log(rsp);
+	$.ajax
+	({
+		url: `${path}/reserve/hotelReserve.do`,
+		type: 'POST',
+		data: {
+			'imp_uid' : rsp.imp_uid,
+			'reserveInfo' : rsp.reserveInfo
+		},
+		success: function(res) {
+			console.log('res');
+		},
+		error: function(xhr) {
+			console.log(xhr);
+		},
+		dataType: 'json'
+	})
 }

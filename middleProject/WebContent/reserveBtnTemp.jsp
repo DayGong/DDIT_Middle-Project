@@ -39,8 +39,8 @@
 
 			<!-- 모달 몸통(내용 출력) -->
 			<div class="modal-body" id="hotelModalBody">
-				<div id="left-modal-body"></div> 	<!-- 예약 입력 폼 -->
-				<div id="right-modal-body"></div> 	<!-- 상세 정보 폼 -->
+				<div id="left-modal-body"></div> 	<!-- 상세 정보 폼 -->
+				<div id="right-modal-body"></div> 	<!-- 예약 입력 폼 -->
 			</div>
 
 			<!-- 모달 하단 Close버튼 -->
