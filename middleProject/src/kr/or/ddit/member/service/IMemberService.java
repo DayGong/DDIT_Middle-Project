@@ -8,7 +8,7 @@ public interface IMemberService {
 	 * 
 	 * @param memVo 회원의 정보가 있는 MemberVO객체
 	 * @return 성공 시 반환값: 1, 실패 시 반환값: 0
-	 */
+	 */ 
 	public int insertMember(MemberVO memVo);
 	
 	/**

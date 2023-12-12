@@ -8,6 +8,15 @@ public class HotelVO {
 	private String hotel_time;		// 운영시간
 	private int hotel_room_count;	// 객실수
 	private String hotel_img;		// 이미지파일명
+	private int hotel_amount;		// 금액
+
+	public int getHotel_amount() {
+		return hotel_amount;
+	}
+
+	public void setHotel_amount(int hotel_amount) {
+		this.hotel_amount = hotel_amount;
+	}
 
 	public int getHotel_no() {
 		return hotel_no;
