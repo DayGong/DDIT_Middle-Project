@@ -24,7 +24,7 @@ $(()=>{
 		vdata1=  $('#joinform').serialize();
 		
 		console.log(vdata1);
-		
+		 
 		
 	// 	서버로 보내기
 		$.ajax
