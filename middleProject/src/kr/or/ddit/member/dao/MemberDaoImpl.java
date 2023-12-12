@@ -5,15 +5,18 @@ import org.apache.ibatis.session.SqlSession;
 import kr.or.ddit.util.MybatisUtil;
 import kr.or.ddit.vo.MemberVO;
 
-public class MemberDaoImpl implements IMemberDao{
+public class MemberDaoImpl implements IMemberDao
+{
 	private SqlSession session;
 	 
 	private static MemberDaoImpl dao;
 	
 	private MemberDaoImpl() {}
 	
-	public static MemberDaoImpl getInstance() {
+	public static MemberDaoImpl getInstance()
+	{
 		if(dao==null) dao = new MemberDaoImpl();
+		
 		return dao;
 	}
 	// 싱글톤 끝.
@@ -27,7 +30,6 @@ public class MemberDaoImpl implements IMemberDao{
 		try
 		{
 			cnt = session.insert("member.insertMember", memVo);
-			
 			if(cnt > 0) session.commit();
 		} catch (Exception e)
 		{
@@ -42,16 +44,44 @@ public class MemberDaoImpl implements IMemberDao{
 	} // insertMember 끝
 
 	@Override
-	public int updateMember(MemberVO memVo) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	public int updateMember(MemberVO memVo)
+	{
+		int cnt = 0;
+		
+		try {
+			cnt = session.update("member.updateMember", memVo);
+			if(cnt > 0 ) session.commit();
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			if(session != null) session.close();
+		}
+		
+		return cnt;
+	} // updateMember 끝
 
 	@Override
-	public int deleteMember(String memId) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	public int deleteMember(String memId)
+	{
+		int cnt = 0;
+		session = MybatisUtil.getSqlSession();
+		try
+		{
+			cnt = session.update("member.deleteMember", memId);
+			if(cnt > 0 ) session.commit();
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			if(session != null) session.close();
+		}
+		return cnt;
+	} // deleteMember 끝
 
 	@Override
 	public MemberVO getSelectMember(String memId) {
@@ -79,20 +109,25 @@ public class MemberDaoImpl implements IMemberDao{
 		}
 
 		return res;
-	}
+	} // selectById 끝
 
 	@Override
-	public MemberVO getLoginMember(MemberVO memVo) {
+	public MemberVO getLoginMember(MemberVO memVo)
+	{
 		MemberVO loginMemberVo = null;
 		session = MybatisUtil.getSqlSession();
 		
-		try {
+		try
+		{
 			loginMemberVo = session.selectOne("member.getLoginMember", memVo);
-		} catch (Exception e) {
+		} catch (Exception e)
+		{
 			e.printStackTrace();
-		} finally {
+		} finally 
+		{
 			if(session!=null) session.close();
 		}
+		
 		return loginMemberVo;
 	}
 
