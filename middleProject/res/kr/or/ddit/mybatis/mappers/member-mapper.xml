@@ -36,6 +36,11 @@
 		update member set mem_state ='0' where mem_id = #{mem_id} 
 	</update>
 	
+	<!-- 회원아이디 검색 : 회원 정보 수정시 사용-->
+	<select id="getSelectMember" parameterType="string" resultType= "memVo">
+		select * from member where mem_id = #{mem_id} 
+	</select>
+	
 	<select id="getLoginMember" resultType="memVo" parameterType="memVo">
 		select* from member where mem_id=#{mem_id} and mem_pass=#{mem_pass} 
 	</select>

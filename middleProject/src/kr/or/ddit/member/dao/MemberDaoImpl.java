@@ -84,10 +84,23 @@ public class MemberDaoImpl implements IMemberDao
 	} // deleteMember 끝
 
 	@Override
-	public MemberVO getSelectMember(String memId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public MemberVO getSelectMember(String memId)
+	{
+		session = MybatisUtil.getSqlSession();
+		MemberVO loginMemVo = null;
+		
+		try
+		{
+			loginMemVo = session.selectOne("member.getSelectMember", memId);
+		} catch (Exception e) 
+		{
+			e.printStackTrace();
+		} finally {
+			if(session!=null) session.close();
+		}
+		
+		return loginMemVo;
+	} // getSelectMember 끝.
 
 	@Override
 	public String selectById(String memId) 

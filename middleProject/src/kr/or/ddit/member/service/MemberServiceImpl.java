@@ -42,9 +42,9 @@ public class MemberServiceImpl implements IMemberService
 	}
 
 	@Override
-	public MemberVO getSelectMember(String memId) {
-		// TODO Auto-generated method stub
-		return null;
+	public MemberVO getSelectMember(String memId)
+	{
+		return dao.getSelectMember(memId);
 	}
 
 	@Override
