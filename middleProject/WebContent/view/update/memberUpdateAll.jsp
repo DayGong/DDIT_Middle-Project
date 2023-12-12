@@ -1,0 +1,262 @@
+<%@page import="kr.or.ddit.vo.MemberVO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script>
+$(()=>{
+	
+	// 수정버튼
+	$('updatebtn').on('click',function()
+		{
+			vdata1 = $('#updateform').serialize();
+			console.log(vdata1);
+			
+			// 서버로 보내기
+			$.ajax
+			({
+				url : "<%=request.getContextPath()%>/member/updateMember.do",	
+				data : vdata1,
+				type : 'post',
+				dataType : 'json',
+				success : function(res)
+				{
+					//성공시 이동할 경로 지정
+					$('#join').html(res.flag).css('color', 'red');
+					window.location.href = '<%=request.getContextPath()%>/view/member/memberForm.jsp';
+				},
+				error : function(xhr)
+				{
+					alert("에러 상태 : " + xhr.status);				
+				}
+			});	
+		});
+	
+	// password
+	$('#pass2').on('keyup', function()
+	{
+		let pass1 = $("#pass1").val();
+		let pass2 = $("#pass2").val();
+		
+		// 비밀번호 재확인
+		if(pass1 != "" || pass2 != "")
+		{
+			if(pass1 == pass2)
+			{
+				$("#spanpass").html('일치');
+				$("#spanpass").css('color', 'green');
+			} else
+			{
+				$("#spanpass").html('불일치');
+				$("#spanpass").css('color', 'red');
+			}
+		}
+	});
+
+	// 이름 형식체크
+	$('#name').on('keyup', function()
+	{
+		namevalue= $(this).val().trim();
+		namePattern=/^[가-힇]{2,10}$/;
+		
+		if(!namePattern.test(namevalue))
+		{
+			$('#spanname').html('형식오류').css('color','red');
+		}else
+		{
+			$('#spanname').html("");
+		}
+	});
+	
+	// 연락처 형식체크	
+	$('#tel').on('keyup', function()
+	{
+		telvalue= $(this).val().trim();
+		telPattern=/01[016789]-[^0][0-9]{2,3}-[0-9]{3,4}/;		// 연락처 정규화
+		
+		if(!telPattern.test(telvalue))
+		{
+			$('#spantel').html('핸드폰 번호를 확인 해주세요.').css('color','red');
+		}else
+		{
+			$('#spantel').html("");
+		}
+	});
+
+	// 도메인 입력
+	$(document).ready(function()
+	{
+    	$('#domain-list').change(function()
+		{
+        	const selectedOption = $(this).val();
+        	const domainInput = $('#domain-text');
+
+			if (selectedOption !== "type" && selectedOption !== null)
+			{
+            	domainInput.val(selectedOption);
+            	domainInput.prop('disabled', true);
+        	} else
+			{
+            	domainInput.val('');
+            	domainInput.prop('disabled', false);
+        	}
+    	});
+    });
+});
+
+// 우편 API
+function prod1() {
+    	 
+ 	    var themeobj = {	    	   		
+ 	    }
+	
+	//실제 우편번호 API가 시작되는 코드
+	new daum.Postcode
+	({
+	        	
+//	 테마 설정값 호출
+	theme: themeobj, 
+	        	
+	// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+    	oncomplete: function(data)
+		{
+		// 요청한 값들을 저장하는 변수
+   		// 삭제해도 우편번호API에는 지장X
+			var resultHTML = [];
+
+            // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 나눈다.
+            var roadAddr = data.roadAddress; // 도로명 주소 변수
+            var extraRoadAddr = ''; // 참고 항목 변수
+
+            // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+            // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+            if(data.bname !== '' && /[동|로|가]$/g.test(data.bname))
+			{
+				extraRoadAddr += data.bname;
+            }
+            
+            // 건물명이 있고, 공동주택일 경우 추가한다.
+            if(data.buildingName !== '' && data.apartment === 'Y')
+			{
+				extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+            }
+            
+            // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+            if(extraRoadAddr !== '')
+			{
+				extraRoadAddr = ' (' + extraRoadAddr + ')';
+            }
+
+            // 우편번호 검색해서 얻을 수 있는 data('key' , "value")를 <li>에 넣어서
+            //	사용시 찾아보기 좋게 정리함
+            for(var item in data)
+			{
+				resultHTML.push('<li><code class="data_key">'+item+'</code>: "'+data[item]+'"</li>');
+            }
+            
+            // 우편번호와 주소 정보를 해당 필드에 넣는다.
+            document.getElementById('postcode').value = data.zonecode;	// --> 우편번호 칸
+            document.getElementById("roadAddress").value = roadAddr;	// --> 도로명 주소 칸
+            
+            // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
+            if(roadAddr !== '')
+			{
+                document.getElementById("extraAddress").value = extraRoadAddr;
+            } else 
+			{
+                document.getElementById("extraAddress").value = '';
+            }
+       }
+    }).open();
+}	
+
+</script>
+</head>
+<body>
+
+<%
+	MemberVO memVo = (MemberVO)request.getAttribute("memVo");
+%>
+
+<h2>회원 정보 수정화면</h2>
+<form id= "updateform" action="<%=request.getContextPath()%>/member/updateMember.do"
+	method="post" enctype="multipart/form-data">
+	<input type ="hidden" name ="mem_id" value="<%=memVo.getMem_id()%>">
+
+	<div class="form-group">
+		<label for="id">* 아이디</label>
+		<div><%=memVo.getMem_id() %></div>          
+	</div>
+	
+	<div class="form-group">
+		<label for="pwd">* 비밀번호</label> 
+		<input type="password" class="form-control" id="pass1" name="mem_pass">
+	</div>
+       
+	<div class="form-group">
+		<label for="pwd">* 비밀번호확인</label> 
+        <input type="password" class="form-control" id="pass2">
+       	<span id="spanpass"></span>
+    </div>
+       
+	<div class="form-group">
+		<label for="name">* 이름</label>
+        <input type="text" class="form-control" id="name" name="mem_name">
+        <span id="spanname"></span>
+    </div>
+       
+    <div class="form-group">
+		<label for="tel">* 휴대폰번호</label> 
+        <input type="text" class="form-control" id="tel" name="mem_tel">
+        <span id="spantel"></span>
+   	</div>
+
+	<div class="form-group">
+        <label for="mail">* 이메일</label>
+        <div class="email-input-group">
+            <input type="text" class="form-control" id="mail" name="mem_mail">
+            <span id="at">@</span>
+            <input type="text" class="form-control" id="domain-text" >
+            <select class="box" id="domain-list" name="domain">
+				<option value="type">직접입력</option>
+				<option value="naver.com">naver.com</option>
+                <option value="daum.net">daum.net</option>
+                <option value="gmail.com">gmail.com</option>
+                <option value="kakao.com">kakao.com</option>
+                <option value="nate.com">nate.com</option>
+            </select>
+        </div>
+	</div>      
+
+	<div class="form-group" style="display: inline-block;">
+		<label for="zip">* 우편번호</label>
+        <input type="text" id="postcode" class="d_form mini" placeholder="우편번호">
+	</div>
+	  
+	<div style="display: inline-block;">
+		<input type="button" onclick="prod1()" value="우편번호 찾기" class="d_btn"><br><br>
+	</div>
+      
+    <div class="form-group">
+		<label for="add1">* 주소</label> 
+		<input type="text" id="roadAddress" class="d_form std" placeholder="도로명주소" name="roadAddress"><br><br>
+		<input type="text" id="extraAddress" class="d_form" placeholder="참고항목" name="extraAddress"><br><br>
+	</div>
+
+	<div class="form-group">
+		<label for="add2">* 상세주소</label> 
+        <input type="text" id="detailAddress" class="d_form" placeholder="상세주소" name="detailAddress"><br><br>
+	</div>
+    <br>
+    
+    <input type="submit" id="updatebtn" class="btn btn-primary" value="저장">
+    <input type="reset" value="취소"> 
+    <span id="update"></span> 
+</form>
+</body>
+</html>
