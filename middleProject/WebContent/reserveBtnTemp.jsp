@@ -28,8 +28,8 @@
 <button type="button" class="hotelModalBtn" id='1'>호텔 예약 버튼1</button>
 <button type="button" class="hotelModalBtn" id='2'>호텔 예약 버튼2</button>
 
-<button type="button" class="restaurantModalBtn" id='1'>식당 예약 버튼1</button>
-<button type="button" class="restaurantModalBtn" id='2'>식당 예약 버튼2</button>
+<button type="button" class="restaurantModalBtn" id='3'>식당 예약 버튼1</button>
+<button type="button" class="restaurantModalBtn" id='4'>식당 예약 버튼2</button>
 
 <!-- 숙소의 상세 정보를 출력하는 모달창 시작 -->
 <div class="modal" id="hotelDetailModal">

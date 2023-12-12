@@ -4,6 +4,8 @@ import java.util.Map;
 
 import kr.or.ddit.vo.HotelReserveVO;
 import kr.or.ddit.vo.HotelVO;
+import kr.or.ddit.vo.RestaurantReserveVO;
+import kr.or.ddit.vo.RestaurantVO;
 
 public interface IReserveService 
 {
@@ -39,4 +41,20 @@ public interface IReserveService
 	 * @return 예약이 있는 객실 수
 	 */
 	public int getHotelRoom(Map<String, String> date);
+
+	/**
+	 * 식당 번호로 호텔의 상세 정보를 검색해 RestaurantVO객체로 반환하는 메서드
+	 * 
+	 * @param rest_no 검색할 식당 번호
+	 * @return 식당의 상세 정보가 담긴 RestaurantVO객체
+	 */
+	public RestaurantVO getRestaurantInfo(int rest_no);
+	
+	/**
+	 * RestaurantReserveVO객체를 받아 식당 예약 테이블에 정보를 저장을 하는 메서드
+	 * 
+	 * @param restRsvVo 식당 예약 정보가 담긴 RestaurantReserveVO객체
+	 * @return 반환값 성공 시: 1, 실패 시: 0
+	 */
+	public int reserveRestaurant(RestaurantReserveVO restRsvVo);
 }

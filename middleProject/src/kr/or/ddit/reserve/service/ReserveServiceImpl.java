@@ -6,6 +6,8 @@ import kr.or.ddit.reserve.dao.IReserveDao;
 import kr.or.ddit.reserve.dao.ReserveDaoImpl;
 import kr.or.ddit.vo.HotelReserveVO;
 import kr.or.ddit.vo.HotelVO;
+import kr.or.ddit.vo.RestaurantReserveVO;
+import kr.or.ddit.vo.RestaurantVO;
 
 public class ReserveServiceImpl implements IReserveService 
 {
@@ -46,6 +48,16 @@ public class ReserveServiceImpl implements IReserveService
 	@Override
 	public int getHotelRoom(Map<String, String> date) {
 		return dao.getHotelRoom(date);
+	}
+
+	@Override
+	public RestaurantVO getRestaurantInfo(int rest_no) {
+		return dao.getRestaurantInfo(rest_no);
+	}
+
+	@Override
+	public int reserveRestaurant(RestaurantReserveVO restRsvVo) {
+		return dao.reserveRestaurant(restRsvVo);
 	}
 
 }

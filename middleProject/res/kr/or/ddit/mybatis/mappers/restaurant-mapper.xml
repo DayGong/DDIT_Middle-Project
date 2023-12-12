@@ -4,5 +4,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="restaurantVo">
-
+	<select id="getRestaurantInfo" parameterType="int" resultType="restaurantVo">
+		SELECT * FROM restaurant WHERE rest_no = #{rest_no}
+	</select>
 </mapper>
