@@ -50,7 +50,7 @@ public class SignupMember extends HttpServlet {
 		service.insertMember(memVo);
 		
 		// 작업이 완료되면 로그인 화면으로 이동
-		response.sendRedirect(request.getContextPath()+"/view/signup/signuptest.jsp");
+		response.sendRedirect(request.getContextPath()+"/view/login_out/loginMain.jsp");
 	}
 
 }
