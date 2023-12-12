@@ -27,6 +27,7 @@
          	<input type="checkbox" id="idchk" name="auto" value="remember"/>Remember Me
          	<a id="kakao-login-btn"></a>
 			<div id="result"></div>
+		 	<a href="<%=request.getContextPath()%>/view/login_out/getId.jsp">아이디 까먹었슈? </a><br><br>
 		 	<a href="<%=request.getContextPath()%>/forgetPass" class="login_forgot">비밀번호 까먹었슈? </a><br><br>
 			<a href="<%=request.getContextPath()%>/view/signup/memberSignup.jsp">회원가입</a>
 	</form>

@@ -144,4 +144,30 @@ public class MemberDaoImpl implements IMemberDao
 		return loginMemberVo;
 	}
 
+	@Override
+	public String getID(String memMail) {
+		String res = null;
+		try 
+		{
+			session = MybatisUtil.getSqlSession();
+			res = session.selectOne("member.getID", memMail);
+			
+		} catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+		finally 
+		{
+			if(session != null) session.close();
+		}
+
+		return res;
+	}
+
+	@Override
+	public String setPassNameAddr(String memId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

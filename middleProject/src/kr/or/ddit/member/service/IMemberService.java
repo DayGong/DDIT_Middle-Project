@@ -53,5 +53,23 @@ public interface IMemberService {
 	 * @return 검색된 회원정보가 저장된 MemberVO객체
 	 */
 	public MemberVO getLoginMember(MemberVO memVo);
+	
+	/**
+	 * 회원 mail을 받아 아이디를 가져오는 메서드
+	 * 
+	 * @param memMail 회원의 id가 저장된 mail
+	 * @return 해당 mail이  String 객체,
+	 * 			없으면 null반환
+	 */
+	public String getID(String memMail);
+	
+	/**
+	 * 회원의 ID를 받아 임시 비밀번호를 보낼 메일주소와 회원이름을 확인하는 메서드
+	 * 
+	 * @param memId 검색할 회원의 ID
+	 * @return 해당 ID가 있으면 String 객체,
+	 * 			없으면 null반환
+	 */
+	public String setPassNameAddr(String memId);
 
 }

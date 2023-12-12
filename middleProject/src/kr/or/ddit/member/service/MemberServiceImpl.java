@@ -59,4 +59,14 @@ public class MemberServiceImpl implements IMemberService
 		return dao.getLoginMember(memVo);
 	}
 
+	@Override
+	public String getID(String memMail) {
+		return dao.getID(memMail);
+	}
+
+	@Override
+	public String setPassNameAddr(String memId) {
+		return dao.setPassNameAddr(memId);
+	}
+
 }
