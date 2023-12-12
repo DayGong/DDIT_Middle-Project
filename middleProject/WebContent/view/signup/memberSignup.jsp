@@ -12,24 +12,32 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-<%--     <script src="<%=request.getContextPath()%>/js/jquery.serializejson.min.js"></script> --%>
+    <script src="<%=request.getContextPath()%>/js/jquery.serializejson.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <script>
 $(()=>{
 	
-	// 	가입하기
+// 		가입하기
 	$('#joinbtn').on('click', function()
 	{	
+		vdata1=  $('#joinform').serialize();
+		
+		console.log(vdata1);
+		
+		
 	// 	서버로 보내기
 		$.ajax
 		({
 			url : "<%=request.getContextPath()%>/member/signupMember.do",	
+			data : vdata1,
 			type : 'post',
 			dataType : 'json',
 			success : function(res)
 			{
+				//성공시 이동할 경로 지정
 				$('#join').html(res.sw).css('color', 'red');
+				window.location.href = '<%=request.getContextPath()%>/view/login_out/loginMain.jsp';
 			},
 			error : function(xhr)
 			{
@@ -206,7 +214,7 @@ function prod1() {
             }
 
             // 우편번호 검색해서 얻을 수 있는 data('key' , "value")를 <li>에 넣어서
-            //	사용시 찾아보기 좋게 정리함(대충 생색 내는중ㅎ)
+            //	사용시 찾아보기 좋게 정리함
             for(var item in data)
 			{
 				resultHTML.push('<li><code class="data_key">'+item+'</code>: "'+data[item]+'"</li>');
