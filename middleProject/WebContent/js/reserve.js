@@ -19,6 +19,13 @@ $(function()
 		moveToHotelDetail();
 	})
 	
+	// 식당 모델창을 띄우는 이벤트
+	$(document).on('click', '.restaurantModalBtn', function()
+	{
+		rest_no = $(this).attr('id');
+		moveToRestaurantDetail();
+	})
+	
 	// 시작일을 입력하면 종료일 달력에 시작일 이전이 선택되지않게하는 이벤트
 	$(document).on('input', '#select_start_date', function()
 	{
@@ -36,7 +43,11 @@ $(function()
 	// 빈 객실 수를 구해 표시하는 이벤트
 	$(document).on('input', '#select_end_date', function()
 	{
-		checkRoom();
+		let start = $('#select_start_date').val();
+		let end = $('#select_end_date').val();
+		
+		// 예약이 끝나면 객실 수를 되돌려야하는데 어떻게 할 지 생각해보기
+		checkRoom(start, end);
 	})
 	
 	// 카카오페이API를 호출하는 메서드
@@ -46,7 +57,7 @@ $(function()
 	})
 })
 
-// 호텔 상세보기 모달창 설정
+// 숙소 상세보기 모달창 설정
 moveToHotelDetail = function()
 {
 	$.ajax
@@ -68,6 +79,9 @@ moveToHotelDetail = function()
 			
 			// 모달창 바디에 숙박 예약폼을 띄우는 메소드
 			openHotelReserveForm();
+			
+			// 남은 객실 체크
+			checkRoom(`${year}-${month}-${dayZero}`, `${year}-${month}-${dayZero}`);
 		},
 		error: function(xhr)
 		{
@@ -80,6 +94,7 @@ moveToHotelDetail = function()
 // 모달창 바디에 숙박 업체의 상세 정보를 띄우는 메소드
 showHotelDetailInfo = function(res) 
 {
+	
 	let infoCode = `
 	<div class="headerImg" style="background-image: url('${path}/images/hotel/${res.hotel_img}');">
 		<h4 class="modal-title fix-text">${res.hotel_name}</h4>
@@ -96,6 +111,10 @@ showHotelDetailInfo = function(res)
 				<tr>
 					<td>운영시간</td>
 					<td>| ${res.hotel_time}</td>
+				</tr>
+				<tr>
+					<td>객실 수</td>
+					<td>| ${res.hotel_room_count}</td>
 				</tr>
 			</table>
 		</div>
@@ -145,7 +164,7 @@ openHotelReserveForm = function()
 				객실 선택
 			</label>
 			<div class="empty_room">
-				<p>잔여 객실 수: </p>
+				잔여 객실 수: <div id="checkRoomDiv"></div>
 			</div>
 			<div class="form_radio_btn">
 				<input type="radio" id="room_two" name="hotel_rsv_room" value="2인실" checked disabled>
@@ -179,7 +198,7 @@ changeRoomState = function()
 }
 
 // 해당하는 날짜에 남은 객실 수를 확인하는 메서드
-checkRoom = function()
+checkRoom = function(start, end)
 {
 	$.ajax
 	({
@@ -187,12 +206,20 @@ checkRoom = function()
 		type: 'GET',
 		data:
 		{
-			"startDate" : $('#select_start_date').val(),
-			"endDate" : $('#select_end_date').val()
+			"startDate" : start,
+			"endDate" : end
 		},
 		success: function(res)
 		{
-			console.log(res)
+			let emptyRoom = hotelInfo.hotel_room_count - res;
+			
+			if ( emptyRoom <= 0 ) 
+			{
+				alert('남은 방이 없습니다.');
+				$('#hotelDetailModal').modal('hide');
+			}
+			
+			$('#checkRoomDiv').html(emptyRoom);
 		},
 		error: function(xhr)
 		{
@@ -299,7 +326,8 @@ payAfterReserveHotel = function(reserveInfo)
 		},
 		success: function(res) 
 		{
-			subtractHotelRoom(reserveInfo.hotel_no);
+			// 예약 완료 후 객실 수가 1 차감되도록 작성
+			subtractHotelRoom(reserveInfo.hotel_no)
 		},
 		error: function(xhr) 
 		{
@@ -329,4 +357,86 @@ subtractHotelRoom = function(hotel_no)
 			console.log(xhr);
 		}
 	})
+}
+
+// 식당 상세보기 모달창 설정
+moveToRestaurantDetail = function()
+{
+	$.ajax
+	({
+		url: `${path}/reserve/restaurantReserve.do`,
+		type: 'GET',
+		data: 
+		{
+			"rest_no" : rest_no
+		},
+		success: function(res)
+		{
+			$('#restaurantDetailModal').modal('show');
+				
+			// 모달창 헤더에 식당의 상세 정보를 띄우는 메소드
+			showRestaurantDetailInfo(res);
+			
+			// 모달창 바디에 식당 예약폼을 띄우는 메소드
+			openRestaurantReserveForm();
+			
+			// 남은 예약 체크
+			// checkReservation(`${year}-${month}-${dayZero}`, `${시간}`);
+		},
+		error: function(xhr)
+		{
+			alert('오류 상태: ' + xhr.status);
+		},
+		dataType: 'json'
+	})
+}
+
+showRestaurantDetailInfo = function()
+{
+	let peopleMin = 1;	// 인원수 최소값
+	let peopleMax = 4;	// 인원수 최대값
+	
+	let bodyCode = `
+	<div>
+		<h2>인원 선택</h2>
+		<input type="number" id="rsv_count" name="rsv_count" min="${peopleMin}" max="${peopleMax}" value="${peopleMin}">
+	</div>
+	<div>
+		<h2>숙박 날짜 선택</h2>
+		<div id="addDateDiv">
+			<div id="dateStartForm">
+				<h5>시작일</h5>
+				<input type="date" id="select_start_date" name="hotel_rsv_startdate" 
+						min="${year}-${month}-${dayZero}" value="${year}-${month}-${dayZero}">
+			</div>
+			<div id="dateEndForm">
+				<h5>종료일</h5>
+				<input type="date" id="select_end_date" name="hotel_rsv_enddate" value="${year}-${month}-${dayZero}">
+			</div>
+		</div>
+	</div>
+	<div>
+		<div id="addRoomDiv">
+			<label for="hotel_rsv_room" class="form-label">
+				객실 선택
+			</label>
+			<div class="empty_room">
+				잔여 객실 수: <div id="checkRoomDiv"></div>
+			</div>
+			<div class="form_radio_btn">
+				<input type="radio" id="room_two" name="hotel_rsv_room" value="2인실" checked disabled>
+				<label for="room_two">2인실</label>
+			</div>
+			<div class="form_radio_btn">
+				<input type="radio" id="room_four" name="hotel_rsv_room" value="4인실" disabled>
+				<label for="room_four">4인실</label>
+			</div>
+		</div>
+	</div>
+	<div> <!-- 카카오페이API 버튼 -->
+		<img src="${path}/images/icon/payment_icon_yellow_medium.png" id="payBtn">
+	</div>
+	`;
+	
+	$('#rest-right-modal-body').html(bodyCode);
 }

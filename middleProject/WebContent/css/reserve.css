@@ -30,7 +30,7 @@
 }
 
 /* 잔여 객실을 표시할 위치 설정 */
-.empty_room p{
+.empty_room{
 	margin-left: 50%;
 }
 

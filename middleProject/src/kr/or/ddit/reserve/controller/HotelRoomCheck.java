@@ -25,14 +25,19 @@ public class HotelRoomCheck extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		
 		Map<String, String> dateMap = new HashMap<String, String>();
-		dateMap.put("startDate", request.getParameter("startDate"));
-		dateMap.put("endDate", request.getParameter("endDate"));
-		
-		System.out.println(request.getParameter("startDate"));
+		String startDate = request.getParameter("startDate");
+		String endDate = request.getParameter("endDate");
+		dateMap.put("startDate", startDate);
+		dateMap.put("endDate", endDate);
 		
 		IReserveService service = ReserveServiceImpl.getInstance();
 		
-		//int roomCnt = service.getHotelRoom("hotelVo.getHotelRoom", dateMap);
+		int usedRoom = service.getHotelRoom(dateMap);
+		
+		request.setAttribute("usedRoom", usedRoom);
+		
+		request.getRequestDispatcher("/view/reserve/checkEmptyRoom.jsp").forward(request, response);
+		
 	}
 	
 	// 예약 완료 후 차감

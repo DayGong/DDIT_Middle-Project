@@ -16,6 +16,4 @@
 						#{mem_id}, #{hotel_no}, #{hotel_totalamt})
 	</insert>
 	
-	
-	
 </mapper>

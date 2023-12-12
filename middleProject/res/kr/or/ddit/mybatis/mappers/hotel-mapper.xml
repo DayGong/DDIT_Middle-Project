@@ -15,7 +15,12 @@
 	</update>
 	
 	<select id="getHotelRoom" parameterType="Map" resultType="int">
-				
+		SELECT count(*) FROM hotel h, hotel_reserve hr
+		WHERE h.hotel_no = hr.hotel_no
+		AND 
+		<![CDATA[
+			(HOTEL_RSV_STARTDATE <= #{startDate} AND HOTEL_RSV_ENDDATE >= #{endDate})
+		]]>
 	</select>
 	
 </mapper>
