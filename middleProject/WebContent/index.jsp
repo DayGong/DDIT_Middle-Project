@@ -169,5 +169,11 @@
 
 <!-- 선혜테스트 입니다 -->
 
+<div id="videoArea">
+	<iframe class="videoArea" src="https://www.youtube.com/embed/Vh6UyH1TAEY?si=-enLIog4Wzto0soU&amp;controls=0&mute=1&autoplay=1" 
+			title="YouTube video player" frameborder="0" width="100%" height="650px"
+			allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen ></iframe>
+</div>
+
 </body>
 </html>
