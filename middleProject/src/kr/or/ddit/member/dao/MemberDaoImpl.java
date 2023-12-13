@@ -1,5 +1,7 @@
 package kr.or.ddit.member.dao;
  
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 
 import kr.or.ddit.util.MybatisUtil;
@@ -145,7 +147,8 @@ public class MemberDaoImpl implements IMemberDao
 	}
 
 	@Override
-	public String getID(String memMail) {
+	public String getID(String memMail) 
+	{
 		String res = null;
 		try 
 		{
@@ -164,23 +167,51 @@ public class MemberDaoImpl implements IMemberDao
 		return res;
 	}
 
+
 	@Override
-	public MemberVO setPassNameAddr(String memId) {
-		MemberVO PassMemberVo = null;
-		session = MybatisUtil.getSqlSession();
-		
-		try
+	public String setPassAddr(String memId) 
+	{
+		SqlSession session = null;
+		String res = null;
+		try 
 		{
-			PassMemberVo = session.selectOne("member.setPassNameAddr", memId);
+			session = MybatisUtil.getSqlSession();
+			res = session.selectOne("member.setPassAddr", memId);
+			
+		} catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+		finally 
+		{
+			if(session != null) session.close();
+		}
+
+		return res;
+	}
+
+	@Override
+	public int updatePass(MemberVO memVo) 
+	{
+		 SqlSession session = null;
+		int cnt = 0;
+		
+		try {
+			session = MybatisUtil.getSqlSession();
+			cnt = session.update("member.updatePass", memVo);
+			if(cnt > 0 ) session.commit();
 		} catch (Exception e)
 		{
 			e.printStackTrace();
-		} finally 
+		}
+		finally
 		{
-			if(session!=null) session.close();
+			if(session != null) session.close();
 		}
 		
-		return PassMemberVo;
-	}
+		return cnt;
+	} 
+
+
 
 }

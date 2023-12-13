@@ -10,21 +10,24 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/passEye.css">
 </head>
-<script type="text/javascript">
-$(function(){
-    // 눈표시 클릭 시 패스워드 보이기 다시클릭하면 가려지기
-    $('.eyes').on('click', function(){
-        $('.input.password').toggleClass('active');
 
-        if($('.input.password').hasClass('active')){
-            $(this).find('.fa-eye').attr('class', 'fa fa-eye-slash fa-lg');
-            $('.input.password #password').attr('type', 'text');
-        } else {
-            $(this).find('.fa-eye-slash').attr('class', 'fa fa-eye fa-lg');
-            $('.input.password #password').attr('type', 'password');
-        }
+<script type="text/javascript">
+	//눈표시 클릭 시 패스워드 보이기 다시클릭하면 가려지기
+    $(function(){
+        $('.eyes').on('click', function(){
+            // 비밀번호 입력란의 타입을 'text' 또는 'password'로 변경
+            var passwordInput = $('.input.password #password');
+            var currentType = passwordInput.attr('type');
+            
+            if (currentType === 'password') {
+                passwordInput.attr('type', 'text');
+                $(this).find('.fa-eye-slash').attr('class', 'fa fa-eye fa-lg');
+            } else {
+                passwordInput.attr('type', 'password');
+                $(this).find('.fa-eye').attr('class', 'fa fa-eye-slash fa-lg');
+            }
+        });
     });
-});
 </script>
 
 <%
@@ -44,7 +47,7 @@ $(function(){
 	        <div class="input password">
 	            비밀번호 <input type="password" id="password" class="form-input" name="pass" placeholder="비밀번호">
 	            <div class="eyes">
-	                <i class="fa fa-eye fa-lg"></i>
+	                <i class="fa fa-eye-slash fa-lg"></i>
 	            </div>
 	        </div>
 	        <br><br>

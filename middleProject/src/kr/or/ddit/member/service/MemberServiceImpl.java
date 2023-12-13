@@ -1,5 +1,7 @@
 package kr.or.ddit.member.service;
 
+import java.util.Map;
+
 import kr.or.ddit.member.dao.IMemberDao;
 import kr.or.ddit.member.dao.MemberDaoImpl;
 import kr.or.ddit.vo.MemberVO;
@@ -65,8 +67,17 @@ public class MemberServiceImpl implements IMemberService
 	}
 
 	@Override
-	public MemberVO setPassNameAddr(String memId) {
-		return dao.setPassNameAddr(memId);
+	public String setPassAddr(String memId) {
+		return dao.setPassAddr(memId);
 	}
+
+	@Override
+	public int updatePass(MemberVO memVo) {
+		return dao.updatePass(memVo);
+	}
+
+
+
+
 
 }

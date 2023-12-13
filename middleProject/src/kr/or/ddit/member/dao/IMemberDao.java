@@ -1,5 +1,7 @@
 package kr.or.ddit.member.dao;
 
+import java.util.Map;
+
 import kr.or.ddit.vo.MemberVO;
 
 public interface IMemberDao {
@@ -72,6 +74,16 @@ public interface IMemberDao {
 	 * @return 해당 ID가 있으면 String 객체,
 	 * 			없으면 null반환
 	 */
-	public MemberVO setPassNameAddr(String memId);
+	public String setPassAddr(String memId);
+	
+	/** 
+	 * 회원의 ID를 받아 회원의 패스워드를 임시번호로 수정하는 메서드
+	 * 
+	 * @param memId 패스워드를바꿀 회원의 ID
+	 * @return 성공 시 반환값: 1, 실패 시 반환값: 0
+	 */
+	public int updatePass(MemberVO memVo);
+	
+
 
 }
