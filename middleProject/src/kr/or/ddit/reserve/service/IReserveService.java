@@ -1,5 +1,6 @@
 package kr.or.ddit.reserve.service;
 
+import java.util.List;
 import java.util.Map;
 
 import kr.or.ddit.vo.HotelReserveVO;
@@ -62,7 +63,23 @@ public interface IReserveService
 	 * 사용자가 선택한 날짜에 예약된 시간 정보를 반환하는 메서드
 	 * 
 	 * @param selectedTime rest_no 식당 번호, selectedDate 사용자가 선택한 날짜
-	 * @return 이미 예약된 시간을 List객체로 반환
+	 * @return 이미 예약된 시간을 List 객체로 반환
 	 */
-	public java.util.List<String> getRestaurantReservedTime(Map<String, String> selectedDate);
+	public List<String> getRestaurantReservedTime(Map<String, String> selectedDate);
+	
+	/**
+	 * 해당 날짜에 해당하는 숙소를 일괄 체크아웃하는 메서드
+	 * 
+	 * @param 전체를 검색할 때 parameterType에 넣을 임시 값(null 안 됨)
+	 * @return 반환값 성공 시: 1, 실패 시: 0
+	 */
+	public int doManagerAllCheckout();
+	
+	/**
+	 * mem_id를 가진 사용자가 예약한 숙소 정보를 불러오는 메서드
+	 * 
+	 * @param mem_id 예약한 정보를 가져올 사용자의 ID
+	 * @return 호텔 정보와 예약 정보가 담긴 List 객체
+	 */
+	public List<Map<String, String>> getMemberHotelReserve(String mem_id);
 }

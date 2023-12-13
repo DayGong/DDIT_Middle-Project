@@ -1,5 +1,6 @@
 package kr.or.ddit.reserve.service;
 
+import java.util.List;
 import java.util.Map;
 
 import kr.or.ddit.reserve.dao.IReserveDao;
@@ -61,8 +62,18 @@ public class ReserveServiceImpl implements IReserveService
 	}
 
 	@Override
-	public java.util.List<String> getRestaurantReservedTime(Map<String, String> selectedDate) {
+	public List<String> getRestaurantReservedTime(Map<String, String> selectedDate) {
 		return dao.getRestaurantReservedTime(selectedDate);
+	}
+
+	@Override
+	public int doManagerAllCheckout() {
+		return dao.doManagerAllCheckout();
+	}
+
+	@Override
+	public List<Map<String, String>> getMemberHotelReserve(String mem_id) {
+		return dao.getMemberHotelReserve(mem_id);
 	}
 
 }

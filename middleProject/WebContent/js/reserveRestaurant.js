@@ -3,7 +3,6 @@
  */
 
 // mem_id = (String)session.getAttribute("mem_id");
-mem_id = "a001"; // 회원 아이디 임시 데이터(세션 회원 아이디)
 
 // 식당 상세보기 모달창 설정
 moveToRestaurantDetail = function(rest_no)
@@ -19,7 +18,6 @@ moveToRestaurantDetail = function(rest_no)
 		success: function(res)
 		{
 			$('#restaurantDetailModal').modal('show');
-			console.log(res);
 				
 			// 식당의 상세 정보를 띄우는 메소드
 			showRestaurantDetailInfo(res);

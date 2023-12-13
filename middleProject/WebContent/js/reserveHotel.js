@@ -17,7 +17,7 @@ const origin = window.location.origin;
 const path = origin + pathName;
 
 // mem_id = (String)session.getAttribute("mem_id");
-mem_id = "a001"; // 회원 아이디 임시 데이터(세션 회원 아이디)
+const mem_id = "a001"; // 회원 아이디 임시 데이터(세션 회원 아이디)
 
 // 숙소 상세보기 모달창 설정
 moveToHotelDetail = function(hotel_no)
@@ -249,7 +249,7 @@ requestPay = function()
 	({
 		pg : 'kakaopay', 							// kcp: 미리 등록한 카드로 결제, kakaopay
 		pay_method : 'card',
-		merchant_uid: hotel_no +makeMerchantUid,  	// 주문번호
+		merchant_uid: hotelInfo.hotel_no +makeMerchantUid,  	// 주문번호
 		name : "[" + hotelInfo.hotel_name + "]" + room + startDate + "~" + endDate,		// 상품명
 		amount : totalAmt,							// 가격(결제 금액)
 		buyer_name : hotelInfo.hotel_name,
@@ -268,12 +268,13 @@ requestPay = function()
 				"peopleCnt" : `${peopleCnt}`,
 				"room" : `${room}`,
 				"mem_id" : `${mem_id}`,
-				"hotel_no" : `${hotel_no}`,
+				"hotel_no" : `${hotelInfo.hotel_no}`,
 				"hotel_totalamt" : `${totalAmt}`
 			} ;
 			
 			payAfterReserveHotel(reserveInfo);
 			alert('예약이 완료되었습니다.');
+			$('#hotelDetailModal').modal('hide');
 		} else 
 		{
 			alert(`결제에 실패하였습니다. 에러 내용: ${rsp.error_msg}`);
@@ -300,7 +301,7 @@ payAfterReserveHotel = function(reserveInfo)
 			"hotel_no" : reserveInfo.hotel_no,
 			"hotel_totalamt" : reserveInfo.hotel_totalamt
 		},
-		success: function(res) 
+		success: function() 
 		{
 			// 예약 완료 후 객실 수가 1 차감되도록 작성
 			subtractHotelRoom(reserveInfo.hotel_no);
@@ -324,13 +325,13 @@ subtractHotelRoom = function(hotel_no)
 		{
 			"hotel_no" : hotel_no
 		},
-		success: function(res)
+		success: function()
 		{
-			console.log(res);
+			console.log(`객실 차감 완료`);
 		},
 		error: function(xhr)
 		{
-			console.log(xhr);
+			console.log(`객실 차감을 실패했습니다. 에러 내용: ${xhr.status}`);
 		}
 	})
 }

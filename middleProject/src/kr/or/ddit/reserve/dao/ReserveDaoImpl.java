@@ -191,7 +191,8 @@ public class ReserveDaoImpl implements IReserveDao
 	}
 
 	@Override
-	public List<String> getRestaurantReservedTime(Map<String, String> selectedDate) {
+	public List<String> getRestaurantReservedTime(Map<String, String> selectedDate) 
+	{
 		List<String> reservedTimeList = new ArrayList<String>();
 		SqlSession session = null;
 		
@@ -212,6 +213,56 @@ public class ReserveDaoImpl implements IReserveDao
 		}
 		
 		return reservedTimeList;
+	}
+
+	@Override
+	public int doManagerAllCheckout() 
+	{
+		int res = 0;	// 결과값이 저장될 변수
+		SqlSession session = null;
+		
+		try 
+		{
+			session = MybatisUtil.getSqlSession();
+			
+			res = session.update("hotelRsvVo.doManagerAllCheckout");
+			
+			session.commit();
+		} catch (Exception e) 
+		{
+			e.printStackTrace();
+		} finally 
+		{
+			if (session != null)
+			{
+				session.close();
+			}
+		}
+		
+		return res;
+	}
+
+	@Override
+	public List<Map<String, String>> getMemberHotelReserve(String mem_id) {
+		List<Map<String, String>> memberRsvList = new ArrayList<Map<String,String>>();
+		SqlSession session = null;
+		
+		try {
+			session = MybatisUtil.getSqlSession();
+			
+			memberRsvList = session.selectList("hotelRsvVo.getMemberHotelReserve", mem_id);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally 
+		{
+			if (session != null)
+			{
+				session.close();
+			}
+		}
+		
+		return memberRsvList;
 	}
 	
 }

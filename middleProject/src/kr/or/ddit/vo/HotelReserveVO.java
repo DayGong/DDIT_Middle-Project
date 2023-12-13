@@ -1,7 +1,7 @@
 package kr.or.ddit.vo;
 
 public class HotelReserveVO {
-	private String hotel_rsv_no;				// 숙소예약번호
+	private String hotel_rsv_no;			// 숙소예약번호
 	private String hotel_rsv_startdate;		// 예약시작일
 	private String hotel_rsv_enddate;		// 예약종료일
 	private int hotel_rsv_count;			// 인원수
@@ -9,7 +9,7 @@ public class HotelReserveVO {
 	private int hotel_rsv_state;			// 취소여부
 	private String mem_id;					// 회원아이디
 	private int hotel_no;					// 숙소번호
-	private int hotel_totalamt;			// 결제금액
+	private int hotel_totalamt;				// 결제금액
 
 	public int getHotel_totalamt() {
 		return hotel_totalamt;
