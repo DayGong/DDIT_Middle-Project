@@ -72,6 +72,6 @@ public interface IMemberDao {
 	 * @return 해당 ID가 있으면 String 객체,
 	 * 			없으면 null반환
 	 */
-	public String setPassNameAddr(String memId);
+	public MemberVO setPassNameAddr(String memId);
 
 }

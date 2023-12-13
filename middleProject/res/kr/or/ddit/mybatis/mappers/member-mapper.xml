@@ -52,7 +52,7 @@
 	</select>
 	
 	<!-- 비밀번호찾기 : 이름, 메일주소 정보가져오기 -->
-	<select id="setPassNameAddr" resultType="string" parameterType="memVo">
+	<select id="setPassNameAddr" resultType="memVo" parameterType="memVo">
 		select mem_name, mem_mail from member where mem_id = #{mem_id}
 	</select>
 	

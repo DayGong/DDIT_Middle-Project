@@ -165,9 +165,22 @@ public class MemberDaoImpl implements IMemberDao
 	}
 
 	@Override
-	public String setPassNameAddr(String memId) {
-		// TODO Auto-generated method stub
-		return null;
+	public MemberVO setPassNameAddr(String memId) {
+		MemberVO PassMemberVo = null;
+		session = MybatisUtil.getSqlSession();
+		
+		try
+		{
+			PassMemberVo = session.selectOne("member.setPassNameAddr", memId);
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		} finally 
+		{
+			if(session!=null) session.close();
+		}
+		
+		return PassMemberVo;
 	}
 
 }
