@@ -16,11 +16,12 @@
 $(document).ready(function(){
 	
 	// 수정버튼 클릭
-	$('updatebtn').on('click',function()
+	$('#updatebtn').on('click',function()
 		{
 			vdata1 = $('#updateform').serialize();
 			console.log(vdata1);
 			
+	
 			// 서버로 보내기
 			$.ajax
 			({
@@ -31,6 +32,7 @@ $(document).ready(function(){
 				success : function(res)
 				{
 					//성공시 이동할 경로 지정
+					alert("수정 상태:"+res.flag);
 					$('#update').html(res.flag).css('color', 'red');
 					window.location.href = '<%=request.getContextPath()%>/view/member/memberForm.jsp';
 				},
@@ -183,18 +185,17 @@ function prod1() {
 <body>
 
 <% 
- 	MemberVO memVo = (MemberVO)session.getAttribute("loginId");
+ 	MemberVO memVo = (MemberVO)session.getAttribute("loginMember");
 %>
 
 <h2>회원 정보 수정화면</h2>
 <form id= "updateform">
 
-	<input type ="hidden" name ="mem_id" >
-	value="<%=memVo.getMem_id()%>">
+	<input type ="hidden" name ="mem_id" value="<%=memVo.getMem_id()%>">
+	
 
 	<div class="form-group">
-		<label for="id">* 아이디</label>
-		<div><%=memVo.getMem_id() %></div>          
+		<label for="id">* 아이디 <div><%=memVo.getMem_id() %></div> </label>         
 	</div>
 	
 	<div class="form-group">
