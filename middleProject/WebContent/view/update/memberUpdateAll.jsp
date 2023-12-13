@@ -6,11 +6,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="<%=request.getContextPath()%>/js/jquery.serializejson.min.js"></script>
 <script>
-$(()=>{
+$(document).ready(function(){
 	
-	// 수정버튼
+	// 수정버튼 클릭
 	$('updatebtn').on('click',function()
 		{
 			vdata1 = $('#updateform').serialize();
@@ -19,14 +24,14 @@ $(()=>{
 			// 서버로 보내기
 			$.ajax
 			({
-				url : "<%=request.getContextPath()%>/member/updateMember.do",	
+				url : '<%=request.getContextPath()%>/member/updateMember.do',	
 				data : vdata1,
 				type : 'post',
 				dataType : 'json',
 				success : function(res)
 				{
 					//성공시 이동할 경로 지정
-					$('#join').html(res.flag).css('color', 'red');
+					$('#update').html(res.flag).css('color', 'red');
 					window.location.href = '<%=request.getContextPath()%>/view/member/memberForm.jsp';
 				},
 				error : function(xhr)
@@ -47,12 +52,10 @@ $(()=>{
 		{
 			if(pass1 == pass2)
 			{
-				$("#spanpass").html('일치');
-				$("#spanpass").css('color', 'green');
+				$("#spanpass").html('일치').css('color', 'green');
 			} else
 			{
-				$("#spanpass").html('불일치');
-				$("#spanpass").css('color', 'red');
+				$("#spanpass").html('불일치').css('color', 'red');
 			}
 		}
 	});
@@ -179,14 +182,15 @@ function prod1() {
 </head>
 <body>
 
-<%
-	MemberVO memVo = (MemberVO)request.getAttribute("memVo");
+<% 
+ 	MemberVO memVo = (MemberVO)session.getAttribute("loginId");
 %>
 
 <h2>회원 정보 수정화면</h2>
-<form id= "updateform" action="<%=request.getContextPath()%>/member/updateMember.do"
-	method="post" enctype="multipart/form-data">
-	<input type ="hidden" name ="mem_id" value="<%=memVo.getMem_id()%>">
+<form id= "updateform">
+
+	<input type ="hidden" name ="mem_id" >
+	value="<%=memVo.getMem_id()%>">
 
 	<div class="form-group">
 		<label for="id">* 아이디</label>
@@ -254,7 +258,7 @@ function prod1() {
 	</div>
     <br>
     
-    <input type="submit" id="updatebtn" class="btn btn-primary" value="저장">
+    <input type="button" id="updatebtn" class="btn btn-primary" value="저장">
     <input type="reset" value="취소"> 
     <span id="update"></span> 
 </form>

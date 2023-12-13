@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import kr.or.ddit.member.service.IMemberService;
 import kr.or.ddit.member.service.MemberServiceImpl;
@@ -25,16 +26,22 @@ public class UpdateMember extends HttpServlet {
 		String memId = request.getParameter("mem_id");
 		
 		IMemberService service = MemberServiceImpl.getInstance();
+		
 		MemberVO memVo = service.getSelectMember(memId);
 		
-		request.setAttribute("memberVo", memVo);
-		request.getRequestDispatcher("/view/member/memberUpdateForm.jsp").forward(request, response);
+		HttpSession session = request.getSession();
+		
+		if(memVo!=null) session.setAttribute("loginId", memVo.getMem_id());
+		request.getRequestDispatcher("/view/update/memberUpdateAll.jsp").forward(request, response);
 		
 	}
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		
+		HttpSession session = request.getSession();
+		String memId =(String)session.getAttribute("loginId");	// 세션에서 가지고오는 값
 		
 		// 회원정보 수정하기
 		String memPass= request.getParameter("mem_pass");
@@ -45,7 +52,8 @@ public class UpdateMember extends HttpServlet {
 
 		// 받아온 회원정보를 VO에 저장하기.
 		MemberVO memVo = new MemberVO();
-		
+
+		memVo.setMem_id(memId);
 		memVo.setMem_pass(memPass);
 		memVo.setMem_name(memName);
 		memVo.setMem_tel(memTel);
@@ -54,11 +62,10 @@ public class UpdateMember extends HttpServlet {
 		
 		// 회원 정보를 DB에 insert한다.
 		IMemberService service = MemberServiceImpl.getInstance();
-		int res = service.updateMember(memVo);	// 결과값 받기
+		int result = service.updateMember(memVo);	// 결과값 받기
 		
 		// 결과값을 request에 저장하기
-		request.setAttribute("res", res);
-		
+		request.setAttribute("result", result);
 		request.getRequestDispatcher("/view/update/result.jsp").forward(request, response);
 		
 	
