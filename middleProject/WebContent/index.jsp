@@ -171,7 +171,7 @@
 
 <!-- 동영상 자동 재생(height 자동 조절 안 됨 - 수정해보다가 안 되면 발표 화면에 맞춰서 고정값 넣기) -->
 <div id="videoArea">
-	<iframe class="videoArea" src="https://www.youtube.com/embed/Vh6UyH1TAEY?si=-enLIog4Wzto0soU&amp;controls=0&mute=1&autoplay=1" 
+	<iframe class="videoArea" src="https://www.youtube.com/embed/Vh6UyH1TAEY?si=-enLIog4Wzto0soU&amp;controls=0&mute=1&autoplay=1&playlist=Vh6UyH1TAEY&loop=1" 
 			title="YouTube video player" frameborder="0" width="100%" height="650px"
 			allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen ></iframe>
 </div>
