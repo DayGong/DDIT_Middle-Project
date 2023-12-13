@@ -14,4 +14,9 @@
 			#{rest_rsv_count}, 1, #{mem_id}, #{rest_no})
 	</insert>
 	
+	<select id="getReservedTime" parameterType="HashMap" resultType="String">
+		SELECT rest_rsv_time FROM restaurant_reserve
+		WHERE rest_no = #{rest_no} AND rest_rsv_date = #{selectedDate}
+	</select>
+	
 </mapper>

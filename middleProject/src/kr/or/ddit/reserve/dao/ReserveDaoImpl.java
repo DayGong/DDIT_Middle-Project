@@ -1,5 +1,7 @@
 package kr.or.ddit.reserve.dao;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -186,6 +188,30 @@ public class ReserveDaoImpl implements IReserveDao
 		}
 		
 		return res;
+	}
+
+	@Override
+	public List<String> getRestaurantReservedTime(Map<String, String> selectedDate) {
+		List<String> reservedTimeList = new ArrayList<String>();
+		SqlSession session = null;
+		
+		try 
+		{
+			session = MybatisUtil.getSqlSession();
+			
+			reservedTimeList = session.selectList("restRsvVo.getReservedTime", selectedDate);
+			
+		} catch (Exception e) 
+		{
+			e.printStackTrace();
+		} finally {
+			if (session != null)
+			{
+				session.close();
+			}
+		}
+		
+		return reservedTimeList;
 	}
 	
 }

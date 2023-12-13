@@ -60,4 +60,9 @@ public class ReserveServiceImpl implements IReserveService
 		return dao.reserveRestaurant(restRsvVo);
 	}
 
+	@Override
+	public java.util.List<String> getRestaurantReservedTime(Map<String, String> selectedDate) {
+		return dao.getRestaurantReservedTime(selectedDate);
+	}
+
 }

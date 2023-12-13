@@ -57,4 +57,12 @@ public interface IReserveService
 	 * @return 반환값 성공 시: 1, 실패 시: 0
 	 */
 	public int reserveRestaurant(RestaurantReserveVO restRsvVo);
+	
+	/**
+	 * 사용자가 선택한 날짜에 예약된 시간 정보를 반환하는 메서드
+	 * 
+	 * @param selectedTime rest_no 식당 번호, selectedDate 사용자가 선택한 날짜
+	 * @return 이미 예약된 시간을 List객체로 반환
+	 */
+	public java.util.List<String> getRestaurantReservedTime(Map<String, String> selectedDate);
 }

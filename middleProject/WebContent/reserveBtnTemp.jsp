@@ -11,7 +11,8 @@
 <script src="<%= path %>/js/jquery-3.7.1.min.js"></script>
 
 <!-- 예약 기능 script -->
-<script src="<%= path %>/js/reserve.js"></script>
+<script src="<%= path %>/js/reserveHotel.js"></script>
+<script src="<%= path %>/js/reserveRestaurant.js"></script>
 <link rel="stylesheet" href="<%= path %>/css/reserve.css">
 
 <!-- 예약 모달창 script -->
@@ -25,11 +26,11 @@
 </head>
 <body>
 
-<button type="button" class="hotelModalBtn" id='1'>호텔 예약 버튼1</button>
-<button type="button" class="hotelModalBtn" id='2'>호텔 예약 버튼2</button>
+<button type="button" class="hotelModalBtn" id='1' onclick="moveToHotelDetail(this.id)">호텔 예약 버튼1</button>
+<button type="button" class="hotelModalBtn" id='2' onclick="moveToHotelDetail(this.id)">호텔 예약 버튼2</button>
 
-<button type="button" class="restaurantModalBtn" id='3'>식당 예약 버튼1</button>
-<button type="button" class="restaurantModalBtn" id='4'>식당 예약 버튼2</button>
+<button type="button" class="restaurantModalBtn" id='3' onclick="moveToRestaurantDetail(this.id)">식당 예약 버튼1</button>
+<button type="button" class="restaurantModalBtn" id='4' onclick="moveToRestaurantDetail(this.id)">식당 예약 버튼2</button>
 
 <!-- 숙소의 상세 정보를 출력하는 모달창 시작 -->
 <div class="modal" id="hotelDetailModal">

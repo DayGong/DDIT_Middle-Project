@@ -1,6 +1,15 @@
 /**
- * 숙소 예약, 식당 예약에 사용하는 js
+ * 숙소 예약 js
  */
+
+// 오늘 이전의 날짜는 입력 불가하게 설정하기위해 오늘 날짜를 변수로 설정
+const date = new Date();
+const year = date.getFullYear()
+const month = date.getMonth() + 1;
+const day= String(date.getDate());
+
+// 일자가 한 자리 수인 경우 앞에 0을 붙여 두자리 숫자로 만들어준다. ex) 2023-12-09
+const dayZero = day.padStart(2, "0");
 
 // 경로 path 설정
 const pathName = "/" + window.location.pathname.split("/")[1];
@@ -9,64 +18,6 @@ const path = origin + pathName;
 
 // mem_id = (String)session.getAttribute("mem_id");
 mem_id = "a001"; // 회원 아이디 임시 데이터(세션 회원 아이디)
-	
-$(function() 
-{
-	// 호텔 모달창을 띄우는 이벤트
-	$(document).on('click', '.hotelModalBtn', function()
-	{
-		hotel_no = $(this).attr('id');
-		moveToHotelDetail(hotel_no);
-	})
-	
-	// 식당 모델창을 띄우는 이벤트
-	$(document).on('click', '.restaurantModalBtn', function()
-	{
-		rest_no = $(this).attr('id');
-		moveToRestaurantDetail(rest_no);
-	})
-	
-	// 시작일을 입력하면 종료일 달력에 시작일 이전이 선택되지않게하는 이벤트
-	$(document).on('input', '#select_start_date', function()
-	{
-		let startdate = $('#select_start_date').val();
-		$('#select_end_date').attr('min', startdate);
-		$('#select_end_date').attr('value', startdate);
-	})
-	
-	// 인원 수가 바뀔 때마다 객실이 바뀌는 이벤트
-	$(document).on('input', '#rsv_count', function()
-	{
-		changeRoomState();
-	})
-	
-	// 빈 객실 수를 구해 표시하는 이벤트
-	$(document).on('input', '#select_end_date', function()
-	{
-		let start = $('#select_start_date').val();
-		let end = $('#select_end_date').val();
-		
-		// 예약이 끝나면 객실 수를 되돌려야하는데 어떻게 할 지 생각해보기
-		// 관리자페이지에서 일괄 체크아웃
-		checkRoom(start, end);
-	})
-	
-	// 카카오페이API를 호출하는 메서드
-	$(document).on('click', '#payBtn', function()
-	{
-		requestPay();
-	})
-	
-	$(document).on('input', '#reserveTime', function()
-	{
-		// alert($('#reserveTime option:selected').val());
-	})
-	
-	$(document).on('click', '#restaurant_rsv_btn', function()
-	{
-		reserveRestaurant();
-	})
-})
 
 // 숙소 상세보기 모달창 설정
 moveToHotelDetail = function(hotel_no)
@@ -130,21 +81,14 @@ showHotelDetailInfo = function(res)
 		</div>
 	</div>
 	<div> <!-- 카카오페이API 버튼 -->
-		<img src="${path}/images/icon/payment_icon_yellow_medium.png" id="payBtn">
+		<img src="${path}/images/icon/payment_icon_yellow_medium.png" 
+				id="payBtn" onclick="requestPay()">
 	</div>
 	`;
 
 	$('#right-modal-body').html(infoCode);
 }
 
-// 오늘 이전의 날짜는 입력 불가하게 설정하기위해 오늘 날짜를 변수로 설정
-const date = new Date();
-const year = date.getFullYear()
-const month = date.getMonth() + 1;
-const day= String(date.getDate());
-
-// 일자가 한 자리 수인 경우 앞에 0을 붙여 두자리 숫자로 만들어준다. ex) 2023-12-09
-const dayZero = day.padStart(2, "0");
 	
 // 모달창 바디에 숙박 예약폼을 띄우는 메소드
 openHotelReserveForm = function() 
@@ -155,7 +99,8 @@ openHotelReserveForm = function()
 	let bodyCode = `
 	<div>
 		<h2>인원 선택</h2>
-		<input type="number" id="rsv_count" name="rsv_count" min="${peopleMin}" max="${peopleMax}" value="${peopleMin}">
+		<input type="number" id="rsv_count" name="rsv_count" oninput="changeRoomState()"
+				min="${peopleMin}" max="${peopleMax}" value="${peopleMin}">
 	</div>
 	<div>
 		<h2>숙박 날짜 선택</h2>
@@ -194,6 +139,14 @@ openHotelReserveForm = function()
 	$('#left-modal-body').html(bodyCode);
 }
 
+// 시작일을 입력하면 종료일 달력에 시작일 이전이 선택되지않게하는 이벤트
+$(document).on('input', '#select_start_date', function()
+{
+	let startdate = $('#select_start_date').val();
+	$('#select_end_date').attr('min', startdate);
+	$('#select_end_date').attr('value', startdate);
+})
+
 // 2인 이하면 2인실, 3인 이상이면 4인실
 changeRoomState = function() 
 {
@@ -207,6 +160,17 @@ changeRoomState = function()
 		$('#room_four').prop('checked', true);
 	}	
 }
+
+// 빈 객실 수를 구해 표시하는 이벤트
+$(document).on('input', '#select_end_date', function()
+{
+	let start = $('#select_start_date').val();
+	let end = $('#select_end_date').val();
+		
+	// 예약이 끝나면 객실 수를 되돌려야하는데 어떻게 할 지 생각해보기
+	// 관리자페이지에서 일괄 체크아웃
+	checkRoom(start, end);
+})
 
 // 해당하는 날짜에 남은 객실 수를 확인하는 메서드
 checkRoom = function(start, end)
@@ -309,6 +273,7 @@ requestPay = function()
 			} ;
 			
 			payAfterReserveHotel(reserveInfo);
+			alert('예약이 완료되었습니다.');
 		} else 
 		{
 			alert(`결제에 실패하였습니다. 에러 내용: ${rsp.error_msg}`);
@@ -361,167 +326,11 @@ subtractHotelRoom = function(hotel_no)
 		},
 		success: function(res)
 		{
-			alert('예약이 완료되었습니다.');
-			$('#hotelDetailModal').modal('hide');
-		},
-		error: function(xhr)
-		{
-			console.log(xhr);
-		}
-	})
-}
-
-// 식당 상세보기 모달창 설정
-moveToRestaurantDetail = function()
-{
-	$.ajax
-	({
-		url: `${path}/reserve/restaurantReserve.do`,
-		type: 'GET',
-		data: 
-		{
-			"rest_no" : rest_no
-		},
-		success: function(res)
-		{
-			$('#restaurantDetailModal').modal('show');
 			console.log(res);
-				
-			// 식당의 상세 정보를 띄우는 메소드
-			showRestaurantDetailInfo(res);
-			
-			// 식당 예약폼을 띄우는 메소드
-			openRestaurantReserveForm(res);
-			
-			// 시간 리스트를 띄우는 메소드
-			getTimeSelectList(res);
-			
-			// 남은 예약 체크
-			checkReservation(`${year}-${month}-${dayZero}`, `${시간}`);
-		},
-		error: function(xhr)
-		{
-			alert('오류 상태: ' + xhr.status);
-		},
-		dataType: 'json'
-	})
-}
-
-// 식당 상세 정보를 띄우는 메소드
-showRestaurantDetailInfo = function(res)
-{
-	
-	let infoCode = `
-	<div class="headerImg" style="background-image: url('${path}/images/restaurant/${res.rest_img}');">
-		<h4 class="modal-title fix-text">${res.rest_name}</h4>
-		<div>
-			<table>
-				<tr>
-					<td>주소</td>
-					<td>| ${res.rest_addr}</td>
-				</tr>
-				<tr>
-					<td>전화번호</td>
-					<td>| ${res.rest_tel}</td>
-				</tr>
-				<tr>
-					<td>운영시간</td>
-					<td>| ${res.rest_time}</td>
-				</tr>
-			</table>
-		</div>
-	</div>
-	<div>
-		<input type="button" id="restaurant_rsv_btn" value="예약하기">
-	</div>
-	`;
-
-	$('#rest-right-modal-body').html(infoCode);
-}
-
-// 식당 예약폼을 띄우는 메소드
-openRestaurantReserveForm = function(res)
-{
-	let peopleMin = 1;	// 인원수 최소값
-	let peopleMax = 4;	// 인원수 최대값
-	
-	let bodyCode = `
-	<div>
-		<h2>인원 선택</h2>
-		<input type="number" id="rest_rsv_count" name="rest_rsv_count" min="${peopleMin}" max="${peopleMax}" value="${peopleMin}">
-	</div>
-	<div>
-		<h2>예약 날짜 선택</h2>
-		<div id="restDateDiv">
-			<div id="restRsvDate">
-				<input type="date" id="rest_rsv_date" name="rest_rsv_date" 
-						min="${year}-${month}-${dayZero}" value="${year}-${month}-${dayZero}">
-			</div>
-		</div>
-	</div>
-	<div>
-		<div id="selectTimeDiv"></div>
-	</div>
-	`;
-	
-	$('#rest-left-modal-body').html(bodyCode);
-}
-
-getTimeSelectList = function(res)
-{
-	// 시간이 한 자리 수인 경우 앞에 0을 붙여 두자리 숫자로 만들어준다.
-	let openTime = res.rest_time.trim().substring(0, 2).padStart(2, "0");
-	let endTime = res.rest_time.trim().slice(-5,-3);
-	
-	var strHours = `
-	<label for="rest_rsv_time">예약 시간 선택</label><br>
-	<select name="rest_rsv_time" id="rest_rsv_time" size="10">`;
-	
-	for(var i = openTime ; i <= endTime; i++)
-	{
-		if(i == openTime)
-		{
-			strHours += `<option value="${openTime}:00" selected>${openTime}:00</option>`;
-		} else
-		{
-			let time = i.toString().padStart(2, "0");
-    	    strHours += `<option value="${time}:00">${time}:00</option>`;
-		}
-	}
-	
-	strHours += 
-	`</select>`;
- 
-	 $("#selectTimeDiv").html(strHours);
-}
-
-reserveRestaurant = function()
-{
-	let rest_rsv_date = $('#rest_rsv_date').val();
-	let rest_rsv_time = $('#rest_rsv_time').val();
-	let rest_rsv_count = $('#rest_rsv_count').val();
-	
-	$.ajax
-	({
-		url: `${path}/reserve/restaurantReserve.do`,
-		type: 'POST',
-		data: 
-		{
-			'rest_rsv_date' : rest_rsv_date,
-			'rest_rsv_time' : rest_rsv_time,
-			'rest_rsv_count' : rest_rsv_count,
-			'mem_id' : mem_id,
-			'rest_no' : rest_no
-		},
-		success: function(res)
-		{
-			alert(`${rest_rsv_date} / ${rest_rsv_time} 예약 완료되었습니다.`);
-			$('#hotelDetailModal').modal('hide');
 		},
 		error: function(xhr)
 		{
 			console.log(xhr);
 		}
 	})
-	
 }
