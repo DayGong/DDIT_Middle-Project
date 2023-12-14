@@ -33,7 +33,7 @@ public class WithdrawMember extends HttpServlet {
 		MemberVO memVo = new MemberVO();
 
 		memVo.setMem_id(memId);
-		
+		 
 		if(memPass.equals(checkPass)) {
 			
 			// 회원 정보를 DB에 insert한다.

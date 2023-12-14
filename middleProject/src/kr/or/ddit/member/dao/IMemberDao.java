@@ -21,7 +21,7 @@ public interface IMemberDao {
 	 * @return 성공 시 반환값: 1, 실패 시 반환값: 0
 	 */
 	public int updateMember(MemberVO memVo);
-	
+	 
 	/**
 	 * 회원의 ID를 받아 회원의 탈퇴 여부를 0으로 변경하는 메서드
 	 * (0은 탈퇴한 회원, 1은 기존 회원)

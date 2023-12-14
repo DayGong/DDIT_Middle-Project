@@ -10,7 +10,7 @@
   <h1>My Page</h1>
   <p>임시화면 입니다 ~ </p>
 </div>
-
+ 
 <div class="topnav">
   <a href="#">Link</a>
   <a href="#">Link</a>

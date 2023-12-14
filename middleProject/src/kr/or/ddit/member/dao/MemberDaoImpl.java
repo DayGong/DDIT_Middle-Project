@@ -78,7 +78,7 @@ public class MemberDaoImpl implements IMemberDao
 		{
 			e.printStackTrace();
 		}
-		finally
+		finally 
 		{
 			if(session != null) session.close();
 		}
