@@ -42,36 +42,45 @@ public class LoginKakao extends HttpServlet {
 		memVo.setMem_mail(memMail);
 		memVo.setMem_addr(memAddr);
 		
-		// 회원 정보를 DB에 insert한다.
-		IMemberService service = MemberServiceImpl.getInstance();
-		int result = service.insertMember(memVo);	// 결과값 받기
-		
-		if(result> 0)
-		{
-			MemberVO LoginMemberVo = service.getLoginMember(memVo);
-			session = request.getSession();
-			if(LoginMemberVo!=null) 
-			{
-				session.setAttribute("loginMember", LoginMemberVo);
-				session.setAttribute("check", "true");
-				session.setAttribute("tab", "member");
-			}else 
-			{
-			//로그인 실패
-				session.setAttribute("check", "false");
-			}
-			//view 페이지로 이동
-			request.getRequestDispatcher("/view/login_out/loginMain.jsp").forward(request, response);	
-		}
-		
-		else {
-			
-			// 결과값을 request에 저장하기
-			request.setAttribute("result", result);
-			request.getRequestDispatcher("/view/login_out/result.jsp").forward(request, response);
-		}
-		
-	}
+		 // 회원 정보가 이미 있는지 확인
+        IMemberService service = MemberServiceImpl.getInstance();
+        MemberVO checkMember = service.getSelectMember(memId);
+
+        if (checkMember == null) {
+            // 회원 정보가 없으면 새로 가입
+            int result = service.insertMember(memVo);
+
+            if (result > 0) {
+                // 가입 성공
+            	checkMember = service.getLoginMember(memVo);
+
+                if (checkMember != null) {
+                    session.setAttribute("loginMember", checkMember);
+                    session.setAttribute("check", "true");
+                    session.setAttribute("tab", "member");
+                } else {
+                    // 로그인 실패
+                    session.setAttribute("check", "false");
+                }
+
+                // view 페이지로 이동
+                request.getRequestDispatcher("/view/login_out/loginMain.jsp").forward(request, response);
+            } else {
+                // 가입 실패
+                request.setAttribute("result", result);
+                request.getRequestDispatcher("/view/login_out/result.jsp").forward(request, response);
+            }
+        } else {
+            // 이미 가입된 회원이라면 로그인 처리
+            session.setAttribute("loginMember", checkMember);
+            session.setAttribute("check", "true");
+            session.setAttribute("tab", "member");
+
+            // view 페이지로 이동
+            request.getRequestDispatcher("/view/login_out/loginMain.jsp").forward(request, response);
+        }
+    }
+
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
