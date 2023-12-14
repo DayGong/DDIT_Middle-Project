@@ -40,16 +40,16 @@ $(function() {
 		// --------------------------------------------------------------
 		
 		// 식당 예약 테이블 폼
-		memberRestaurantReserveForm();
+		// memberRestaurantReserveForm();
 		
 		// 식당 예약 List를 테이블 <tbody>에 넣기
-		addMemberRestaurantReserve();
+		// addMemberRestaurantReserve();
 		
 		// 식당 예약 취소 테이블 폼
-		memberRestaurantReserveCancelForm();
+		// memberRestaurantReserveCancelForm();
 		
 		// 식당 예약 취소 List를 테이블 <tbody>에 넣기
-		addMemberRestaurantReserveCancel();
+		// addMemberRestaurantReserveCancel();
 	//})
 	
 })
@@ -136,12 +136,13 @@ hotelReserveCancel = function(hotel_rsv_no)
 		},
 		success: function()
 		{
-			alert('숙소 예약이 취소되었습니다.');
-			location.href=`${path}/reserveBtnTemp.jsp`; // 이동할 회원 관리 페이지
+			swal("숙소 예약이 취소되었습니다.", "", "success");
+			// alert("숙소 예약이 취소되었습니다.");
+			// location.href=`${path}/reserveBtnTemp.jsp`; // 이동할 회원 관리 페이지
 		},
 		error: function(xhr)
 		{
-			console.log('식당 예약 취소 실패 ==> ' + xhr);
+			console.log('숙소 예약 취소 실패 ==> ' + xhr);
 		}
 	})
 }

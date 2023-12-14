@@ -85,6 +85,8 @@
 	</div>
 </div><!-- 메인 이미지 슬라이드 css 끝 -->
 
+<jsp:include page="/view/main/scrollup.jsp" />
+
 <!-- 동영상 자동 재생(height 자동 조절 안 됨 - 수정해보다가 안 되면 발표 화면에 맞춰서 고정값 넣기) -->
 <div id="videoArea">
 	<iframe class="videoArea" src="https://www.youtube.com/embed/Vh6UyH1TAEY?si=-enLIog4Wzto0soU&amp;controls=0&mute=1&autoplay=1&playlist=Vh6UyH1TAEY&loop=1" 

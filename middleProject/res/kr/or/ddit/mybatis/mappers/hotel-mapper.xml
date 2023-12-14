@@ -14,12 +14,17 @@
 		WHERE hotel_no = #{hotel_no}
 	</update>
 	
+	<update id="plusHotelRoom" parameterType="int">
+		UPDATE hotel SET hotel_room_count = hotel_room_count + 1
+		WHERE hotel_no = #{hotel_no}
+	</update>
+	
 	<select id="getHotelRoom" parameterType="Map" resultType="int">
 		SELECT count(*) FROM hotel h, hotel_reserve hr
 		WHERE h.hotel_no = hr.hotel_no
 		AND 
 		<![CDATA[
-			(HOTEL_RSV_STARTDATE <= #{startDate} AND HOTEL_RSV_ENDDATE >= #{endDate})
+			(hr.HOTEL_RSV_STARTDATE <= #{startDate} AND hr.HOTEL_RSV_ENDDATE >= #{endDate})
 		]]>
 		AND hr.hotel_rsv_state = 1
 	</select>
