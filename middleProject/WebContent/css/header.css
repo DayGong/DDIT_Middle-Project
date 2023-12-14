@@ -4,9 +4,32 @@ ul li {
 	list-style: none;
 }
 
-a {
+.menu_li {
 	text-decoration: none;
 	color:#333;
+}
+
+#menu {
+	font: bold 16px "malgun gothic";
+	width: 800px;
+	height: 50%;
+	color: black;
+	line-height: 50px;
+	margin: 0 auto;
+	text-align: center;
+	top: 150px; 
+	left: 2px;
+	padding: 10px;
+	z-index: 100;
+}
+
+#menu ul {
+	list-style: none;
+	padding: 0;
+}
+
+#menu ul li {
+	margin-bottom: 5px;
 }
 
 #menu > ul > li {
@@ -38,7 +61,7 @@ a {
 	width: 30px;
 }
 
-#links a {
+#links .menu_li {
 	margin-left: 15px; /* 링크 사이 간격 조정 */
 	font-size: 15px;
 	text-decoration: none;
@@ -57,7 +80,6 @@ header {
 	width: 100%;
 	z-index: 1000;
 	background-color: white;
-	
 	height: 130px;
 	transition: top 0.2s ease-in-out;
 }
@@ -79,6 +101,7 @@ header {
 #rightHeader {
 	display: flex;
 	align-items: center;
+	margin-left: 10%;
 	margin-right: 20px;
 	height :100%;
 }
@@ -90,22 +113,6 @@ header {
 	position: relative;
 	top: -20px;
 	height :45%;
-}
-
-#menu {
-	font: bold 16px "malgun gothic";
-	width: 800px;
-	height: 50%;
-	color: black;
-	line-height: 50px;
-	margin: 0 auto;
-	text-align: center;
-}
-
-#links a {
-	margin-left: 15px;
-	text-decoration: none;
-	color: #333;
 }
 
 .login-form input[type="text"],
@@ -130,22 +137,6 @@ header {
 .login-form input[type="button"]:hover {
 	background-color: #0056b3;
 	border-color: #0056b3;
-}
-
-#menu {    
-	top: 150px; 
-	left: 2px;
-	padding: 10px;
-	z-index: 100;
-}
-
-#menu ul {
-	list-style: none;
-	padding: 0;
-}
-
-#menu ul li {
-	margin-bottom: 5px;
 }
 
 .login-form {

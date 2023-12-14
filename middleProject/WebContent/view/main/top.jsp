@@ -14,8 +14,8 @@
 <script src="<%= path %>/js/jquery-3.7.1.min.js"></script>
 <script src="<%= path %>/js/header.js"></script>
 
-<!-- 여러 화면에서 공통으로 사용할 css -->
-<link rel= "stylesheet"  href="<%= path %>/css/common.css">
+<!-- header css -->
+<link rel= "stylesheet"  href="<%= path %>/css/header.css">
 
 <!-- header scroll script -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -40,31 +40,37 @@
 		<!--  메뉴들의 자리입니다   --> 
 		<div id="menu">
 			<ul>
-				<li class="menu"><a href="#">관광명소</a>
+				<li class="menu"><a class="menu_li" href="#">대전알리미</a>
 					<ul>
-						<li ><a href="#">주요 관광지</a></li>
-						<li ><a href="#">식당</a></li>
-						<li ><a href="#">식박업소</a></li>
+						<li ><a class="menu_li" href="#">대전이야기</a></li>
+						<li ><a class="menu_li" href="#">여행도우미</a></li>
 					</ul>
 				</li>
-				<li class="menu"><a  href="#">문화의거리</a>
+				<li class="menu"><a class="menu_li" href="#">관광명소</a>
 					<ul>
-						<li ><a href="#">공연</a></li>
-						<li ><a href="#">전시</a></li>
-						<li ><a href="#">축제</a></li>
+						<li ><a class="menu_li" href="#">주요 관광지</a></li>
+						<li ><a class="menu_li" href="#">식당</a></li>
+						<li ><a class="menu_li" href="#">식박업소</a></li>
 					</ul>
 				</li>
-				<li class="menu"><a href="#">게시판</a>
+				<li class="menu"><a class="menu_li" href="#">문화의거리</a>
 					<ul>
-						<li ><a href="#">공지게시판</a></li>
-						<li ><a href="#">후기게시판</a></li>
+						<li ><a class="menu_li" href="#">공연</a></li>
+						<li ><a class="menu_li" href="#">전시</a></li>
+						<li ><a class="menu_li" href="#">축제</a></li>
 					</ul>
 				</li>
-				<li class="menu"><a  href="#">마이페이지</a>
+				<li class="menu"><a class="menu_li" href="#">게시판</a>
 					<ul>
-						<li ><a href="#">내정보</a></li>
-						<li ><a href="#">예약조회</a></li>
-						<li ><a href="#">내 캘린더</a></li>
+						<li ><a class="menu_li" href="#">공지게시판</a></li>
+						<li ><a class="menu_li" href="#">후기게시판</a></li>
+					</ul>
+				</li>
+				<li class="menu"><a class="menu_li" href="#">마이페이지</a>
+					<ul>
+						<li ><a class="menu_li" href="#">내정보</a></li>
+						<li ><a class="menu_li" href="#">예약조회</a></li>
+						<li ><a class="menu_li" href="#">내 캘린더</a></li>
 					</ul>
 				</li>
 			</ul>
