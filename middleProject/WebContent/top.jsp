@@ -23,14 +23,15 @@
 </head>
 <body>
 <!--  메인 상단 메뉴바(헤더) 시작   -->
-<header>
+<header class="nav-down">
 	<div id ="leftHeader">
 		<div class="blank"></div>
 
 		<!--  로고 자리입니다   -->
-		<div id="logo">
+		<div id="logo" onclick="location.href='index.jsp'">
 			<img src= "<%=path %>/images/header/RogoImg.png" alt="대전관광">
 		</div>
+		
 		<div class="blank"></div>
 	</div>
 
