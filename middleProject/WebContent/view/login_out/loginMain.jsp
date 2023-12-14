@@ -79,7 +79,7 @@
 			
 			<!--아이디,비밀번호 찾기 / 회원가입  -->
 		 	<a href="<%=request.getContextPath()%>/view/login_out/getId.jsp">아이디 까먹었슈? </a><br><br>
-		 	<a href="<%=request.getContextPath()%>/forgetPass" class="login_forgot">비밀번호 까먹었슈? </a><br><br>
+		 	<a href="<%=request.getContextPath()%>/view/login_out/getPassword.jsp" class="login_forgot">비밀번호 까먹었슈? </a><br><br>
 			<a href="<%=request.getContextPath()%>/view/signup/memberSignup.jsp">회원가입</a>
 	</form> 
 	
