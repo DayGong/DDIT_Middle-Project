@@ -66,13 +66,13 @@ public class MemberDaoImpl implements IMemberDao
 	} // updateMember 끝
 
 	@Override
-	public int deleteMember(String memId)
+	public int deleteMember(MemberVO memVo)
 	{
 		int cnt = 0;
 		session = MybatisUtil.getSqlSession();
 		try
 		{
-			cnt = session.update("member.deleteMember", memId);
+			cnt = session.update("member.deleteMember", memVo);
 			if(cnt > 0 ) session.commit();
 		} catch (Exception e)
 		{

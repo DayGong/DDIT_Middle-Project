@@ -26,7 +26,7 @@
       <p>로그인한 사람 정보 들어가면 아쥬 좋을거같아요</p>
 
 
-      <a href="<%=request.getContextPath()%>/view/update/memberUpdateMain.jsp">회원수정</a>
+      <a href="<%=request.getContextPath()%>/member/updateMember.do">회원수정</a>
       <a href="<%=request.getContextPath()%>/member/logoutMember.do">로그아웃</a> 
       <a href="<%=request.getContextPath()%>/view/withdraw/memberWithdraw.jsp">탈퇴</a>
       

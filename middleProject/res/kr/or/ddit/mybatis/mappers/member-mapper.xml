@@ -32,7 +32,7 @@
 	</update>
 	
 	<!-- 회원 탈퇴 : update를 통해  mem_state를 탈퇴(0)로 바꿈-->
-	<update id ="deleteMember" parameterType="string">
+	<update id ="deleteMember" parameterType="memVo">
 		update member set mem_state ='0' where mem_id = #{mem_id} 
 	</update>
 	

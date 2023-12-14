@@ -28,7 +28,7 @@ public interface IMemberService {
 	 * @param memId 탈퇴 여부를 변경할 회원의 ID
 	 * @return 성공 시 반환값: 1, 실패 시 반환값: 0
 	 */
-	public int deleteMember(String memId);
+	public int deleteMember(MemberVO memVo);
 	
 	/**
 	 * 회원의 정보를 읽어 MemberVO객체로 반환하는 메서드

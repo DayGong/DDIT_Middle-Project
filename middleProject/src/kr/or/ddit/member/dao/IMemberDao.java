@@ -29,7 +29,7 @@ public interface IMemberDao {
 	 * @param memId 탈퇴 여부를 변경할 회원의 ID
 	 * @return 성공 시 반환값: 1, 실패 시 반환값: 0
 	 */
-	public int deleteMember(String memId);
+	public int deleteMember(MemberVO memVo);
 	   
 	
 	/**
