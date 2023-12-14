@@ -39,7 +39,7 @@ public class LoginKakao extends HttpServlet {
 		memVo.setMem_name(memName);
 		memVo.setMem_tel(memTel);
 		memVo.setMem_mail(memMail);
-		memVo.setMem_addr(memAddr);
+		memVo.setMem_addr(memAddr); 
 		
 		// 회원 정보를 DB에 insert한다.
 		IMemberService service = MemberServiceImpl.getInstance();
