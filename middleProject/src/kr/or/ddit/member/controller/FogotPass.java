@@ -57,7 +57,7 @@ public class FogotPass extends HttpServlet {
 		}
 		
 		// view페이지로 이동
-		request.getRequestDispatcher("view/login_out/loginMain.jsp").forward(request, response);
+		request.getRequestDispatcher("/view/login_out/loginMain.jsp").forward(request, response);
 		
 	
 	
