@@ -1,6 +1,7 @@
 package kr.or.ddit.member.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -45,9 +46,30 @@ public class LoginKakao extends HttpServlet {
 		IMemberService service = MemberServiceImpl.getInstance();
 		int result = service.insertMember(memVo);	// 결과값 받기
 		
-		// 결과값을 request에 저장하기
-		request.setAttribute("result", result);
-		request.getRequestDispatcher("/view/login_out/result.jsp").forward(request, response);
+		if(result> 0)
+		{
+			MemberVO LoginMemberVo = service.getLoginMember(memVo);
+			session = request.getSession();
+			if(LoginMemberVo!=null) 
+			{
+				session.setAttribute("loginMember", LoginMemberVo);
+				session.setAttribute("check", "true");
+				session.setAttribute("tab", "member");
+			}else 
+			{
+			//로그인 실패
+				session.setAttribute("check", "false");
+			}
+			//view 페이지로 이동
+			request.getRequestDispatcher("/view/login_out/loginMain.jsp").forward(request, response);	
+		}
+		
+		else {
+			
+			// 결과값을 request에 저장하기
+			request.setAttribute("result", result);
+			request.getRequestDispatcher("/view/login_out/result.jsp").forward(request, response);
+		}
 		
 	}
 
