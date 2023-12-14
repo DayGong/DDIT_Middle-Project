@@ -12,7 +12,7 @@
 		type: 'GET',
 		success: function()
 		{
-			alert(`${year}-${month}-${dayZero} 일괄 체크 아웃 완료`);
+			swal({title: "일괄 체크 아웃 완료", text: `${year}-${month}-${dayZero}`, icon: "success"});
 		},
 		error: function(xhr)
 		{
@@ -24,33 +24,35 @@
 // 회원 페이지 시작
 $(function() {
 	
-	//$(document).on('click', '#loadMemberPage', function(){
-		// 숙소 예약 테이블 폼
-		memberHotelReserveForm();
+	/*
+	// 숙소 예약 테이블 폼
+	memberHotelReserveForm();
 	
-		// 숙소 예약 List를 테이블 <tbody>에 넣기
-		addMemberHotelReserve();
+	// 숙소 예약 List를 테이블 <tbody>에 넣기
+	addMemberHotelReserve();
 
-		// 숙소 예약 취소 테이블 폼
-		memberHotelReserveCancelForm();
+	// 숙소 예약 취소 테이블 폼
+	memberHotelReserveCancelForm();
 		
-		// 숙소 예약 취소 List를 테이블 <tbody>에 넣기
-		addMemberHotelReserveCancel();
+	// 숙소 예약 취소 List를 테이블 <tbody>에 넣기
+	addMemberHotelReserveCancel();
+	*/
+	// --------------------------------------------------------------
+	
+	// 식당 날짜가 지나면 예약이 지난 것으로 되는 것
+	changeDateReserveState();
 		
-		// --------------------------------------------------------------
+	// 식당 예약 테이블 폼
+	memberRestaurantReserveForm();
 		
-		// 식당 예약 테이블 폼
-		// memberRestaurantReserveForm();
+	// 식당 예약 List를 테이블 <tbody>에 넣기
+	addMemberRestaurantReserve();
 		
-		// 식당 예약 List를 테이블 <tbody>에 넣기
-		// addMemberRestaurantReserve();
+	// 식당 예약 취소 테이블 폼
+	memberRestaurantReserveCancelForm();
 		
-		// 식당 예약 취소 테이블 폼
-		// memberRestaurantReserveCancelForm();
-		
-		// 식당 예약 취소 List를 테이블 <tbody>에 넣기
-		// addMemberRestaurantReserveCancel();
-	//})
+	// 식당 예약 취소 List를 테이블 <tbody>에 넣기
+	addMemberRestaurantReserveCancel();
 	
 })
 
@@ -137,7 +139,6 @@ hotelReserveCancel = function(hotel_rsv_no)
 		success: function()
 		{
 			swal("숙소 예약이 취소되었습니다.", "", "success");
-			// alert("숙소 예약이 취소되었습니다.");
 			// location.href=`${path}/reserveBtnTemp.jsp`; // 이동할 회원 관리 페이지
 		},
 		error: function(xhr)
@@ -239,7 +240,7 @@ addMemberRestaurantReserve = function()
 {
 	$.ajax
 	 ({
-		 url: `${path}/reserve/restaurantMemberReserveCancelList.do`,
+		 url: `${path}/reserve/restaurantMemberReserveList.do`,
 		 type: 'POST',
 		 data: 
 		 {
@@ -298,8 +299,8 @@ restaurantReserveCancel = function(rest_rsv_no)
 		},
 		success: function()
 		{
-			alert('식당 예약이 취소되었습니다.');
-			location.href=`${path}/reserveBtnTemp.jsp`; // 이동할 회원 관리 페이지
+			swal("식당 예약이 취소되었습니다.", "", "success");
+			// location.href=`${path}/reserveBtnTemp.jsp`; // 이동할 회원 관리 페이지
 		},
 		error: function(xhr)
 		{
@@ -310,10 +311,28 @@ restaurantReserveCancel = function(rest_rsv_no)
 
 // --------------------------------------------------------------------------------------
 
+// 식당 날짜가 지나면(당일 전) 예약이 지난 것으로 되는 것
+changeDateReserveState = function()
+{
+	$.ajax
+	({
+		url: `${path}/reserve/restaurantMemberReserveList.do`,
+		type: 'GET',
+		success: function() 
+		{
+			console.log('당일 이전 예약 상태 0으로 변경');
+		},
+		error: function(xhr)
+		{
+			console.log('식당 날짜가 지나면 예약이 0으로 되는 것 실패 ==> ' + xhr);
+		}
+	})
+}
+
 // 식당 예약 취소 테이블 폼
  memberRestaurantReserveCancelForm = function()
  {
-	 restaurantCancelForm = `
+	restaurantCancelForm = `
 	<table border="1">
 		<tr>
 			<td>식당예약번호</td><td>식당명</td><td>예약날짜</td>

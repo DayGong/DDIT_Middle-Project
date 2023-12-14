@@ -42,4 +42,11 @@
         ORDER BY rr.rest_rsv_date DESC
 	</select>
 	
+	<update id="changeDayReserveState">
+		UPDATE restaurant_reserve SET rest_rsv_state = 0
+		<![CDATA[
+			WHERE rest_rsv_date <= TO_CHAR(SYSDATE, 'yyyy-MM-dd')
+		]]>
+	</update>
+	
 </mapper>

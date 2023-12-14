@@ -56,4 +56,11 @@ public interface IReserveRestaurantService {
 	 */
 	public int reserveRestaurantCancel(int rest_rsv_no);
 	
+	/**
+	 * 당일 전에 해당하는 식당의 예약을 0으로 변경하는 메서드 
+	 * 
+	 * @return 반환값 성공 시: 1, 실패 시: 0;
+	 */
+	public int changeDayReserveState();
+	
 }

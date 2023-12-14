@@ -63,5 +63,10 @@ public class ReserveRestaurantServiceImpl implements IReserveRestaurantService
 	{
 		return dao.reserveRestaurantCancel(rest_rsv_no);
 	}
+
+	@Override
+	public int changeDayReserveState() {
+		return dao.changeDayReserveState();
+	}
 	
 }

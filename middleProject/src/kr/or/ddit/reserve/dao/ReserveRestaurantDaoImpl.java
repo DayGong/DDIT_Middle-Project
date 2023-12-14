@@ -187,4 +187,31 @@ public class ReserveRestaurantDaoImpl implements IReserveRestaurantDao
 		return res;
 	}
 
+	@Override
+	public int changeDayReserveState() {
+		SqlSession session = null;
+		int res = 0;	// 결과값을 저장할 변수
+		
+		try 
+		{
+			session = MybatisUtil.getSqlSession();
+			
+			res = session.update("restRsvVo.changeDayReserveState");
+			
+			session.commit();
+			
+		} catch (Exception e) 
+		{
+			e.printStackTrace();
+		} finally 
+		{
+			if (session != null)
+			{
+				session.close();
+			}
+		}
+		
+		return res;
+	}
+
 }

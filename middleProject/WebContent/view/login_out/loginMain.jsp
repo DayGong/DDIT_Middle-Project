@@ -15,6 +15,10 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- 예쁜 Alert창 -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <style type="text/css">
  iframe {
    width: 100%;
@@ -126,11 +130,11 @@
 			      url: '/v1/user/unlink',
 			      success: function(res) 
 			      {
-			        alert('success: ' + JSON.stringify(res))
+					  alert('success: ' + JSON.stringify(res))
 			      },
 			      fail: function(err) 
 			      {
-			        alert('fail: ' + JSON.stringify(err))
+			          alert('fail: ' + JSON.stringify(err))
 			      },
 			    })
 			  }

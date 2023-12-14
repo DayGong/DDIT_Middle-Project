@@ -22,18 +22,25 @@ public class RestaurantMemberReserveList extends HttpServlet {
 		
 		IReserveRestaurantService service = ReserveRestaurantServiceImpl.getInstance();
 		
+		int result = service.changeDayReserveState();
+		
+		request.setAttribute("result", result);
+		
+		request.getRequestDispatcher("/view/result.jsp").forward(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		
+		IReserveRestaurantService service = ReserveRestaurantServiceImpl.getInstance();
+		
 		String mem_id = request.getParameter("mem_id");
 		
 		List<Map<String, String>> restRsvList = service.getMemberRestaurantReserve(mem_id);
-		System.out.println(restRsvList);
 		
 		request.setAttribute("restRsvList", restRsvList);
 		
 		request.getRequestDispatcher("/view/reserve/restaurantReserveList.jsp").forward(request, response);
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
 	}
 
 }
