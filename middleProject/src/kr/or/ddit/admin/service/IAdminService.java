@@ -1,13 +1,14 @@
-package kr.or.ddit.admin.service;
+package kr.or.ddit.admin.service; 
 
 import kr.or.ddit.vo.AdminVO;
 
 public interface IAdminService {
 	/**
-	 * AdminVO객체를 받아 관리자 정보를 저장하는 메서드
+	 * 관리자  ID,PASSWORD가 저장된 AdminVo객체를 인수값으로 받아서 해당관리자를
+	 * 검색하여 반환하는 메서드
 	 * 
-	 * @param adminVo
-	 * @return 성공 시 반환값: 1, 실패 시 반환값: 0
+	 * @param adminVo 검색할 관리자ID,PASS가 저장된 AdminVO객체
+	 * @return 검색된 관리자정보가 저장된 AdminVO객체
 	 */
-	public int insertAdmin(AdminVO adminVo);
+	public AdminVO getLoginAdmin(AdminVO adminVo);
 }

@@ -1,4 +1,4 @@
-package kr.or.ddit.admin.dao;
+package kr.or.ddit.admin.dao; 
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -22,23 +22,23 @@ public class AdminDaoImpl implements IAdminDao
 	// 싱글톤 끝.
 
 	@Override
-	public int insertAdmin(AdminVO adminVo) 
+	public AdminVO getLoginAdmin(AdminVO adminVo) 
 	{
+		AdminVO adminVO =null;
 		session = MybatisUtil.getSqlSession();
-		int cnt = 0; //결과값을 저장하는 변수
+		
 		try 
 		{
-			cnt = session.insert("admin.insertAdmin", adminVo);
-			if(cnt > 0) session.commit();
+			adminVO = session.selectOne("admin.getLoginAdmin", adminVo);
 		} catch (Exception e) 
 		{
 			e.printStackTrace();
-		}
-		finally 
+		} finally
 		{
-			if(session != null) session.close();
+			if(session!=null) session.close();
 		}
-		return cnt;
-	}	//insertAdmin 끝
+		return adminVO;
+	}
 
+	
 }

@@ -91,4 +91,14 @@ public class ReserveServiceImpl implements IReserveService
 		return dao.reserveRestaurantCancel(rest_rsv_no);
 	}
 
+	@Override
+	public List<Map<String, String>> getMemberHotelReserveCancel(String mem_id) {
+		return dao.getMemberHotelReserveCancel(mem_id);
+	}
+
+	@Override
+	public List<Map<String, String>> getMemberRestaurantReserveCancel(String mem_id) {
+		return dao.getMemberRestaurantReserveCancel(mem_id);
+	}
+
 }

@@ -92,8 +92,14 @@
 <!-- 숙소 예약 목록 띄울 div (숙소 예약 창에 띄움)-->
 <div id="memberHotelReserveList"></div>
 
+<!-- 숙소 예약 취소 및 완료 목록을 띄울 div -->
+<div id="memberHotelCancelList"></div>
+
 <!-- 식당 예약 목록 띄울 div (식당 예약 창에 띄움)-->
 <div id="memberRestaurantReserveList"></div>
+
+<!-- 식당 예약 취소 목록 띄울 div (식당 예약 창에 띄움)-->
+<div id="memberRestaurantCancelReserveList"></div>
 
 </body>
 </html>

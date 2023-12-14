@@ -34,4 +34,12 @@
 		WHERE rest_rsv_no = #{rest_rsv_no}
 	</update>
 	
+	<select id="getMemberRestaurantReserveCancel" parameterType="string" resultType="map">
+		SELECT * FROM restaurant_reserve rr, restaurant r
+		WHERE r.rest_no = rr.rest_no 
+			AND rr.mem_id = 'a001'	
+			AND rr.rest_rsv_state = 0
+        ORDER BY rr.rest_rsv_date DESC
+	</select>
+	
 </mapper>

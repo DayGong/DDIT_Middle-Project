@@ -34,4 +34,12 @@
 		WHERE hotel_rsv_no = #{hotel_rsv_no}
 	</update>
 	
+	<select id="getMemberHotelReserveCancel" parameterType="string" resultType="map">
+		SELECT * FROM hotel_reserve hr, hotel h
+		WHERE h.hotel_no = hr.hotel_no 
+			AND hr.mem_id = #{mem_id}
+			AND hr.hotel_rsv_state = 0
+		ORDER BY hr.hotel_rsv_startdate DESC
+	</select>
+	
 </mapper>

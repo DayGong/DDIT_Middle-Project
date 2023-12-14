@@ -337,5 +337,51 @@ public class ReserveDaoImpl implements IReserveDao
 		
 		return res;
 	}
+
+	@Override
+	public List<Map<String, String>> getMemberHotelReserveCancel(String mem_id) {
+		List<Map<String, String>> memberRsvCancelList = new ArrayList<Map<String,String>>();
+		SqlSession session = null;
+		
+		try {
+			session = MybatisUtil.getSqlSession();
+			
+			memberRsvCancelList = session.selectList("hotelRsvVo.getMemberHotelReserveCancel", mem_id);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally 
+		{
+			if (session != null)
+			{
+				session.close();
+			}
+		}
+		
+		return memberRsvCancelList;
+	}
+
+	@Override
+	public List<Map<String, String>> getMemberRestaurantReserveCancel(String mem_id) {
+		List<Map<String, String>> memberRsvCancelList = new ArrayList<Map<String,String>>();
+		SqlSession session = null;
+		
+		try {
+			session = MybatisUtil.getSqlSession();
+			
+			memberRsvCancelList = session.selectList("restRsvVo.getMemberRestaurantReserveCancel", mem_id);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally 
+		{
+			if (session != null)
+			{
+				session.close();
+			}
+		}
+		
+		return memberRsvCancelList;
+	}
 	
 }
