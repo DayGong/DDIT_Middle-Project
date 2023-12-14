@@ -1,4 +1,4 @@
-package kr.or.ddit.admin.dao;
+package kr.or.ddit.admin.dao; 
 
 import org.apache.ibatis.session.SqlSession;
 
