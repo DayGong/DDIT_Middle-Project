@@ -1,8 +1,6 @@
 package kr.or.ddit.reserve.controller;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.beanutils.BeanUtils;
 
-import kr.or.ddit.reserve.service.IReserveService;
-import kr.or.ddit.reserve.service.ReserveServiceImpl;
+import kr.or.ddit.reserve.service.IReserveHotelService;
+import kr.or.ddit.reserve.service.ReserveHotelServiceImpl;
 import kr.or.ddit.vo.HotelReserveVO;
 import kr.or.ddit.vo.HotelVO;
 
@@ -26,7 +24,7 @@ public class HotelReserve extends HttpServlet
 	{
 		request.setCharacterEncoding("utf-8");
 		
-		IReserveService service = ReserveServiceImpl.getInstance();
+		IReserveHotelService service = ReserveHotelServiceImpl.getInstance();
 		
 		int hotel_no = Integer.parseInt(request.getParameter("hotel_no"));
 		
@@ -53,7 +51,7 @@ public class HotelReserve extends HttpServlet
 			e.printStackTrace();
 		}
 		
-		IReserveService service = ReserveServiceImpl.getInstance();
+		IReserveHotelService service = ReserveHotelServiceImpl.getInstance();
 		
 		int result = service.reserveHotel(hotelRsvVo);
 		

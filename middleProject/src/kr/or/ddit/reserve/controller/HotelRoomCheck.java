@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.or.ddit.reserve.service.IReserveService;
-import kr.or.ddit.reserve.service.ReserveServiceImpl;
+import kr.or.ddit.reserve.service.IReserveHotelService;
+import kr.or.ddit.reserve.service.ReserveHotelServiceImpl;
 
 /**
  * 입력한 날짜에 남은 객실이 있는지 확인하고 예약 완료 후 차감하는 서블릿
@@ -30,7 +30,7 @@ public class HotelRoomCheck extends HttpServlet {
 		dateMap.put("startDate", startDate);
 		dateMap.put("endDate", endDate);
 		
-		IReserveService service = ReserveServiceImpl.getInstance();
+		IReserveHotelService service = ReserveHotelServiceImpl.getInstance();
 		
 		int usedRoom = service.getHotelRoom(dateMap);
 		
@@ -46,7 +46,7 @@ public class HotelRoomCheck extends HttpServlet {
 		
 		int hotel_no = Integer.parseInt(request.getParameter("hotel_no"));
 		
-		IReserveService service = ReserveServiceImpl.getInstance();
+		IReserveHotelService service = ReserveHotelServiceImpl.getInstance();
 		
 		int result = service.subtractHotelRoom(hotel_no);
 		

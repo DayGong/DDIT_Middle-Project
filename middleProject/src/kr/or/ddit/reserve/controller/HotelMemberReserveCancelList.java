@@ -10,9 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.or.ddit.reserve.service.IReserveService;
-import kr.or.ddit.reserve.service.ReserveServiceImpl;
-
+import kr.or.ddit.reserve.service.IReserveHotelService;
+import kr.or.ddit.reserve.service.ReserveHotelServiceImpl;
 
 @WebServlet("/reserve/hotelMemberReserveCancelList.do")
 public class HotelMemberReserveCancelList extends HttpServlet {
@@ -21,7 +20,7 @@ public class HotelMemberReserveCancelList extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		
-		IReserveService service = ReserveServiceImpl.getInstance();
+		IReserveHotelService service = ReserveHotelServiceImpl.getInstance();
 		
 		String mem_id = request.getParameter("mem_id");
 		

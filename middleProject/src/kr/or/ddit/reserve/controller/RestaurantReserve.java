@@ -1,6 +1,7 @@
 package kr.or.ddit.reserve.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.beanutils.BeanUtils;
 
-import kr.or.ddit.reserve.service.IReserveService;
-import kr.or.ddit.reserve.service.ReserveServiceImpl;
+import kr.or.ddit.reserve.service.IReserveRestaurantService;
+import kr.or.ddit.reserve.service.ReserveRestaurantServiceImpl;
 import kr.or.ddit.vo.RestaurantReserveVO;
 import kr.or.ddit.vo.RestaurantVO;
 
@@ -22,7 +23,7 @@ public class RestaurantReserve extends HttpServlet {
 	{
 		request.setCharacterEncoding("utf-8");
 		
-		IReserveService service = ReserveServiceImpl.getInstance();
+		IReserveRestaurantService service = ReserveRestaurantServiceImpl.getInstance();
 		
 		int rest_no = Integer.parseInt(request.getParameter("rest_no"));
 		
@@ -47,7 +48,7 @@ public class RestaurantReserve extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		IReserveService service = ReserveServiceImpl.getInstance();
+		IReserveRestaurantService service = ReserveRestaurantServiceImpl.getInstance();
 		
 		int result = service.reserveRestaurant(restRsvVo);
 		

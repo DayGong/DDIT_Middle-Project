@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.or.ddit.reserve.service.IReserveService;
-import kr.or.ddit.reserve.service.ReserveServiceImpl;
+import kr.or.ddit.reserve.service.IReserveRestaurantService;
+import kr.or.ddit.reserve.service.ReserveRestaurantServiceImpl;
 
 @WebServlet("/reserve/restaurantGetTime.do")
 public class RestaurantGetTime extends HttpServlet {
@@ -21,7 +21,7 @@ public class RestaurantGetTime extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		
-		IReserveService service = ReserveServiceImpl.getInstance();
+		IReserveRestaurantService service = ReserveRestaurantServiceImpl.getInstance();
 		
 		Map<String, String> selectedDate = new HashMap<String, String>();
 		selectedDate.put("rest_no", request.getParameter("rest_no"));
