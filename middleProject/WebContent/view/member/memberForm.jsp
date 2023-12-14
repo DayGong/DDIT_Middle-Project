@@ -27,7 +27,7 @@
 
 
       <a href="<%=request.getContextPath()%>/view/update/memberUpdateMain.jsp">회원수정</a>
-      <a href="<%=request.getContextPath()%>/member/logoutMember.do">로그아웃</a>
+      <a href="<%=request.getContextPath()%>/member/logoutMember.do">로그아웃</a> 
       <a href="<%=request.getContextPath()%>/view/withdraw/memberWithdraw.jsp">탈퇴</a>
       
     </div>
