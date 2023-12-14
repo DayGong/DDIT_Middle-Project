@@ -178,7 +178,7 @@
 	<a href="<%=request.getContextPath()%>/member/logoutMember.do">로그아웃</a>
 	<a href="<%=request.getContextPath()%>/view/member/memberForm.jsp">마이페이지</a>
 <%
-	} 
+	}  
 %>
 	
 
