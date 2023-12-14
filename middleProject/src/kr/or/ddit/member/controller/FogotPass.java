@@ -33,22 +33,27 @@ public class FogotPass extends HttpServlet {
 		// 결과값을 request에 저장
 		request.setAttribute("memMail", mail);
 		
-		try {
+		try 
+		{
 			// 메일보내기
 			SendPassMail.sendMail(mail);
 			
 			 // 새로운 임시 비밀번호 가져오기
 			String tempPass = SendPassMail.getNewPass();
 			
+			// 가져온 임시비밀번호와 아이디를 MemberVO객체에 저장한다.
 			MemberVO memVo = new MemberVO();
 			memVo.setMem_pass(tempPass);
 			memVo.setMem_id(memId);
 			
+			// 회원 정보를 DB에 insert한다.
 			int cnt = service.updatePass(memVo);
 			
-			if(cnt>0) {
+			if(cnt>0) 
+			{
 				System.out.println("임시번호 발급 완료");
-			}else {
+			}else 
+			{
 				System.out.println("임시번호 발급 실패");
 			}
 			

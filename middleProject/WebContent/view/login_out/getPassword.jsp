@@ -7,6 +7,7 @@
 <title>지가 찾아드릴게유</title>
 </head>
 <body>
+	<!-- 아이디로 메일주소를 받아서 비번찾기 -->
 	<form action="<%=request.getContextPath()%>/member/fogotPass.do" method="post">
 	가입시 입력한 아이디를 입력해주세요<br><br>
 	<input type="text" name="memId" placeholder="아이디" style="width:200px; height:20px;">

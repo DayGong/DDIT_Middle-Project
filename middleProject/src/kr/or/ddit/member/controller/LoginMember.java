@@ -44,6 +44,7 @@ public class LoginMember extends HttpServlet {
 		//로그인성공+저장
 		if(LoginMemberVo!=null) {
 			session.setAttribute("loginMember", LoginMemberVo);
+			
 		}
 		response.sendRedirect(request.getContextPath()+"/view/login_out/loginMain.jsp");
 	}

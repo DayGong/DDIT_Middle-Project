@@ -62,17 +62,20 @@ public class MemberServiceImpl implements IMemberService
 	}
 
 	@Override
-	public String getID(String memMail) {
+	public String getID(String memMail) 
+	{
 		return dao.getID(memMail);
 	}
 
 	@Override
-	public String setPassAddr(String memId) {
+	public String setPassAddr(String memId) 
+	{
 		return dao.setPassAddr(memId);
 	}
 
 	@Override
-	public int updatePass(MemberVO memVo) {
+	public int updatePass(MemberVO memVo) 
+	{
 		return dao.updatePass(memVo);
 	}
 

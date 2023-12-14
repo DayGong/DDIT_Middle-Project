@@ -13,16 +13,20 @@
 
 <script type="text/javascript">
 	//눈표시 클릭 시 패스워드 보이기 다시클릭하면 가려지기
-    $(function(){
-        $('.eyes').on('click', function(){
+    $(function()
+    {
+        $('.eyes').on('click', function()
+        {
             // 비밀번호 입력란의 타입을 'text' 또는 'password'로 변경
             var passwordInput = $('.input.password #password');
             var currentType = passwordInput.attr('type');
             
-            if (currentType === 'password') {
+            if (currentType === 'password') 
+            {
                 passwordInput.attr('type', 'text');
                 $(this).find('.fa-eye-slash').attr('class', 'fa fa-eye fa-lg');
-            } else {
+            } else 
+            {
                 passwordInput.attr('type', 'password');
                 $(this).find('.fa-eye').attr('class', 'fa fa-eye-slash fa-lg');
             }
@@ -39,7 +43,8 @@
 <body>
 <!-- 로그인 폼  -->
 <%
-    if(memVo == null){
+    if(memVo == null)
+    {
 %>
 	<form action="<%=request.getContextPath()%>/member/loginMember.do" method="post">
         	아이디 <input type="text" name="memId" placeholder="아이디"><br><br>
@@ -65,13 +70,17 @@
 	
 	<!-- 카카오 로그인 스크립트 -->
 	<script type="text/javascript">
-	  function unlinkApp() {
-	    Kakao.API.request({
+	  function unlinkApp() 
+	  {
+	    Kakao.API.request
+	    ({
 	      url: '/v1/user/unlink',
-	      success: function(res) {
+	      success: function(res) 
+	      {
 	        alert('success: ' + JSON.stringify(res))
 	      },
-	      fail: function(err) {
+	      fail: function(err) 
+	      {
 	        alert('fail: ' + JSON.stringify(err))
 	      },
 	    })
@@ -82,12 +91,16 @@
 	Kakao.init('e849d9640ad67395b31b38844f71b8eb'); //JavaScript 키입력
 	console.log(Kakao.isInitialized());
 	
-	  Kakao.Auth.createLoginButton({
+	  Kakao.Auth.createLoginButton
+	  ({
 	    container: '#kakao-login-btn',
-	    success: function(authObj) {
-	      Kakao.API.request({
+	    success: function(authObj) 
+	    {
+	      Kakao.API.request
+	      ({
 	        url: '/v2/user/me',
-	        success: function(result) {
+	        success: function(result) 
+	        {
 	          $('#result').append(result);
 	          id = result.id
 	          connected_at = result.connected_at
@@ -124,15 +137,18 @@
 	          $('#result').append(resultdiv);
 	          
 	       },
-	        fail: function(error) {
-	          alert(
+	        fail: function(error) 
+	        {
+	          alert
+	          (
 	            'login success, but failed to request user information: ' +
 	              JSON.stringify(error)
 	          )
 	        },
 	      })
 	    },
-	    fail: function(err) {
+	    fail: function(err) 
+	    {
 	      alert('failed to login: ' + JSON.stringify(err))
 	    },
 	  })
@@ -140,7 +156,8 @@
 	
 <!-- 로그인 성공시 -->
 <%
-	}else{
+	}else
+	{
 %>
 	<h3><%=memVo.getMem_name()%>님 어서오슈~</h3><br>
 
