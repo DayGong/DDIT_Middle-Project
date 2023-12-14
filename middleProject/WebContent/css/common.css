@@ -53,19 +53,27 @@ header {
 	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 	position: fixed;
 	top: 0;
-	height :13%;
+	/* height :13%; */
 	width: 100%;
 	z-index: 1000;
 	background-color: white;
+	
+	height: 130px;
+	transition: top 0.2s ease-in-out;
 }
 
 #logo {
 	margin-left: 100px;
+	cursor: pointer;
 }
 
 #logo img {
-	width: 250px;
+	width: 230px;
 	height: 120px;
+}
+
+.nav-up {
+    top: -130px;
 }
 
 #rightHeader {
@@ -75,7 +83,6 @@ header {
 	height :100%;
 }
  
-
 #links, #loginForm {
 	display: flex;
 	align-items: center;
