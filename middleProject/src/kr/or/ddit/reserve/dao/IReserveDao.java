@@ -82,6 +82,14 @@ public interface IReserveDao
 	 * @return 호텔 정보와 예약 정보가 담긴 List 객체
 	 */
 	public List<Map<String, String>> getMemberHotelReserve(String mem_id);
+	
+	/**
+	 * mem_id를 가진 사용자가 예약한 숙소 중 취소되거나 완료된 숙소 정보를 불러오는 메서드
+	 * 
+	 * @param mem_id 취소되거나 완료된 숙소 정보를 가져올 사용자의 ID
+	 * @return 취소되거나 완료된 숙소 정보가 담긴 List 객체
+	 */
+	public List<Map<String, String>> getMemberHotelReserveCancel(String mem_id);
 
 	/**
 	 * mem_id를 가진 사용자가 예약한  식당 정보를 불러오는 메서드
@@ -90,6 +98,14 @@ public interface IReserveDao
 	 * @return 식당 정보와 예약 정보가 담긴 List 객체
 	 */
 	public List<Map<String, String>> getMemberRestaurantReserve(String mem_id);
+	
+	/**
+	 * mem_id를 가진 사용자가 예약한  식당 중 취소되거나 완료된 식당 정보를 불러오는 메서드
+	 * 
+	 * @param mem_id 취소되거나 완료된 식당 정보를 가져올 사용자의 ID
+	 * @return 취소되거나 완료된 식당 정보가 담긴 List 객체
+	 */
+	public List<Map<String, String>> getMemberRestaurantReserveCancel(String mem_id);
 	
 	/**
 	 * 숙소 예약 번호를 불러와 예약을 취소하는 메서드
