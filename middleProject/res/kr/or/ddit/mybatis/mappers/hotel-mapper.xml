@@ -21,6 +21,7 @@
 		<![CDATA[
 			(HOTEL_RSV_STARTDATE <= #{startDate} AND HOTEL_RSV_ENDDATE >= #{endDate})
 		]]>
+		AND hr.hotel_rsv_state = 1
 	</select>
 	
 </mapper>
