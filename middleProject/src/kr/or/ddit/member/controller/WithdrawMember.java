@@ -15,7 +15,6 @@ import kr.or.ddit.vo.MemberVO;
 @WebServlet("/member/withdrawMember.do")
 public class WithdrawMember extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
@@ -33,7 +32,8 @@ public class WithdrawMember extends HttpServlet {
 		MemberVO memVo = new MemberVO();
 
 		memVo.setMem_id(memId);
-		 
+		memVo.setMem_pass(checkPass);
+		
 		if(memPass.equals(checkPass)) {
 			
 			// 회원 정보를 DB에 insert한다.

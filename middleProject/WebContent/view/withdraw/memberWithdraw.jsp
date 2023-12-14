@@ -21,6 +21,7 @@ $(() => {
             url: "<%=request.getContextPath()%>/member/withdrawMember.do",
             type: 'post',
             dataType: 'json',
+            data: { "check_pass": password },
             success: function(res) {
             	if(res.flag == "성공") {
 	                // 성공 시 이동할 경로 지정
