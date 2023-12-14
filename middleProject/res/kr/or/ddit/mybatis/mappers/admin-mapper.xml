@@ -6,7 +6,7 @@
 <mapper namespace="admin">
 	<!-- 로그인할때 관리자정보가져오기 -->
 	<select id="getLoginAdmin" resultType="adminVo" parameterType="adminVo">
-		select* from member where admin_id=#{admin_id} and admin_pass=#{admin_pass} 
+		select* from admin where admin_id=#{admin_id} and admin_pass=#{admin_pass} 
 	</select>
 
 </mapper>
