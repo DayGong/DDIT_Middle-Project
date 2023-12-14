@@ -68,7 +68,7 @@ public class LoginKakao extends HttpServlet {
             } else {
                 // 가입 실패
                 request.setAttribute("result", result);
-                request.getRequestDispatcher("/view/login_out/result.jsp").forward(request, response);
+                request.getRequestDispatcher("/view/result.jsp").forward(request, response);
             }
         } else {
             // 이미 가입된 회원이라면 로그인 처리

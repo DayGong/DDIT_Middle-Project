@@ -41,7 +41,7 @@ public class WithdrawMember extends HttpServlet {
 			
 			//결과값을 request에 저장 하기 
 			request.setAttribute("result", result);
-			request.getRequestDispatcher("/view/withdraw/result.jsp").forward(request, response);
+			request.getRequestDispatcher("/view/result.jsp").forward(request, response);
 		}
 		
 	}

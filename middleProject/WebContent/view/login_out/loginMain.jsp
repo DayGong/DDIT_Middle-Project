@@ -57,7 +57,10 @@
     String Tab = (String) session.getAttribute("tab");
 %>
 
-    <!-- 회원, 관리자 탭 활성화 -->
+<!-- 상단 메뉴바 -->
+<jsp:include page="/view/main/top.jsp"/>
+
+<!-- 회원, 관리자 탭 활성화 -->
 <div class="container">
     <br>
     <ul class="nav nav-tabs" role="tablist">
@@ -75,7 +78,7 @@
     // 세션에 저장한 데이터 가져오기
     MemberVO memVo = (MemberVO)session.getAttribute("loginMember");
 	AdminVO adVo = (AdminVO)session.getAttribute("loginAdmin");
-    //로그인 실패때는 null값이 나온다 -> null일때 아래 body의 내용이 나오게하기
+    //로그인 실패 때는 null값이 나온다 -> null일때 아래 body의 내용이 나오게하기
      String check = (String)session.getAttribute("check");
     
 	%>

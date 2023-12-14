@@ -66,7 +66,7 @@ public class UpdateMember extends HttpServlet {
 		
 		// 결과값을 request에 저장하기
 		request.setAttribute("result", result);
-		request.getRequestDispatcher("/view/update/result.jsp").forward(request, response);
+		request.getRequestDispatcher("/view/result.jsp").forward(request, response);
 		
 	}
 

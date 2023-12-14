@@ -24,7 +24,7 @@ public class HotelCheckout extends HttpServlet {
 		
 		request.setAttribute("result", result);
 		
-		request.getRequestDispatcher("/view/reserve/result.jsp").forward(request, response);
+		request.getRequestDispatcher("/view/result.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

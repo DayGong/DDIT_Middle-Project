@@ -57,7 +57,7 @@ public class HotelReserve extends HttpServlet
 		
 		request.setAttribute("result", result);
 		
-		request.getRequestDispatcher("/view/reserve/result.jsp").forward(request, response);
+		request.getRequestDispatcher("/view/result.jsp").forward(request, response);
 		
 	}
 
