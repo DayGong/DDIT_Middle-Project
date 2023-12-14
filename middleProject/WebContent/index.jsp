@@ -26,7 +26,7 @@
 <body>
 
 <!-- 상단 메뉴바 삽입 -->
-<jsp:include page="top.jsp" />
+<jsp:include page="/view/main/top.jsp" />
 
 <!-- 메인 이미지 슬라이드 css 시작 -->
 <div class="carousel-container">
@@ -84,6 +84,8 @@
 		</button>
 	</div>
 </div><!-- 메인 이미지 슬라이드 css 끝 -->
+
+<jsp:include page="/view/main/scrollup.jsp" />
 
 <!-- 동영상 자동 재생(height 자동 조절 안 됨 - 수정해보다가 안 되면 발표 화면에 맞춰서 고정값 넣기) -->
 <div id="videoArea">

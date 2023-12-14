@@ -43,11 +43,11 @@ moveToHotelDetail = function(hotel_no)
 			openHotelReserveForm();
 			
 			// 남은 객실 체크
-			checkRoom(`${year}-${month}-${dayZero}`, `${year}-${month}-${dayZero}`);
+			// checkRoom(`${year}-${month}-${dayZero}`, `${year}-${month}-${dayZero}`);
 		},
 		error: function(xhr)
 		{
-			alert('오류 상태: ' + xhr.status);
+			console.log('숙박 업체 모달창 오류: ' + xhr.status);
 		},
 		dataType: 'json'
 	})
@@ -121,9 +121,6 @@ openHotelReserveForm = function()
 			<label for="hotel_rsv_room" class="form-label">
 				객실 선택
 			</label>
-			<div class="empty_room">
-				잔여 객실 수: <div id="checkRoomDiv"></div>
-			</div>
 			<div class="form_radio_btn">
 				<input type="radio" id="room_two" name="hotel_rsv_room" value="2인실" checked disabled>
 				<label for="room_two">2인실</label>
@@ -190,8 +187,7 @@ checkRoom = function(start, end)
 			
 			if ( emptyRoom <= 0 ) 
 			{
-				alert('남은 방이 없습니다.');
-				$('#hotelDetailModal').modal('hide');
+				swal({title: "남은 방이 없습니다.", text: "다른 날짜를 선택해주세요.", icon: "error"})
 			}
 			
 			$('#checkRoomDiv').html(emptyRoom);
@@ -273,11 +269,12 @@ requestPay = function()
 			} ;
 			
 			payAfterReserveHotel(reserveInfo);
-			alert('예약이 완료되었습니다.');
+			
+			swal({title: "예약이 완료되었습니다.", text: `${startDate}~${endDate} / ${peopleCnt}명 / ${room}`, icon: "success"});
 			$('#hotelDetailModal').modal('hide');
 		} else 
 		{
-			alert(`결제에 실패하였습니다. 에러 내용: ${rsp.error_msg}`);
+			console.log(`결제에 실패하였습니다. 에러 내용: ${rsp.error_msg}`);
 		}
 	});
 }
@@ -303,20 +300,24 @@ payAfterReserveHotel = function(reserveInfo)
 		},
 		success: function() 
 		{
-			// 예약 완료 후 객실 수가 1 차감되도록 작성
-			subtractHotelRoom(reserveInfo.hotel_no);
+			// 예약 완료 후 객실 수가 1 차감되도록 작성(-2 되는 문제 발생)
+			// 객실 차감 전반적인 수정 필요(해당 날짜에만 객실이 -1되고 총 객실 수는 변함 없도록 DB 수정해야할 듯)
+			// 객실 예약 DB에 객실 수를 추가할까? 조금 더 고민해봐야 할 듯
+			// subtractHotelRoom(reserveInfo.hotel_no);
 		},
 		error: function(xhr) 
 		{
-			alert(`예약에 실패하였습니다. 에러 내용: ${xhr.status}`);
+			console.log(`예약에 실패하였습니다. 에러 내용: ${xhr.status}`);
 		},
 		dataType: 'json'
 	})
 }
 
+/*
 // 예약 완료 후 객실의 수를 -1하는 메서드 
 subtractHotelRoom = function(hotel_no)
 {
+	console.log("subroom 호출");
 	$.ajax
 	({
 		url: `${path}/reserve/hotelRoomCheck.do`,
@@ -335,3 +336,4 @@ subtractHotelRoom = function(hotel_no)
 		}
 	})
 }
+*/
