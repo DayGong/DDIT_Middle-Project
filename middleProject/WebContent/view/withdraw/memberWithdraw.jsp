@@ -12,7 +12,7 @@
 $(() => { 
 	// 탈퇴버튼(예) 클릭
     $('#withdrawbtn').on('click', function()
-    	{
+    	{ 
 			var password = $('#checkPass').val();
 
 			// AJAX로 서버에 회원 탈퇴 요청 보내기

@@ -26,14 +26,13 @@ public class WithdrawMember extends HttpServlet {
 		String memId =loginMemberVo.getMem_id();
 		String memPass = loginMemberVo.getMem_pass();
 		
-		System.out.println("여기==>"+session);
 		String checkPass = request.getParameter("check_pass");
 		// 받아온 회원정보를 VO에 저장하기.
 		MemberVO memVo = new MemberVO();
 
 		memVo.setMem_id(memId);
 		memVo.setMem_pass(checkPass);
-		
+		 
 		if(memPass.equals(checkPass)) {
 			
 			// 회원 정보를 DB에 insert한다.
