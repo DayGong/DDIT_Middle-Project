@@ -22,8 +22,10 @@ public class AdminServiceImpl implements IAdminService
 	}	// 싱글톤 끝.
 
 	@Override
-	public int insertAdmin(AdminVO adminVo) {
-		return dao.insertAdmin(adminVo);
+	public AdminVO getLoginAdmin(AdminVO adminVo) {
+		return dao.getLoginAdmin(adminVo);
 	}
+
+	
 
 }
