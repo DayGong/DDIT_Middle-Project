@@ -14,9 +14,6 @@
 <script src="<%= path %>/js/jquery-3.7.1.min.js"></script>
 <script src="<%= path %>/js/header.js"></script>
 
-<!-- 여러 화면에서 공통으로 사용할 css -->
-<link rel="stylesheet"  href="<%= path %>/css/common.css"> 
-
 </head>
 <body>
 <!--  메인 상단 메뉴바(헤더) 시작   -->
@@ -33,36 +30,34 @@
 
 	<div id="rightHeader">
   
-  
 	<!--  메뉴들의 자리입니다   --> 
 	<div id="menu">
 		<ul>
-			<li class="menu"><a href="#">MENU1</a>
+			<li class="menu"><a href="#">관광명소</a>
 				<ul>
-					<li ><a href="#">SUB_MENU</a></li>
-					<li ><a href="#">SUB_MENU2</a></li>
-					<li ><a href="#">SUB_MENU3</a></li>
+					<li ><a href="#">주요 관광지</a></li>
+					<li ><a href="#">식당</a></li>
+					<li ><a href="#">식박업소</a></li>
 				</ul>
 			</li>
-			<li class="menu"><a  href="#">MENU2</a>
+			<li class="menu"><a  href="#">문화의거리</a>
 				<ul>
-					<li ><a href="#">SUB_MENU</a></li>
-					<li ><a href="#">SUB_MENU2</a></li>
-					<li ><a href="#">SUB_MENU3</a></li>
+					<li ><a href="#">공연</a></li>
+					<li ><a href="#">전시</a></li>
+					<li ><a href="#">축제</a></li>
 				</ul>
 			</li>
-			<li class="menu"><a href="#">MENU3</a>
+			<li class="menu"><a href="#">게시판</a>
 				<ul>
-					<li ><a href="#">SUB_MENU</a></li>
-					<li ><a href="#">SUB_MENU2</a></li>
-					<li ><a href="#">SUB_MENU3</a></li>
+					<li ><a href="#">공지게시판</a></li>
+					<li ><a href="#">후기게시판</a></li>
 				</ul>
 			</li>
-			<li class="menu"><a  href="#">MENU4</a>
+			<li class="menu"><a  href="#">마이페이지</a>
 				<ul>
-					<li ><a href="#">SUB_MENU</a></li>
-					<li ><a href="#">SUB_MENU2</a></li>
-					<li ><a href="#">SUB_MENU3</a></li>
+					<li ><a href="#">내정보</a></li>
+					<li ><a href="#">예약조회</a></li>
+					<li ><a href="#">내 캘린더</a></li>
 				</ul>
 			</li>
 			<li class="menu"><a href="#">MENU5</a>
