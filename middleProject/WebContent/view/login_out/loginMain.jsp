@@ -188,7 +188,7 @@
             alert('failed to login: ' + JSON.stringify(err));
         },
     });
-</script>
+</script> 
 			
 		<!-- 로그인 성공시 -->
 		<%
