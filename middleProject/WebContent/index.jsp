@@ -26,7 +26,7 @@
 <body>
 
 <!-- 상단 메뉴바 삽입 -->
-<jsp:include page="top.jsp" />
+<jsp:include page="/view/main/top.jsp" />
 
 <!-- 메인 이미지 슬라이드 css 시작 -->
 <div class="carousel-container">
