@@ -176,6 +176,7 @@
 	<h3><%=memVo.getMem_name()%>님 어서오슈~</h3><br>
 
 	<a href="<%=request.getContextPath()%>/member/logoutMember.do">로그아웃</a>
+	<a href="<%=request.getContextPath()%>/view/member/memberForm.jsp">마이페이지</a>
 <%
 	} 
 %>
