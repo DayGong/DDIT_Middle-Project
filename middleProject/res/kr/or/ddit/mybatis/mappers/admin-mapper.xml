@@ -3,7 +3,7 @@
 	PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
-<mapper namespace="adminVo">
+<mapper namespace="admin">
 	<!--  관리자 회원가입  -->
 	<insert id="insertAdmin" parameterType="adminVo">
 		insert into member (

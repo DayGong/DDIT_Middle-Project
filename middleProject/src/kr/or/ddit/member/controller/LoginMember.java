@@ -14,11 +14,13 @@ import kr.or.ddit.member.service.MemberServiceImpl;
 import kr.or.ddit.vo.MemberVO;
 
 @WebServlet("/member/loginMember.do")
-public class LoginMember extends HttpServlet {
+public class LoginMember extends HttpServlet 
+{
 	private static final long serialVersionUID = 1L;
 
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
 		request.setCharacterEncoding("utf-8");
 		
 		// id, password 가져오기
@@ -42,11 +44,17 @@ public class LoginMember extends HttpServlet {
 
 		
 		//로그인성공+저장
-		if(LoginMemberVo!=null) {
+		if(LoginMemberVo!=null) 
+		{
 			session.setAttribute("loginMember", LoginMemberVo);
-			
+			session.setAttribute("check", "true");
+		}else 
+		{
+		//로그인 실패
+			session.setAttribute("check", "false");
 		}
-		response.sendRedirect(request.getContextPath()+"/view/login_out/loginMain.jsp");
+		//view 페이지로 이동
+		request.getRequestDispatcher("/view/login_out/loginMain.jsp").forward(request, response);	
 	}
 
 

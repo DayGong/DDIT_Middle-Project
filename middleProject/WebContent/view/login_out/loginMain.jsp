@@ -9,6 +9,16 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/passEye.css">
+<style type="text/css">
+ iframe {
+   width: 100%;
+   height : 100%;
+   border : none;
+ }
+ #check{
+   color : red;
+ }
+</style>
 </head>
 
 <script type="text/javascript">
@@ -38,10 +48,11 @@
     // 세션에 저장한 데이터 가져오기
     MemberVO memVo = (MemberVO)session.getAttribute("loginMember");
     //로그인 실패때는 null값이 나온다 -> null일때 아래 body의 내용이 나오게하기
+     String check = (String)session.getAttribute("check");
 %>
 
 <body>
-<!-- 로그인 폼  -->
+<!-- 로그인 안했거나 로그인  id 비밀번호가 틀렸을때    -->
 <%
     if(memVo == null)
     {
@@ -55,8 +66,12 @@
 	                <i class="fa fa-eye-slash fa-lg"></i>
 	            </div>
 	        </div>
-	        <br><br>
-         	<input type="submit" value="로그인"><br><br>
+	      	 <!-- 로그인 오류 메시지 -->
+	        <% if (check != null && check.equals("false")) { %>
+	            <span id="check" style="color: red;">로그인 오류 또는 비회원입니다</span><br><br>
+	        <% } %>
+	
+	        <input type="submit" value="로그인"><br><br>
          	
          	<!-- 카카오 로그인 -->
          	<a id="kakao-login-btn"></a>
@@ -156,17 +171,16 @@
 	
 <!-- 로그인 성공시 -->
 <%
-	}else
-	{
+	}else{
 %>
 	<h3><%=memVo.getMem_name()%>님 어서오슈~</h3><br>
 
 	<a href="<%=request.getContextPath()%>/member/logoutMember.do">로그아웃</a>
-	<a href="<%=request.getContextPath()%>/view/member/memberForm.jsp">마이페이지</a>
-	
 <%
 	} 
 %>
+	
+
 
 </body>
 </html>

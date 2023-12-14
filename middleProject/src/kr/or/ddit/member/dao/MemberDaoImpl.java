@@ -144,7 +144,7 @@ public class MemberDaoImpl implements IMemberDao
 		}
 		
 		return loginMemberVo;
-	}
+	} // getLoginMember 끝
 
 	@Override
 	public String getID(String memMail) 
@@ -165,7 +165,7 @@ public class MemberDaoImpl implements IMemberDao
 		}
 
 		return res;
-	}
+	} // getID 끝
 
 
 	@Override
@@ -188,7 +188,7 @@ public class MemberDaoImpl implements IMemberDao
 		}
 
 		return res;
-	}
+	} // setPassAddr 끝
 
 	@Override
 	public int updatePass(MemberVO memVo) 
@@ -211,7 +211,7 @@ public class MemberDaoImpl implements IMemberDao
 		}
 		
 		return cnt;
-	} 
+	} // updatePass 끝
 
 
 

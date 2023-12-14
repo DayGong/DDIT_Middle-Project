@@ -1,10 +1,29 @@
 package kr.or.ddit.admin.service;
 
-public class AdminServiceImpl {
+import kr.or.ddit.admin.dao.AdminDaoImpl;
+import kr.or.ddit.admin.dao.IAdminDao;
+import kr.or.ddit.vo.AdminVO;
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+public class AdminServiceImpl implements IAdminService
+{
+	private static IAdminDao dao = AdminDaoImpl.getInstance();
+	
+	private static AdminServiceImpl service;
+	
+	private AdminServiceImpl() 
+	{
+		dao = AdminDaoImpl.getInstance();
+	}
+	
+	public static IAdminService getInstance()
+	{
+		if(service==null) service = new AdminServiceImpl();
+		return service;
+	}	// 싱글톤 끝.
 
+	@Override
+	public int insertAdmin(AdminVO adminVo) {
+		return dao.insertAdmin(adminVo);
 	}
 
 }
