@@ -77,9 +77,9 @@
          	<a id="kakao-login-btn"></a>
 			<div id="result"></div>
 			
-			<!--아이디,비밀번호 찾기 / 회원가입  -->
+			<!--아이디,비밀번호 찾기 / 회원가입  --> 
 		 	<a href="<%=request.getContextPath()%>/view/login_out/getId.jsp">아이디 까먹었슈? </a><br><br>
-		 	<a href="<%=request.getContextPath()%>/forgetPass" class="login_forgot">비밀번호 까먹었슈? </a><br><br>
+		 	<a href="<%=request.getContextPath()%>/view/login_out/getPassword.jsp" class="login_forgot">비밀번호 까먹었슈? </a><br><br>
 			<a href="<%=request.getContextPath()%>/view/signup/memberSignup.jsp">회원가입</a>
 	</form> 
 	
@@ -176,8 +176,9 @@
 	<h3><%=memVo.getMem_name()%>님 어서오슈~</h3><br>
 
 	<a href="<%=request.getContextPath()%>/member/logoutMember.do">로그아웃</a>
+	<a href="<%=request.getContextPath()%>/view/member/memberForm.jsp">마이페이지</a>
 <%
-	} 
+	}  
 %>
 	
 

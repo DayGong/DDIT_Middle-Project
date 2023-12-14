@@ -36,9 +36,12 @@ public class UpdateMember extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=utf-8");
 		
 		HttpSession session = request.getSession();
-		String memId =(String)session.getAttribute("loginId");	// 세션에서 가지고오는 값
+		MemberVO loginMemberVo = (MemberVO)session.getAttribute("loginMember");// 세션에서 가지고오는 값
+		String memId =loginMemberVo.getMem_id();	
 		
 		// 회원정보 수정하기
 		String memPass= request.getParameter("mem_pass");
@@ -65,7 +68,6 @@ public class UpdateMember extends HttpServlet {
 		request.setAttribute("result", result);
 		request.getRequestDispatcher("/view/update/result.jsp").forward(request, response);
 		
-	
 	}
 
 }

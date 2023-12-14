@@ -11,9 +11,8 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="<%=request.getContextPath()%>/js/jquery.serializejson.min.js"></script>
 <script>
-$(document).ready(function(){
+$(()=>{
 	
 	// 수정버튼 클릭
 	$('#updatebtn').on('click',function()
@@ -25,7 +24,7 @@ $(document).ready(function(){
 			// 서버로 보내기
 			$.ajax
 			({
-				url : '<%=request.getContextPath()%>/member/updateMember.do',	
+				url : "<%=request.getContextPath()%>/member/updateMember.do",	
 				data : vdata1,
 				type : 'post',
 				dataType : 'json',
@@ -38,6 +37,8 @@ $(document).ready(function(){
 				},
 				error : function(xhr)
 				{
+			
+					
 					alert("에러 상태 : " + xhr.status);				
 				}
 			});	
@@ -195,7 +196,7 @@ function prod1() {
 	
 
 	<div class="form-group">
-		<label for="id">* 아이디 <div><%=memVo.getMem_id() %></div> </label>         
+		<label for="id">* 아이디 <%=memVo.getMem_id() %> </label>         
 	</div>
 	
 	<div class="form-group">
@@ -259,7 +260,7 @@ function prod1() {
 	</div>
     <br>
     
-    <input type="button" id="updatebtn" class="btn btn-primary" value="저장">
+    <input type="button" id="updatebtn" value="저장">
     <input type="reset" value="취소"> 
     <span id="update"></span> 
 </form>
