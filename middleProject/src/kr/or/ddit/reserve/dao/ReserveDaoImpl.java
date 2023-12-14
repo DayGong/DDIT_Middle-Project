@@ -264,5 +264,78 @@ public class ReserveDaoImpl implements IReserveDao
 		
 		return memberRsvList;
 	}
+
+	@Override
+	public List<Map<String, String>> getMemberRestaurantReserve(String mem_id) {
+		List<Map<String, String>> memberRsvList = new ArrayList<Map<String,String>>();
+		SqlSession session = null;
+		
+		try {
+			session = MybatisUtil.getSqlSession();
+			
+			memberRsvList = session.selectList("restRsvVo.getMemberRestaurantReserve", mem_id);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally 
+		{
+			if (session != null)
+			{
+				session.close();
+			}
+		}
+		
+		return memberRsvList;
+	}
+
+	@Override
+	public int reserveHotelCancel(String hotel_rsv_no) {
+		SqlSession session = null;
+		int res = 0;	// 결과값을 저장할 변수
+		
+		try {
+			session = MybatisUtil.getSqlSession();
+			
+			res = session.update("hotelRsvVo.reserveHotelCancel", hotel_rsv_no);
+			
+			session.commit();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally 
+		{
+			if (session != null)
+			{
+				session.close();
+			}
+		}
+		
+		return res;
+	}
+
+	@Override
+	public int reserveRestaurantCancel(int rest_rsv_no) {
+		SqlSession session = null;
+		int res = 0;	// 결과값을 저장할 변수
+		
+		try {
+			session = MybatisUtil.getSqlSession();
+			
+			res = session.update("restRsvVo.reserveRestaurantCancel", rest_rsv_no);
+			
+			session.commit();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally 
+		{
+			if (session != null)
+			{
+				session.close();
+			}
+		}
+		
+		return res;
+	}
 	
 }

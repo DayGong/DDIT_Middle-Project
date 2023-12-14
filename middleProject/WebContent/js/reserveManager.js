@@ -3,20 +3,16 @@
  * 나중에 매니저로 넣을지 reserveHotel.js에 넣을지 생각해봐야합니다
  */
 
-$(function() {
-	memberHotelReserveForm(mem_id);
-})
-
-// 일괄 체크 아웃
+// 매니저 일괄 체크 아웃
  managerAllCheckout = function()
  {
 	 $.ajax
 	 ({
 		url: `${path}/reserve/hotelCheckout.do`,
 		type: 'GET',
-		success: function(res)
+		success: function()
 		{
-			alert(res);
+			alert(`${year}-${month}-${dayZero} 일괄 체크 아웃 완료`);
 		},
 		error: function(xhr)
 		{
@@ -24,24 +20,42 @@ $(function() {
 		}
 	 })
  }
- 
- // 숙소 예약 리스트 폼
- memberHotelReserveForm = function(mem_id)
- {
-	 reserveForm = `
-	 <table>
-	 	<tr>
-	 		<td>예약번호</td>
-	 		<td>숙소명</td>
-	 		<td>예약시작일</td>
-	 		<td>예약종료일</td>
-	 		<td>인원수</td>
-	 		<td>객실정보</td>
-	 		<td>결제금액</td>
-	 		<td></td>
-	 	</tr>`;
-	 
-	 $.ajax
+
+// 회원 페이지 시작
+$(function() {
+	
+	$(document).on('click', '#loadMemberPage', function(){
+		memberHotelReserveForm();
+	
+		addMemberHotelReserve();
+	
+		memberRestaurantReserveForm();
+		
+		addMemberRestaurantReserve();
+	})
+	
+})
+
+// 숙소 예약 테이블 폼
+memberHotelReserveForm = function()
+{
+	hotelReserveForm = `
+		<table border='1'>
+	 		<tr>
+	 			<td>예약번호</td><td>숙소명</td><td>예약시작일</td><td>예약종료일</td>
+	 			<td>인원수</td><td>객실정보</td><td>결제금액</td><td></td>
+	 		</tr>
+	 		<tbody id="addMemberHotelReserve"></tbody>
+		 </table>
+	`;
+	
+	$('#memberHotelReserveList').html(hotelReserveForm);
+}
+
+// 숙소 예약 List를 테이블 <tbody>에 넣기
+addMemberHotelReserve = function()
+{
+	$.ajax
 	 ({
 		 url: `${path}/reserve/hotelMemberReserveList.do`,
 		 type: 'POST',
@@ -51,11 +65,12 @@ $(function() {
 		 },
 		 success: function(res)
 		 {
+			var hotelReserveList = null;
 			if (res == null)
 			{
-				reserveForm += `
+				hotelReserveList += `
 				<tr>
-					<td colspan="7">예약 목록이 없습니다.</td>
+					<td colspan="8">예약 목록이 없습니다.</td>
 				</tr>
 				`;
 			} else 
@@ -63,20 +78,23 @@ $(function() {
 				console.log(res);
 				$.each(res, function(i, v)
 				{
-					console.log(v);
-					reserveForm += `
+					hotelReserveList += `
 					<tr>
-						<td>${v.hotel_rsv_no}</td>
-					 	<td>${v.hotel_name}</td>
-					 	<td>${v.hotel_rsv_startdate}</td>
-					 	<td>${v.hotel_rsv_enddate}</td>
-					 	<td>${v.hotel_rsv_count}</td>
-					 	<td>${v.hotel_rsv_room}</td>
-					 	<td>${v.hotel_totalamt}</td>
+						<td>${v.HOTEL_RSV_NO}</td>
+					 	<td>${v.HOTEL_NAME}</td>
+					 	<td>${v.HOTEL_RSV_STARTDATE}</td>
+					 	<td>${v.HOTEL_RSV_ENDDATE}</td>
+					 	<td>${v.HOTEL_RSV_COUNT}</td>
+					 	<td>${v.HOTEL_RSV_ROOM}</td>
+					 	<td>${v.HOTEL_TOTALAMT}</td>
+						<td><input type="button" value="예약 취소" id="${v.HOTEL_RSV_NO}" 
+									onclick="hotelReserveCancel(this.id)"></td>
 					 </tr>
 					 `;
 				 })
 			 }
+		
+			$('#addMemberHotelReserve').html(hotelReserveList);
 		 },
 		 error: function(xhr)
 		 {
@@ -84,14 +102,116 @@ $(function() {
 		 },
 		 dataType: 'json'
 	 })
-	 
-	 reserveForm += `</table>`;
-	 
-	 $('#memberHotelReserveList').html(reserveForm);
- }
+
+}
+
+// 숙소 예약 취소
+hotelReserveCancel = function(hotel_rsv_no)
+{
+	$.ajax
+	({
+		url: `${path}/reserve/hotelReserveCancel.do`,
+		type: 'POST',
+		data:
+		{
+			"hotel_rsv_no" : hotel_rsv_no
+		},
+		success: function()
+		{
+			alert('숙소 예약이 취소되었습니다.');
+			location.href=`${path}/reserveBtnTemp.jsp`; // 이동할 회원 관리 페이지
+		},
+		error: function(xhr)
+		{
+			console.log('식당 예약 취소 실패 ==> ' + xhr);
+		}
+	})
+}
  
- // 식당 예약 폼
+ // 식당 예약 테이블 폼
  memberRestaurantReserveForm = function()
  {
-	 
+	 restaurantForm = `
+	<table border="1">
+		<tr>
+			<td>식당예약번호</td><td>식당명</td><td>예약날짜</td>
+			<td>예약시간</td><td>인원수</td><td></td>
+		</tr>
+		<tbody id="addMemberRestaurantReserve"></tbody>
+	</table>`;
+
+	$('#memberRestaurantReserveList').html(restaurantForm);
  }
+
+// 식당 예약 List를 테이블 <tbody>에 넣기
+addMemberRestaurantReserve = function()
+{
+	$.ajax
+	 ({
+		 url: `${path}/reserve/restaurantMemberReserveList.do`,
+		 type: 'POST',
+		 data: 
+		 {
+			 "mem_id" : mem_id
+		 },
+		 success: function(res)
+		 {
+			var restaurantReserveList = null;
+			if (res == null)
+			{
+				restaurantReserveList += `
+				<tr>
+					<td colspan="6">예약 목록이 없습니다.</td>
+				</tr>
+				`;
+			} else 
+			{				 
+				console.log(res);
+				$.each(res, function(i, v)
+				{
+					restaurantReserveList += `
+					<tr>
+						<td>${v.REST_RSV_NO}</td>
+					 	<td>${v.REST_NAME}</td>
+					 	<td>${v.REST_RSV_DATE}</td>
+					 	<td>${v.REST_RSV_TIME}</td>
+					 	<td>${v.REST_RSV_COUNT}</td>
+						<td><input type="button" value="예약 취소" id="${v.REST_RSV_NO}" 
+									onclick="restaurantReserveCancel(this.id)"></td>
+					 </tr>
+					 `;
+				 })
+			 }
+		
+			$('#addMemberRestaurantReserve').html(restaurantReserveList);
+		 },
+		 error: function(xhr)
+		 {
+			 console.log('숙소 예약 리스트 불러오기 오류 ==> ' + xhr);
+		 },
+		 dataType: 'json'
+	 })
+
+}
+
+restaurantReserveCancel = function(rest_rsv_no)
+{
+	$.ajax
+	({
+		url: `${path}/reserve/restaurantReserveCancel.do`,
+		type: 'POST',
+		data:
+		{
+			"rest_rsv_no" : rest_rsv_no
+		},
+		success: function()
+		{
+			alert('식당 예약이 취소되었습니다.');
+			location.href=`${path}/reserveBtnTemp.jsp`; // 이동할 회원 관리 페이지
+		},
+		error: function(xhr)
+		{
+			console.log('식당 예약 취소 실패 ==> ' + xhr);
+		}
+	})
+}

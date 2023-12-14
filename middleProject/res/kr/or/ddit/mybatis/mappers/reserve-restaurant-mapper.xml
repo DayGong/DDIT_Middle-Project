@@ -16,7 +16,22 @@
 	
 	<select id="getReservedTime" parameterType="HashMap" resultType="String">
 		SELECT rest_rsv_time FROM restaurant_reserve
-		WHERE rest_no = #{rest_no} AND rest_rsv_date = #{selectedDate}
+		WHERE rest_no = #{rest_no} 
+			AND rest_rsv_date = #{selectedDate}
+			AND rest_rsv_state = 1
 	</select>
+	
+	<select id="getMemberRestaurantReserve" parameterType="string" resultType="map">
+		SELECT * FROM restaurant_reserve rr, restaurant r
+		WHERE r.rest_no = rr.rest_no 
+			AND rr.mem_id = 'a001'	
+			AND rr.rest_rsv_state = 1
+        ORDER BY rr.rest_rsv_date ASC
+	</select>
+	
+	<update id="reserveRestaurantCancel" parameterType="int">
+		UPDATE restaurant_reserve SET rest_rsv_state = '0'
+		WHERE rest_rsv_no = #{rest_rsv_no}
+	</update>
 	
 </mapper>

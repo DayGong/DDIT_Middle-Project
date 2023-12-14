@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -86,10 +86,13 @@
 <!-- 관리자 일괄 체크 아웃 -->
 <input type="button" id="doAllCheckout" value="일괄 체크 아웃" onclick="managerAllCheckout()">
 
-<!-- 숙소 예약 목록 띄울 div -->
+<!-- 회원 페이지 입장 버튼 -->
+<input type="button" id="loadMemberPage" value="회원 페이지 입장">
+
+<!-- 숙소 예약 목록 띄울 div (숙소 예약 창에 띄움)-->
 <div id="memberHotelReserveList"></div>
 
-<!-- 식당 예약 목록 띄울 div -->
+<!-- 식당 예약 목록 띄울 div (식당 예약 창에 띄움)-->
 <div id="memberRestaurantReserveList"></div>
 
 </body>
