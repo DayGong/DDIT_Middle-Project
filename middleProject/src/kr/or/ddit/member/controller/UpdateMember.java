@@ -21,17 +21,14 @@ public class UpdateMember extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 회원ID에 맞는 회원정보를 검색해서 회원정보 수정폼에 보낸다.
-		request.setCharacterEncoding("UTF-8");
-		
-		String memId = request.getParameter("mem_id");
-		
-		IMemberService service = MemberServiceImpl.getInstance();
-		
-		MemberVO memVo = service.getSelectMember(memId);
-		
-		HttpSession session = request.getSession();
-		
-		if(memVo!=null) session.setAttribute("loginId", memVo.getMem_id());
+//		request.setCharacterEncoding("UTF-8");
+//		HttpSession session = request.getSession();
+//		MemberVO loginMemberVo = (MemberVO)session.getAttribute("loginMember");
+//		
+//		IMemberService service = MemberServiceImpl.getInstance();
+//		
+//		MemberVO memVo = service.getSelectMember(loginMemberVo.getMem_id());
+//		request.setAttribute(", o);
 		request.getRequestDispatcher("/view/update/memberUpdateAll.jsp").forward(request, response);
 		
 	}
@@ -39,9 +36,12 @@ public class UpdateMember extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=utf-8");
 		
 		HttpSession session = request.getSession();
-		String memId =(String)session.getAttribute("loginId");	// 세션에서 가지고오는 값
+		MemberVO loginMemberVo = (MemberVO)session.getAttribute("loginMember");// 세션에서 가지고오는 값
+		String memId =loginMemberVo.getMem_id();	
 		
 		// 회원정보 수정하기
 		String memPass= request.getParameter("mem_pass");
@@ -68,7 +68,6 @@ public class UpdateMember extends HttpServlet {
 		request.setAttribute("result", result);
 		request.getRequestDispatcher("/view/update/result.jsp").forward(request, response);
 		
-	
 	}
 
 }

@@ -11,31 +11,34 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="<%=request.getContextPath()%>/js/jquery.serializejson.min.js"></script>
 <script>
-$(document).ready(function(){
+$(()=>{
 	
 	// 수정버튼 클릭
-	$('updatebtn').on('click',function()
+	$('#updatebtn').on('click',function()
 		{
 			vdata1 = $('#updateform').serialize();
 			console.log(vdata1);
 			
+	
 			// 서버로 보내기
 			$.ajax
 			({
-				url : '<%=request.getContextPath()%>/member/updateMember.do',	
+				url : "<%=request.getContextPath()%>/member/updateMember.do",	
 				data : vdata1,
 				type : 'post',
 				dataType : 'json',
 				success : function(res)
 				{
 					//성공시 이동할 경로 지정
+					alert("수정 상태:"+res.flag);
 					$('#update').html(res.flag).css('color', 'red');
 					window.location.href = '<%=request.getContextPath()%>/view/member/memberForm.jsp';
 				},
 				error : function(xhr)
 				{
+			
+					
 					alert("에러 상태 : " + xhr.status);				
 				}
 			});	
@@ -183,18 +186,17 @@ function prod1() {
 <body>
 
 <% 
- 	MemberVO memVo = (MemberVO)session.getAttribute("loginId");
+ 	MemberVO memVo = (MemberVO)session.getAttribute("loginMember");
 %>
 
 <h2>회원 정보 수정화면</h2>
 <form id= "updateform">
 
-	<input type ="hidden" name ="mem_id" >
-	value="<%=memVo.getMem_id()%>">
+	<input type ="hidden" name ="mem_id" value="<%=memVo.getMem_id()%>">
+	
 
 	<div class="form-group">
-		<label for="id">* 아이디</label>
-		<div><%=memVo.getMem_id() %></div>          
+		<label for="id">* 아이디 <%=memVo.getMem_id() %> </label>         
 	</div>
 	
 	<div class="form-group">
@@ -258,7 +260,7 @@ function prod1() {
 	</div>
     <br>
     
-    <input type="button" id="updatebtn" class="btn btn-primary" value="저장">
+    <input type="button" id="updatebtn" value="저장">
     <input type="reset" value="취소"> 
     <span id="update"></span> 
 </form>

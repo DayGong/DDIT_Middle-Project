@@ -9,20 +9,34 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/passEye.css">
+<style type="text/css">
+ iframe {
+   width: 100%;
+   height : 100%;
+   border : none;
+ }
+ #check{
+   color : red;
+ }
+</style>
 </head>
 
 <script type="text/javascript">
 	//눈표시 클릭 시 패스워드 보이기 다시클릭하면 가려지기
-    $(function(){
-        $('.eyes').on('click', function(){
+    $(function()
+    {
+        $('.eyes').on('click', function()
+        {
             // 비밀번호 입력란의 타입을 'text' 또는 'password'로 변경
             var passwordInput = $('.input.password #password');
             var currentType = passwordInput.attr('type');
             
-            if (currentType === 'password') {
+            if (currentType === 'password') 
+            {
                 passwordInput.attr('type', 'text');
                 $(this).find('.fa-eye-slash').attr('class', 'fa fa-eye fa-lg');
-            } else {
+            } else 
+            {
                 passwordInput.attr('type', 'password');
                 $(this).find('.fa-eye').attr('class', 'fa fa-eye-slash fa-lg');
             }
@@ -34,12 +48,14 @@
     // 세션에 저장한 데이터 가져오기
     MemberVO memVo = (MemberVO)session.getAttribute("loginMember");
     //로그인 실패때는 null값이 나온다 -> null일때 아래 body의 내용이 나오게하기
+     String check = (String)session.getAttribute("check");
 %>
 
 <body>
-<!-- 로그인 폼  -->
+<!-- 로그인 안했거나 로그인  id 비밀번호가 틀렸을때    -->
 <%
-    if(memVo == null){
+    if(memVo == null)
+    {
 %>
 	<form action="<%=request.getContextPath()%>/member/loginMember.do" method="post">
         	아이디 <input type="text" name="memId" placeholder="아이디"><br><br>
@@ -50,8 +66,12 @@
 	                <i class="fa fa-eye-slash fa-lg"></i>
 	            </div>
 	        </div>
-	        <br><br>
-         	<input type="submit" value="로그인"><br><br>
+	      	 <!-- 로그인 오류 메시지 -->
+	        <% if (check != null && check.equals("false")) { %>
+	            <span id="check" style="color: red;">로그인 오류 또는 비회원입니다</span><br><br>
+	        <% } %>
+	
+	        <input type="submit" value="로그인"><br><br>
          	
          	<!-- 카카오 로그인 -->
          	<a id="kakao-login-btn"></a>
@@ -65,13 +85,17 @@
 	
 	<!-- 카카오 로그인 스크립트 -->
 	<script type="text/javascript">
-	  function unlinkApp() {
-	    Kakao.API.request({
+	  function unlinkApp() 
+	  {
+	    Kakao.API.request
+	    ({
 	      url: '/v1/user/unlink',
-	      success: function(res) {
+	      success: function(res) 
+	      {
 	        alert('success: ' + JSON.stringify(res))
 	      },
-	      fail: function(err) {
+	      fail: function(err) 
+	      {
 	        alert('fail: ' + JSON.stringify(err))
 	      },
 	    })
@@ -82,12 +106,16 @@
 	Kakao.init('e849d9640ad67395b31b38844f71b8eb'); //JavaScript 키입력
 	console.log(Kakao.isInitialized());
 	
-	  Kakao.Auth.createLoginButton({
+	  Kakao.Auth.createLoginButton
+	  ({
 	    container: '#kakao-login-btn',
-	    success: function(authObj) {
-	      Kakao.API.request({
+	    success: function(authObj) 
+	    {
+	      Kakao.API.request
+	      ({
 	        url: '/v2/user/me',
-	        success: function(result) {
+	        success: function(result) 
+	        {
 	          $('#result').append(result);
 	          id = result.id
 	          connected_at = result.connected_at
@@ -124,15 +152,18 @@
 	          $('#result').append(resultdiv);
 	          
 	       },
-	        fail: function(error) {
-	          alert(
+	        fail: function(error) 
+	        {
+	          alert
+	          (
 	            'login success, but failed to request user information: ' +
 	              JSON.stringify(error)
 	          )
 	        },
 	      })
 	    },
-	    fail: function(err) {
+	    fail: function(err) 
+	    {
 	      alert('failed to login: ' + JSON.stringify(err))
 	    },
 	  })
@@ -145,11 +176,11 @@
 	<h3><%=memVo.getMem_name()%>님 어서오슈~</h3><br>
 
 	<a href="<%=request.getContextPath()%>/member/logoutMember.do">로그아웃</a>
-	<a href="<%=request.getContextPath()%>/view/member/memberForm.jsp">마이페이지</a>
-	
 <%
 	} 
 %>
+	
+
 
 </body>
 </html>

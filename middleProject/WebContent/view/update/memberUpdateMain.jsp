@@ -9,7 +9,7 @@
 <body>
 	<div class="form-group">
 	    <label for="all">* 전체수정</label> 
-	    <input type="button" class="form-update" id="all" value ="수정" onClick="location.href='<%=request.getContextPath()%>/view/update/memberUpdateAll.jsp'">
+	    <input type="button" class="form-update" id="all" value ="수정" onClick="location.href='<%=request.getContextPath()%>/member/updateMember.do'">
 	</div>
 	<div class="form-group">
 	    <label for="name">* 이름</label> 
