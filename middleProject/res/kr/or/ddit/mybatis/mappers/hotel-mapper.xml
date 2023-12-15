@@ -29,4 +29,18 @@
 		AND hr.hotel_rsv_state = 1
 	</select>
 	
+	<!-- 지도에 호텔을 보여주는 메서드들 -->
+	<select id="selectHotel" resultType="hotelVo">
+		select * from hotel
+	</select>
+  
+	<select id="selectByDong" resultType="hotelVo" parameterType="string">
+		select * from hotel where hotel_addr like '%'||#{sword}||'%'
+	</select> 
+	
+	<select id="selectbyName" resultType="hotelVo" parameterType="String">     
+		select * from hotel where hotel_name like '%'||#{dong}||'%'    
+	</select>
+	<!-- 지도에 보여주는 메서드 끝 -->
+	
 </mapper>

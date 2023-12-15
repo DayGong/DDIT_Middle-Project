@@ -26,6 +26,13 @@
 </style>
 </head>
 <body>
+<div class="big-buttons">
+<button class="cateBtn" name="resList"> 전체보기 </button>
+<button class="cateBtn" name="tourList" >공연</button>
+<button class="cateBtn" name="resList"> 축제 </button>
+<button class="cateBtn" name="hotelList">전시</button>
+ </div>
+ <hr>        
 <div id ="result1"></div>  <!-- 문화 리스트 출력되는 자리 -->
 <div id ="pagelist"></div> <!-- 페이지 버튼이 출력되는 자리 --> 
 <div id ="result2"></div>  <!-- offcanvas 폼이 출력되는 자리 -->
