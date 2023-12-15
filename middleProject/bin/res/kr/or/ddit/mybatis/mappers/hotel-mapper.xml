@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="hotelVo">
+
+	<select id="getHotelInfo" parameterType="int" resultType="hotelVo">
+		SELECT * FROM hotel WHERE hotel_no = #{hotel_no}
+	</select>
+	
+	<update id="subtractHotelRoom" parameterType="int">
+		UPDATE hotel SET hotel_room_count = hotel_room_count - 1
+		WHERE hotel_no = #{hotel_no}
+	</update>
+	
+	<select id="getHotelRoom" parameterType="Map" resultType="int">
+		SELECT count(*) FROM hotel h, hotel_reserve hr
+		WHERE h.hotel_no = hr.hotel_no
+		AND 
+		<![CDATA[
+			(HOTEL_RSV_STARTDATE <= #{startDate} AND HOTEL_RSV_ENDDATE >= #{endDate})
+		]]>
+	</select>
+	
+</mapper>
