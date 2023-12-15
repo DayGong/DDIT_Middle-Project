@@ -14,8 +14,10 @@
 </head>
 <body>
 <br>
+<!-- 상단 메뉴바 -->
+<jsp:include page="/view/main/top.jsp"/>
 
-<div class="container">
+<div class="container" style="margin-top: 130px;">
     <br>
   <!-- 탭선택 -->
   <ul class="nav nav-pills" role="tablist">

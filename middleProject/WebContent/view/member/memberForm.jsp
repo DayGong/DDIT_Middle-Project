@@ -21,18 +21,10 @@
 </head>
 <body>
 
-<div class="header">
-  <h1>My Page</h1>
-  <p>임시화면 입니다 ~ </p>
-</div>
- 
-<div class="topnav">
-  <a href="#">Link</a>
-  <a href="#">Link</a>
-  <a href="#">Link</a>
-  <a href="#" style="float:right">Link</a>
-</div>
 
+<!-- 상단 메뉴바 -->
+<jsp:include page="/view/main/top.jsp"/>
+<div class= "alltop" style="margin-top: 130px;">
 <div class="row">
   <div class="leftcolumn">
     <div class="card">
@@ -77,6 +69,7 @@
 
 <div class="footer">
   <h2>우리는 대덕 워리어즈 ~~~(2023.09월 406호 2조)</h2>
+</div>
 </div>
 </body>
 </html>

@@ -68,7 +68,7 @@
 						<li ><a class="menu_li" href="#">축제</a></li>
 					</ul>
 				</li>
-				<li class="menu"><a class="menu_li" href="#">게시판</a>
+				<li class="menu"><a class="menu_li" href="<%=request.getContextPath()%>/view/notice/mainboard.jsp">게시판</a>
 					<ul>
 						<li ><a class="menu_li" href="#">공지게시판</a></li>
 						<li ><a class="menu_li" href="#">후기게시판</a></li>
