@@ -95,8 +95,8 @@
 		<!--   로그인 폼입니다    -->
 		<div id="loginForm">
 			<form class="login-form" action="#">
-				<input type="button" value="로그인">
-				<input type="button" value="회원가입">
+				<input type="button" value="로그인"  onclick="location.href='<%= request.getContextPath() %>/view/login_out/loginMain.jsp'">
+				<input type="button" value="회원가입"  onclick="location.href='<%= request.getContextPath() %>/view/signup/memberSignup.jsp'">
 			</form>
 		</div>	<!-- id가 loginForm인 div 끝 -->
 		
