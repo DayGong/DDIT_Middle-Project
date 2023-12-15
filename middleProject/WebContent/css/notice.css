@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+
+.nav-pills > .nav-item > .active {
+  color: rgb(73, 80, 102) !important;
+  background-color: rgb(194, 197, 223) !important;   
+}
+.mainIframe{
+	width: 90%;
+	height: 600px;
+}

@@ -26,7 +26,7 @@
 		<typeAlias type="kr.or.ddit.vo.AdminVO" alias="adminVo"/>
 		<typeAlias type="kr.or.ddit.culture.vo.CultureVO" alias="culVo"/>
         <typeAlias type="kr.or.ddit.tour.vo.TourVO" alias="tourVo"/>
-        
+        <typeAlias type="kr.or.ddit.vo.NoticeVO" alias="noticeVO"/>
 	</typeAliases>
 
 	<!-- DB 연결을 위한 설정 -->
@@ -56,6 +56,7 @@
 		<mapper resource="kr/or/ddit/mybatis/mappers/admin-mapper.xml"/>
 		<mapper resource="kr/or/ddit/mybatis/mappers/culture-mapper.xml"/>
         <mapper resource="kr/or/ddit/mybatis/mappers/tour-mapper.xml"/>
+        <mapper resource="kr/or/ddit/mybatis/mappers/notice-mapper.xml"/>
 	</mappers>
 	
 </configuration>
