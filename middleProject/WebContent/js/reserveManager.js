@@ -4,22 +4,7 @@
  */
 
 // 매니저 일괄 체크 아웃
- managerAllCheckout = function()
- {
-	 $.ajax
-	 ({
-		url: `${path}/reserve/hotelCheckout.do`,
-		type: 'GET',
-		success: function()
-		{
-			swal({title: "일괄 체크 아웃 완료", text: `${year}-${month}-${dayZero}`, icon: "success"});
-		},
-		error: function(xhr)
-		{
-			console.log('체크아웃 오류: ' + xhr);
-		}
-	 })
- }
+
 
 // 회원 페이지 시작
 $(function() {
