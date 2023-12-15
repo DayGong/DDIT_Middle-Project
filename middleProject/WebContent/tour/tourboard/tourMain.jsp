@@ -76,6 +76,7 @@
 
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=81f61c0a7b90a0b0dfd08d8188731b77&libraries=services"></script>
+
 <script>
             data={};
             mypath='<%=request.getContextPath()%>';  
@@ -104,7 +105,7 @@
         })
 
    //관리자 권한이 생겼을때 보여지게 하는 버튼들
-       $("#mapinsert").css("display","block");
+        $("#mapinsert").css("display","block");
         $(document).on("click", "#mapinsert", function() {    
         $(".adminPlace").css("display","block");   
         })
