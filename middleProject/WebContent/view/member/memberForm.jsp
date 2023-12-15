@@ -1,8 +1,23 @@
+<%@page import="kr.or.ddit.vo.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/memberForm.css">
+<%
+   // 세션에 저장한 데이터 가져오기
+   MemberVO memVo = (MemberVO)session.getAttribute("loginMember");
+%>
+<script>
+<%
+	if(memVo == null){
+%>
+	alert("로그인이 필요합니다. 로그인 페이지로 이동합니다.");
+	window.location.href = '<%=request.getContextPath()%>/view/login_out/loginMain.jsp';
+<%
+	}
+%>
+</script>
 </head>
 <body>
 
