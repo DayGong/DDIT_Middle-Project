@@ -1,6 +1,7 @@
 package kr.or.ddit.notice.controller;
 
 import java.io.IOException;
+import java.sql.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,10 +20,19 @@ public class NoticeUpdateController extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int no = Integer.parseInt(request.getParameter("notice_no"));
+		String noticeNoParam = request.getParameter("noticeNo");
+		int no = 0;
+		if (noticeNoParam != null && !noticeNoParam.isEmpty()) {
+		    try {
+		        no = Integer.parseInt(noticeNoParam);
+		    } catch (NumberFormatException e) {
+		       e.printStackTrace();
+		    }
+		}
+		
 		
 		INoticeService service = NoticeServiceImpl.getInstance();
-		
+		 
 		NoticeVO noticeVO = service.getNotice(no);
 		
 		request.setAttribute("noticeVO", noticeVO);
@@ -32,27 +42,27 @@ public class NoticeUpdateController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		int no = Integer.parseInt(request.getParameter("notice_no"));
+		 request.setCharacterEncoding("UTF-8");
+		
+		String noticeNoParam = request.getParameter("notice_no");
+		int no = 0;
+		if (noticeNoParam != null && !noticeNoParam.isEmpty()) {
+		    try {
+		        no = Integer.parseInt(noticeNoParam);
+		    } catch (NumberFormatException e) {
+		        e.printStackTrace();
+		    }
+		}
 		String title = request.getParameter("notice_title");
 		String content = request.getParameter("notice_content");
-		int hit = Integer.parseInt(request.getParameter("notice_content"));
-		String date = request.getParameter("notice_date");
-		String file = request.getParameter("notice_file");
+		
 		
 		INoticeService service = NoticeServiceImpl.getInstance();
-		NoticeVO noticeVO = new NoticeVO(no, title, content, hit, date, file);
+		NoticeVO noticeVO = new NoticeVO(no, title, content);
 		
 		int cnt = service.updateNotice(noticeVO);
 		
-		String msg = "";
-		if(cnt>0) {
-			msg = "성공";
-		}else {
-			msg = "실패";
-		}
-		
-		HttpSession session = request.getSession();
-		session.setAttribute("msg", msg);
+		 
 		
 		response.sendRedirect(request.getContextPath()+"/notice/list.do");
 	}

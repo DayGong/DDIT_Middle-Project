@@ -44,6 +44,7 @@
 			<tr align="right">
 				<td colspan="6">
 				<a href="<%=request.getContextPath() %>/notice/list.do">[목록으로]</a>
+				<a href="<%=request.getContextPath() %>/notice/update.do?noticeNo=<%=noticeVO.getNoticeNo() %>">[게시글 수정]</a>
 				<a href="./delete.do?noticeNo=<%=noticeVO.getNoticeNo() %>">[게시글 삭제]</a>
 				</td>
 			</tr>

@@ -12,15 +12,12 @@ public class NoticeVO {
 		
 	}
 	
-	public NoticeVO(int noticeNo, String noticeTitle, String noticeContent, int noticeHits, String noticeDate,
-			String noticeFile) {
+	public NoticeVO(int noticeNo, String noticeTitle, String noticeContent) {  
 		super();
 		this.notice_no = noticeNo;
 		this.notice_title = noticeTitle;
 		this.notice_content = noticeContent;
-		this.notice_hits = noticeHits;
-		this.notice_date = noticeDate;
-		this.notice_file = noticeFile;
+		
 	}
 
 	public int getNoticeNo() {
@@ -71,12 +68,6 @@ public class NoticeVO {
 		this.notice_file = noticeFile;
 	}
 
-	@Override
-	public String toString() {
-		return "NoticeVO [noticeNo=" + notice_no + ", noticeTitle=" + notice_title + ", noticeContent=" + notice_content
-				+ ", noticeHits=" + notice_hits + ", noticeDate=" + notice_date + ", noticeFile=" + notice_file + "]";
-	}
-	
 	
 	
 }	//NoticeVO 끝
