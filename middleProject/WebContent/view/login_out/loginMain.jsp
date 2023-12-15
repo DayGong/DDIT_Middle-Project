@@ -140,63 +140,63 @@
 			  }
 			</script>
 		
-<script type="text/javascript">
-    Kakao.init('e849d9640ad67395b31b38844f71b8eb'); // JavaScript 키 입력
-    console.log(Kakao.isInitialized());
-
-    Kakao.Auth.createLoginButton({
-        container: '#kakao-login-btn',
-        success: function (authObj) {
-            Kakao.API.request({
-                url: '/v2/user/me',
-                success: function (result) {
-                    $('#result').append(result);
-                    id = result.id;
-                    connected_at = result.connected_at;
-                    kakao_account = result.kakao_account;
-                    $('#result').append(kakao_account);
-                    resultdiv = "<h2>로그인 성공 !!";
-                    resultdiv += '<h4>id: ' + id + '<h4>';
-                    resultdiv += '<h4>connected_at: ' + connected_at + '<h4>';
-                    name = "";
-                    birthday = "";
-                    email = "";
-                    birthyear = "";
-                    phone_number = "";
-                    address = "";
-
-                    if (typeof kakao_account != 'undefined') { // 받을 데이터 추가 및 삭제
-                        email = kakao_account.email;
-                        name = kakao_account.name;
-                        birthyear = kakao_account.birthyear;
-                        birthday = kakao_account.birthday;
-                        phone_number = kakao_account.phone_number;
-                        nickname = kakao_account.profile_nickname;
-                        address = kakao_account.shipping_address;
-
-                        // 폼 동적으로 생성
-                        var form = $('<form action="<%=request.getContextPath()%>/member/loginKakao.do" method="post"></form>');
-                        form.append('<input type="hidden" name="id" value="' + id + '">');
-                        form.append('<input type="hidden" name="mail" value="' + email + '">');
-                        form.append('<input type="hidden" name="name" value="' + name + '">');
-                        form.append('<input type="hidden" name="tel" value="' + phone_number + '">');
-                        $('body').append(form);
-
-                        // 폼 제출
-                        form.submit();
-                    }
-                },
-                fail: function (error) {
-                    alert('login success, but failed to request user information: ' + JSON.stringify(error));
-                },
-            });
-        },
-        fail: function (err) {
-            alert('failed to login: ' + JSON.stringify(err));
-        },
-    });
-</script> 
+			<script type="text/javascript">
+			    Kakao.init('e849d9640ad67395b31b38844f71b8eb'); // JavaScript 키 입력
+			    console.log(Kakao.isInitialized());
 			
+			    Kakao.Auth.createLoginButton({
+			        container: '#kakao-login-btn',
+			        success: function (authObj) {
+			            Kakao.API.request({
+			                url: '/v2/user/me',
+			                success: function (result) {
+			                    $('#result').append(result);
+			                    id = result.id;
+			                    connected_at = result.connected_at;
+			                    kakao_account = result.kakao_account;
+			                    $('#result').append(kakao_account);
+			                    resultdiv = "<h2>로그인 성공 !!";
+			                    resultdiv += '<h4>id: ' + id + '<h4>';
+			                    resultdiv += '<h4>connected_at: ' + connected_at + '<h4>';
+			                    name = "";
+			                    birthday = "";
+			                    email = "";
+			                    birthyear = "";
+			                    phone_number = "";
+			                    address = "";
+			
+			                    if (typeof kakao_account != 'undefined') { // 받을 데이터 추가 및 삭제
+			                        email = kakao_account.email;
+			                        name = kakao_account.name;
+			                        birthyear = kakao_account.birthyear;
+			                        birthday = kakao_account.birthday;
+			                        phone_number = kakao_account.phone_number;
+			                        nickname = kakao_account.profile_nickname;
+			                        address = kakao_account.shipping_address;
+			
+			                        // 폼 동적으로 생성
+			                        var form = $('<form action="<%=request.getContextPath()%>/member/loginKakao.do" method="post"></form>');
+			                        form.append('<input type="hidden" name="id" value="' + id + '">');
+			                        form.append('<input type="hidden" name="mail" value="' + email + '">');
+			                        form.append('<input type="hidden" name="name" value="' + name + '">');
+			                        form.append('<input type="hidden" name="tel" value="' + phone_number + '">');
+			                        $('body').append(form);
+			
+			                        // 폼 제출
+			                        form.submit();
+			                    }
+			                },
+			                fail: function (error) {
+			                    alert('login success, but failed to request user information: ' + JSON.stringify(error));
+			                },
+			            });
+			        },
+			        fail: function (err) {
+			            alert('failed to login: ' + JSON.stringify(err));
+			        },
+			    });
+			</script> 
+						
 		<!-- 로그인 성공시 -->
 		<%
 			}else

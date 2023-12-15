@@ -1,3 +1,4 @@
+<%@page import="kr.or.ddit.vo.AdminVO"%>
 <%@page import="kr.or.ddit.vo.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -29,7 +30,7 @@
 		<div class="blank"></div>
 
 		<!--  로고 자리입니다   -->
-		<div id="logo" onclick="location.href='index.jsp'">
+		<div id="logo" onclick="location.href='<%=request.getContextPath()%>/index.jsp'">
 			<img src= "<%=path %>/images/header/RogoImg.png" alt="대전관광" style="width:200px;">
 		</div>
 		
@@ -97,9 +98,10 @@
 		<%
 	    // 세션에 저장한 데이터 가져오기
 	    MemberVO memVo = (MemberVO)session.getAttribute("loginMember");
+		AdminVO adVo = (AdminVO)session.getAttribute("loginAdmin");
 		%>
 		<%
-			if(memVo == null)
+			if(memVo == null && adVo == null)
 			{
 		%>
 		
@@ -115,15 +117,30 @@
 		%>
 		<!-- 로그인 완료 폼 -->
 		<div id ="loggedForm">
+			<%
+				if(adVo != null){
+			%>
+			<form class="logged-form" action="#">
+				<h4><%= adVo.getAdmin_name()%>관리자님 반갑습니다!</h4>
+				<input type="button" value="로그아웃"  onclick="location.href='<%=request.getContextPath()%>/member/logoutMember.do'"> 
+			</form>
+			<%
+				}else if(memVo != null)
+				{
+			%>
 			<form class="logged-form" action="#">
 				<h4><%= memVo.getMem_name()%>님 반갑습니다!</h4>
-				<input type="button" value="로그아웃"  onclick="location.href='<%=request.getContextPath()%>/member/logoutMember.do"> 
+				<input type="button" value="로그아웃"  onclick="location.href='<%=request.getContextPath()%>/member/logoutMember.do'"> 
 			</form>
+			<%
+				}
+			%>
 		</div>
 		<%
 			}
 		%>	
 	</div>	<!-- id가 rightHeader인 div 끝 -->
+	
 </header>
 <!--  메인 상단 메뉴바(헤더)의 끝  -->
 </body>
