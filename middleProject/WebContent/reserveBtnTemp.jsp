@@ -65,7 +65,7 @@
 <!-- 식당의 상세 정보를 출력하는 모달창 시작 -->
 <div class="modal" id="restaurantDetailModal">
 	<div class="modal-dialog modal-lg">
-		<div class="modal-content">
+		<div class="modal-content titleSelect">
 		
 			<!-- 모달 헤더 -->
 			<div class="modal-header" id="restaurantModalHeader">
