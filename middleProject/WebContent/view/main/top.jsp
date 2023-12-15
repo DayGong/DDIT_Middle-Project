@@ -74,11 +74,16 @@
 						<li ><a class="menu_li" href="#">후기게시판</a></li>
 					</ul>
 				</li>
-				<!-- 관리자로 로그인시 마이페이지 사라지게 했습니다-->
+				<!-- 관리자로 로그인시 관리자페이지로 이동합니다-->
 				<%
 					if(memVo==null && adVo!=null){
 				%>
-					<li></li>
+				<li class="menu"><a class="menu_li" href="<%=request.getContextPath()%>/view/admin/adminForm.jsp">관리자페이지</a>
+					<ul>
+						<li ><a class="menu_li" href="#">내정보</a></li>
+						<li ><a class="menu_li" href="#">체크아웃 관리</a></li>
+					</ul>
+				</li>
 				<%
 					}else{
 				%>
