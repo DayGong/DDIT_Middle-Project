@@ -99,6 +99,7 @@
 	    // 세션에 저장한 데이터 가져오기
 	    MemberVO memVo = (MemberVO)session.getAttribute("loginMember");
 		AdminVO adVo = (AdminVO)session.getAttribute("loginAdmin");
+
 		%>
 		<%
 			if(memVo == null && adVo == null)
@@ -119,10 +120,12 @@
 		<div id ="loggedForm">
 			<%
 				if(adVo != null){
+					
 			%>
 			<form class="logged-form" action="#">
 				<h4><%= adVo.getAdmin_name()%>관리자님 반갑습니다!</h4>
 				<input type="button" value="로그아웃"  onclick="location.href='<%=request.getContextPath()%>/member/logoutMember.do'"> 
+				
 			</form>
 			<%
 				}else if(memVo != null)
