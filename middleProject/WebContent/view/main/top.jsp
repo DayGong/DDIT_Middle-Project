@@ -29,7 +29,7 @@
 
 		<!--  로고 자리입니다   -->
 		<div id="logo" onclick="location.href='index.jsp'">
-			<img src= "<%=path %>/images/header/RogoImg.png" alt="대전관광">
+			<img src= "<%=path %>/images/header/RogoImg.png" alt="대전관광" style="width:200px;">
 		</div>
 		
 		<div class="blank"></div>
