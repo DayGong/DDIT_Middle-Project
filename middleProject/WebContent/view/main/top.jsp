@@ -1,3 +1,4 @@
+<%@page import="kr.or.ddit.vo.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -93,13 +94,35 @@
 		</div> <!-- id가 link인 div 끝 -->
   
 		<!--   로그인 폼입니다    -->
+		<%
+	    // 세션에 저장한 데이터 가져오기
+	    MemberVO memVo = (MemberVO)session.getAttribute("loginMember");
+		%>
+		<%
+			if(memVo == null)
+			{
+		%>
+		
 		<div id="loginForm">
 			<form class="login-form" action="#">
 				<input type="button" value="로그인"  onclick="location.href='<%= request.getContextPath() %>/view/login_out/loginMain.jsp'">
 				<input type="button" value="회원가입"  onclick="location.href='<%= request.getContextPath() %>/view/signup/memberSignup.jsp'">
 			</form>
 		</div>	<!-- id가 loginForm인 div 끝 -->
-		
+		<%
+			}else
+			{	
+		%>
+		<!-- 로그인 완료 폼 -->
+		<div id ="loggedForm">
+			<form class="logged-form" action="#">
+				<h4><%= memVo.getMem_name()%>님 반갑습니다!</h4>
+				<input type="button" value="로그아웃"  onclick="location.href='<%=request.getContextPath()%>/member/logoutMember.do"> 
+			</form>
+		</div>
+		<%
+			}
+		%>	
 	</div>	<!-- id가 rightHeader인 div 끝 -->
 </header>
 <!--  메인 상단 메뉴바(헤더)의 끝  -->
