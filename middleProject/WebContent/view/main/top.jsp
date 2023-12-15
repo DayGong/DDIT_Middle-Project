@@ -79,10 +79,6 @@
 					if(memVo==null && adVo!=null){
 				%>
 				<li class="menu"><a class="menu_li" href="<%=request.getContextPath()%>/view/admin/adminForm.jsp">관리자페이지</a>
-					<ul>
-						<li ><a class="menu_li" href="#">내정보</a></li>
-						<li ><a class="menu_li" href="#">체크아웃 관리</a></li>
-					</ul>
 				</li>
 				<%
 					}else{
