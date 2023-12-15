@@ -105,7 +105,7 @@
 			                <i class="fa fa-eye-slash fa-lg"></i>
 			            </div>
 			        </div>
-			      	 <!-- 로그인 오류 메시지 -->
+			      	 <!-- 로그인 오류 메시지 --> 
 			        <% if (check != null && check.equals("false")) { %>
 			            <span id="check" style="color: red;">로그인 오류 또는 비회원입니다</span><br><br>
 			        <% session.invalidate();} %>
