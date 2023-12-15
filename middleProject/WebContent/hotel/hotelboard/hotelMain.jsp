@@ -22,7 +22,7 @@
 <body>
 <!-- 상단 메뉴바 -->
 <jsp:include page="/view/main/top.jsp"/>
-       <div id ="category-container" >
+       <div id ="category-container"  style="margin-top: 130px;">
          <div class="big-buttons">
         <button class="cateBtn" name="tourList" id="tourListBtn">주요관광지</button>
         <button class="cateBtn" name="resList"> 식당 </button>
@@ -44,7 +44,7 @@
         </div>        
         
         <hr>
-        <div id="search-container">
+        <div id="search-container" style="margin-top: 130px;">
         <form id ="boxandbutton" >
         <input type="text" id="searchbox" name="searchbox" placeholder="이름으로 검색합니다" style="width: 80%;">
         <input type="button" id="searchBtn" name="searchbutton" value="검색" style="width: 20%;" >
@@ -61,7 +61,7 @@
         <div id="pagination"></div>
     </div> -->
       
-    <div id="map-container">
+    <div id="map-container" style="margin-top: 130px;">
         <div class="map_wrap">
             <!-- 지도를 표시할 div 엘리먼트 -->
             <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>

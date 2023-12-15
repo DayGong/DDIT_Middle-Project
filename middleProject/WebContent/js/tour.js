@@ -351,9 +351,22 @@ function displayTour(){
              udata['tour_img'] = jpgname; 
              console.log(udata);
              UpdateTour(udata);  
-		      }
-	
-          }        
+		      }	
+          }    
+            if(cate=="tourList"){ //주요관광지 버튼 누르면
+		     clearMarkers();
+             $('#placesList').empty(); 
+		     displayOneTour();
+             } 
+            if(cate=="resList"){ 	    
+               
+             } 
+            if(cate=="hotelList"){ 
+	        
+		     location.href = `${mypath}/hotel/hotelboard/hotelMain.jsp`;
+             } 
+
+
  
 })// cateBtn 끝
  
@@ -563,12 +576,6 @@ function clearMarkers() {
 		dataType: 'json'			
 		})
 
-})
-
- $(document).on("click","#tourListBtn",function(){  //명소 지역을 나오게 하는 메서드
-	clearMarkers();
-    $('#placesList').empty(); 
-    displayTour();
 })
 
 

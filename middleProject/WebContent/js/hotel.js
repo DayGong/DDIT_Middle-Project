@@ -229,6 +229,19 @@
              $('#placesList').empty(); 
 		    displayOneHotel("대덕구");
 	    }
+
+         if(cate=="tourList"){ //주요관광지 버튼 누르면		   
+          location.href = `${mypath}/tour/tourboard/tourMain.jsp`; 
+          } 
+
+          if(cate=="resList"){ 
+		    
+               
+             } 
+          if(cate=="hotelList"){ 	        
+		    location.href = `${mypath}/hotel/hotelboard/hotelMain.jsp`;
+             } 
+
      
 	
 
