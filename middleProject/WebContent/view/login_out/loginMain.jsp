@@ -59,6 +59,7 @@
 <!-- 로그인을 어떤탭에서 했는지 저장한것 -->
 <%
     String Tab = (String) session.getAttribute("tab");
+	//세션이 존재하고 로그인한 사용자가 아닌 경우 세션을 무효화
 %>
 
 <!-- 상단 메뉴바 -->
@@ -107,7 +108,7 @@
 			      	 <!-- 로그인 오류 메시지 -->
 			        <% if (check != null && check.equals("false")) { %>
 			            <span id="check" style="color: red;">로그인 오류 또는 비회원입니다</span><br><br>
-			        <% } %>
+			        <% session.invalidate();} %>
 			
 			        <input type="submit" value="로그인"><br><br>
 		         	
@@ -232,7 +233,7 @@
 	        <% if (check != null && check.equals("false")) 
 	        	{ %>
 	            <span id="check" style="color: red;">로그인 오류 또는 비관리자입니다</span><br><br>
-	        <% } %>
+	        <% session.invalidate();} %>
 	
 	        <input type="submit" value="로그인"><br><br>
 		</form>   
