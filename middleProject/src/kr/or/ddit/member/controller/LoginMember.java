@@ -44,7 +44,7 @@ public class LoginMember extends HttpServlet
 
 		
 		//로그인성공+저장,로그인오류메세지를 위한 check,로그인을 어떤탭에서했는지저장
-		if(LoginMemberVo!=null) 
+		if(LoginMemberVo!=null &&LoginMemberVo.getMem_state()!=0) 
 		{
 			session.setAttribute("loginMember", LoginMemberVo);
 			session.setAttribute("check", "true");
