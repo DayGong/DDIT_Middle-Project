@@ -12,6 +12,12 @@
 	String path = request.getContextPath();	// 상위 경로를 변수로 선언
 %>
 
+<%
+   // 세션에 저장한 데이터 가져오기
+	MemberVO memVo = (MemberVO)session.getAttribute("loginMember");
+	AdminVO adVo = (AdminVO)session.getAttribute("loginAdmin");
+%>
+
 <!-- 메인 상단 메뉴바 js  -->
 <script src="<%= path %>/js/jquery-3.7.1.min.js"></script>
 <script src="<%= path %>/js/header.js"></script>
@@ -68,6 +74,14 @@
 						<li ><a class="menu_li" href="#">후기게시판</a></li>
 					</ul>
 				</li>
+				<!-- 관리자로 로그인시 마이페이지 사라지게 했습니다-->
+				<%
+					if(memVo==null && adVo!=null){
+				%>
+					<li></li>
+				<%
+					}else{
+				%>
 				<li class="menu"><a class="menu_li" href="<%=request.getContextPath()%>/view/member/memberForm.jsp">마이페이지</a>
 					<ul>
 						<li ><a class="menu_li" href="#">내정보</a></li>
@@ -75,6 +89,9 @@
 						<li ><a class="menu_li" href="#">내 캘린더</a></li>
 					</ul>
 				</li>
+				<%
+					}
+				%>
 			</ul>
 		</div> <!-- id가 munu인 div 끝 -->
 
@@ -95,12 +112,6 @@
 		</div> <!-- id가 link인 div 끝 -->
   
 		<!--   로그인 폼입니다    -->
-		<%
-	    // 세션에 저장한 데이터 가져오기
-	    MemberVO memVo = (MemberVO)session.getAttribute("loginMember");
-		AdminVO adVo = (AdminVO)session.getAttribute("loginAdmin");
-
-		%>
 		<%
 			if(memVo == null && adVo == null)
 			{
