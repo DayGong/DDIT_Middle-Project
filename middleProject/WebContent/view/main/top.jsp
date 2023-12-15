@@ -48,7 +48,7 @@
 						<li ><a class="menu_li" href="#">여행도우미</a></li>
 					</ul>
 				</li>
-				<li class="menu"><a class="menu_li" href="#">관광명소</a>
+				<li class="menu"><a class="menu_li" href="<%=request.getContextPath()%>/tour/tourboard/tourMain.jsp">관광명소</a> 
 					<ul>
 						<li ><a class="menu_li" href="#">주요 관광지</a></li>
 						<li ><a class="menu_li" href="#">식당</a></li>
@@ -68,7 +68,7 @@
 						<li ><a class="menu_li" href="#">후기게시판</a></li>
 					</ul>
 				</li>
-				<li class="menu"><a class="menu_li" href="#">마이페이지</a>
+				<li class="menu"><a class="menu_li" href="<%=request.getContextPath()%>/view/member/memberForm.jsp">마이페이지</a>
 					<ul>
 						<li ><a class="menu_li" href="#">내정보</a></li>
 						<li ><a class="menu_li" href="#">예약조회</a></li>
