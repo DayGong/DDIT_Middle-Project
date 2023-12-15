@@ -36,7 +36,7 @@
   <!-- 자유게시판 -->  
     <div id="menu1" class="container tab-pane fade"><br>
       <h3>Menu 1</h3>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <p>자유게시판</p>
     </div>
   </div>
   
