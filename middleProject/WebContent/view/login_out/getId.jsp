@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <%	// 서블릿에서 저장 데이터를 꺼내기
-
+	String code = (String)request.getAttribute("code");
 	String result = (String)request.getAttribute("id");
 %>
 <body>
@@ -30,7 +30,7 @@ if(result ==null)
 %>
 	<!-- 아이디 알려주고 로그인하러가는 버튼 -->
 	
-	<h3>아이디는 <%=request.getAttribute("id")%>입니다.</h3><br>
+	<h3>회원님의 아이디는 <%=request.getAttribute("id")%>입니다.</h3><br>
 
 	<a href="<%=request.getContextPath()%>/view/login_out/loginMain.jsp">로그인하러가기</a>
 <%

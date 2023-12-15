@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import kr.or.ddit.member.service.IMemberService;
 import kr.or.ddit.member.service.MemberServiceImpl;
+import kr.or.ddit.util.MaskingUtil;
 import kr.or.ddit.vo.MemberVO;
 
 
@@ -30,11 +31,16 @@ public class FogotId extends HttpServlet {
 		// 서비스 메소드 호출
 		String id = service.getID(memMail);
 		
-		// 결과값을 request에 저장
-		request.setAttribute("id", id);
+		// 앞에 5자리 제외 *로 표현 메서드 호출
+		String maskId = MaskingUtil.maskId(id);
+		
+		//마스킹된 아이디를 request에 저장
+		request.setAttribute("id", maskId);
 		
 		// view페이지로 이동
 		request.getRequestDispatcher("/view/login_out/getId.jsp").forward(request, response);
+		
+		
 	
 	}
 
