@@ -69,7 +69,7 @@ iframe{
 	border-radius: 5px; /* 모서리를 둥글게 만듭니다 */
 	transition: all 0.3s ease; /* 부드러운 호버 효과를 위한 전환 */
 }
-
+ 
 .category-item:hover {
   	background-color: #e0e0e0; /* 호버 시 배경색 변경 */
 	cursor: pointer; /* 호버 시 커서 모양 변경 */
