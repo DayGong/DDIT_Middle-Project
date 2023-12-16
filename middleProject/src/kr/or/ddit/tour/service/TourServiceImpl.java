@@ -5,7 +5,7 @@ import java.util.Map;
 
 import kr.or.ddit.tour.dao.ITourDao;
 import kr.or.ddit.tour.dao.TourDaoImpl;
-import kr.or.ddit.tour.vo.TourVO;
+import kr.or.ddit.vo.TourVO;
 
 public class TourServiceImpl implements ITourService {
 	private static ITourService service;  //싱글톤 시작

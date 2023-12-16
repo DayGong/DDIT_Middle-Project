@@ -14,8 +14,8 @@
 
 /* 모달창 하단 close버튼 스타일 노란색으로 변경  */
 .modal-footer button {
-	background: yellow;
-	border: 1px solid rgb(255, 255, 0);
+	background: #83AAFF;
+	border: 1px solid #83AAFF;
 	color: black;		
 }
 
@@ -28,6 +28,9 @@
 /* 모달창 중간 부분 폼과 상세정보가 양옆으로 나오도록 구역 설정*/
 .modal-body {
 	display: flex;
+}
+.modal-content {
+	background-color: #F9F5EB;	
 }
 
 #left-modal-body, #right-modal-body {
@@ -68,7 +71,7 @@
 }
 
 .form_radio_btn input[type=radio]:checked + label {
-	background: #184DA0;
+	background: #83AAFF;
 	color: #fff;
 }
 

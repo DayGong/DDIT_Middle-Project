@@ -3,8 +3,8 @@ package kr.or.ddit.culture.service;
 import java.util.List;
 import java.util.Map;
 
-import kr.or.ddit.culture.vo.CultureVO;
-import kr.or.ddit.culture.vo.PageVO;
+import kr.or.ddit.vo.CultureVO;
+import kr.or.ddit.vo.PageVO;
 
 public interface ICultureService {
 	

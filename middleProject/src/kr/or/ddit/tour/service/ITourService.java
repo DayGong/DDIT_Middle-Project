@@ -3,7 +3,7 @@ package kr.or.ddit.tour.service;
 import java.util.List;
 import java.util.Map;
 
-import kr.or.ddit.tour.vo.TourVO;
+import kr.or.ddit.vo.TourVO;
 
 public interface ITourService {
         

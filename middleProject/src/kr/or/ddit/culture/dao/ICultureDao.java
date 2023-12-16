@@ -3,7 +3,7 @@ package kr.or.ddit.culture.dao;
 import java.util.List;
 import java.util.Map;
 
-import kr.or.ddit.culture.vo.CultureVO;
+import kr.or.ddit.vo.CultureVO;
 
 public interface ICultureDao {
 

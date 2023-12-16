@@ -14,7 +14,7 @@ import com.google.gson.Gson;
 
 import kr.or.ddit.tour.service.ITourService;
 import kr.or.ddit.tour.service.TourServiceImpl;
-import kr.or.ddit.tour.vo.TourVO;
+import kr.or.ddit.vo.TourVO;
 
 
 @WebServlet("/tour/tourListName.do")

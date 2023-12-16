@@ -1,4 +1,4 @@
-<%@page import="kr.or.ddit.culture.vo.CultureVO"%>
+<%@page import="kr.or.ddit.vo.CultureVO"%>
 <%@page import="com.google.gson.JsonElement"%>
 <%@page import="com.google.gson.JsonObject"%>
 <%@page import="com.google.gson.GsonBuilder"%>

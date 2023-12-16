@@ -6,7 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import kr.or.ddit.mybatis.config.MybatisUtil;
-import kr.or.ddit.tour.vo.TourVO;
+import kr.or.ddit.vo.TourVO;
 
 
 public class TourDaoImpl implements ITourDao { //싱글톤 시작

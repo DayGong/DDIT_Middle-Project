@@ -13,7 +13,7 @@ import com.google.gson.Gson;
 
 import kr.or.ddit.culture.service.CultureServiceImpl;
 import kr.or.ddit.culture.service.ICultureService;
-import kr.or.ddit.culture.vo.CultureVO;
+import kr.or.ddit.vo.CultureVO;
 
 
 @WebServlet("/selectOneCulture.do")

@@ -6,8 +6,8 @@ import java.util.Map;
 
 import kr.or.ddit.culture.dao.CultureDaoImpl;
 import kr.or.ddit.culture.dao.ICultureDao;
-import kr.or.ddit.culture.vo.CultureVO;
-import kr.or.ddit.culture.vo.PageVO;
+import kr.or.ddit.vo.CultureVO;
+import kr.or.ddit.vo.PageVO;
 import sun.security.jca.GetInstance;
 
 public class CultureServiceImpl implements ICultureService {

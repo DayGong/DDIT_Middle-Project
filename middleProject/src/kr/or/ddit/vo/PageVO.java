@@ -1,4 +1,4 @@
-package kr.or.ddit.culture.vo;
+package kr.or.ddit.vo;
 
 public class PageVO {
          

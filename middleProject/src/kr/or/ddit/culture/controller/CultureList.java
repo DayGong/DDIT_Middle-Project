@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.ddit.culture.service.CultureServiceImpl;
 import kr.or.ddit.culture.service.ICultureService;
-import kr.or.ddit.culture.vo.CultureVO;
-import kr.or.ddit.culture.vo.PageVO;
+import kr.or.ddit.vo.CultureVO;
+import kr.or.ddit.vo.PageVO;
 
 
 

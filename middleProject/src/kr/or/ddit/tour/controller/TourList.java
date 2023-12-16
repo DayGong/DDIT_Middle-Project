@@ -17,7 +17,7 @@ import kr.or.ddit.culture.service.CultureServiceImpl;
 import kr.or.ddit.culture.service.ICultureService;
 import kr.or.ddit.tour.service.ITourService;
 import kr.or.ddit.tour.service.TourServiceImpl;
-import kr.or.ddit.tour.vo.TourVO;
+import kr.or.ddit.vo.TourVO;
 
 
 @WebServlet("/tour/tourList.do")

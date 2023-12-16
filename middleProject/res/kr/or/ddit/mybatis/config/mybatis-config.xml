@@ -24,8 +24,8 @@
 		<typeAlias type="kr.or.ddit.vo.HotelReserveVO" alias="hotelRsvVo"/>
 		<typeAlias type="kr.or.ddit.vo.RestaurantReserveVO" alias="restRsvVo"/>
 		<typeAlias type="kr.or.ddit.vo.AdminVO" alias="adminVo"/>
-		<typeAlias type="kr.or.ddit.culture.vo.CultureVO" alias="culVo"/>
-        <typeAlias type="kr.or.ddit.tour.vo.TourVO" alias="tourVo"/>
+		<typeAlias type="kr.or.ddit.vo.CultureVO" alias="culVo"/>
+        <typeAlias type="kr.or.ddit.vo.TourVO" alias="tourVo"/>
         <typeAlias type="kr.or.ddit.vo.NoticeVO" alias="noticeVO"/>
 	</typeAliases>
 

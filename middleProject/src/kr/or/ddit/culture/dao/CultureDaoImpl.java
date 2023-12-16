@@ -5,8 +5,8 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
-import kr.or.ddit.culture.vo.CultureVO;
 import kr.or.ddit.mybatis.config.MybatisUtil;
+import kr.or.ddit.vo.CultureVO;
 import sun.security.jca.GetInstance;
 
 public class CultureDaoImpl implements ICultureDao {

@@ -1,4 +1,4 @@
-package kr.or.ddit.tour.vo;
+package kr.or.ddit.vo;
 
 public class TourVO {
 

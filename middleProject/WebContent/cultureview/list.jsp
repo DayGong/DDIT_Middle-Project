@@ -1,4 +1,4 @@
-<%@page import="kr.or.ddit.culture.vo.CultureVO"%>
+<%@page import="kr.or.ddit.vo.CultureVO"%>
 
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
