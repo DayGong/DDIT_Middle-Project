@@ -18,6 +18,8 @@
 </head>
 
 <body>
+
+
 <!-- 상단 메뉴바 -->
 <jsp:include page="/view/main/top.jsp"/>
        <div id ="category-container" style="margin-top: 130px;">

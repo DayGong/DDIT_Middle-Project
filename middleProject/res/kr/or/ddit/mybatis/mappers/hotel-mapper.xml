@@ -38,7 +38,7 @@
 		select * from hotel where hotel_addr like '%'||#{sword}||'%'
 	</select> 
 	
-	<select id="selectbyName" resultType="hotelVo" parameterType="String">     
+	<select id="selectByName" resultType="hotelVo" parameterType="String">     
 		select * from hotel where hotel_name like '%'||#{dong}||'%'    
 	</select>
 	<!-- 지도에 보여주는 메서드 끝 -->
