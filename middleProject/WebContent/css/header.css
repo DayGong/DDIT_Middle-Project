@@ -4,14 +4,21 @@ ul li {
 	list-style: none;
 }
 
+.menu {
+	font-family: 'EliceDigitalBaeum_Bold';
+	text-decoration: none;
+	font-size: 25px;
+}
+
 .menu_li {
+	font-family: 'SOYOMapleBoldTTF';
 	text-decoration: none;
 	color:#333;
 }
 
 #menu {
 	width: 800px;
-	line-height: 80px;
+	line-height: 100px;
 	text-align: center;
 	z-index: 100;
 }
@@ -23,6 +30,11 @@ ul li {
 
 #menu ul li {
 	margin-bottom: 5px;
+}
+
+#menu ul li a {
+	text-decoration: none;
+	color: black;
 }
 
 #menu > ul > li {
@@ -103,26 +115,17 @@ header {
 	align-items: center;
 	/* margin-left: auto; */ /* 오른쪽 정렬 */
 	position: relative;
-	top: -10px;
+	/* top: -10px; */
 	height :45%;
 }
 
 #loginForm {
 	margin-left: auto;
-	margin-right: 132px;
+	margin-right: 114px;
 	position: relative;
-	padding-top: 38px;
+	padding-top: 30px;
 	height :45%;
 	align-items: center;
-}
-
-.login-form input[type="text"],
-.login-form input[type="password"],
-.login-form input[type="submit"] {
-	padding: 8px;
-	margin-right: 5px;
-	border-radius: 3px;
-	border: 1px solid #ccc;
 }
 
 .login-form input[type="button"] {
@@ -141,6 +144,7 @@ header {
 }
 
 .login-form {
+	font-family: 'SOYOMapleBoldTTF';
 	display: flex;
 	align-items: center;
 	gap: 10px; /* 버튼 간격 조정 */

@@ -24,6 +24,7 @@
 
 <!-- header css -->
 <link rel= "stylesheet"  href="<%= path %>/css/header.css">
+<link rel= "stylesheet"  href="<%= path %>/css/common.css">
 
 <!-- header scroll script -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -91,27 +92,27 @@
 		<!--  메뉴들의 자리입니다   --> 
 		<div id="menu">
 			<ul>
-				<li class="menu"><a class="menu_li" href="#">대전알리미</a>
+				<li class="menu"><a href="#">대전알리미</a>
 					<ul>
 						<li ><a class="menu_li" href="#">대전이야기</a></li>
 						<li ><a class="menu_li" href="#">여행도우미</a></li>
 					</ul>
 				</li>
-				<li class="menu"><a class="menu_li" href="<%=request.getContextPath()%>/tour/tourboard/tourMain.jsp">관광명소</a> 
+				<li class="menu"><a href="<%=request.getContextPath()%>/tour/tourboard/tourMain.jsp">관광명소</a> 
 					<ul>
 						<li ><a class="menu_li" href="<%=request.getContextPath()%>/tour/tourboard/tourMain.jsp">주요 관광지</a></li>
 						<li ><a class="menu_li" href="<%=request.getContextPath()%>/view/restaurant/resboard/resMain.jsp">식당</a></li>
 						<li ><a class="menu_li" href="<%=request.getContextPath()%>/hotel/hotelboard/hotelMain.jsp">숙박업소</a></li>
 					</ul>
 				</li>
-				<li class="menu"><a class="menu_li" href="<%=request.getContextPath()%>/cultureboard/cultureMain.jsp">문화의거리</a>
+				<li class="menu"><a href="<%=request.getContextPath()%>/cultureboard/cultureMain.jsp">문화의거리</a>
 					<ul>
 						<li ><a class="menu_li" href="#">공연</a></li>
 						<li ><a class="menu_li" href="#">전시</a></li>
 						<li ><a class="menu_li" href="#">축제</a></li>
 					</ul>
 				</li>
-				<li class="menu"><a class="menu_li" href="<%=request.getContextPath()%>/view/notice/mainboard.jsp">게시판</a>
+				<li class="menu"><a href="<%=request.getContextPath()%>/view/notice/mainboard.jsp">게시판</a>
 					<ul>
 						<li ><a class="menu_li" href="#">공지게시판</a></li>
 						<li ><a class="menu_li" href="#">후기게시판</a></li>
@@ -121,12 +122,12 @@
 				<%
 					if(memVo==null && adVo!=null){
 				%>
-				<li class="menu"><a class="menu_li" href="<%=request.getContextPath()%>/view/admin/adminForm.jsp">관리자페이지</a>
+				<li class="menu"><a href="<%=request.getContextPath()%>/view/admin/adminForm.jsp">관리자페이지</a>
 				</li>
 				<%
 					}else{
 				%>
-				<li class="menu"><a class="menu_li" href="<%=request.getContextPath()%>/view/member/memberForm.jsp">마이페이지</a>
+				<li class="menu"><a href="<%=request.getContextPath()%>/view/member/memberForm.jsp">마이페이지</a>
 					<ul>
 						<li ><a class="menu_li" href="#">내정보</a></li>
 						<li ><a class="menu_li" href="#">예약조회</a></li>
