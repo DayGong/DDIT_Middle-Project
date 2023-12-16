@@ -14,29 +14,53 @@
 
 /* 모달창 하단 close버튼 스타일 노란색으로 변경  */
 .modal-footer button {
-	background: #83AAFF;
-	border: 1px solid #83AAFF;
-	color: black;		
-}
-
-/* 헤더의 배경 이미지(안 먹힘) */
-#headerImg {
-	width: 100%;
-	height: 100%;
+	background: #1a75ed;
+	border: 1px solid #1a75ed;
+	color: white;		
 }
 
 /* 모달창 중간 부분 폼과 상세정보가 양옆으로 나오도록 구역 설정*/
 .modal-body {
 	display: flex;
 }
-.modal-content {
-	background-color: #F9F5EB;	
+
+/* 모달 배경색 설정 */
+.modal-header, .modal-body, .modal-footer {
+	background-color:	#f9f8f4;	
 }
 
 #left-modal-body, #right-modal-body {
 	flex-direction: row;
 	width:50%;
 	height:100%;
+}
+
+.backImgDiv {
+	height: 500px;
+	background-size: cover;
+}
+
+/* number 옆에 항상 화살표 보이게 설정 */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+	-webkit-appearance: inner-spin-button;
+    opacity: 1;
+}
+
+#rsv_count {
+	width: 300px;
+	height: 30px;
+	font-size: 15px;
+	border-style: solid;
+	border-radius: 15px;
+	padding-left: 10px;
+	border-color: lightgray;
+	outline: none;
+}
+
+#rsv_count:focus {
+	border-color: #feeb48;
+	outline: none;
 }
 
 /* 카카오 페이 버튼에 마우스 커서를 손가락 모양으로 변경 */
@@ -71,7 +95,7 @@
 }
 
 .form_radio_btn input[type=radio]:checked + label {
-	background: #83AAFF;
+	background: #1a75ed;
 	color: #fff;
 }
 

@@ -44,7 +44,7 @@ showRestaurantDetailInfo = function(res)
 {
 	
 	let infoCode = `
-	<div class="headerImg" style="background-image: url('${path}/images/restaurant/${res.rest_img}');">
+	<div class="backImgDiv" style="background-image: url('${path}/images/restaurant/${res.rest_img}');">
 		<h4 class="modal-title fix-text">${res.rest_name}</h4>
 		<div>
 			<table>

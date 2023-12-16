@@ -57,9 +57,9 @@ moveToHotelDetail = function(hotel_no)
 showHotelDetailInfo = function(res) 
 {
 	let infoCode = `
-	<div class="headerImg" style="background-image: url('${path}/images/hotel/${res.hotel_img}');">
-		<h4 class="modal-title fix-text">${res.hotel_name}</h4>
+	<div class="backImgDiv" style="background-image: url('${path}/images/hotel/${res.hotel_img}');">
 		<div>
+			<h4 class="modal-title fix-text">${res.hotel_name}</h4>
 			<table>
 				<tr>
 					<td>주소</td>
