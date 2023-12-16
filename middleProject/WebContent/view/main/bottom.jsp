@@ -21,12 +21,12 @@
 <footer class="container">
     <div class="ftTop">
         <div id="djList">
-      		<a href="http://">대전시티투어</a>
-      		<a href="http://">대청호오백리길</a>
-      		<a href="http://">대전의 문화재</a>
-      		<a href="http://">대전의 맛</a>
-      		<a href="http://">대전의 교통정보</a>
-      		<a href="http://">대전관광공사</a>
+      		<a href="http://www.daejeoncitytour.co.kr/kor/main/" target="_blank">대전시티투어</a>
+      		<a href="http://www.dc500.org/" target="_blank">대청호오백리길</a>
+      		<a href="https://www.daejeon.go.kr/his/board/musBoardDataList.do?bbsCode=hisrelic&menuSeq=667" target="_blank">대전의 문화재</a>
+      		<a href="https://www.daejeon.go.kr/fod/index.do" target="_blank">대전의 맛</a>
+      		<a href="http://traffic.daejeon.go.kr/" target="_blank">대전의 교통정보</a>
+      		<a href="http://www.djto.kr/kor/index.do" target="_blank">대전관광공사</a>
         </div>
         <div id="siteList">
             <a href="https://www.daejeon.go.kr/index.do" target="_blank" >
