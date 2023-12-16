@@ -1,11 +1,10 @@
 package kr.or.ddit.tour.dao;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
-import kr.or.ddit.mybatis.config.MybatisUtil;
+import kr.or.ddit.util.MybatisUtil;
 import kr.or.ddit.vo.TourVO;
 
 

@@ -1,12 +1,10 @@
 package kr.or.ddit.hotel.dao;
 
-
-
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import kr.or.ddit.mybatis.config.MybatisUtil;
+import kr.or.ddit.util.MybatisUtil;
 import kr.or.ddit.vo.HotelVO;
 
 public class HotelDaoImpl implements IHotelDao {
