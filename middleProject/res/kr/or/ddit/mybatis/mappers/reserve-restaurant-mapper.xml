@@ -35,11 +35,17 @@
 	</update>
 	
 	<select id="getMemberRestaurantReserveCancel" parameterType="string" resultType="map">
-		SELECT * FROM restaurant_reserve rr, restaurant r
-		WHERE r.rest_no = rr.rest_no 
-			AND rr.mem_id = 'a001'	
-			AND rr.rest_rsv_state = 0
-        ORDER BY rr.rest_rsv_date DESC
+        SELECT *
+    		FROM (
+        		SELECT *
+            	FROM restaurant_reserve rr
+            	JOIN restaurant r ON r.rest_no = rr.rest_no
+            	WHERE rr.mem_id = 'a001' AND rr.rest_rsv_state = 0
+            	ORDER BY rr.rest_rsv_date DESC
+        	) res
+        	<![CDATA[
+			WHERE ROWNUM <= 5;
+			]]>
 	</select>
 	
 	<update id="changeDayReserveState">
