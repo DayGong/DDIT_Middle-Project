@@ -251,7 +251,7 @@
         sword=$('#searchbox').val().trim();               
              clearMarkers();
              $('#placesList').empty(); 
-             searchByTourName(sword);
+             searchByHotelName(sword);
 		   
 })
 function displayOneHotel(dong){	
@@ -318,16 +318,16 @@ function displayOneHotel(dong){
 
 }
 
-function searchByTourName(dong){	
+function searchByHotelName(dong){	
 	  daeDong=dong; 
       resetMap();
 	$.ajax({
-		url:`${mypath}/tour/tourListName.do`,
+		url:`${mypath}/tour/hotelListName.do`,
 		type:'get',
 		data:{"dong":daeDong},
  		success: function(res){   // ajax로 가져온 json데이터 res를 for문으로 돌린다			    		   
 			res.forEach(function(item) { // tour_addr값을 주소로하여 마커를 찍는다
-			geocoder.addressSearch(item.tour_addr, function(result, status) {
+			geocoder.addressSearch(item.hotel_addr, function(result, status) {
  			if (status === kakao.maps.services.Status.OK) {
 			var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
  			var marker = new kakao.maps.Marker({
@@ -337,7 +337,7 @@ function searchByTourName(dong){
 			markers.push(marker);
 			var  infowindow = new kakao.maps.InfoWindow({
 				content: `<div id="infowindow" > 
-				${item.tour_name}<p>
+				${item.hotel_name}<p>
 							</div>`
 				});
 				kakao.maps.event.addListener(marker, 'mouseover', function() {
@@ -349,7 +349,7 @@ function searchByTourName(dong){
 				}); 
 					// 리스트에 아이템 추가
 			var listItem = $('<li></li>')
-				.html(`<p>장소 이름: ${item.tour_name}</p><p>주소: ${item.tour_addr}</p><p>타입: ${item.tour_tp_nm}</p><p><hr>`);
+			.html(`<p>숙소 이름: ${item.hotel_name}</p><p>주소: ${item.hotel_addr}</p><p>전화번호: ${item.hotel_tel}</p><p><hr>`);
 
 				// 클릭 이벤트 추가
 				listItem.on('click', function() {
