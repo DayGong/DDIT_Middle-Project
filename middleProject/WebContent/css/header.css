@@ -10,18 +10,10 @@ ul li {
 }
 
 #menu {
-	font: bold 16px "malgun gothic";
 	width: 800px;
-	height: 50%;
-	color: black;
 	line-height: 80px;
-	margin-left: auto;
 	text-align: center;
-	top: 150px; 
-	left: 2px;
-	padding: 10px;
 	z-index: 100;
-	
 }
 
 #menu ul {
@@ -81,7 +73,7 @@ header {
 	width: 100%;
 	z-index: 1000;
 	background-color: white;
-	height: 130px;
+	height: 150px;
 	transition: top 0.2s ease-in-out;
 }
 
@@ -101,23 +93,27 @@ header {
 
 #rightHeader {
 	display: flex;
-	flex-wrap: wrap;
+	flex-direction: column; /* 수직 정렬 */
 	align-items: center;
-	margin-left: 10%;
-	margin-right: 20px;
 	height: 100%;
+	justify-content: center; /* 내부 항목의 행을 정렬 */
 }
 
-#links, #loginForm {
+#links {
 	align-items: center;
-	margin-left: auto;
+	/* margin-left: auto; */ /* 오른쪽 정렬 */
 	position: relative;
-	top: -20px;
+	top: -10px;
 	height :45%;
 }
 
 #loginForm {
-	flex: 1 1 90%;
+	margin-left: auto;
+	margin-right: 132px;
+	position: relative;
+	padding-top: 38px;
+	height :45%;
+	align-items: center;
 }
 
 .login-form input[type="text"],
