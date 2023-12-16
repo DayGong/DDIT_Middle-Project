@@ -202,43 +202,45 @@
 		if(cate=="daeAll"){
 			  clearMarkers();
              $('#placesList').empty(); 
-			displayHotel();		
+			displayDongRes();		
 		}
 	    if(cate=="daeYou"){
 		      clearMarkers();
              $('#placesList').empty(); 
-		    displayOneHotel("유성구");
+		    displayDongRes("유성구");
 	    }
 	    if(cate=="daeSeo"){
 		      clearMarkers();
              $('#placesList').empty(); 
-		    displayOneHotel("서구");
+		    displayDongRes("서구");
 	    }
 	    if(cate=="daeJung"){
 		    clearMarkers();
              $('#placesList').empty(); 
-		    displayOneHotel("중구");
+		    displayDongRes("중구");
 	    }
 	    if(cate=="daeDong"){
 		    clearMarkers();
              $('#placesList').empty(); 
-		    displayOneHotel("동구");
+		   displayDongRes("동구");
 	    }
 	    if(cate=="daeDae"){
 		     clearMarkers();
              $('#placesList').empty(); 
-		    displayOneHotel("대덕구");
+		   displayDongRes("대덕구");
 	    }
 
          if(cate=="tourList"){ //주요관광지 버튼 누르면		   
-          location.href = `${mypath}/tour/tourboard/tourMain.jsp`; 
-          } 
+            location.href = `${mypath}/tour/tourboard/tourMain.jsp`; 
+           } 
 
-          if(cate=="resList"){ 
-		    
-            location.href = `${mypath}/view/restaurant/resboard/resMain.jsp`;   
+          if(cate=="resList"){  //식당 버튼
+		     clearMarkers();
+             $('#placesList').empty(); 
+			displayDongRes();		
+               
              } 
-          if(cate=="hotelList"){ 	        
+          if(cate=="hotelList"){ //숙소 버튼	        
 		    location.href = `${mypath}/hotel/hotelboard/hotelMain.jsp`;
              } 
 
@@ -251,19 +253,19 @@
         sword=$('#searchbox').val().trim();               
              clearMarkers();
              $('#placesList').empty(); 
-             searchByTourName(sword);
+             searchByResName(sword);
 		   
 })
-function displayOneHotel(dong){	
+function displayDongRes(dong){	
 	  daeDong=dong; 
       resetMap();
 	$.ajax({
-		url:`${mypath}/hotel/hotelSearchByDong.do`,
+		url:`${mypath}/restaurant/resSearchByDong.do`,
 		type:'get',
 		data:{"dong":daeDong},
  		success: function(res){   // ajax로 가져온 json데이터 res를 for문으로 돌린다			    		   
 			res.forEach(function(item) { // tour_addr값을 주소로하여 마커를 찍는다
-			geocoder.addressSearch(item.hotel_addr, function(result, status) {
+			geocoder.addressSearch(item.rest_addr, function(result, status) {
  			if (status === kakao.maps.services.Status.OK) {
 			var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
  			var marker = new kakao.maps.Marker({
@@ -273,7 +275,7 @@ function displayOneHotel(dong){
 			markers.push(marker);
 			var  infowindow = new kakao.maps.InfoWindow({
 				content: `<div id="infowindow" > 
-				${item.hotel_name}<p>
+				${item.rest_name}<p>
 							</div>`
 				});
 				kakao.maps.event.addListener(marker, 'mouseover', function() {
@@ -285,7 +287,7 @@ function displayOneHotel(dong){
 				}); 
 					// 리스트에 아이템 추가
 			var listItem = $('<li></li>')
-				.html(`<p>장소 이름: ${item.hotel_name}</p><p>주소: ${item.hotel_addr}</p><p>타입: ${item.hotel_tel}</p><p><hr>`);
+				.html(`<p>식당 이름: ${item.rest_name}</p><p>주소: ${item.rest_addr}</p><p>전화번호: ${item.rest_tel}</p><p><hr>`);
 
 				// 클릭 이벤트 추가
 				listItem.on('click', function() {
@@ -294,7 +296,7 @@ function displayOneHotel(dong){
 					});
 					infowindow.open(map, marker);
 					infowindows.push(infowindow);
-					moveToHotelDetail (`${item.hotel_no}`);     
+					moveToRestaurantDetail(`${item.rest_no}`);     
 					
     		        map.panTo(coords);                    
 				setTimeout(function() {
@@ -318,16 +320,16 @@ function displayOneHotel(dong){
 
 }
 
-function searchByTourName(dong){	
+function searchByResName(dong){	
 	  daeDong=dong; 
       resetMap();
 	$.ajax({
-		url:`${mypath}/tour/tourListName.do`,
+		url:`${mypath}/restaurant/resByName.do`,
 		type:'get',
 		data:{"dong":daeDong},
  		success: function(res){   // ajax로 가져온 json데이터 res를 for문으로 돌린다			    		   
 			res.forEach(function(item) { // tour_addr값을 주소로하여 마커를 찍는다
-			geocoder.addressSearch(item.tour_addr, function(result, status) {
+			geocoder.addressSearch(item.rest_addr, function(result, status) {
  			if (status === kakao.maps.services.Status.OK) {
 			var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
  			var marker = new kakao.maps.Marker({
@@ -337,7 +339,7 @@ function searchByTourName(dong){
 			markers.push(marker);
 			var  infowindow = new kakao.maps.InfoWindow({
 				content: `<div id="infowindow" > 
-				${item.tour_name}<p>
+				${item.rest_name}<p>
 							</div>`
 				});
 				kakao.maps.event.addListener(marker, 'mouseover', function() {
@@ -349,7 +351,7 @@ function searchByTourName(dong){
 				}); 
 					// 리스트에 아이템 추가
 			var listItem = $('<li></li>')
-				.html(`<p>장소 이름: ${item.tour_name}</p><p>주소: ${item.tour_addr}</p><p>타입: ${item.tour_tp_nm}</p><p><hr>`);
+				.html(`<p>식당 이름: ${item.rest_name}</p><p>주소: ${item.rest_addr}</p><p>전화번호: ${item.rest_tel}</p><p><hr>`);
 
 				// 클릭 이벤트 추가
 				listItem.on('click', function() {
@@ -358,7 +360,7 @@ function searchByTourName(dong){
 					});
 					infowindow.open(map, marker);
 					infowindows.push(infowindow);
-					moveToHotelDetail (`${item.hotel_no}`);   
+					moveToRestaurantDetail(`${item.rest_no}`);   
         			
     		        map.panTo(coords);                     
 				setTimeout(function() {
@@ -456,70 +458,8 @@ function clearMarkers() {
 		})
 
 })
-function viewHotelTour(){	
-	  resetMap();
-	   $.ajax({
-		url:'${mypath}/hotel/hotelList.do',
-		type:'get',
- 		success: function(res){   // ajax로 가져온 json데이터 res를 for문으로 돌린다			    		   
-			res.forEach(function(item) { // tour_addr값을 주소로하여 마커를 찍는다
-			geocoder.addressSearch(item.hotel_addr, function(result, status) {
- 			if (status === kakao.maps.services.Status.OK) {
-			var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
- 			var marker = new kakao.maps.Marker({
-			map: map,
-			position: coords
-			});
-			markers.push(marker);
-			var  infowindow = new kakao.maps.InfoWindow({
-				content: `<div id="infowindow" > 
-				${item.hotel_name}<p>
-							</div>`
-				});
-				kakao.maps.event.addListener(marker, 'mouseover', function() {
-				infowindow.open(map, marker);
-				 });
-
-				kakao.maps.event.addListener(marker, 'mouseout', function() {
-				infowindow.close();
-				}); 
-					// 리스트에 아이템 추가
-			var listItem = $('<li></li>')
-				.html(`<p>숙소명: ${item.hotel_name}</p><p>주소: ${item.hotel_addr}</p><p>전화번호: ${item.hotel_tel}</p><p><hr>`);
-
-				// 클릭 이벤트 추가
-				listItem.on('click', function() {
-					infowindows.forEach(function(window) {
-					window.close();
-					});
-					infowindow.open(map, marker);
-					infowindows.push(infowindow);
-					moveToHotelDetail (`${item.hotel_no}`);   
-        			
-    		        map.panTo(coords);                     
-				setTimeout(function() {
-				infowindow.close();
-				 }, 3500);
-					}); 
-
-				// 리스트를 출력할 요소에 추가
-				$('#placesList').append(listItem);
-					 }
-				});
-			});
-             
-				},
-		error: function(xhr){
-			alert(xhr.status);
-				},
-		dataType: 'json'			
-		})
 
 
-}
 
- $(document).on("click","#tourListBtn",function(){  //명소 지역을 나오게 하는 메서드
-	  location.href = `${mypath}/tour/tourboard/tourMain.jsp`;
-})
  
  

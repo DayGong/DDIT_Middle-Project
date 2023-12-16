@@ -359,7 +359,7 @@ function displayTour(){
 		     displayOneTour();
              } 
             if(cate=="resList"){ 	    
-               
+             location.href = `${mypath}/view/restaurant/resboard/resMain.jsp`;   
              } 
             if(cate=="hotelList"){ 
 	        
