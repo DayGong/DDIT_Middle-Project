@@ -40,10 +40,6 @@ public class TourList extends HttpServlet {
 		   out.write(res);
 		   out.flush();
 		
-		
-		
-		
-		
 	}
 
 	
