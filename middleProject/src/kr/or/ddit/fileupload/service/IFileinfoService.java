@@ -2,7 +2,7 @@ package kr.or.ddit.fileupload.service;
 
 import java.util.List;
 
-import kr.or.ddit.fileupload.vo.FileInfoVO;
+import kr.or.ddit.vo.FileInfoVO;
 
 public interface IFileinfoService {
 

@@ -1,4 +1,4 @@
-package kr.or.ddit.fileupload.vo;
+package kr.or.ddit.vo;
 
 public class FileInfoVO {
 	

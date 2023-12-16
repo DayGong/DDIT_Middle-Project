@@ -4,7 +4,7 @@ import java.util.List;
 
 import kr.or.ddit.fileupload.dao.FileinfoDaoImpl;
 import kr.or.ddit.fileupload.dao.IFileinfoDao;
-import kr.or.ddit.fileupload.vo.FileInfoVO;
+import kr.or.ddit.vo.FileInfoVO;
 
 public class FileinfoServiceImpl implements IFileinfoService {
            private IFileinfoDao dao;

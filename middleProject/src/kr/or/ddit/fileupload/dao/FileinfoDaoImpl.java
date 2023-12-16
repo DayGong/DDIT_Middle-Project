@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import kr.or.ddit.fileupload.vo.FileInfoVO;
 import kr.or.ddit.util.MybatisUtil;
+import kr.or.ddit.vo.FileInfoVO;
 
 
 public class FileinfoDaoImpl implements IFileinfoDao{

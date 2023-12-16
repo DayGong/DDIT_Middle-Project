@@ -16,7 +16,7 @@ import javax.servlet.http.Part;
 
 import kr.or.ddit.fileupload.service.FileinfoServiceImpl;
 import kr.or.ddit.fileupload.service.IFileinfoService;
-import kr.or.ddit.fileupload.vo.FileInfoVO;
+import kr.or.ddit.vo.FileInfoVO;
 
 
 /*
