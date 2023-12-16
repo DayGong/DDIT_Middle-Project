@@ -45,6 +45,49 @@
 
 	<div id="rightHeader">
   
+		<!--   로그인 폼입니다    -->
+		<%
+			if(memVo == null && adVo == null)
+			{
+		%>
+		
+		<div id="loginForm">
+			<form class="login-form" action="#">
+				<input type="button" value="로그인"  onclick="location.href='<%= request.getContextPath() %>/view/login_out/loginMain.jsp'">
+				<input type="button" value="회원가입"  onclick="location.href='<%= request.getContextPath() %>/view/signup/memberSignup.jsp'">
+			</form>
+		</div>	<!-- id가 loginForm인 div 끝 -->
+		<%
+			}else
+			{	
+		%>
+		<!-- 로그인 완료 폼 -->
+		<div id ="loggedForm">
+			<%
+				if(adVo != null){
+					
+			%>
+			<form class="logged-form" action="#">
+				<h4><%= adVo.getAdmin_name()%>관리자님 반갑습니다!</h4>
+				<input type="button" value="로그아웃"  onclick="location.href='<%=request.getContextPath()%>/member/logoutMember.do'"> 
+				
+			</form>
+			<%
+				}else if(memVo != null)
+				{
+			%>
+			<form class="logged-form" action="#">
+				<h4><%= memVo.getMem_name()%>님 반갑습니다!</h4>
+				<input type="button" value="로그아웃"  onclick="location.href='<%=request.getContextPath()%>/member/logoutMember.do'"> 
+			</form>
+			<%
+				}
+			%>
+		</div>
+		<%
+			}
+		%>	
+		
 		<!--  메뉴들의 자리입니다   --> 
 		<div id="menu">
 			<ul>
@@ -95,65 +138,6 @@
 				%>
 			</ul>
 		</div> <!-- id가 munu인 div 끝 -->
-
- 	  	<!--  링크들을 넣은 자리입니다   -->
-		<div id="links">
-			<a href="https://www.daejeon.go.kr/index.do" target="_blank" >
-				<img src="<%=path %>/images/header/daejeon.jpg" alt="daejeon.jpg">
-			</a>
-			<a href="https://www.instagram.com/daejeontourism/" target="_blank" >
-				<img src="<%=path %>/images/header/인스타그램_아이콘.png" alt="인스타그램_아이콘.png">
-			</a>
-			<a href="https://www.youtube.com/channel/UCzRPq736TUcnIIDdfapXXZw" target="_blank" >
-				<img src="<%=path %>/images/header/11.png" alt="11.png">
-			</a>
-			<a href="https://blog.naver.com/daejeontour" target="_blank" >
-				<img src="<%=path %>/images/header/블로그1.png" alt="블로그1.png">
-			</a>
-		</div> <!-- id가 link인 div 끝 -->
-  
-		<!--   로그인 폼입니다    -->
-		<%
-			if(memVo == null && adVo == null)
-			{
-		%>
-		
-		<div id="loginForm">
-			<form class="login-form" action="#">
-				<input type="button" value="로그인"  onclick="location.href='<%= request.getContextPath() %>/view/login_out/loginMain.jsp'">
-				<input type="button" value="회원가입"  onclick="location.href='<%= request.getContextPath() %>/view/signup/memberSignup.jsp'">
-			</form>
-		</div>	<!-- id가 loginForm인 div 끝 -->
-		<%
-			}else
-			{	
-		%>
-		<!-- 로그인 완료 폼 -->
-		<div id ="loggedForm">
-			<%
-				if(adVo != null){
-					
-			%>
-			<form class="logged-form" action="#">
-				<h4><%= adVo.getAdmin_name()%>관리자님 반갑습니다!</h4>
-				<input type="button" value="로그아웃"  onclick="location.href='<%=request.getContextPath()%>/member/logoutMember.do'"> 
-				
-			</form>
-			<%
-				}else if(memVo != null)
-				{
-			%>
-			<form class="logged-form" action="#">
-				<h4><%= memVo.getMem_name()%>님 반갑습니다!</h4>
-				<input type="button" value="로그아웃"  onclick="location.href='<%=request.getContextPath()%>/member/logoutMember.do'"> 
-			</form>
-			<%
-				}
-			%>
-		</div>
-		<%
-			}
-		%>	
 	</div>	<!-- id가 rightHeader인 div 끝 -->
 	
 </header>
