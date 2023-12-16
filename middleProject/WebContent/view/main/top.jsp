@@ -56,12 +56,12 @@
 				</li>
 				<li class="menu"><a class="menu_li" href="<%=request.getContextPath()%>/tour/tourboard/tourMain.jsp">관광명소</a> 
 					<ul>
-						<li ><a class="menu_li" href="#">주요 관광지</a></li>
-						<li ><a class="menu_li" href="#">식당</a></li>
-						<li ><a class="menu_li" href="#">식박업소</a></li>
+						<li ><a class="menu_li" href="<%=request.getContextPath()%>/tour/tourboard/tourMain.jsp">주요 관광지</a></li>
+						<li ><a class="menu_li" href="<%=request.getContextPath()%>/view/restaurant/resboard/resMain.jsp">식당</a></li>
+						<li ><a class="menu_li" href="<%=request.getContextPath()%>/hotel/hotelboard/hotelMain.jsp">숙박업소</a></li>
 					</ul>
 				</li>
-				<li class="menu"><a class="menu_li" href="#">문화의거리</a>
+				<li class="menu"><a class="menu_li" href="<%=request.getContextPath()%>/cultureboard/cultureMain.jsp">문화의거리</a>
 					<ul>
 						<li ><a class="menu_li" href="#">공연</a></li>
 						<li ><a class="menu_li" href="#">전시</a></li>

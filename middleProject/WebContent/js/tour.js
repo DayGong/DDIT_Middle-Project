@@ -307,7 +307,8 @@ function displayTour(){
          insertTour(fdata);
          window.location.reload();
         // displayOneTour();
-         }
+         
+	     }          
 	     }                
          if(cate=="uploadimg"){	
 	       insertFile();      
