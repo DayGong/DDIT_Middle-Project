@@ -91,5 +91,8 @@
 			allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen ></iframe>
 </div>
 
+<!-- 하단 메뉴바 삽입 -->
+<jsp:include page="/view/main/bottom.jsp"/>
+
 </body>
 </html>
