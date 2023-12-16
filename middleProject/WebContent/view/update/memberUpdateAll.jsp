@@ -11,6 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/updateMem.css">
 <script>
 $(()=>{
 	
@@ -189,6 +190,7 @@ function prod1() {
  	MemberVO memVo = (MemberVO)session.getAttribute("loginMember");
 %>
 
+<div class="container">
 <h2>회원 정보 수정화면</h2>
 <form id= "updateform">
 
@@ -247,6 +249,7 @@ function prod1() {
 	<div style="display: inline-block;">
 		<input type="button" onclick="prod1()" value="우편번호 찾기" class="d_btn"><br><br>
 	</div>
+	
       
     <div class="form-group">
 		<label for="add1">* 주소</label> 
@@ -264,5 +267,6 @@ function prod1() {
     <input type="reset" value="취소"> 
     <span id="update"></span> 
 </form>
+</div>
 </body>
 </html>

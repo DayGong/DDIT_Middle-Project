@@ -63,6 +63,8 @@ $(() =>{
 </script>
 </head>
 <body>
+<!-- 상단 메뉴바 -->
+<jsp:include page="/view/main/top.jsp"/>
     <div class="container">
         <form id="joinform">
             <div class="header">

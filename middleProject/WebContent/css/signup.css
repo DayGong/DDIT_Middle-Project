@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+
 body{
 	display:flex;
 	flex-direction:row;
@@ -23,7 +24,7 @@ select{
 	align-items:center;
 	width:600px;
 	height:1080px;
-	margin:60px;
+	margin-top:130px;
 	padding:30px;
 	background:#ffffff;
 	border:1px solid #aacdff;

@@ -1,0 +1,30 @@
+@charset "UTF-8";
+body{
+	display:flex;
+	flex-direction:row;
+	justify-content:center;
+}
+ 
+input{
+	display:inline-block;
+}
+
+select{
+	border:1px solid #c9c9c9;
+	border-radius: 5px;
+	width: 180px;
+	height: 40px;
+}
+
+.container{
+	display:inline-block;
+	flex-direction:row;
+	align-items:center;
+	width:600px;
+	height:500px;
+	padding:30px;
+	background:#ffffff;
+	border:1px solid #aacdff;
+	box-shadow: 7px 7px 39px rgba(0, 104, 255, 0.25);
+	border-radius: 20px;
+}
