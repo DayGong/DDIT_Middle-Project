@@ -65,7 +65,8 @@
 		<!-- 로그인 완료 폼 -->
 		<div id ="loggedForm">
 			<%
-				if(adVo != null){
+				if(adVo != null)
+				{
 					
 			%>
 			<form class="logged-form" action="#">
@@ -96,6 +97,7 @@
 					<ul>
 						<li ><a class="menu_li" href="#">대전이야기</a></li>
 						<li ><a class="menu_li" href="#">여행도우미</a></li>
+						
 					</ul>
 				</li>
 				<li class="menu"><a href="<%=request.getContextPath()%>/tour/tourboard/tourMain.jsp">관광명소</a> 
@@ -120,12 +122,14 @@
 				</li>
 				<!-- 관리자로 로그인시 관리자페이지로 이동합니다-->
 				<%
-					if(memVo==null && adVo!=null){
+					if(memVo==null && adVo!=null)
+					{
 				%>
 				<li class="menu"><a href="<%=request.getContextPath()%>/view/admin/adminForm.jsp">관리자페이지</a>
 				</li>
 				<%
-					}else{
+					}else
+					{
 				%>
 				<li class="menu"><a href="<%=request.getContextPath()%>/view/member/memberForm.jsp">마이페이지</a>
 					<ul>
@@ -140,7 +144,6 @@
 			</ul>
 		</div> <!-- id가 munu인 div 끝 -->
 	</div>	<!-- id가 rightHeader인 div 끝 -->
-	
 </header>
 <!--  메인 상단 메뉴바(헤더)의 끝  -->
 </body>

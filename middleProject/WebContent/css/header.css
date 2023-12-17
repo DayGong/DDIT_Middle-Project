@@ -51,6 +51,7 @@ ul li {
 	border-top: 2px solid white; 
 	z-index: 1; 
 	border-radius: 0;
+	position: absolute;
 }
 
 #menu > ul > li:hover > li {

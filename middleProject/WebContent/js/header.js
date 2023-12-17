@@ -11,10 +11,16 @@ $(() =>
 		$('a',this).css('opacity', '1');
  
         $('#menu ul ul').css('display', 'block');
+
+
+		$('#testDiv').css('opacity', '0')
        
     }, function() 
 	{
         $('#menu ul ul').css('display', 'none');
+
+
+		$('#testDiv').css('display', 'none')
     }); // $(.menu).hover이벤트 끝
 
 });
