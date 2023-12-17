@@ -1,7 +1,5 @@
 @charset "UTF-8";
 /*글씨체*/
-
-
 /*기본용*/
 @font-face {
     font-family: 'GmarketSansMedium';
@@ -68,6 +66,7 @@ iframe{
 	margin: 0 10px; /* 아이템 간 간격 */
 	border-radius: 5px; /* 모서리를 둥글게 만듭니다 */
 	transition: all 0.3s ease; /* 부드러운 호버 효과를 위한 전환 */
+	font-size: 1.2em;
 }
  
 .category-item:hover {
