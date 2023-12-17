@@ -106,9 +106,9 @@
 			            </div>
 			        </div>
 			      	 <!-- 로그인 오류 메시지 --> 
-			        <% if (check != null && check.equals("false")) { %>
+			        <% if (check != null && check.equals("false") && "member".equals(Tab)) { %>
 			            <span id="check" style="color: red;">로그인 오류 또는 비회원입니다</span><br><br>
-			        <% session.invalidate();} %>
+			        <% } %>
 			
 			        <input type="submit" value="로그인"><br><br>
 		         	
@@ -230,10 +230,10 @@
 	            </div>
 	        </div>
 	      	 <!-- 로그인 오류 메시지 -->
-	        <% if (check != null && check.equals("false")) 
+	        <% if (check != null && check.equals("false") && "admin".equals(Tab)) 
 	        	{ %>
 	            <span id="check" style="color: red;">로그인 오류 또는 비관리자입니다</span><br><br>
-	        <% session.invalidate();} %>
+	        <% } %>
 	
 	        <input type="submit" value="로그인"><br><br>
 		</form>   

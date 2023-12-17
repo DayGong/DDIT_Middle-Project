@@ -49,7 +49,9 @@ public class AdminLogin extends HttpServlet {
 		}else
 		{
 		// 로그인 실패
+			session.setAttribute("tab", "admin");
 			session.setAttribute("check", "false");
+			
 		}
 		//view 페이지로 이동
 			request.getRequestDispatcher("/view/login_out/loginMain.jsp").forward(request, response);	
