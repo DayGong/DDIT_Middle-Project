@@ -11,6 +11,11 @@ public class NoticeVO {
 	public NoticeVO() {
 		
 	}
+	public NoticeVO(String notice_title, String notice_content) {
+		super();
+		this.notice_title = notice_title;
+		this.notice_content = notice_content;
+	}
 	
 	public NoticeVO(int noticeNo, String noticeTitle, String noticeContent) {  
 		super();
@@ -19,6 +24,7 @@ public class NoticeVO {
 		this.notice_content = noticeContent;
 		
 	}
+
 
 	public int getNoticeNo() {
 		return notice_no;

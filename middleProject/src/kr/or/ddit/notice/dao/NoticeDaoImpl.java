@@ -2,6 +2,7 @@ package kr.or.ddit.notice.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -97,6 +98,40 @@ public class NoticeDaoImpl implements INoticeDao {
 		}
 		return cnt;
 	}
+
+	@Override
+	public int insertNotice(NoticeVO noticeVO) {
+		int cnt = 0;
+		
+		SqlSession session = MybatisUtil.getSqlSession();
+		
+		try {
+			cnt = session.insert("notice.insertNotice", noticeVO);
+			
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return cnt;
+	}
+
+//	@Override
+//	public int getTotalCount(Map<String, Object> map) {
+//		SqlSession session = MybatisUtil.getSqlSession();
+//		
+//		int res = 0;
+//		
+//		try {
+//			res = session.selectOne("notice.getTotalCount", map);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}finally {
+//			session.close();
+//		}
+//		return res;
+//	}
 	
 	
 }	//NoticeDaoImpl 끝

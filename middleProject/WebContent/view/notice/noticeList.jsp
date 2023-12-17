@@ -61,7 +61,7 @@
 			%>
 
 				<tr align="right">
-					<td colspan="5"><a href="">[게시글쓰기]</a></td>
+					<td colspan="5"><a href="<%=request.getContextPath() %>/notice/insert.do">[게시글쓰기]</a></td>
 				</tr>
 			</table>
 
