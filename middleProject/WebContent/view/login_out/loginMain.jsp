@@ -216,7 +216,7 @@
 	<!-- 관리자 로그인 탭 -->
     <div id="admin" class="container tab-pane <%="admin".equals(Tab) ? "active" : ""%>"><br>
     	<!-- 로그인 안했거나 로그인  id 비밀번호가 틀렸을때    -->
-		<%
+		<%  
 		    if(adVo == null)
 		    {
 		%>

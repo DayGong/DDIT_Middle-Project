@@ -33,7 +33,7 @@ public class LoginMember extends HttpServlet
 		// 가져온 id와 pass를 MemberVO객체에 저장한다.
 		MemberVO memVo = new MemberVO();
 		memVo.setMem_id(memId);
-		memVo.setMem_pass(pass);
+		memVo.setMem_pass(pass); 
 		
 		// DB에 ID와 PASS를 보내서 해당 조건에 맞는 회원정보를 가져온다.
 		// 해당 조건에 맞지 않으면 null값이 반환된다.

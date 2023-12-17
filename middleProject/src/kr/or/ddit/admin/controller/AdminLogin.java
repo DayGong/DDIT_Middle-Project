@@ -33,7 +33,7 @@ public class AdminLogin extends HttpServlet {
 		AdminVO adVo = new AdminVO();
 		adVo.setAdmin_id(adminId);
 		adVo.setAdmin_pass(adminPass);
-		
+		 
 		// DB에 ID와 PASS를 보내서 해당 조건에 맞는 회원정보를 가져온다.
 		// 해당 조건에 맞지 않으면 null값이 반환된다.
 		AdminVO LoginAdminVo = service.getLoginAdmin(adVo);
