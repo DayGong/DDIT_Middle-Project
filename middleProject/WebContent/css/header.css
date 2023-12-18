@@ -1,93 +1,7 @@
 @charset "UTF-8";
 
-ul li {
+ul li, ol li {
 	list-style: none;
-}
-
-.menu {
-	font-family: 'EliceDigitalBaeum_Bold';
-	text-decoration: none;
-	font-size: 25px;
-}
-
-.menu_li {
-	font-family: 'SOYOMapleBoldTTF';
-	text-decoration: none;
-	color:#333;
-}
-
-#menu {
-	width: 800px;
-	line-height: 100px;
-	text-align: center;
-	z-index: 100;
-}
-
-#menu ul {
-	list-style: none;
-	padding: 0;
-}
-
-#menu ul li {
-	margin-bottom: 5px;
-}
-
-#menu ul li a {
-	text-decoration: none;
-	color: black;
-}
-
-#menu > ul > li {
-	float:left;
-	width:140px;
-}
-
-#menu > ul > li > ul {
-	width:150px;
-	height :300px;
-	display:none;
-	font-size:14px;
-	background: white;
-	border-top: 2px solid white; 
-	z-index: 1; 
-	border-radius: 0;
-	position: absolute;
-}
-
-#menu > ul > li:hover > li {
-	display:block;
-}
-
-#menu > ul > li > ul > li:hover {
-	border-bottom: 3px solid yellow; /* 호버 시 밑에 노란색으로 강조 */
-}
-
-#links img {
-	height: 30px;
-	width: 30px;
-}
-
-#links .menu_li {
-	margin-left: 15px; /* 링크 사이 간격 조정 */
-	font-size: 15px;
-	text-decoration: none;
-	color: black;
-}	
-
-header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 10px 20px;
-	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-	position: fixed;
-	top: 0;
-	/* height :13%; */
-	width: 100%;
-	z-index: 1000;
-	background-color: white;
-	height: 150px;
-	transition: top 0.2s ease-in-out;
 }
 
 #logo {
@@ -104,31 +18,6 @@ header {
     top: -130px;
 }
 
-#rightHeader {
-	display: flex;
-	flex-direction: column; /* 수직 정렬 */
-	align-items: center;
-	height: 100%;
-	justify-content: center; /* 내부 항목의 행을 정렬 */
-}
-
-#links {
-	align-items: center;
-	/* margin-left: auto; */ /* 오른쪽 정렬 */
-	position: relative;
-	/* top: -10px; */
-	height :45%;
-}
-
-#loginForm {
-	margin-left: auto;
-	margin-right: 114px;
-	position: relative;
-	padding-top: 30px;
-	height :45%;
-	align-items: center;
-}
-
 .login-form input[type="button"] {
 	padding: 8px 16px; 
 	border-radius: 3px;
@@ -139,14 +28,66 @@ header {
 	color:white;     
 }
 
-.login-form input[type="button"]:hover {
-	background-color: #0056b3;
-	border-color: #0056b3;
+/* 새로운 css */
+
+#gnb a {
+	text-decoration: none;
+	color: inherit;
 }
 
-.login-form {
-	font-family: 'SOYOMapleBoldTTF';
+#header {
 	display: flex;
+	justify-content: space-between;
 	align-items: center;
-	gap: 10px; /* 버튼 간격 조정 */
+	padding: 2rem;
+	position: relative;
+}
+
+#header #gnb {
+	display: flex;
+	z-index: 99;
+	/* margin-left: auto; */
+}
+
+#header #gnb>.dept1 {
+	position: relative;;
+	padding: 1rem 2rem;
+	text-align: center;
+}
+
+#header #gnb>.dept1>a.active {
+	color: red;
+	font-weight: bold
+}
+
+#header #gnb .inner_menu {
+	position: absolute;
+	top: 100%;
+	left: 39%;
+	transform: translateX(-50%);
+	width: 100%;
+	padding-top: 3rem;
+	display: none;
+}
+
+#header #gnb .dept2 {
+	padding: 1rem 0;
+	color: #555;
+}
+
+#header #gnb  .dept2>a:hover, #header #gnb  .dept2>a:active, #header #gnb  .dept2>a:focus {
+	font-weight: bold
+}
+
+.hd_bg {
+	background: #fff;
+	width: 100%;
+	height: 0;
+	left: 0;
+	z-index: 3;
+	position: absolute;
+}
+
+.nav-up {
+    top: -130px;
 }

@@ -2,28 +2,45 @@
  *
  */
 
-$(() => 
-{ 
- 	// 마우스 올리면 메뉴 나오는 스크립트
-    $('.menu').hover(function() 
+$(document).ready(function() 
+{
+	var gnb = $('#gnb');
+
+	// 마우스 over 시
+	gnb.mouseenter(function() 
 	{
-		$('#menu ul ul a').css('opacity', '0');
-		$('a',this).css('opacity', '1');
- 
-        $('#menu ul ul').css('display', 'block');
+		$('.inner_menu').show();
+		// menu bg
+		var menuHeight = $('#header').outerHeight();
+		var inmeHegiht = $('.inner_menu').outerHeight();
+		$('.hd_bg').css
+		({
+			'top': menuHeight + 'px',
+			height: inmeHegiht + 'px'
+		});
+	});
 
-
-		$('#testDiv').css('opacity', '0')
-       
-    }, function() 
+	// 마우스  leave 시
+	gnb.mouseleave(function() 
 	{
-        $('#menu ul ul').css('display', 'none');
+		$('.inner_menu').hide();
+		$('.hd_bg').css('height', '0')
 
+	});
 
-		$('#testDiv').css('display', 'none')
-    }); // $(.menu).hover이벤트 끝
-
+	//dept2 hover시 dept1 active
+	$('.dept1').mouseenter(function() 
+	{
+		$(this).children().addClass('active');
+		$(this).siblings().children().removeClass('active')
+	});
+	$('.dept1').mouseleave(function() 
+	{
+		$(this).children().removeClass('active');
+	});
+	
 });
+
 
 var didScroll;
 //스크롤시에 사용자가 스크롤했다는 것을 알림 
