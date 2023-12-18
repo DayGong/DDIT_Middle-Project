@@ -4,7 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%
-	String admin= (String)session.getAttribute("check");
+	String admin= (String)session.getAttribute("admin");
     List<NoticeVO> noticeList = (List<NoticeVO>) request.getAttribute("noticeList");
     int currentPage = (request.getParameter("page") != null) ? Integer.parseInt(request.getParameter("page")) : 1;
     int totalNotices = (noticeList != null) ? noticeList.size() : 0;

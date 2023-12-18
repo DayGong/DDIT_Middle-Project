@@ -19,7 +19,6 @@
 	where notice_no = #{noticeNo} 
 </select>
    
-   
    <!-- 공지 삭제 -->
 	<delete id="deleteNotice" parameterType="int">
 	

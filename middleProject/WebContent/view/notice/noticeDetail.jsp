@@ -3,7 +3,7 @@
     pageEncoding="UTF-8"%>
 <%
 NoticeVO noticeVO = (NoticeVO) request.getAttribute("noticeVO");
-String admin = (String) session.getAttribute("check");
+String admin = (String) session.getAttribute("admin");
 String path = request.getContextPath();
 String ss = (admin != null && admin.equals("true")) ? "admin" : ""; // 수정
    	
