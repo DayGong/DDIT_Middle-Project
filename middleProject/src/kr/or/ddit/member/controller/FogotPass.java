@@ -53,9 +53,11 @@ public class FogotPass extends HttpServlet {
 			if(cnt>0) 
 			{
 				System.out.println("임시번호 발급 완료");
+				
 			}else 
 			{
 				System.out.println("임시번호 발급 실패");
+				request.setAttribute("check", "false");
 			}
 			
 		} catch (Exception e) {

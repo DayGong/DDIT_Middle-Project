@@ -4,24 +4,38 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>지가 찾아드릴게유</title>
+<title>비밀번호 찾기</title>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<link rel= "stylesheet"  href="<%=request.getContextPath()%>/css/getPass.css">
 </head>
 <%	// 서블릿에서 저장 데이터를 꺼내기
 	String result = (String)request.getAttribute("memMail");
+	String check = (String)request.getAttribute("check");
 %>
 <body>
+<!-- 상단 메뉴바 -->
+<jsp:include page="/view/main/top.jsp"/>
+
 <!-- 저장된 메일주소 데이터가 없으면 -->
 <%
 if(result == null)
-{
+{	if("false".equals(check))
+	{
 %>
+   <script>
+    swal({title: "비밀번호 찾기 실패!",  text: "다시 입력해주세요", icon: "error"});
+    </script>
+	<%} %>
+	<div class="container">
 	<!-- 아이디로 메일주소를 받아서 비번찾기 -->
 	<form action="<%=request.getContextPath()%>/member/fogotPass.do" method="post">
-	가입시 입력한 아이디를 입력해주세요<br><br>
-	<input type="text" name="memId" placeholder="아이디" style="width:200px; height:20px;">
-	<input type="submit" value="확인">
+	<img src="<%=request.getContextPath()%>/images/login/꿈순이2.png" style="width:150px; height:150px; margin-left:-40px;">
+	<br><br><h1>비밀번호 찾기</h1><br>
+	<h2>가입시 입력한 아이디를 입력해주세요</h2><br>
+	<input type="text" name="memId" placeholder="아이디" style="width:200px; height:20px;"><br>
+	<br><button type="submit">확인</button>
 	</form>
+	</div>
 <%
 // 저장된 메일주소 데이터가 있으면
 }else

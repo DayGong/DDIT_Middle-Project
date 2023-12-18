@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Insert title here</title>
+<title>아이디 찾기</title>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <link rel= "stylesheet"  href="<%=request.getContextPath()%>/css/getIds.css">
 </head>
@@ -32,7 +32,7 @@ if(result ==null)
 	<!-- 메일주소로 아이디 찾기 -->
 	<div class="container">
 	<form action="<%=request.getContextPath()%>/member/fogotId.do" method="post">
-	<img src="<%=request.getContextPath()%>/images/login/꿈돌2.png" style="width:100px; height:100px;">
+	<img src="<%=request.getContextPath()%>/images/login/꿈돌2.png" style="width:170px; height:170px;">
 	<br><br><h1>아이디 찾기</h1><br>
 	<h2>가입시 입력한 메일주소를 입력해주세요</h2><br>
 	<input type="text" name="memMail" placeholder="메일주소" style="width: 300px;"><br>
