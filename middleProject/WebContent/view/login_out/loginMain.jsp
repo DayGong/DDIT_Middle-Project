@@ -162,25 +162,28 @@ QR코드 등록 정보:삭제 시점으로부터6개월 보관
       <button id="yes">회원가입</button>
     </form>
   </div>
+  
+  
+  
+  <!-- 회원 로그인 탭  -->
   <div class="form-container sign-in-container">
-    <form action="#">
-      <h1>로그인</h1>
-      <span>계정을 입력해주슈</span>
-	<%
-		    if(memVo == null)
-		    {
-	%>
 		<form action="<%=request.getContextPath()%>/member/loginMember.do" method="post">
-		<input type="text" name="memId" placeholder="아이디"><br>
+		<h1>로그인</h1>
+		<span>계정을 입력해주슈</span>
+		<%
+		    if(memVo == null)
+		    {session.invalidate();
+		%>
+		<input type="text" id="memId" name="memId" placeholder="아이디"><br>
 		<div class="input password">
 		<input type="password" id="password" class="form-input" name="pass" placeholder="비밀번호">
 		<div class="eyes">
 		<i class="fa fa-eye-slash fa-lg"></i>
 		</div>
-        </div><br>
+        </div>
 		<!-- 로그인 오류 메시지 --> 
         <% if (check != null && check.equals("false")) { %>
-            <span id="check" style="color: red;">로그인 오류 또는 비회원입니다</span><br><br>
+            <span id="check" style="color: red;">로그인 오류 또는 비회원입니다</span>
         <% } %>
       <button type="submit">로그인</button>
     	<!-- 카카오 로그인 -->
@@ -278,7 +281,6 @@ QR코드 등록 정보:삭제 시점으로부터6개월 보관
 		<%
 			}  
 		%>
-		</form>
   </div>
   <div class="overlay-container">
     <div class="overlay">
