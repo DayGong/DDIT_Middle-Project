@@ -28,6 +28,7 @@
         <typeAlias type="kr.or.ddit.vo.TourVO" alias="tourVo"/>
         <typeAlias type="kr.or.ddit.vo.NoticeVO" alias="noticeVO"/>
         <typeAlias type="kr.or.ddit.vo.FileInfoVO" alias="fileVo"/>
+        <typeAlias type="kr.or.ddit.vo.BoardVO" alias="boardVo"/>
 	</typeAliases>
 
 	<!-- DB 연결을 위한 설정 -->
@@ -59,6 +60,7 @@
         <mapper resource="kr/or/ddit/mybatis/mappers/tour-mapper.xml"/>
         <mapper resource="kr/or/ddit/mybatis/mappers/notice-mapper.xml"/>
         <mapper resource="kr/or/ddit/mybatis/mappers/fileinfo-mapper.xml"/>
+        <mapper resource="kr/or/ddit/mybatis/mappers/board-mapper.xml"/>
 	</mappers>
 	
 </configuration>
