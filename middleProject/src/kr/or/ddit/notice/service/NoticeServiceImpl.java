@@ -41,8 +41,8 @@ public class NoticeServiceImpl implements INoticeService {
 	}
 
 	@Override
-	public int updateHits(int num) {
-		return noticeDao.updateHits(num);
+	public int updateHits(int noticeNo) {
+		return noticeDao.updateHits(noticeNo);
 	}
 
 	@Override

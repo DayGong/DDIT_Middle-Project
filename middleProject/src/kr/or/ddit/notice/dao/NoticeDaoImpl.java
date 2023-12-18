@@ -69,11 +69,11 @@ public class NoticeDaoImpl implements INoticeDao {
 	}
 
 	@Override
-	public int updateHits(int num) {
+	public int updateHits(int noticeNo) {
 		int cnt = 0;
 		SqlSession session = MybatisUtil.getSqlSession();
 		try {
-			cnt = session.update("notice.updateHits", num);
+			cnt = session.update("notice.updateHits", noticeNo);
 			session.commit();
 		} catch (Exception e) {
 			e.printStackTrace();

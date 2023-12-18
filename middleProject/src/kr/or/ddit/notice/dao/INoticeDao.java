@@ -10,7 +10,7 @@ public interface INoticeDao {
 	public List<NoticeVO> getAllNotice();
 	public NoticeVO getNotice(int no);
 	public int deleteNotice(int no);
-	public int updateHits(int num);
+	public int updateHits(int noticeNo);
 	public int updateNotice(NoticeVO noticeVO);
 	public int insertNotice(NoticeVO noticeVO);
 //	public int getTotalCount(Map<String, Object> map);
