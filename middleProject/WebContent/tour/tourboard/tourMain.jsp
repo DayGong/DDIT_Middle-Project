@@ -9,49 +9,47 @@
 <script src="<%=request.getContextPath() %>/js/jquery-3.7.1.min.js"></script>
 <script src="<%=request.getContextPath() %>/js/jquery.serializejson.min.js"></script>
 
- <link rel= "stylesheet"  href="<%=request.getContextPath() %>/css/tour.css">
+<link rel= "stylesheet"  href="<%=request.getContextPath() %>/css/tour.css">
 <script src="<%=request.getContextPath() %>/js/tour.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-
 </head>
 
 <body>
 
-
 <!-- 상단 메뉴바 -->
 <jsp:include page="/view/main/top.jsp"/>
-       <div id ="category-container" style="margin-top: 130px;">
-         <div class="big-buttons">
-        <button class="cateBtn" name="tourList" id="tourListBtn">주요관광지</button>
-        <button class="cateBtn" name="resList"> 식당 </button>
-        <button class="cateBtn" name="hotelList">숙박업소</button>
-        <button class="cateBtn" name="list" id="tashuBtn">타슈</button>
+
+<div id="map-main-container">
+	<div class="map-main" id ="category-container">
+		<div class="big-buttons">
+	        <button class="cateBtn" name="tourList" id="tourListBtn">주요관광지</button>
+	        <button class="cateBtn" name="resList"> 식당 </button>
+	        <button class="cateBtn" name="hotelList">숙박업소</button>
+	        <button class="cateBtn" name="list" id="tashuBtn">타슈</button>
         </div>
         <!-- 나머지 버튼들도 유사하게 추가할 수 있습니다 -->
         <br><br>
         <p style="font-size: 15px;">지역</p>
         <div class="sub-buttons">
-        <button class="cateBtn" name="daeAll" >전체</button>
-        <button class="cateBtn" name="daeYou" >유성구</button>
-        <button class="cateBtn" name="daeSeo" >서구</button>
-        <button class="cateBtn" name="daeJung" >중구</button>
-        <button class="cateBtn" name="daeDong" >동구</button>
-        <button class="cateBtn" name="daeDae" >대덕구</button>
+	        <button class="cateBtn" name="daeAll" >전체</button>
+	        <button class="cateBtn" name="daeYou" >유성구</button>
+	        <button class="cateBtn" name="daeSeo" >서구</button>
+	        <button class="cateBtn" name="daeJung" >중구</button>
+	        <button class="cateBtn" name="daeDong" >동구</button>
+	        <button class="cateBtn" name="daeDae" >대덕구</button>
         <!-- 다른 세부 카테고리 버튼들도 유사하게 추가 -->
         </div>
-        <br><br>
-        <br><div id="mapinsert" style="display:none">     
-             관리자 메뉴
-        <button class="cateBtn"  name="mapinsert" >명소 추가</button></div>  
-        </div> 
-       
-        
-          
-        
-        <hr>
-        <div id="search-container" style="margin-top: 130px;">
+        <br><br><br>
+        <div id="mapinsert" style="display:none">
+        	관리자 메뉴
+       		<button class="cateBtn"  name="mapinsert" >명소 추가</button>
+       	</div>  
+	</div> 
+
+	<hr>
+	
+    <div id="search-container">
         <form id ="boxandbutton" >
         <input type="text" id="searchbox" name="searchbox" placeholder="이름으로 검색합니다" style="width: 80%;">
         <input type="button" id="searchBtn" name="searchbutton" value="검색" style="width: 20%;" >
@@ -68,7 +66,7 @@
         <div id="pagination"></div>
     </div> -->
       
-    <div id="map-container" style="margin-top: 130px;">
+    <div id="map-container">
         <div class="map_wrap">
             <!-- 지도를 표시할 div 엘리먼트 -->
             <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
@@ -200,6 +198,6 @@
     </div>
   </div>
 </div>
-
+</div>
 </body>
 </html>
