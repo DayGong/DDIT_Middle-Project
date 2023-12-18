@@ -233,7 +233,7 @@
   <div class="overlay-container">
     <div class="overlay">
       <div class="overlay-panel overlay-left">
-		<img src="<%=request.getContextPath()%>/images/icon/free-icon-travel-blogger-4825771.png" style="width:90px; height:90px;">
+		<img src="<%=request.getContextPath()%>/images/icon/여행객.png" style="width:90px; height:90px;">
         <br><h1><b>대전 여행러라면! <br>로그인하러 GO! GO!</b></h1>
         <p>유잼 대전으로 떠나요!</p>
         <button class="ghost" id="signIn">로그인</button>
