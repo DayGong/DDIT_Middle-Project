@@ -30,7 +30,7 @@
 <div class="carousel-container">
 	<div class="fix-text"><!-- 이미지 위에 올라가는 고정 텍스트  -->
 		<h3>DAEJEON<br>TRIP ROAD</h3>
-		<p>우리 지금, 대전가유~!<br> 돌도 굴러가유~~!</p>
+		<p>대전에서 뭐하지?<br> 한밭지킴이에서 계획짜자!</p>
 	</div>
 
 	<!-- 배너를 캐러셀Carousel -반응형슬라이드로 만들어줌- 설정. -->
