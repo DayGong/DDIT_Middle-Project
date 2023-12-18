@@ -15,6 +15,13 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
+<%
+  String getAdmin= (String)session.getAttribute("check");
+   String admin=null;
+  if(getAdmin!=null) admin=getAdmin;
+	  
+%>
+
 <body>
 
 <!-- 상단 메뉴바 -->
@@ -78,6 +85,8 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=81f61c0a7b90a0b0dfd08d8188731b77&libraries=services"></script>
 
 <script>
+            vadmin=<%=admin%>;
+            console.log(vadmin);   
             data={};
             mypath='<%=request.getContextPath()%>';  
         var markers = [];
@@ -105,10 +114,12 @@
         })
 
    //관리자 권한이 생겼을때 보여지게 하는 버튼들
+	if(vadmin==true){
         $("#mapinsert").css("display","block");
-        $(document).on("click", "#mapinsert", function() {    
+      $(document).on("click", "#mapinsert", function() {    
         $(".adminPlace").css("display","block");   
         })
+	}
 </script>
 
 
