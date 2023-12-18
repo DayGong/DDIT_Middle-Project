@@ -2,11 +2,26 @@
  * 식당 예약에 사용하는 js
  */
 
-// mem_id = (String)session.getAttribute("mem_id");
+// 오늘 이전의 날짜는 입력 불가하게 설정하기위해 오늘 날짜를 변수로 설정
+const date = new Date();
+const year = date.getFullYear()
+const month = date.getMonth() + 1;
+const day= String(date.getDate());
+
+// 일자가 한 자리 수인 경우 앞에 0을 붙여 두자리 숫자로 만들어준다. ex) 2023-12-09
+const dayZero = day.padStart(2, "0");
+
+// 경로 path 설정
+const pathName = "/" + window.location.pathname.split("/")[1];
+const origin = window.location.origin;
+const jspath = origin + pathName;
 
 // 식당 상세보기 모달창 설정
-moveToRestaurantDetail = function(rest_no)
+moveToRestaurantDetail = function(restNo, memId)
 {
+	mem_id = memId;
+	rest_no = restNo;
+	
 	$.ajax
 	({
 		url: `${path}/reserve/restaurantReserve.do`,
@@ -165,33 +180,56 @@ reserveRestaurant = function()
 	let rest_rsv_date = $('#rest_rsv_date').val();
 	let rest_rsv_time = $('#rest_rsv_time').val();
 	let rest_rsv_count = $('#rest_rsv_count').val();
-	
-	if ( rest_rsv_time == null )
+		
+	if ( mem_id == "null" || mem_id == null ) 
 	{
-		alert('시간을 입력해주세요');
-		return;
-	}
-	
-	$.ajax
-	({
-		url: `${path}/reserve/restaurantReserve.do`,
-		type: 'POST',
-		data: 
+		swal
+		({
+			title: "로그인이 필요합니다.", text: "로그인 페이지로 이동합니다.", icon: "error"
+		}).then(function() 
 		{
-			'rest_rsv_date' : rest_rsv_date,
-			'rest_rsv_time' : rest_rsv_time,
-			'rest_rsv_count' : rest_rsv_count,
-			'mem_id' : mem_id,
-			'rest_no' : rest_no
-		},
-		success: function()
+			window.location.href = `${jspath}/view/login_out/loginMain.jsp`;
+		})
+	} else
+	{
+		console.log('rest_time: ' + rest_rsv_time);
+		if ( rest_rsv_time == null || rest_rsv_time == "null" )
 		{
-			alert(`${rest_rsv_date} / ${rest_rsv_time} 예약 완료되었습니다.`);
-			$('#restaurantDetailModal').modal('hide');
-		},
-		error: function(xhr)
-		{
-			console.log(xhr);
+			swal({
+				title: "시간을 입력해주세요.", 
+				icon: "info"
+			}).then(function()
+			{
+				return;
+			})
+		} else {
+			$.ajax
+			({
+				url: `${path}/reserve/restaurantReserve.do`,
+				type: 'POST',
+				data: 
+				{
+					'rest_rsv_date' : rest_rsv_date,
+					'rest_rsv_time' : rest_rsv_time,
+					'rest_rsv_count' : rest_rsv_count,
+					'mem_id' : mem_id,
+					'rest_no' : rest_no
+				},
+				success: function()
+				{
+					swal
+					({
+						title: "예약 완료되었습니다.", text: `${rest_rsv_date} / ${rest_rsv_time}`, icon: "success"
+					}).then(function() 
+					{
+						$('#restaurantDetailModal').modal('hide');
+					})
+				},
+				error: function(xhr)
+				{
+					console.log(xhr);
+				}
+			})
 		}
-	})
+	}
 }

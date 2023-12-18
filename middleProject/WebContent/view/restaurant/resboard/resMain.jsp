@@ -1,3 +1,4 @@
+<%@page import="kr.or.ddit.vo.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page isELIgnored="true" %>   
@@ -13,10 +14,28 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
- <link rel= "stylesheet"  href="<%=request.getContextPath() %>/css/restaurant.css">
- <link rel= "stylesheet"  href="<%=request.getContextPath() %>/css/reserve.css"> 
+<link rel= "stylesheet"  href="<%=request.getContextPath() %>/css/restaurant.css">
+<link rel= "stylesheet"  href="<%=request.getContextPath() %>/css/reserve.css"> 
 
+<!-- 카카오페이API script -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 
+<!-- 예쁜 Alert창 -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<%
+   // 세션에 저장한 데이터 가져오기
+	MemberVO memVo = (MemberVO)session.getAttribute("loginMember");
+
+	String mem_id = null;
+	
+	if ( memVo == null ) {
+		mem_id = null;
+	} else {
+		mem_id = memVo.getMem_id();
+	}
+%>
 
 </head>
 
@@ -44,8 +63,6 @@
         <button class="cateBtn" name="daeDae" >대덕구</button>
         <!-- 다른 세부 카테고리 버튼들도 유사하게 추가 -->
         </div>
-        <br><br>
-        <img src="<%=request.getContextPath() %>/images/tour/tour_rest.png">
         </div>        
         
         <hr>
@@ -104,9 +121,9 @@
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=81f61c0a7b90a0b0dfd08d8188731b77&libraries=services"></script>
 <script>
-            data={};
-            mypath='<%=request.getContextPath()%>';  
-            path='<%=request.getContextPath()%>';  
+        data={};
+        mypath='<%=request.getContextPath()%>';  
+        path='<%=request.getContextPath()%>';  
         var markers = [];
         // 지도 객체 생성 및 설정
         var mapContainer = document.getElementById('map'),
@@ -125,67 +142,80 @@
         var pagination;
         var infowindows = [];
     
-        $(()=>{
+        $(()=>
+        {
         	resetMap();
-        	  $.ajax({
+        	  $.ajax
+        	  ({
         			url:`${mypath}/restaurant/resList.do`,
         			type:'post',
-        	 		success: function(res){   // ajax로 가져온 json데이터 res를 for문으로 돌린다			    		   
-        				res.forEach(function(item) { // tour_addr값을 주소로하여 마커를 찍는다
-        				geocoder.addressSearch(item.rest_addr, function(result, status) {
-        	 			if (status === kakao.maps.services.Status.OK) {
-        				var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-        	 			var marker = new kakao.maps.Marker({
-        				map: map,
-        				position: coords
-        				});
-        				markers.push(marker);
-        				var  infowindow = new kakao.maps.InfoWindow({
-        					content: `<div id="infowindow" > 
-        					${item.rest_name}<p>
-        								</div>`
-        					});
-        					kakao.maps.event.addListener(marker, 'mouseover', function() {
-        					infowindow.open(map, marker);
-        					 });
+        	 		success: function(res)	// ajax로 가져온 json데이터 res를 for문으로 돌린다
+        	 		{   			    		   
+        				res.forEach(function(item) // tour_addr값을 주소로하여 마커를 찍는다
+        				{ 
+        					geocoder.addressSearch(item.rest_addr, function(result, status) 
+        					{
+        	 					if (status === kakao.maps.services.Status.OK) 
+        	 					{
+        							var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+        	 						var marker = new kakao.maps.Marker
+        	 						({
+        								map: map,
+        								position: coords
+        							});
+        							markers.push(marker);
+        							var  infowindow = new kakao.maps.InfoWindow
+        							({
+        								content: `<div id="infowindow" > 
+        											${item.rest_name}<p>
+        										</div>`
+        							});
+        							kakao.maps.event.addListener(marker, 'mouseover', function() 
+        							{
+        								infowindow.open(map, marker);
+        						 	});
 
-        					kakao.maps.event.addListener(marker, 'mouseout', function() {
-        					infowindow.close();
-        					}); 
-        						// 리스트에 아이템 추가
-        				var listItem = $('<li></li>')
-        					.html(`<p>식당명: ${item.rest_name}</p><p>주소: ${item.rest_addr}</p><p>전화번호: ${item.rest_tel}</p><p><hr>`);
+        							kakao.maps.event.addListener(marker, 'mouseout', function() 
+        							{
+        								infowindow.close();
+        							}); 
+        							// 리스트에 아이템 추가
+        							var listItem = $('<li></li>')
+        								.html(`<p>식당명: ${item.rest_name}</p><p>주소: ${item.rest_addr}</p><p>전화번호: ${item.rest_tel}</p><p><hr>`);
 
-        					// 클릭 이벤트 추가
-        					listItem.on('click', function() {
-        						infowindows.forEach(function(window) {
-        						window.close();
-        						});
-        						infowindow.open(map, marker);
-        						infowindows.push(infowindow);
-        						moveToRestaurantDetail(`${item.rest_no}`);   
+        							// 클릭 이벤트 추가
+        							listItem.on('click', function() 
+        							{
+        								infowindows.forEach(function(window) 
+        								{
+        									window.close();
+        								});
+        								infowindow.open(map, marker);
+        								infowindows.push(infowindow);
+        							
+        								// 식당 모달창 호출
+        								moveToRestaurantDetail(`${item.rest_no}`, '<%= mem_id %>');   
         						
-        						map.panTo(coords);                     
-        					setTimeout(function() {
-        					infowindow.close();
-        					 }, 3500);
-        						}); 
+        								map.panTo(coords);                     
+        								setTimeout(function() 
+        								{
+        									infowindow.close();
+        						 		}, 3500);
+        							}); 
 
-        					// 리스트를 출력할 요소에 추가
-        					$('#placesList').append(listItem);
-        						 }
+        							// 리스트를 출력할 요소에 추가
+        							$('#placesList').append(listItem);
+        						}
         					});
         				});
-        	             
-        					},
-        			error: function(xhr){
+					},
+        			error: function(xhr)
+        			{
         				alert(xhr.status);
-        					},
+        			},
         			dataType: 'json'			
-        			})
- 
-        		
-        })
+        		})
+        	})
 
 </script>
 <!-- 식당의 상세 정보를 출력하는 모달창 시작 -->
@@ -200,8 +230,8 @@
 
 			<!-- 모달 몸통(내용 출력) -->
 			<div class="modal-body" id="restaurantModalBody">
-				<div id="rest-left-modal-body"></div> 	<!-- 상세 정보 폼 -->
-				<div id="rest-right-modal-body"></div> 	<!-- 예약 입력 폼 -->
+				<div id="rest-left-modal-body"></div> 	<!-- 예약 입력 폼 -->
+				<div id="rest-right-modal-body"></div> 	<!-- 상세 정보 폼 -->
 			</div>
 
 			<!-- 모달 하단(후기 출력) -->
