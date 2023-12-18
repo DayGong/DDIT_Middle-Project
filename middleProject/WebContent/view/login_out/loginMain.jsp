@@ -85,8 +85,8 @@
 <div class="container" id="container">
   <div class="form-container sign-up-container">
     <form action="#">
-      <h1><b>이용약관 동의서</b></h1>
-	
+      <h1 style="font-size:30px;"><b>이용약관 동의서</b></h1>
+	<br>
 	<div>
 		<jsp:include page="/view/signup/memberAgre.jsp"/>
 	</div>
@@ -101,7 +101,7 @@
 		</table>
 	</div>
 </div>
-      <button id="yes">회원가입</button>
+      <button id="yes" style="margin-top:10px;">회원가입</button>
     </form>
   </div>
   
@@ -110,25 +110,27 @@
   <!-- 회원 로그인 탭  -->
   <div class="form-container sign-in-container">
 		<form action="<%=request.getContextPath()%>/member/loginMember.do" method="post">
-		<br><h1><b>로그인</b></h1><br>
+		<br><h1 style="font-size:30px;"><b>로그인</b></h1><br>
 		<%
 		    if(memVo == null)
 		    {session.invalidate();
 		%>
 		<div>
 		<input type="text" id="memId" class="form-input" name="memId" placeholder="아이디">
-		</div><br>
-		<div class="input password">
-		<input type="password" id="password" class="form-input" name="pass" placeholder="비밀번호" style= "margin-left:25px;">
-		<div class="eyes">
-		<i class="fa fa-eye-slash fa-lg"></i>
 		</div>
-        </div>
-		<!-- 로그인 오류 메시지 --> 
-        <% if (check != null && check.equals("false")) { %>
-            <span id="check" style="color: red;">로그인 오류 또는 비회원입니다</span>
-        <% } %>
-      <br><button type="submit">로그인</button>
+		<div class="input password">
+	    <input type="password" id="password" class="form-input" name="pass" placeholder="비밀번호" style="margin: 10px 0 0 30px;">
+	    <div class="eyes">
+	        <i class="fa fa-eye-slash fa-lg"></i>
+	    </div>
+		</div>
+		
+		<!-- 로그인 오류 메시지 -->
+		<% if (check != null && check.equals("false")) { %>
+		    <span id="check" style="color: red; margin-top: 10px;">로그인 오류 또는 비회원입니다</span>
+		<% } %>
+		
+		<button type="submit" style="margin-top: 10px; ">로그인</button>
     	<!-- 카카오 로그인 -->
 		<a id="kakao-login-btn"></a>
 		<div id="result"></div>
@@ -136,7 +138,7 @@
             <a href="<%=request.getContextPath()%>/view/login_out/getId.jsp" style="text-decoration: none;">아이디 찾기 </a>&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="<%=request.getContextPath()%>/view/login_out/getPassword.jsp" class="login_forgot" style="text-decoration: none;">비밀번호 찾기 </a>
         </div> 
-	  <a href="<%=request.getContextPath()%>/view/login_out/adminLogin.jsp" style="text-decoration: none;">관리자세요?
+	  <a href="<%=request.getContextPath()%>/view/login_out/adminLogin.jsp" style="text-decoration: none; color: #22b14c;">관리자세요?
 	  </a>			
 			</form> 
 			
@@ -231,13 +233,15 @@
   <div class="overlay-container">
     <div class="overlay">
       <div class="overlay-panel overlay-left">
-        <h1><b>튀소 용사여 <br>웰컴백이유</b></h1>
-        <p>유잼대전으로 떠나보자고 !!</p>
+		<img src="<%=request.getContextPath()%>/images/icon/free-icon-travel-blogger-4825771.png" style="width:90px; height:90px;">
+        <br><h1><b>대전 여행러라면! <br>로그인하러 GO! GO!</b></h1>
+        <p>유잼 대전으로 떠나요!</p>
         <button class="ghost" id="signIn">로그인</button>
       </div>
       <div class="overlay-panel overlay-right">
-        <h1><b>타슈타고 여행가유~</b></h1>
-        <p>튀김소보루탐험가가 되어보실래요?</p>
+		<img src="<%=request.getContextPath()%>/images/icon/자전거.png" style="width:100px; height:100px;">
+        <br><h1><b>타슈타고 여행가유~</b></h1>
+        <p>우리 튀김소보루 사러가요!</p>
         <button class="ghost" id="signUp">회원가입</button>
       </div>
     </div>
