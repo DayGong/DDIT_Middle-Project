@@ -51,15 +51,17 @@
 <body>
 
 <jsp:include page="/view/main/top.jsp"/>
-<div class="big-buttons"style="margin-top: 138px;">      <!-- 카테고리 선택 버튼 -->
+<div class="big-buttons">      <!-- 카테고리 선택 버튼 -->
 <button class="cateBtn" name="resList" active> 전체보기 </button>
 <button class="cateBtn" name="concertList" >공연</button>
 <button class="cateBtn" name="fesList"> 축제 </button>
 <button class="cateBtn" name="museumList">전시</button>
+<br><br>
+&nbsp;&nbsp;<img src="<%=request.getContextPath() %>/images/culture/cul_cul.png" style="width:100px; height:100px;">
 </div>
 
 <hr>     
-<div id= "mainview" style="margin-top: 142px;">
+<div id= "mainview" >
 <div id ="result1"></div>  <!-- 문화 리스트 출력되는 자리 -->
 <div id ="pagelist"></div> <!-- 페이지 버튼이 출력되는 자리 --> 
 <div id ="result2"></div>  <!-- offcanvas 폼이 출력되는 자리 -->

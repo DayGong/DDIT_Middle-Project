@@ -1,6 +1,23 @@
 @charset "UTF-8";
 
 
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Cafe24SsurroundAir';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SsurroundAir.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
 
 .cul_container{
   display:flex;
@@ -59,6 +76,7 @@
   color : white;
   border-radius : 10px;
   padding :5px;
+  font-family: 'Cafe24SsurroundAir';
 }
 
 
@@ -81,6 +99,7 @@
     padding: 20px;
     border-radius: 5px;
     color: white; /* 텍스트 색상 */
+    font-family: 'GmarketSansMedium';
 }
 
 .big-buttons button {
@@ -89,14 +108,15 @@
   font-size: 18px; /* 글꼴 크기 조절 */
   border: none;
   border-radius: 8px;
-  background-color: #f1c40f; /* 노란색 배경 */
+  background-color: #0080ff; 
   color: white;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: transform 80ms ease-in; 
   margin-top: 10px;
   width: 150px; /* 고정된 너비 */
   height: 50px; /* 고정된 높이 */
   text-align: center; /* 텍스트 가운데 정렬 */
+  font-family: 'GmarketSansMedium';
 }
 .big-buttons{
   display: flex; /* 요소들을 가로로 나란히 배치하기 위해 Flexbox 사용 */
@@ -105,8 +125,8 @@
   width: 15%; /* 오른쪽 15%만큼의 너비를 가지도록 설정 */ 
   float: left; /* 왼쪽으로 부유(floated) */
 }
-#big-buttons button:hover {
-  background-color: #2980b9;
+.big-buttons button:active {
+  transform: scale(0.95);
 }
 #mainview {
   margin-left: 15%; /* 버튼 너비와 동일한 여백을 설정하여 겹치지 않게 함 */

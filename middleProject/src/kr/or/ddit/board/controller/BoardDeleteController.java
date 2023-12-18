@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import kr.or.ddit.notice.service.IBoardService;
-import kr.or.ddit.notice.service.BoardServiceImpl;
+import kr.or.ddit.board.service.BoardServiceImpl;
+import kr.or.ddit.board.service.IBoardService;
 
 @WebServlet("/board/delete.do")
 public class BoardDeleteController extends HttpServlet {

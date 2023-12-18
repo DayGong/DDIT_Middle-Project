@@ -563,9 +563,7 @@ function clearMarkers() {
 				infowindow.close();
 				}); 
 				
-				kakao.maps.event.addListener(marker, 'click', function() {
-				detailTour(item);
-				}); 
+
 					// 리스트에 아이템 추가 여기도 변경
 			var listItem = $('<li ></li>')
 				.html(`<p>장소 이름: ${item.name}</p><p>주소: ${item.address}</p><p>타입: ${item.id}</p><p><hr>`);
