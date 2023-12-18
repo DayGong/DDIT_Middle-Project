@@ -36,3 +36,18 @@ a {
 	text-decoration: none;
 	color: inherit;
 }
+
+/* 위로 가기 버튼 화면 고정 */
+.moveTopBtn {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  width: 4rem;
+  height: 4rem;
+  cursor: pointer;
+}
+
+.moveTopBtn img {
+	width: 50px;
+	height: 50px;
+}

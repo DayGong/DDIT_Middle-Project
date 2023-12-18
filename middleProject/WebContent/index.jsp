@@ -15,8 +15,11 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
+<!-- 공통 js -->
+<script type="text/javascript" src="<%= path %>/js/common.js"></script>
 <!-- 공통 css -->
 <link rel="stylesheet" href="<%= path %>/css/common.css">
+
 </head>
 <body>
 
@@ -84,7 +87,6 @@
 
 <!-- 공연 관련 내용 jsp -->
 
-
 <jsp:include page="/view/main/scrollup.jsp"/>
 
 <!-- 동영상 자동 재생(height 자동 조절 안 됨 - 수정해보다가 안 되면 발표 화면에 맞춰서 고정값 넣기) -->
@@ -92,6 +94,10 @@
 	<iframe class="videoArea" src="https://www.youtube.com/embed/Vh6UyH1TAEY?si=-enLIog4Wzto0soU&amp;controls=0&mute=1&autoplay=1&playlist=Vh6UyH1TAEY&loop=1" 
 			title="YouTube video player" frameborder="0" width="100%" height="650px"
 			allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen ></iframe>
+</div>
+
+<div class="moveTopBtn">
+	<img alt="상단 이동 버튼" src="<%= path %>/images/icon/scrollToTop.png">
 </div>
 
 <!-- 하단 메뉴바 삽입 -->
