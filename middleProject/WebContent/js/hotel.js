@@ -3,25 +3,23 @@
  */
 // 카카오맵 api에 관련된 script들
 
-
-
-
-       
-	        mypath='<%=request.getContextPath()%>';   
+mypath='<%=request.getContextPath()%>';
+mem_id='<%= memVo.getMem_id() %>';
   
-
-
-       function placesSearchCB(data, status, pagination) {
-    	    if (status === kakao.maps.services.Status.OK) {
-    	       
-    	    	displayPlaces(data);
-    	        displayPagination(pagination);
-    	    } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
-    	        alert('검색 결과가 존재하지 않습니다.');
-    	    } else if (status === kakao.maps.services.Status.ERROR) {
-    	        alert('검색 결과 중 오류가 발생했습니다.');
-    	    }
-    	}
+function placesSearchCB(data, status, pagination) 
+{
+	if (status === kakao.maps.services.Status.OK) 
+	{
+		displayPlaces(data);
+		displayPagination(pagination);
+	} else if (status === kakao.maps.services.Status.ZERO_RESULT) 
+	{
+		alert('검색 결과가 존재하지 않습니다.');
+	} else if (status === kakao.maps.services.Status.ERROR) 
+	{
+		alert('검색 결과 중 오류가 발생했습니다.');
+	}
+}
 
     
      // 장소 목록을 표시하는 함수
@@ -294,7 +292,9 @@ function displayOneHotel(dong){
 					});
 					infowindow.open(map, marker);
 					infowindows.push(infowindow);
-					moveToHotelDetail (`${item.hotel_no}`);     
+					
+					// 호텔 모달창 출력
+					moveToHotelDetail(`${item.hotel_no}`, `${mem_id}`);
 					
     		        map.panTo(coords);                    
 				setTimeout(function() {
@@ -358,7 +358,9 @@ function searchByHotelName(dong){
 					});
 					infowindow.open(map, marker);
 					infowindows.push(infowindow);
-					moveToHotelDetail (`${item.hotel_no}`);   
+					
+					// 호텔 모달창 출력
+					moveToHotelDetail(`${item.hotel_no}`, `${mem_id}`);
         			
     		        map.panTo(coords);                     
 				setTimeout(function() {
@@ -434,7 +436,6 @@ function clearMarkers() {
 					});
 					infowindow.open(map, marker);
 					infowindows.push(infowindow);
-					moveToHotelDetail (`${item.hotel_no}`);    
         			
     		        map.panTo(coords);                    
 				setTimeout(function() {
@@ -494,7 +495,9 @@ function viewHotelTour(){
 					});
 					infowindow.open(map, marker);
 					infowindows.push(infowindow);
-					moveToHotelDetail (`${item.hotel_no}`);   
+					
+					// 호텔 모달창 출력
+					moveToHotelDetail (`${item.hotel_no}`, `${mem_id}`);   
         			
     		        map.panTo(coords);                     
 				setTimeout(function() {

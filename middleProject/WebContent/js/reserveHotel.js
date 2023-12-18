@@ -16,12 +16,11 @@ const pathName = "/" + window.location.pathname.split("/")[1];
 const origin = window.location.origin;
 const path = origin + pathName;
 
-// mem_id = (String)session.getAttribute("mem_id");
-const mem_id = "a001"; // 회원 아이디 임시 데이터(세션 회원 아이디)
-
 // 숙소 상세보기 모달창 설정
-moveToHotelDetail = function(hotel_no)
+moveToHotelDetail = function(hotel_no, memId)
 {
+	mem_id = memId;
+	
 	$.ajax
 	({
 		url: `${path}/reserve/hotelReserve.do`,
@@ -58,7 +57,7 @@ showHotelDetailInfo = function(res)
 {
 	let infoCode = `
 	<div class="backImgDiv" style="background-image: url('${path}/images/hotel/${res.hotel_img}');">
-		<div>
+		<div class="infoDiv">
 			<h4 class="modal-title fix-text">${res.hotel_name}</h4>
 			<table>
 				<tr>
@@ -158,6 +157,7 @@ changeRoomState = function()
 	}	
 }
 
+/*
 // 빈 객실 수를 구해 표시하는 이벤트
 $(document).on('input', '#select_end_date', function()
 {
@@ -168,6 +168,7 @@ $(document).on('input', '#select_end_date', function()
 	// 관리자페이지에서 일괄 체크아웃
 	checkRoom(start, end);
 })
+*/
 
 // 해당하는 날짜에 남은 객실 수를 확인하는 메서드
 checkRoom = function(start, end)
@@ -214,69 +215,81 @@ getDateDiff = (startDate, endDate) =>
 // 카카오페이를 요청하는 메서드
 requestPay = function() 
 {
-	var IMP = window.IMP; 
-	IMP.init("imp67011510");	// 테스트용 가맹점ID(변경 X)
-
-	/* 
-		주문번호 = 같은 값은 사용 불가(결제 할 때마다 새로운 값 필요)
-		주문번호 만들 때 "코드" + 현재 시간 등으로 만들기 위한 makemerchantUid
-	*/
-	var today = new Date();   
-	var hours = today.getHours(); // 시
-	var minutes = today.getMinutes();  // 분
-	var seconds = today.getSeconds();  // 초
-	var milliseconds = today.getMilliseconds();
-	var makeMerchantUid = hours +  minutes + seconds + milliseconds;
-	
-	let startDate = $('#select_start_date').val();
-	let endDate = $('#select_end_date').val();
-	let peopleCnt = $('#rsv_count').val();
-	let room = $('input[name=hotel_rsv_room]:checked').val();
-	
-	let betweenDate = getDateDiff(startDate, endDate);
-	if (betweenDate == 0) 
+	if ( mem_id == null || mem_id == "null" ) 
 	{
-		betweenDate = 1;	// 당일 숙박은 1일과 같은 것으로 처리
-	}
-	
-	let totalAmt = hotelInfo.hotel_amount * peopleCnt * betweenDate;
-
-	IMP.request_pay
-	({
-		pg : 'kakaopay', 							// kcp: 미리 등록한 카드로 결제, kakaopay
-		pay_method : 'card',
-		merchant_uid: hotelInfo.hotel_no +makeMerchantUid,  	// 주문번호
-		name : "[" + hotelInfo.hotel_name + "]" + room + startDate + "~" + endDate,		// 상품명
-		amount : totalAmt,							// 가격(결제 금액)
-		buyer_name : hotelInfo.hotel_name,
-		buyer_tel : hotelInfo.hotel_tel,
-		buyer_addr : hotelInfo.hotel_addr,
-	}, function (rsp) 
+		swal
+		({
+			title: "로그인이 필요합니다.", text: "로그인 페이지로 이동합니다.", icon: "error"
+		}).then(function() 
+		{
+			window.location.href = `${path}/view/login_out/loginMain.jsp`;
+		})
+	} else
 	{
-		if (rsp.success) 
+		var IMP = window.IMP; 
+		IMP.init("imp67011510");	// 테스트용 가맹점ID(변경 X)
+
+		/* 
+			주문번호 = 같은 값은 사용 불가(결제 할 때마다 새로운 값 필요)
+			주문번호 만들 때 "코드" + 현재 시간 등으로 만들기 위한 makemerchantUid
+		*/
+		var today = new Date();   
+		var hours = today.getHours(); // 시
+		var minutes = today.getMinutes();  // 분
+		var seconds = today.getSeconds();  // 초
+		var milliseconds = today.getMilliseconds();
+		var makeMerchantUid = hours +  minutes + seconds + milliseconds;
+		
+		let startDate = $('#select_start_date').val();
+		let endDate = $('#select_end_date').val();
+		let peopleCnt = $('#rsv_count').val();
+		let room = $('input[name=hotel_rsv_room]:checked').val();
+		
+		let betweenDate = getDateDiff(startDate, endDate);
+		if (betweenDate == 0) 
 		{
- 			// 서버 결제 API 성공시 로직
- 			let reserveInfo = 
- 			{
-				"imp_uid" : rsp.imp_uid,
-				"startDate" : `${startDate}`,
-				"endDate" : `${endDate}`,
-				"peopleCnt" : `${peopleCnt}`,
-				"room" : `${room}`,
-				"mem_id" : `${mem_id}`,
-				"hotel_no" : `${hotelInfo.hotel_no}`,
-				"hotel_totalamt" : `${totalAmt}`
-			} ;
-			
-			payAfterReserveHotel(reserveInfo);
-			
-			swal({title: "예약이 완료되었습니다.", text: `${startDate}~${endDate} / ${peopleCnt}명 / ${room}`, icon: "success"});
-			$('#hotelDetailModal').modal('hide');
-		} else 
-		{
-			console.log(`결제에 실패하였습니다. 에러 내용: ${rsp.error_msg}`);
+			betweenDate = 1;	// 당일 숙박은 1일과 같은 것으로 처리
 		}
-	});
+		
+		let totalAmt = hotelInfo.hotel_amount * peopleCnt * betweenDate;
+	
+		IMP.request_pay
+		({
+			pg : 'kakaopay', 							// kcp: 미리 등록한 카드로 결제, kakaopay
+			pay_method : 'card',
+			merchant_uid: hotelInfo.hotel_no +makeMerchantUid,  	// 주문번호
+			name : "[" + hotelInfo.hotel_name + "]" + room + startDate + "~" + endDate,		// 상품명
+			amount : totalAmt,							// 가격(결제 금액)
+			buyer_name : hotelInfo.hotel_name,
+			buyer_tel : hotelInfo.hotel_tel,
+			buyer_addr : hotelInfo.hotel_addr,
+		}, function (rsp) 
+		{
+			if (rsp.success) 
+			{
+	 			// 서버 결제 API 성공시 로직
+	 			let reserveInfo = 
+	 			{
+					"imp_uid" : rsp.imp_uid,
+					"startDate" : `${startDate}`,
+					"endDate" : `${endDate}`,
+					"peopleCnt" : `${peopleCnt}`,
+					"room" : `${room}`,
+					"mem_id" : `${mem_id}`,
+					"hotel_no" : `${hotelInfo.hotel_no}`,
+					"hotel_totalamt" : `${totalAmt}`
+				} ;
+				
+				payAfterReserveHotel(reserveInfo);
+				
+				swal({title: "예약이 완료되었습니다.", text: `${startDate}~${endDate} / ${peopleCnt}명 / ${room}`, icon: "success"});
+				$('#hotelDetailModal').modal('hide');
+			} else 
+			{
+				console.log(`결제에 실패하였습니다. 에러 내용: ${rsp.error_msg}`);
+			}
+		});
+	}
 }
 
 // 카카오 페이 API를 통해 결제 진행 후 숙소 예약 정보를 저장하는 메서드
