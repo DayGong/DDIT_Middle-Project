@@ -45,11 +45,9 @@ public class AdminLogin extends HttpServlet {
 		{
 			session.setAttribute("loginAdmin", LoginAdminVo);
 			session.setAttribute("check", "true");
-			session.setAttribute("tab", "admin");
 		}else
 		{
 		// 로그인 실패
-			session.setAttribute("tab", "admin");
 			session.setAttribute("check", "false");
 			
 		}

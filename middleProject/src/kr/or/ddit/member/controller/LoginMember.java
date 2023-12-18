@@ -48,11 +48,9 @@ public class LoginMember extends HttpServlet
 		{
 			session.setAttribute("loginMember", LoginMemberVo);
 			session.setAttribute("check", "true");
-			session.setAttribute("tab", "member");
 		}else 
 		{
 		//로그인 실패
-			session.setAttribute("tab", "member");
 			session.setAttribute("check", "false");
 		}
 		//view 페이지로 이동
