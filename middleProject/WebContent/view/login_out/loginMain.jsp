@@ -85,7 +85,7 @@
 <div class="container" id="container">
   <div class="form-container sign-up-container">
     <form action="#">
-      <h1>이용약관 동의서</h1>
+      <h1><b>이용약관 동의서</b></h1>
 	
 	<div>
 		<jsp:include page="/view/signup/memberAgre.jsp"/>
@@ -110,8 +110,7 @@
   <!-- 회원 로그인 탭  -->
   <div class="form-container sign-in-container">
 		<form action="<%=request.getContextPath()%>/member/loginMember.do" method="post">
-		<h1>로그인</h1>
-		<span>계정을 입력해주슈</span>
+		<br><h1><b>로그인</b></h1><br>
 		<%
 		    if(memVo == null)
 		    {session.invalidate();
@@ -129,14 +128,15 @@
         <% if (check != null && check.equals("false")) { %>
             <span id="check" style="color: red;">로그인 오류 또는 비회원입니다</span>
         <% } %>
-      <button type="submit">로그인</button>
+      <br><button type="submit">로그인</button>
     	<!-- 카카오 로그인 -->
 		<a id="kakao-login-btn"></a>
 		<div id="result"></div>
-      <a href="<%=request.getContextPath()%>/view/login_out/getId.jsp">아이디 까먹었슈? </a>
-      <a href="<%=request.getContextPath()%>/view/login_out/getPassword.jsp" class="login_forgot">비밀번호 까먹었슈? </a>
-      
-	  <a href="<%=request.getContextPath()%>/view/login_out/adminLogin.jsp">관리자세요?
+        <div class="idpass">
+            <a href="<%=request.getContextPath()%>/view/login_out/getId.jsp" style="text-decoration: none;">아이디 찾기 </a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="<%=request.getContextPath()%>/view/login_out/getPassword.jsp" class="login_forgot" style="text-decoration: none;">비밀번호 찾기 </a>
+        </div> 
+	  <a href="<%=request.getContextPath()%>/view/login_out/adminLogin.jsp" style="text-decoration: none;">관리자세요?
 	  </a>			
 			</form> 
 			
@@ -231,12 +231,12 @@
   <div class="overlay-container">
     <div class="overlay">
       <div class="overlay-panel overlay-left">
-        <h1>튀소 용사여 <br>웰컴백이유</h1>
+        <h1><b>튀소 용사여 <br>웰컴백이유</b></h1>
         <p>유잼대전으로 떠나보자고 !!</p>
         <button class="ghost" id="signIn">로그인</button>
       </div>
       <div class="overlay-panel overlay-right">
-        <h1>타슈타고 여행가유~</h1>
+        <h1><b>타슈타고 여행가유~</b></h1>
         <p>튀김소보루탐험가가 되어보실래요?</p>
         <button class="ghost" id="signUp">회원가입</button>
       </div>
