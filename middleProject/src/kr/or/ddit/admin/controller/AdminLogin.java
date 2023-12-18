@@ -45,6 +45,7 @@ public class AdminLogin extends HttpServlet {
 		{
 			session.setAttribute("loginAdmin", LoginAdminVo);
 			session.setAttribute("check", "true");
+			session.setAttribute("admin", "true");
 		}else
 		{
 		// 로그인 실패
@@ -52,7 +53,7 @@ public class AdminLogin extends HttpServlet {
 			
 		}
 		//view 페이지로 이동
-			request.getRequestDispatcher("/view/login_out/loginMain.jsp").forward(request, response);	
+			request.getRequestDispatcher("/view/login_out/adminLogin.jsp").forward(request, response);	
 	}
 
 
