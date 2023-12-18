@@ -13,7 +13,7 @@
 }
 
 .container{
-  margin-top: -150px; /* body의 기본 마진을 제거하여 레이아웃에 영향을 주지 않도록 함 */
+  margin-top: -115px; /* body의 기본 마진을 제거하여 레이아웃에 영향을 주지 않도록 함 */
   height: 100vh;
   display: flex;
   justify-content: center;
