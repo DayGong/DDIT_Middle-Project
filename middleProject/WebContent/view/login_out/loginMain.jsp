@@ -16,6 +16,8 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <style type="text/css">
  iframe {
@@ -118,7 +120,7 @@
 		<input type="text" id="memId" class="form-input" name="memId" placeholder="아이디">
 		</div><br>
 		<div class="input password">
-		<input type="password" id="password" class="form-input" name="pass" placeholder="비밀번호">
+		<input type="password" id="password" class="form-input" name="pass" placeholder="비밀번호" style= "margin-left:25px;">
 		<div class="eyes">
 		<i class="fa fa-eye-slash fa-lg"></i>
 		</div>
@@ -133,7 +135,9 @@
 		<div id="result"></div>
       <a href="<%=request.getContextPath()%>/view/login_out/getId.jsp">아이디 까먹었슈? </a>
       <a href="<%=request.getContextPath()%>/view/login_out/getPassword.jsp" class="login_forgot">비밀번호 까먹었슈? </a>
-					
+      
+	  <a href="<%=request.getContextPath()%>/view/login_out/adminLogin.jsp">관리자세요?
+	  </a>			
 			</form> 
 			
 			<!-- 카카오 로그인 스크립트 -->
