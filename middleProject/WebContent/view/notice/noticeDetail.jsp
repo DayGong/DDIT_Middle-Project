@@ -2,7 +2,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	NoticeVO noticeVO = (NoticeVO) request.getAttribute("noticeVO");
+NoticeVO noticeVO = (NoticeVO) request.getAttribute("noticeVO");
+String admin = (String) session.getAttribute("check");
+String path = request.getContextPath();
+String ss = (admin != null && admin.equals("true")) ? "admin" : ""; // 수정
+   	
 %>
 <!DOCTYPE html>
 <html>
@@ -18,7 +22,16 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 	crossorigin="anonymous"></script>
+	 <script type="text/javascript" src="<%= path %>/js/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+var ss = '<%= ss %>';
 
+$(document).ready(function() {
+    if (ss === 'admin') {
+        $('.noticeAdminA').css('display', 'block');
+    }
+});
+</script>
 </head>
 
 <body>
@@ -41,13 +54,14 @@
 				<td><%=noticeVO.getNoticeHits()%></td>
 				<td><%=noticeVO.getNoticeFile()%></td>
 			</tr>
-			<tr align="right">
-				<td colspan="6">
-				<a href="<%=request.getContextPath() %>/notice/list.do">[목록으로]</a>
-				<a href="<%=request.getContextPath() %>/notice/update.do?noticeNo=<%=noticeVO.getNoticeNo() %>">[게시글 수정]</a>
-				<a href="./delete.do?noticeNo=<%=noticeVO.getNoticeNo() %>">[게시글 삭제]</a>
-				</td>
-			</tr>
+				
+				<a align="right" href="<%=request.getContextPath() %>/notice/list.do">[목록으로]</a>
+				<a align="right" href="<%=request.getContextPath() %>/notice/update.do?noticeNo=<%=noticeVO.getNoticeNo() %>" 
+				style="display:none;" class="noticeAdminA">[게시글 수정]</a>
+				<a align="right" href="./delete.do?noticeNo=<%=noticeVO.getNoticeNo() %>" 
+				style="display:none;" class="noticeAdminA">[게시글 삭제]</a>
+				
+			
 		</table>
 	</div>
 </div>

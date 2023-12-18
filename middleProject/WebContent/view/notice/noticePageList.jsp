@@ -4,6 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%
+	String admin= (String)session.getAttribute("check");
     List<NoticeVO> noticeList = (List<NoticeVO>) request.getAttribute("noticeList");
     int currentPage = (request.getParameter("page") != null) ? Integer.parseInt(request.getParameter("page")) : 1;
     int totalNotices = (noticeList != null) ? noticeList.size() : 0;
@@ -16,6 +17,10 @@
         currentPageNotices = noticeList.subList(startIndex, endIndex + 1);
     }
     String path = request.getContextPath();
+    String ss=null;
+    if(admin!=null){
+    	ss=admin;
+    }
 %>
 <!DOCTYPE html>
 <html>
@@ -29,6 +34,7 @@
             crossorigin="anonymous"></script>
     <script type="text/javascript" src="<%= path %>/js/jquery-3.7.1.min.js"></script>
     <script type="text/javascript">
+    ss= <%=ss%>;
         function updateHitAndRedirect(noticeNo) {
             $.ajax({
                 url: '<%= request.getContextPath() %>/notice/hit.do',
@@ -47,6 +53,13 @@
                 dataType: 'json'
             });
         }
+        
+        $(()=>{
+        	
+        	if (ss==true){
+        		$('#noticeInsertA').css('display','block');
+        	}
+        })
     </script>
 </head>
 <body>
@@ -76,9 +89,7 @@
                     </tr>
                 <% }
             } %>
-            <tr align="right">
-                <td colspan="5"><a href="<%=request.getContextPath() %>/notice/insert.do">[게시글쓰기]</a></td>
-            </tr>
+                <a align="right" href="<%=request.getContextPath() %>/notice/insert.do" style='display:none' id='noticeInsertA'>[게시글쓰기]</a></td>
         </table>
 
         <div align="center">
