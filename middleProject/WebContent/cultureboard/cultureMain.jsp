@@ -18,24 +18,51 @@
  <script>
    mypath='<%=request.getContextPath()%>';
    currentPage=1;
-     $(function(){
-	 ListPageServer(1);  // 문화 리스트 불러오는 메서드 호출
-     })    	
- </script>
- <style>
+   var vword="";
+   $(document).ready(function() {
+	 
+		   
+		    let initialCategory = getQueryStringValue('cate'); // 링크에서 값을 가져옴
+		    vvword=initialCategory;
+		    
+
+		    // 가져온 값이 없거나 원하는 값이 없을 경우 기본값으로 설정
+		    if (!initialCategory || !['1', '2', '3'].includes(initialCategory)) { //1,2,3이 아니면 전체리스트 보여줌
+		     const gthis = $(`.cateBtn[name='resList']`);
+			 gthis.addClass('active');
+               
+			 ListPageServer(currentPage, vvword);
+		       
+		    }
+		    	
+		    const gthis = $(`.cateBtn[name='${initialCategory}']`); //카테고리 번호를 가져와 보여줌
+		    gthis.addClass('active');
+
+		    ListPageServer(currentPage, vvword);
+		    	
+		  
+		});
+</script>
+
+<style>
 </style>
+
 </head>
 <body>
-<div class="big-buttons">
-<button class="cateBtn" name="resList"> 전체보기 </button>
-<button class="cateBtn" name="tourList" >공연</button>
-<button class="cateBtn" name="resList"> 축제 </button>
-<button class="cateBtn" name="hotelList">전시</button>
- </div>
- <hr>        
+
+
+<div class="big-buttons">      <!-- 카테고리 선택 버튼 -->
+<button class="cateBtn" name="resList" active> 전체보기 </button>
+<button class="cateBtn" name="concertList" >공연</button>
+<button class="cateBtn" name="fesList"> 축제 </button>
+<button class="cateBtn" name="museumList">전시</button>
+</div>
+
+<hr>     
+<div id= "mainview">
 <div id ="result1"></div>  <!-- 문화 리스트 출력되는 자리 -->
 <div id ="pagelist"></div> <!-- 페이지 버튼이 출력되는 자리 --> 
 <div id ="result2"></div>  <!-- offcanvas 폼이 출력되는 자리 -->
-  
+ </div> 
 </body>
 </html>

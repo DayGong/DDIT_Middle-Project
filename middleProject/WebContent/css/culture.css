@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+
+
 .cul_container{
   display:flex;
   flex-direction: row;
@@ -80,4 +82,33 @@
     border-radius: 5px;
     color: white; /* 텍스트 색상 */
 }
+
+.big-buttons button {
+  margin-bottom: 10px;
+  padding: 15px 30px; /* 크기 조절 */
+  font-size: 18px; /* 글꼴 크기 조절 */
+  border: none;
+  border-radius: 8px;
+  background-color: #f1c40f; /* 노란색 배경 */
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+  width: 150px; /* 고정된 너비 */
+  height: 50px; /* 고정된 높이 */
+  text-align: center; /* 텍스트 가운데 정렬 */
+}
+.big-buttons{
+  display: flex; /* 요소들을 가로로 나란히 배치하기 위해 Flexbox 사용 */
+  flex-direction: column; /* 요소들을 세로로 배치 */
+  padding: 20px; /* 간격을 조절할 수 있는 패딩 설정 */
+  width: 15%; /* 오른쪽 15%만큼의 너비를 가지도록 설정 */ 
+  float: left; /* 왼쪽으로 부유(floated) */
+}
+#big-buttons button:hover {
+  background-color: #2980b9;
+}
+#mainview {
+  margin-left: 15%; /* 버튼 너비와 동일한 여백을 설정하여 겹치지 않게 함 */
+  }
 

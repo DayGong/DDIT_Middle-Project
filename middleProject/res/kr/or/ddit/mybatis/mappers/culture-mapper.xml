@@ -3,7 +3,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" 
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
  
- 
   <mapper namespace= "culture">
  
  
@@ -11,14 +10,23 @@
   
   
   
-     <!-- 동적쿼리  -->
-<!-- <sql id="dynamicCondition">
+     <!-- 동적쿼리 카테고리용 -->
+ <sql id="dynamicCondition">
+   <where>
+      <if test="!(stype == '' or sword == '')">
+           ${stype} =#{sword}
+       </if>
+   </where>
+</sql> 
+
+     <!-- 동적쿼리 검색용  -->
+ <sql id="dynamicConditionlike">
    <where>
       <if test="!(stype == '' or sword == '')">
            ${stype} like  '%'||#{sword}||'%'
        </if>
    </where>
-</sql> -->
+</sql> 
   
      <!-- 전체 보기 -->
      <select id="selectCulture" resultType="culVo" parameterType="int">     
@@ -37,13 +45,26 @@
         select A.* from (
       select rownum as rnum, B.*  from (
           select * from culture
-         <!--   <include refid="dynamicCondition"/>  -->
+           <include refid="dynamicCondition"/> 
           order by cul_no desc) B
    <![CDATA[
       where rownum <=  #{end}) A 
    where A.rnum >= #{start}
     ]]>    
      </select>
+     
+        <!-- 페이지로 나눠서 보기 -->
+    <select id="selectByOnePage"  resultType="culVo" parameterType="map">
+        select A.* from (
+      select rownum as rnum, B.*  from (
+          select * from culture
+            <!--   <include refid="dynamicCondition"/>   -->
+          order by cul_no desc) B
+   <![CDATA[
+      where rownum <=  #{end}) A 
+   where A.rnum >= #{start}
+    ]]>    
+     </select> 
    
     <!-- 게시글 갯수 -->
      <select id="getTotalCount" resultType="int" parameterType="map">

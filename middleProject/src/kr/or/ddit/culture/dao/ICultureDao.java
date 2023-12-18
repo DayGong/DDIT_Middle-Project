@@ -31,10 +31,19 @@ public interface ICultureDao {
 	 public List<CultureVO> selectByPage(Map<String, Object> map);
 	 
 	 /**
+	  *  카테고리별 자료를 페이지로 나눠서 보여주는 메서드
+	  * @param map
+	  * @return
+	  */
+	 public List<CultureVO> selectByOnePage(Map<String, Object> map);
+	 
+	 
+	 /**
 	  *  페이지를 계산하는 메서드
 	  * @param map
 	  * @return
 	  */
+	 
 	 public int getTotalCount(Map<String, Object> map);
 	 
 	 

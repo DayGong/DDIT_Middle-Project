@@ -8,7 +8,6 @@ import kr.or.ddit.culture.dao.CultureDaoImpl;
 import kr.or.ddit.culture.dao.ICultureDao;
 import kr.or.ddit.vo.CultureVO;
 import kr.or.ddit.vo.PageVO;
-import sun.security.jca.GetInstance;
 
 public class CultureServiceImpl implements ICultureService {
 	private static ICultureService service;
@@ -98,5 +97,10 @@ public class CultureServiceImpl implements ICultureService {
 			 pvo.setTotalPage(totalPage);
 			 
 			return pvo;
+	}
+	@Override
+	public List<CultureVO> selectByOnePage(Map<String, Object> map) {
+		
+		return dao.selectByOnePage(map);
 	}
 }

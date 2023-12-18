@@ -110,9 +110,9 @@
 				</li>
 				<li class="menu"><a href="<%=request.getContextPath()%>/cultureboard/cultureMain.jsp">문화의거리</a>
 					<ul>
-						<li ><a class="menu_li" href="#">공연</a></li>
-						<li ><a class="menu_li" href="#">전시</a></li>
-						<li ><a class="menu_li" href="#">축제</a></li>
+						<li ><a class="menu_li" href="<%=request.getContextPath()%>/cultureboard/cultureMain.jsp?cate=1">축제</a></li>
+						<li ><a class="menu_li" href="<%=request.getContextPath()%>/cultureboard/cultureMain.jsp?cate=2"">전시</a></li>
+						<li ><a class="menu_li" href="<%=request.getContextPath()%>/cultureboard/cultureMain.jsp?cate=3">공연</a></li>
 					</ul>
 				</li>
 				<li class="menu"><a href="<%=request.getContextPath()%>/view/notice/mainboard.jsp">게시판</a>

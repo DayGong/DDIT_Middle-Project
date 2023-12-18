@@ -47,6 +47,9 @@ public class CultureDaoImpl implements ICultureDao {
 							return list;
 			}//selectCulture 끝
 			
+			
+			
+			
 			@Override
 			public List<CultureVO> selectByPage(Map<String, Object> map) {
 				List<CultureVO> list= null;
@@ -125,6 +128,21 @@ public class CultureDaoImpl implements ICultureDao {
 						}
 							return cnt;				
 			} //deleteCulture 끝	        	
+			@Override
+			public List<CultureVO> selectByOnePage(Map<String, Object> map) {
+				List<CultureVO> list= null;
+				SqlSession session= MybatisUtil.getSqlSession();
+					try {
+						list=session.selectList("culture.selectByOnePage",map);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}finally {
+							session.commit();
+							session.close();
+						}
+							return list;
+			}//selectByPage 끝
+		
 	}//class 끝
 
 	
