@@ -44,6 +44,8 @@
         <button class="cateBtn" name="daeDae" >대덕구</button>
         <!-- 다른 세부 카테고리 버튼들도 유사하게 추가 -->
         </div>
+        <br><br>
+        <img src="<%=request.getContextPath() %>/images/tour/tour_rest.png">
         </div>        
         
         <hr>

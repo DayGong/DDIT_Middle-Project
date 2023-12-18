@@ -50,8 +50,9 @@
         <br><br><br>
         <div id="mapinsert" style="display:none">
         	관리자 메뉴
-       		<button class="cateBtn"  name="mapinsert" >명소 추가</button>
-       	</div>  
+				<button class="cateBtn"  name="mapinsert" >명소 추가</button>
+			</div>
+		<img src="<%=request.getContextPath() %>/images/tour/tour_tour2.png">  
 	</div> 
 
 	<hr>

@@ -63,7 +63,9 @@
 	        <button class="cateBtn" name="daeDong" >동구</button>
 	        <button class="cateBtn" name="daeDae" >대덕구</button>
 	        <!-- 다른 세부 카테고리 버튼들도 유사하게 추가 -->
-        </div>
+				</div>
+			<br><br>
+		<img src="<%=request.getContextPath() %>/images/tour/tour_hotel.png">  
 	</div>   
 	<hr>
 	<div id="search-container">
