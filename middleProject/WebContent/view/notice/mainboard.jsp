@@ -20,7 +20,7 @@
 <div class="container">
     <br>
   <!-- 탭선택 -->
-  <ul class="nav nav-pills" role="tablist">
+  <ul class="nav nav-pills justify-content-center" role="tablist">
     <li class="nav-item">
       <a class="nav-link active" data-toggle="pill" href="#home">공지게시판</a>
     </li>
@@ -37,13 +37,13 @@
     
   <!-- 자유게시판 -->  
     <div id="menu1" class="container tab-pane fade"><br>
-      <h3>Menu 1</h3>
-      <p>자유게시판</p>
+  		<iframe class="mainIframe" name="board" src="<%=request.getContextPath() %>/board/list.do"></iframe> 
     </div>
   </div>
   
   
 </div>
-
+<!-- 하단 메뉴바 삽입 -->
+<jsp:include page="/view/main/bottom.jsp"/>
 </body>
 </html>

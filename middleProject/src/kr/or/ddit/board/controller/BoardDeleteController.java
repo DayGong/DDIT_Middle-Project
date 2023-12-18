@@ -17,9 +17,10 @@ public class BoardDeleteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int yes = Integer.parseInt(request.getParameter("noticeNo"));
-		IBoardService noticeService = BoardServiceImpl.getInstance();
-		int cnt = noticeService.deleteNotice(yes);
+		request.setCharacterEncoding("utf-8");
+		int no = Integer.parseInt(request.getParameter("brd_no"));
+		IBoardService service = BoardServiceImpl.getInstance();
+		int cnt = service.deleteBoard(no);
 		
 		String msg = "";
 		if(cnt>0) {
@@ -31,7 +32,7 @@ public class BoardDeleteController extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute("msg", msg);
 		
-		response.sendRedirect(request.getContextPath()+"/notice/list.do");
+		response.sendRedirect(request.getContextPath()+"/board/list.do");
 		
 		
 	}

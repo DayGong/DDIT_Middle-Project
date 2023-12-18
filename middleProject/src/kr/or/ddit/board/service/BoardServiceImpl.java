@@ -41,8 +41,8 @@ public class BoardServiceImpl implements IBoardService {
 	}
 
 	@Override
-	public int updateHits(int boardNo) {
-		return boardDao.updateHits(boardNo);
+	public int updateHits(int no) {
+		return boardDao.updateHits(no);
 	}
 
 	@Override
@@ -57,54 +57,4 @@ public class BoardServiceImpl implements IBoardService {
 
 	
 
-
-//	@Override
-//	public PageVO getPageInfo(int page, String stype, String sword) {
-//		Map<String, Object> map = new HashMap<String, Object>();
-//		map.put("stype", stype);
-//		map.put("sword", sword);
-//		
-//		int count = this.getTotalCount(map);
-//		
-//		int plist = PageVO.getPerList();
-//		int totalPage = (int) Math.ceil((double)count/plist);
-//		
-//		if(page>totalPage) page = totalPage;
-//		
-//		int start = (page -1)*plist +1;
-//		int end = start + plist -1;
-//		
-//		if(end>count) {
-//			end = count;
-//		}
-//		
-//		int ppage = PageVO.getPerPage();
-//		int startPage = ((page-1)/ppage*ppage)*1;
-//		int endPage = startPage + ppage - 1;
-//		
-//		if (endPage > totalPage) {
-//			endPage = totalPage;
-//		}
-//		
-//		PageVO pageVo = new PageVO();
-//		pageVo.setStart(start);
-//		pageVo.setEnd(end);
-//		pageVo.setStartPage(startPage);
-//		pageVo.setEndPage(endPage);
-//		pageVo.setTotalPage(totalPage);
-//		
-//		return pageVo;
-//	}
-
-//	@Override
-//	public int getTotalCount(Map<String, Object> map) {
-//		return noticeDao.getTotalCount(map);
-//	}
-
-//	@Override
-//	public List<NoticeVO> selectByPage(Map<String, Object> map) {
-//		return noticeDao.getAllNotice();
-//	}
-
-
-}	//NoticeServiceImpl 끝
+}	//BoardServiceImpl 끝

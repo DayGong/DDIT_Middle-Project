@@ -9,20 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.or.ddit.notice.service.IBoardService;
-import kr.or.ddit.notice.service.BoardServiceImpl;
+import kr.or.ddit.board.service.IBoardService;
+import kr.or.ddit.board.service.BoardServiceImpl;
 
 @WebServlet("/board/hit.do")
-public class BoardUpdate extends HttpServlet {
+public class BoardHitUpdate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-    	int noticeNo = Integer.parseInt(request.getParameter("noticeNo")); // 파라미터 이름 수정
+    	int no = Integer.parseInt(request.getParameter("brd_no")); // 파라미터 이름 수정
 
         IBoardService service = BoardServiceImpl.getInstance();
 
-        int hitUpdateResult = service.updateHits(noticeNo);
+        int hitUpdateResult = service.updateHits(no);
 
         // JSON 형태로 응답하기 위해 Content Type 설정
         response.setContentType("application/json");

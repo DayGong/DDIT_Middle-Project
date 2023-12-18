@@ -10,8 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import kr.or.ddit.notice.service.IBoardService;
-import kr.or.ddit.notice.service.BoardServiceImpl;
+import kr.or.ddit.board.service.IBoardService;
+import kr.or.ddit.board.service.BoardServiceImpl;
+import kr.or.ddit.vo.BoardVO;
 import kr.or.ddit.vo.NoticeVO;
 
 @WebServlet("/board/update.do")
@@ -20,11 +21,11 @@ public class BoardUpdateController extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String noticeNoParam = request.getParameter("noticeNo");
+		String boardNoParam = request.getParameter("brd_no");
 		int no = 0;
-		if (noticeNoParam != null && !noticeNoParam.isEmpty()) {
+		if (boardNoParam != null && !boardNoParam.isEmpty()) {
 		    try {
-		        no = Integer.parseInt(noticeNoParam);
+		        no = Integer.parseInt(boardNoParam);
 		    } catch (NumberFormatException e) {
 		       e.printStackTrace();
 		    }
@@ -33,38 +34,38 @@ public class BoardUpdateController extends HttpServlet {
 		
 		IBoardService service = BoardServiceImpl.getInstance();
 		 
-		NoticeVO noticeVO = service.getNotice(no);
+		BoardVO boardVO = service.getBoard(no);
 		
-		request.setAttribute("noticeVO", noticeVO);
+		request.setAttribute("boardVO", boardVO);
 		
-		request.getRequestDispatcher("/view/notice/noticeUpdateForm.jsp").forward(request, response);
+		request.getRequestDispatcher("/view/board/boardUpdateForm.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		 request.setCharacterEncoding("UTF-8");
 		
-		String noticeNoParam = request.getParameter("notice_no");
+		String boardNoParam = request.getParameter("brd_no");
 		int no = 0;
-		if (noticeNoParam != null && !noticeNoParam.isEmpty()) {
+		if (boardNoParam != null && !boardNoParam.isEmpty()) {
 		    try {
-		        no = Integer.parseInt(noticeNoParam);
+		        no = Integer.parseInt(boardNoParam);
 		    } catch (NumberFormatException e) {
 		        e.printStackTrace();
 		    }
 		}
-		String title = request.getParameter("notice_title");
-		String content = request.getParameter("notice_content");
+		String title = request.getParameter("brd_title");
+		String content = request.getParameter("brd_content");
 		
 		
 		IBoardService service = BoardServiceImpl.getInstance();
-		NoticeVO noticeVO = new NoticeVO(no, title, content);
+		BoardVO boardVO = new BoardVO(no, title, content);
 		
-		int cnt = service.updateNotice(noticeVO);
+		int cnt = service.updateBoard(boardVO);
 		
 		 
 		
-		response.sendRedirect(request.getContextPath()+"/notice/list.do");
+		response.sendRedirect(request.getContextPath()+"/board/list.do");
 	}
 
 }

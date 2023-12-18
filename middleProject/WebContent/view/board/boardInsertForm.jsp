@@ -15,10 +15,10 @@ BoardVO boardVO = (BoardVO) request.getAttribute("boardVO");
     <div>
      <h1>게시판 작성</h1> 
      <form id="boardInsertForm" action="<%=request.getContextPath() %>/board/insert.do" method="post"> 
-         <label for="title">제목:</label><br> 
+         <label for="title">제목:</label>
          <input type="text" id="title" name="board_title"><br>
     
-         <label for="content">내용:</label><br> 
+         <label for="content">내용:</label>
          <textarea id="content" name="board_content" rows="4" cols="50"></textarea><br>
     
          <input type="submit" value="작성완료" onclick="complete()"> 

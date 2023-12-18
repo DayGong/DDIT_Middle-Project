@@ -21,7 +21,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>공지사항 목록</title>
+    <title>게시글 목록</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -52,7 +52,7 @@
 <body>
 <div class="card-body">
     <div class="table-responsive">
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <table class="table" id="dataTable" width="100%" cellspacing="0">
             <tr>
                 <th>번호</th>
                 <th>제목</th>
@@ -75,8 +75,7 @@
                     </tr>
                 <% }
             } %>
-            <tr align="right">
-                <td colspan="5"><a href="<%=request.getContextPath() %>/board/insert.do">[게시글쓰기]</a></td>
+                <a align="right" href="<%=request.getContextPath() %>/board/insert.do">[게시글쓰기]</a></td>
             </tr>
         </table>
 

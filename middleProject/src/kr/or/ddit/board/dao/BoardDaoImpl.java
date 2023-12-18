@@ -69,11 +69,11 @@ public class BoardDaoImpl implements IBoardDao {
 	}
 
 	@Override
-	public int updateHits(int boardNo) {
+	public int updateHits(int no) {
 		int cnt = 0;
 		SqlSession session = MybatisUtil.getSqlSession();
 		try {
-			cnt = session.update("notice.updateHits", boardNo);
+			cnt = session.update("notice.updateHits", no);
 			session.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -133,4 +133,4 @@ public class BoardDaoImpl implements IBoardDao {
 //	}
 	
 	
-}	//NoticeDaoImpl 끝
+}	//BoardDaoImpl 끝
