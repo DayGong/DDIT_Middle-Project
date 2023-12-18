@@ -228,6 +228,10 @@ function displayTour(){
 				kakao.maps.event.addListener(marker, 'mouseout', function() {
 				infowindow.close();
 				}); 
+				
+				kakao.maps.event.addListener(marker, 'click', function() {
+				detailTour(item);			
+				}); 
 					// 리스트에 아이템 추가
 			var listItem = $('<li class="lists"></li>')
 				.html(`<p>장소 이름: ${item.tour_name}</p><p>주소: ${item.tour_addr}</p><p>타입: ${item.tour_tp_nm}</p><div class="adminPlace" style="display:none" name="${item.tour_no}">
@@ -240,6 +244,7 @@ function displayTour(){
 					});
 					infowindow.open(map, marker);
 					infowindows.push(infowindow);
+					detailTour(item);
     		        map.panTo(coords);                     
 				setTimeout(function() {
 				infowindow.close();
@@ -409,6 +414,10 @@ function displayOneTour(dong){
 				kakao.maps.event.addListener(marker, 'mouseout', function() {
 				infowindow.close();
 				}); 
+				
+			    kakao.maps.event.addListener(marker, 'click', function() {
+				detailTour(item);				
+				}); 
 					// 리스트에 아이템 추가
 			var listItem = $('<li class="lists"></li>')
 				.html(`<p>장소 이름: ${item.tour_name}</p><p>주소: ${item.tour_addr}</p><p>타입: ${item.tour_tp_nm}</p><div class="adminPlace" style="display:none" name="${item.tour_no}">
@@ -421,6 +430,7 @@ function displayOneTour(dong){
 					});
 					infowindow.open(map, marker);
 					infowindows.push(infowindow);
+					detailTour(item);
     		        map.panTo(coords);                    
 				setTimeout(function() {
 				infowindow.close();
@@ -472,6 +482,10 @@ function searchByTourName(dong){
 				kakao.maps.event.addListener(marker, 'mouseout', function() {
 				infowindow.close();
 				}); 
+				
+			    kakao.maps.event.addListener(marker, 'click', function() {
+				detailTour(item);
+				}); 
 					// 리스트에 아이템 추가
 			var listItem = $('<li class="lists"></li>')
 				.html(`<p>장소 이름: ${item.tour_name}</p><p>주소: ${item.tour_addr}</p><p>타입: ${item.tour_tp_nm}</p><div class="adminPlace" style="display:none" name="${item.tour_no}">
@@ -484,6 +498,7 @@ function searchByTourName(dong){
 					});
 					infowindow.open(map, marker);
 					infowindows.push(infowindow);
+					detailTour(item);
     		        map.panTo(coords);                     
 				setTimeout(function() {
 				infowindow.close();
@@ -547,6 +562,10 @@ function clearMarkers() {
 				kakao.maps.event.addListener(marker, 'mouseout', function() {
 				infowindow.close();
 				}); 
+				
+				kakao.maps.event.addListener(marker, 'click', function() {
+				detailTour(item);
+				}); 
 					// 리스트에 아이템 추가 여기도 변경
 			var listItem = $('<li ></li>')
 				.html(`<p>장소 이름: ${item.name}</p><p>주소: ${item.address}</p><p>타입: ${item.id}</p><p><hr>`);
@@ -558,6 +577,7 @@ function clearMarkers() {
 					});
 					infowindow.open(map, marker);
 					infowindows.push(infowindow);
+					detailTour(item);
     		        map.panTo(coords);                    
 				setTimeout(function() {
 				infowindow.close();
@@ -675,9 +695,36 @@ UpdateTour =function(udata){
 		},
 		dataType: 'json'
 	})
-	
-
-	
+		
 }
+
+
+ function detailTour(item){   // 마커를 클릭하면 나타나는 모달(offcanvas)창
+             		
+		 code = `
+	<div class="offcanvas offcanvas-end" id="demo">
+		<div class="offcanvas-header">
+			<h1 class="offcanvas-title" style="text-align:center;" >${item.tour_name}</h1>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+			</div>
+		<div class="offcanvas-body">
+			<img src='${mypath}/images/tour/${item.tour_img}' style="width :350px; height :200px;">
+			<br><br>
+			<p>명소 타입 : ${item.tour_tp_nm}</p>
+			<p>주소 : ${item.tour_addr}</p>
+			<p>전화번호 : ${item.tour_tel}</p>
+					
+			<a href='${item.tour_url}'>${item.tour_url}</a>
+					
+			</div>
+	</div>`;
+                          
+		$('#result2').html(code);
+
+		var offcanvasElement = document.getElementById('demo');
+		var offcanvas = new bootstrap.Offcanvas(offcanvasElement);
+		offcanvas.show(); 
+                		
+  }
 
  
