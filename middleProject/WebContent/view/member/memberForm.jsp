@@ -1,29 +1,78 @@
 <%@page import="kr.or.ddit.vo.MemberVO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/memberForm.css">
-<%
+<% 
    // 세션에 저장한 데이터 가져오기
    MemberVO memVo = (MemberVO)session.getAttribute("loginMember");
 %>
-<script>
-<%
-	if(memVo == null){
-%>
-	alert("로그인이 필요합니다. 로그인 페이지로 이동합니다.");
-	window.location.href = '<%=request.getContextPath()%>/view/login_out/loginMain.jsp';
-<%
-	}
-%>
-</script>
+    <meta charset="UTF-8">
+    <title>마이페이지</title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.user-info {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-info img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.user-details {
+    text-align: center;
+    color: #777;
+}
+
+</style>
 </head>
 <body>
-
-
 <!-- 상단 메뉴바 -->
 <jsp:include page="/view/main/top.jsp"/>
+<div class="container">
+    <h1>마이페이지</h1>
+    <div class="user-info">
+        <img src="<%=request.getContextPath()%>/images/login/꿈돌2.png" style="width:170px; height:170px;">
+     <div class="user-details">
+<p>* 이름 : <%=memVo.getMem_name()%></p>  
+<p>* ID : <%=memVo.getMem_id()%></p>  
+<p>* 주소 : <%=memVo.getMem_addr()%></p>  
+      </div>
+            <br>
+<a href="<%=request.getContextPath()%>/member/updateMember.do">회원수정</a>
+<a href="<%=request.getContextPath()%>/member/logoutMember.do">로그아웃</a> 
+<a href="<%=request.getContextPath()%>/view/withdraw/memberWithdraw.jsp">탈퇴</a>
+        
+    </div>
+</div>
 <div class= "alltop" style="margin-top: 130px;">
 	<div class="row">
 	<div>
@@ -43,15 +92,7 @@
       	</div>
     </div>
    </div>
- </div> 
-
+<!-- 하단 메뉴바 삽입 -->
+<jsp:include page="/view/main/bottom.jsp"/>
 </body>
-<script>
-	function changeIframe(url, title) {
-		document.getElementById('myIframe').src = url;
-		document.getElementById('categoryTitle').innerText = title;
-	}
-</script>
 </html>
-
-

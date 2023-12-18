@@ -31,7 +31,6 @@
 body {
   	font-family: 'GmarketSansMedium';
   	padding: 10px;
-	background: #f9f8f4;
 }
 h2{
 	font-family: 'EliceDigitalBaeum_Bold';
@@ -54,7 +53,6 @@ iframe{
 .category-container {
 	display: flex;
 	justify-content: space-around; /* 카테고리 아이템들을 가운데 정렬하고 간격을 벌립니다 */
-	background-color: #f2f2f2; /* 박스 배경색 */
 	padding: 20px; /* 내부 여백 */
 	width:100%;
 	border-radius:5px;
@@ -88,7 +86,6 @@ iframe{
 
 /* Fake image */
 .fakeimg {
-  	background-color: #f9f8f4;
   	width: 100%;
   	padding: 20px;
   	font-family: 'GmarketSansMedium';
