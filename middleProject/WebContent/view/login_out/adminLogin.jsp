@@ -7,6 +7,7 @@
   <title>관리자 로그인</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel= "stylesheet"  href="<%=request.getContextPath()%>/css/adminLogins.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
@@ -69,6 +70,12 @@
 
 </script>
 <body>
+	<!-- 로고  -->
+	<div id="logo" onclick="location.href='<%=request.getContextPath()%>/index.jsp'">
+		<img src= "<%=request.getContextPath()%>/images/header/로고3.png" alt="대전관광" style="width:300px;">
+	</div>
+	
+
         <!-- 회원서블릿에 저장된 데이터, 로그인오류정보 체크 -->
 	<%
     // 세션에 저장한 데이터 가져오기
@@ -78,28 +85,31 @@
     String check = (String)session.getAttribute("check");
 	%>
 
-          <!-- 관리자 로그인 탭 -->
-<!-- 로그인 안했거나 로그인  id 비밀번호가 틀렸을때    -->
+	<!-- 관리자 로그인 탭 -->
+	<div class="form-container sign-in-container">
+	<!-- 로그인 안했거나 로그인  id 비밀번호가 틀렸을때    -->
+		<form action="<%=request.getContextPath()%>/admin/adminLogin.do" method="post">
+		<br><h1 style="font-size:30px;"><b>관리자 로그인</b></h1><br>
 		<%  
 		    if(adVo == null)
 		    {session.invalidate();
 		%>
-		<form action="<%=request.getContextPath()%>/admin/adminLogin.do" method="post">
-        	아이디 <input type="text" name="adminId" placeholder="아이디"><br><br>
-        
-	        <div class="input password">
-	            비밀번호 <input type="password" id="password" class="form-input" name="adminPass" placeholder="비밀번호">
-	            <div class="eyes">
-	                <i class="fa fa-eye-slash fa-lg"></i>
-	            </div>
-	        </div>
+		<div>
+        	<input type="text" id="adminId" class="form-input" name="adminId" placeholder="아이디">
+		</div>
+			<div class="input password">
+	    <input type="password" id="password" class="form-input" name="adminPass" placeholder="비밀번호" style="margin: 10px 0 0 30px;">
+	    <div class="eyes">
+	        <i class="fa fa-eye-slash fa-lg"></i>
+			</div>
+			</div>
+			
 	      	 <!-- 로그인 오류 메시지 -->
 	        <% if (check != null && check.equals("false")) 
 	        	{ %>
 	            <span id="check" style="color: red;">로그인 오류 또는 비관리자입니다</span><br><br>
 	        <% } %>
-	
-	        <input type="submit" value="로그인"><br><br>
+			<button type="submit" style="margin-top: 10px; ">로그인</button>
 		</form>   
 		<!-- 로그인 성공시 -->
 			<%
