@@ -65,12 +65,12 @@
 </script>
 
 <body>
-
-<!-- 상단 메뉴바 -->
-<jsp:include page="/view/main/top.jsp"/>
-
-
-	<!-- 회원과 관리자 각각 서블릿에 저장된 데이터, 로그인오류정보 체크 -->
+	<!-- 로고  -->
+	<div id="logo" onclick="location.href='<%=request.getContextPath()%>/index.jsp'">
+		<img src= "<%=request.getContextPath()%>/images/header/로고3.png" alt="대전관광" style="width:200px;">
+	</div>
+	
+	<!-- 회원서블릿에 저장된 데이터, 로그인오류정보 체크 -->
 	<%
 	
     // 세션에 저장한 데이터 가져오기
