@@ -14,6 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="<%=request.getContextPath()%>/js/jquery.serializejson.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <script>
 $(()=>{
@@ -21,6 +22,29 @@ $(()=>{
 // 		가입하기
 	$('#joinbtn').on('click', function()
 	{	
+		// 각 입력란의 값을 가져옴
+		var input1 = $('#id').val();
+		var input2 = $('#pass2').val();
+		var input3 = $('#name').val();
+		var input4 = $('#tel').val();
+		var input5 = $('#domain-list').val();
+		var input6 = $('#postcode').val();
+		var input7 = $('#extraAddress').val();
+		var input8 = $('#roadAddress').val();
+		var input9 = $('#detailAddress').val();
+		
+		if (input1.trim() === '' || input2.trim() === '' || input3.trim() === '' || 
+			    input4.trim() === '' || input5.trim() === '' || input6.trim() === '' || 
+			    input7.trim() === '' || input8.trim() === '' || input9.trim() === '') {
+			    swal({
+			        title: "입력란을 모두 채워주세요.",
+			        text: "다시 시도해주세요.",
+			        icon: "error"
+			    });
+	        return false;
+	    }
+		
+		// 입력란이 모두 채워져 있을 때 실행되는 코드
 		vdata1=  $('#joinform').serialize();
 		
 		console.log(vdata1);
@@ -33,17 +57,25 @@ $(()=>{
 			data : vdata1,
 			type : 'post',
 			dataType : 'json',
-			success : function(res)
-			{
-				//성공시 이동할 경로 지정
-				$('#join').html(res.sw).css('color', 'red');
-				window.location.href = '<%=request.getContextPath()%>/view/login_out/loginMain.jsp';
-			},
-			error : function(xhr)
-			{
-				alert("에러 상태 : " + xhr.status);				
-			}
-		});	
+			success: function (res) {
+	            swal({
+	                title: "회원가입에 성공했습니다!",
+	                text: "다시 로그인해주세요.",
+	                icon: "success"
+	            }).then(() => {
+	                window.location.href = '<%=request.getContextPath()%>/view/login_out/loginMain.jsp';
+	            });
+	        },
+	        error: function (xhr) {
+	            swal({
+	                title: "회원가입에 실패했습니다!",
+	                text: "다시 입력해주세요.",
+	                icon: "error"
+	            });
+	            alert("에러 상태 : " + xhr.status);
+	            return false;
+	        }
+	    });
 	});
 	
 	// id값 형식체크
@@ -73,7 +105,8 @@ $(()=>{
 		// 입력 필드 비어있거나 공백인 경우 확인
 		if(idvalue.length<1)
 		{
-			alert("ID를 입력하세요!");
+			swal({title: "ID를 입력하지 않았습니다.", text: "ID를 입력하세요!", icon: "error"});
+// 			alert("ID를 입력하세요!");
 			return false;
 		}
 		
@@ -239,13 +272,16 @@ function prod1() {
 
 </script>
 <body>
-<jsp:include page="/view/main/top.jsp"/>
+	<!-- 로고  -->
+	<div id="logo" onclick="location.href='<%=request.getContextPath()%>/index.jsp'">
+		<img src= "<%=request.getContextPath()%>/images/header/로고3.png" alt="대전관광" style="width:300px;">
+	</div>
 	<div class="container">
 		<form id="joinform" method="post" enctype="multipart/form-data"
 			action="<%=request.getContextPath()%>/member/signupMember.do">
 			<div class="header">
-				<div>회원 가입을 위해</div>
-                <div>정보를 입력해주세요.</div><br>
+				<div><b>회원 가입</b></div>
+<!--                 <div><b>정보를 입력해주세요.</b></div> -->
             </div>
             
             <div class="form-group">
@@ -256,7 +292,7 @@ function prod1() {
 		                <input type="text" class="form-control" id="id" name="mem_id">
 		            </td>
 					<td>
-		                <input type="button" id="checkid" value="중복검사" class="btn btn-primary">
+		                <input type="button" id="checkid" value="중복검사" class="btn">
 					</td>
 					</tr>
                 </table>
@@ -324,21 +360,19 @@ function prod1() {
 						<input type="text" id="postcode" class="form-control" placeholder="우편번호">
 	         		</td>
 	         		<td>
-						<input type="button" onclick="prod1()" value="우편번호 찾기" class="btn btn-primary">
+						<input type="button" onclick="prod1()" value="우편번호 찾기" class="btn" id="postnum">
 	         		</td>
 	         	</tr>
-         	</table>
-		</div>
-        
-        <div class="form-group">
-        	<table>
         		<tr>
         			<td><input type="text" id="roadAddress" class="form-control" placeholder="도로명주소" name="roadAddress"></td>
         			<td><input type="text" id="extraAddress" class="form-control" placeholder="참고항목" name="extraAddress"></td>
         		</tr>
-        	</table>
-			
+         	</table>
             <input type="text" id="detailAddress" class="form-control" placeholder="상세주소" name="detailAddress">
+		</div>
+        
+        <div class="form-group">
+			
 		</div>
 
         <br>
