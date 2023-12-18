@@ -1,11 +1,12 @@
-<%@page import="kr.or.ddit.vo.AdminVO"%>
-<%@page import="kr.or.ddit.vo.MemberVO"%> 
+<%@page import="kr.or.ddit.vo.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
 <title>Login</title>
+<link rel= "stylesheet"  href="<%=request.getContextPath()%>/css/login.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
@@ -16,9 +17,6 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- 예쁜 Alert창 -->
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
 <style type="text/css">
  iframe {
    width: 100%;
@@ -28,7 +26,8 @@
  #check{
    color : red;
  }
-</style>
+ </style>
+
 </head>
 
 <script type="text/javascript">
@@ -52,74 +51,64 @@
             }
         });
     });
+	
+
 </script>
 
-
 <body>
-<!-- 로그인을 어떤탭에서 했는지 저장한것 -->
-<%
-    String Tab = (String) session.getAttribute("tab");
-	//세션이 존재하고 로그인한 사용자가 아닌 경우 세션을 무효화
-%>
 
 <!-- 상단 메뉴바 -->
 <jsp:include page="/view/main/top.jsp"/>
 
-<!-- 회원, 관리자 탭 활성화 -->
-<div class="container">
-    <br>
-    <ul class="nav nav-tabs" role="tablist">
-        <li class="nav-item <%=(Tab == null || "member".equals(Tab)) ? "active" : ""%>">
-            <a class="nav-link <%=(Tab == null || "member".equals(Tab)) ? "active" : ""%>" data-toggle="tab" href="#member">회원</a>
-        </li>
-        <li class="nav-item <%="admin".equals(Tab) ? "active" : ""%>">
-            <a class="nav-link <%="admin".equals(Tab) ? "active" : ""%>" data-toggle="tab" href="#admin">관리자</a>
-        </li>
-    </ul>
-	
+
 	<!-- 회원과 관리자 각각 서블릿에 저장된 데이터, 로그인오류정보 체크 -->
 	<%
 	
     // 세션에 저장한 데이터 가져오기
-    MemberVO memVo = (MemberVO)session.getAttribute("loginMember");
-	AdminVO adVo = (AdminVO)session.getAttribute("loginAdmin");
     //로그인 실패 때는 null값이 나온다 -> null일때 아래 body의 내용이 나오게하기
-     String check = (String)session.getAttribute("check");
+    MemberVO memVo = (MemberVO)session.getAttribute("loginMember");
+    //로그인 성공, 실패 여부
+    String check = (String)session.getAttribute("check");
     
 	%>
-
-	<!-- 회원 로그인 탭 -->
-	<div class="tab-content">
-      <div id="member" class="container tab-pane <%=(Tab == null || "member".equals(Tab)) ? "active" : ""%>"><br>
-		<!-- 로그인 안했거나 로그인  id 비밀번호가 틀렸을때    -->
-		<%
+<div class="container" id="container">
+  <div class="form-container sign-up-container">
+    <form action="#">
+      <h1>회원 가입</h1>
+      <span>너 내 도도독 동료가되슈</span>
+      <input type="text" placeholder="이름" />
+      <input type="email" placeholder="이메일" />
+      <input type="password" placeholder="비밀번호" />
+      <button>회원가입</button>
+    </form>
+  </div>
+  <div class="form-container sign-in-container">
+    <form action="#">
+      <h1>로그인</h1>
+      <span>계정을 입력해주슈</span>
+	<%
 		    if(memVo == null)
 		    {
-		%>
-			<form action="<%=request.getContextPath()%>/member/loginMember.do" method="post">
-		        	아이디 <input type="text" name="memId" placeholder="아이디"><br><br>
-		        
-			        <div class="input password">
-			            비밀번호 <input type="password" id="password" class="form-input" name="pass" placeholder="비밀번호">
-			            <div class="eyes">
-			                <i class="fa fa-eye-slash fa-lg"></i>
-			            </div>
-			        </div>
-			      	 <!-- 로그인 오류 메시지 --> 
-			        <% if (check != null && check.equals("false") && "member".equals(Tab)) { %>
-			            <span id="check" style="color: red;">로그인 오류 또는 비회원입니다</span><br><br>
-			        <% } %>
-			
-			        <input type="submit" value="로그인"><br><br>
-		         	
-		         	<!-- 카카오 로그인 -->
-		         	<a id="kakao-login-btn"></a>
-					<div id="result"></div>
+	%>
+		<form action="<%=request.getContextPath()%>/member/loginMember.do" method="post">
+		<input type="text" name="memId" placeholder="아이디"><br>
+		<div class="input password">
+		<input type="password" id="password" class="form-input" name="pass" placeholder="비밀번호">
+		<div class="eyes">
+		<i class="fa fa-eye-slash fa-lg"></i>
+		</div>
+        </div><br>
+		<!-- 로그인 오류 메시지 --> 
+        <% if (check != null && check.equals("false")) { %>
+            <span id="check" style="color: red;">로그인 오류 또는 비회원입니다</span><br><br>
+        <% } %>
+      <button type="submit">로그인</button>
+    	<!-- 카카오 로그인 -->
+		<a id="kakao-login-btn"></a>
+		<div id="result"></div>
+      <a href="<%=request.getContextPath()%>/view/login_out/getId.jsp">아이디 까먹었슈? </a>
+      <a href="<%=request.getContextPath()%>/view/login_out/getPassword.jsp" class="login_forgot">비밀번호 까먹었슈? </a>
 					
-					<!--아이디,비밀번호 찾기 / 회원가입  --> 
-				 	<a href="<%=request.getContextPath()%>/view/login_out/getId.jsp">아이디 까먹었슈? </a><br><br>
-				 	<a href="<%=request.getContextPath()%>/view/login_out/getPassword.jsp" class="login_forgot">비밀번호 까먹었슈? </a><br><br>
-					<a href="<%=request.getContextPath()%>/view/signup/memberSignup.jsp">회원가입</a>
 			</form> 
 			
 			<!-- 카카오 로그인 스크립트 -->
@@ -188,12 +177,12 @@
                     }
                 },
                 fail: function (error) {
-                    alert('login success, but failed to request user information: ' + JSON.stringify(error));
+                    alert('로그인에 성공했지만 사용자 정보를 요청하지 못했습니다: ' + JSON.stringify(error));
                 },
             });
         },
         fail: function (err) {
-            alert('failed to login: ' + JSON.stringify(err));
+            alert('로그인 실패: ' + JSON.stringify(err));
         },
     });
 </script> 
@@ -209,53 +198,23 @@
 		<%
 			}  
 		%>
-			
+		</form>
+  </div>
+  <div class="overlay-container">
+    <div class="overlay">
+      <div class="overlay-panel overlay-left">
+        <h1>튀소 용사여 <br>웰컴백이유</h1>
+        <p>유잼대전으로 떠나보자고 !!</p>
+        <button class="ghost" id="signIn">로그인</button>
+      </div>
+      <div class="overlay-panel overlay-right">
+        <h1>타슈타고 여행가유~</h1>
+        <p>튀김소보루탐험가가 되어보실래요?</p>
+        <button class="ghost" id="signUp">회원가입</button>
+      </div>
     </div>
-    <!-- 회원 로그인 탭  끝-->
-
-	<!-- 관리자 로그인 탭 -->
-    <div id="admin" class="container tab-pane <%="admin".equals(Tab) ? "active" : ""%>"><br>
-    	<!-- 로그인 안했거나 로그인  id 비밀번호가 틀렸을때    -->
-		<%  
-		    if(adVo == null)
-		    {
-		%>
-		<form action="<%=request.getContextPath()%>/admin/adminLogin.do" method="post">
-        	아이디 <input type="text" name="adminId" placeholder="아이디"><br><br>
-        
-	        <div class="input password">
-	            비밀번호 <input type="password" id="password" class="form-input" name="adminPass" placeholder="비밀번호">
-	            <div class="eyes">
-	                <i class="fa fa-eye-slash fa-lg"></i>
-	            </div>
-	        </div>
-	      	 <!-- 로그인 오류 메시지 -->
-	        <% if (check != null && check.equals("false") && "admin".equals(Tab)) 
-	        	{ %>
-	            <span id="check" style="color: red;">로그인 오류 또는 비관리자입니다</span><br><br>
-	        <% } %>
-	
-	        <input type="submit" value="로그인"><br><br>
-		</form>   
-		<!-- 로그인 성공시 -->
-			<%
-				}else
-				{
-			%>
-			<script>
-				window.location.href = '<%=request.getContextPath()%>/index.jsp';
-			</script>
-			<%
-				}  
-			%>
-			        
-    </div>
-    <!-- 관리자 로그인 탭 끝 -->
   </div>
 </div>
-  
-
- 
-
 </body>
+<script src="<%=request.getContextPath()%>/js/logins.js"></script>
 </html>
