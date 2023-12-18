@@ -64,30 +64,10 @@ select count(*) from notice
 </select>
 
 		<!-- 공지 조회수 증가 -->
-<!-- 	<update id="updateHits" parameterType="int"> -->
-<!-- 	update notice set notice_hits = notice_hits+1 where notice_no = #{notice_no} -->
-<!-- 	</update> -->
-	
-	
-
-	
-
-
- 
-	
-	
-	
-	
-	
-	
-	
+	<update id="updateHits" parameterType="int">
+	update notice set notice_hits = notice_hits+1 where notice_no = #{noticeNo}
+	</update>
 	
 	
 </mapper>
-
-
-
-
-
-
 
