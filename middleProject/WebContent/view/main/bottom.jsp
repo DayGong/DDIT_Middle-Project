@@ -19,7 +19,7 @@
 </head>
 <body>
 
-<footer class="container">
+<footer class="container-bottom">
     <div class="ftTop">
         <div id="djList">
       		<a href="http://www.daejeoncitytour.co.kr/kor/main/" target="_blank">대전시티투어</a>
@@ -60,5 +60,6 @@
         </span>
     </div>
 </footer>
+
 </body>
 </html>

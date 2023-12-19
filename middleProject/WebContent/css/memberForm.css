@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 /*기본용*/
 @font-face {
     font-family: 'GmarketSansMedium';
@@ -33,7 +35,7 @@
     margin: 20px auto;
     padding: 20px;
     background-color: #fff;
-/*     border: 1px solid #ccc; */
+ border: 1px solid #ccc; 
     border-radius: 10px;
     
 }
@@ -58,7 +60,10 @@ h2.categoryTitle{
 
 h1.mypage {
     font-family: 'Cafe24SsurroundAir';
-    margin: 20px 0 20px 350px;
+    font-weight: bold;
+    font-size: 60px;
+    margin-top: 100px;
+    text-align: center;
 }
 h2{
 	font-family: 'Cafe24SsurroundAir';	
@@ -75,6 +80,10 @@ iframe{
 .category-container {
     display: flex;
     justify-content : center;
+}
+.mem-details p{
+	font-family: 'GmarketSansMedium';
+	font-size: 20px;
 }
 
 .category-item {
@@ -126,7 +135,6 @@ iframe{
     all: initial !important;
 }
 .container div {
-    border: 1px solid #ccc; /* 회색 라인 추가 */
     padding: 10px; /* 선택적인 여백 추가 */
     margin-bottom: 10px; /* 선택적인 하단 여백 추가 */
 }

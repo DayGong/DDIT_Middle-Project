@@ -5,11 +5,12 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
+
 <title>마이페이지</title>
 	<link rel= "stylesheet"  href="<%=request.getContextPath()%>/css/memberForm.css">
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    
+
 <%
    // 세션에 저장한 데이터 가져오기
    MemberVO memVo = (MemberVO)session.getAttribute("loginMember");
@@ -40,7 +41,7 @@
 <body>
     <!-- 상단 메뉴바 -->
     <jsp:include page="/view/main/top.jsp"/>
-   
+  
    <div id="mypage"><h1 class="mypage"><b>마이페이지</b></h1></div>
     <div class="container">
         <div id="left">
@@ -56,7 +57,7 @@
                     	if(memVo != null){
                     %>
                     <p> 이름 : <%=memVo.getMem_name()%></p>  
-					<p> ID : <%=memVo.getMem_id()%></p>  
+					<p> 아이디 : <%=memVo.getMem_id()%></p>  
 					<p> 주소 : <%=memVo.getMem_addr()%></p>
 					<%
                     	}else{
@@ -102,10 +103,9 @@
             </div>
         </div>
     </div>
-
-<div class="exclude-css">
-    <!-- 하단 메뉴바 삽입 -->
-    <jsp:include page="/view/main/bottom.jsp"/>
+<div>
+<!-- 하단 메뉴바 삽입 -->
+<jsp:include page="/view/main/bottom.jsp"/>
 </div>
-</body>
 </html>
+</body>
