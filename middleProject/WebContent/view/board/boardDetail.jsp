@@ -37,6 +37,8 @@ boolean isAdmin = (mem_id != null && mem_id.equals(boardMemId));
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 	crossorigin="anonymous"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript">
 	var ss = '<%=ss %>';
 	uvo=<%=sess%>;
@@ -82,13 +84,34 @@ boolean isAdmin = (mem_id != null && mem_id.equals(boardMemId));
 	    			}
 	    			if(cate=="r_delete"){	
 	    			 deleteReply(vnum);
+	    			 $(this).parents('.reply-body').remove();
 	    			 ReplyListServer();
 	    	         }
 	    			if(cate=="r_update"){
 	    				
-	    				
+	    			vp3= $(this).parents('.reply-body').find('.p3').html().trim();    	
+	   			       
+	   			      mcont = vp3.replaceAll(/<br>/g,"\n");                 
+	    			   	
+	   			     
+	   			      $('#rpl_content').val(mcont);
+	   			      $('#mem_id').val(`${uvo.mem_id}`);
+	   			      $('#mem_id').prop('readonly', true);
+	    			  $("#uModal").modal('show');
+	    			  	
 	    				
 	    			}
+	    			
+	    			if(cate=="updatesend"){
+	    		    modicont= $('#rpl_content').val();
+	    		    modiout= modicont.replaceAll(/\n/g, "<br>");
+	    		    vp3=$("p3",this);
+	    		    reply.rpl_content= modicont;
+	    		    
+	  			    reply.rpl_no= vidx;
+	  			    ReplyUpdateServer();
+	    			}
+	    			
 
 	     
 	   });
@@ -112,21 +135,21 @@ boolean isAdmin = (mem_id != null && mem_id.equals(boardMemId));
 			            <div class='p12' >
 			              <p class="p1">
 			              &nbsp;&nbsp;&nbsp;&nbsp;작성자 : <span class="rwr">${v.mem_id}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;					                                  					              
-			                    날짜 : <span class="rda">${v.rpl_date}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			                    날짜 : <span class="rda">${v.rpl_date}</span>&nbsp;&nbsp;&nbsp;
 			              
 			              </p>
 			              <div class="button-container" style="display: flex; justify-content: flex-end;">
 			              <p class="p2">`;
                              
                        if( uvo !=null && uvo.mem_id == v.mem_id ){
-			          rcode+=`<input type="button" idx="${v.rpl_no}" value="댓글수정" name="r_modify" class="action">
+			          rcode+=`<input type="button" idx="${v.rpl_no}" value="댓글수정" name="r_update" class="action">
 			                <input type="button" idx="${v.rpl_no}" value="댓글삭제" name="r_delete" class="action">`;
 			           } 
 
                    rcode +=`</p>
                            </div>
 			                  </div>
-			                   <p class="p3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${content}</p></div></div><hr>`;
+			                   <p class="p3">${content}</p></div></div><hr>`;
 		
 	})  //반복 끝
 	    
@@ -179,10 +202,48 @@ boolean isAdmin = (mem_id != null && mem_id.equals(boardMemId));
    </div>
 </div>
      <div id="insertRe" style="display:none"> 
-       &nbsp;&nbsp;&nbsp;&nbsp;<textarea id="retext" style="width :500px;"></textarea>
+       <textarea id="retext" style="width :500px;"></textarea>
        &nbsp;&nbsp;<input type="button" class="action" name="replyInsert" value="댓글 작성" style="width:150px;"><br>
      </div>
 	<div class="replytab"></div>
 </div>
+
+	<!-- 댓글수정 The Modal -->
+<div class="modal" id="uModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">댓글 수정</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form name="uform" id ="uform">
+              <input type ="hidden" id="bnno" name="bnno" class="txt">
+           <label>아이디 </label>
+           <input type ="text" id="mem_id" name="mem_id" class="txt"><br><br><br>
+           <label>내용&nbsp;&nbsp;</label>
+           <textarea  id="rpl_content" name="rpl_content" class="txt"></textarea>><br><br> 
+           <br> <br>
+           <input type="button" value="확인" name="updatesend" class="action">
+           
+         </form>         
+      </div>
+      
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
 </body>
 </html>

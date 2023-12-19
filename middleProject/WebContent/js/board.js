@@ -67,9 +67,10 @@ function deleteReply(vidx){
           type:'post',
           success :function(res){
 	          if(res.flag=="성공"){
+	    
 		 alert("삭제 성공!!");
 	     
-           $(gthis).parents('.replytab').remove();
+          
 	        
 	}else{
 		 alert("삭제 실패!!");
@@ -87,7 +88,7 @@ function deleteReply(vidx){
 
 ReplyUpdateServer =function(){
 	  $.ajax({
-		url : `${mypath}/reply/replyUpadate.do`,
+		url : `${mypath}/reply/replyUpdate.do`,
 		type : 'post',
 		data : reply,  //renum ,cont 들어있습니다
 		success :function(res){
@@ -96,7 +97,7 @@ ReplyUpdateServer =function(){
 		   //화면을 수정
          if(res.flag=="성공"){
 	
-	        $(vp3).html(modiout);
+	         $(vp3).html(modiout);
 				}         
             
 		},

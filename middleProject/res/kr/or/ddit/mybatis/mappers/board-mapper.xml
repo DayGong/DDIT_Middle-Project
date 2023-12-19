@@ -85,7 +85,7 @@ select count(*) from board
     <!--  댓글 리스트 -->
     
      <select id="selectReply" parameterType="int" resultType="replyVo">
-       select * from reply where brd_no = #{brd_no}
+       select * from reply where brd_no = #{brd_no}  
      </select>
      
     <!--  댓글 삭제-->
