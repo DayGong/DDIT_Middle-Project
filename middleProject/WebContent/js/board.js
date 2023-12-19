@@ -46,7 +46,7 @@ function writeReply(){
 	          if(res.flag=="성공"){
 		 alert("댓글쓰기 성공!!");
 	       ReplyListServer();
-         
+           
 	
 	}else{
 		 alert("댓글쓰기 실패!!");
@@ -59,6 +59,60 @@ function writeReply(){
 	})
 
 }
+
+function deleteReply(vidx){
+	   $.ajax({
+		  url:`${mypath}/reply/replyDelete.do`,
+          data: {"bonum":vidx},
+          type:'post',
+          success :function(res){
+	          if(res.flag=="성공"){
+		 alert("삭제 성공!!");
+	     
+           $(gthis).parents('.replytab').remove();
+	        
+	}else{
+		 alert("삭제 실패!!");
+	}
+         },
+         error: function(xhr){
+	      alert(xhr.status);
+         },
+         dataType :'json'
+	})
+
+
+	
+}
+
+ReplyUpdateServer =function(){
+	  $.ajax({
+		url : `${mypath}/reply/replyUpadate.do`,
+		type : 'post',
+		data : reply,  //renum ,cont 들어있습니다
+		success :function(res){
+			alert(res.flag);
+	         
+		   //화면을 수정
+         if(res.flag=="성공"){
+	
+	        $(vp3).html(modiout);
+				}         
+            
+		},
+		error : function(xhr){
+		   alert(xhr.status);	
+		},
+		dataType: 'json'
+	})
+	
+	
+	
+	
+	
+}
+
+
 
 
  

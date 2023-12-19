@@ -1,3 +1,5 @@
+<%@page import="kr.or.ddit.vo.MemberVO"%>
+<%@page import="com.google.gson.Gson"%>
 <%@page import="kr.or.ddit.vo.BoardVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -9,7 +11,13 @@ String mem_id = (String) session.getAttribute("mem_id");
 String path = request.getContextPath();
 String ss = (check != null && check.equals("true")) ? "check" : "";
 String boardMemId = boardVO.getMem_id();
- boolean isAdmin = (mem_id != null && mem_id.equals(boardMemId));
+MemberVO vo= (MemberVO) session.getAttribute("loginMember");                                     
+boolean isAdmin = (mem_id != null && mem_id.equals(boardMemId));
+
+ String sess= null;
+ //vo객체를 json데이터로 변경
+ Gson gson= new Gson();
+ if(vo!=null) sess=gson.toJson(vo);
 
 %>
    
@@ -31,6 +39,7 @@ String boardMemId = boardVO.getMem_id();
 	crossorigin="anonymous"></script>
 	<script type="text/javascript">
 	var ss = '<%=ss %>';
+	uvo=<%=sess%>;
 	 
 	 mypath='<%=request.getContextPath()%>';
 	 vaction=  $(this).attr('name');
@@ -55,24 +64,31 @@ String boardMemId = boardVO.getMem_id();
 		     
 	     ReplyListServer();
 	     
-	    	
-	    		$(document).on('click','.action',function(){
-	    			cate=$(this).attr('name');
+	 })	
+	     $(document).on('click','.action',function(){
+	    		    cate=$(this).attr('name');
 	    			gthis=$(this);
+	    			vnum=$(this).attr('idx');
+	    			
 	    			reply.brd_no=brdNo;
 	    			reply.rpl_content= $('#retext').val().replace(/<br>/g, '\n').trim();
 	    			
 	    			reply.mem_id="<%=mem_id%>";
 	
-	    			if(cate=="replyInsert"){
-	    				
+	    			if(cate=="replyInsert"){	    				
 	    				writeReply();
-	    			    $('#retext').val(" ");
+	    			   $(this).prev().val("");
+                         
+	    			}
+	    			if(cate=="r_delete"){	
+	    			 deleteReply(vnum);
+	    			 ReplyListServer();
+	    	         }
+	    			if(cate=="r_update"){
+	    				
 	    				
 	    				
 	    			}
-	    			
-	    	})
 
 	     
 	   });
@@ -95,23 +111,25 @@ String boardMemId = boardVO.getMem_id();
 		               <div class="reply-body">
 			            <div class='p12' >
 			              <p class="p1">
-			              &nbsp;&nbsp;&nbsp;&nbsp;작성자 : <span class="rwr">${v.rpl_name}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;					                                  					              
+			              &nbsp;&nbsp;&nbsp;&nbsp;작성자 : <span class="rwr">${v.mem_id}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;					                                  					              
 			                    날짜 : <span class="rda">${v.rpl_date}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			              
 			              </p>
+			              <div class="button-container" style="display: flex; justify-content: flex-end;">
 			              <p class="p2">`;
-/* 
-                       if( uvo !=null && uvo.mem_name == v.name ){
-			          rcode+=`<input type="button" idx="${v.renum}" value="댓글수정" name="r_modify" class="action">
-			                <input type="button" idx="${v.renum}" value="댓글삭제" name="r_delete" class="action">`;
-			           } */
+                             
+                       if( uvo !=null && uvo.mem_id == v.mem_id ){
+			          rcode+=`<input type="button" idx="${v.rpl_no}" value="댓글수정" name="r_modify" class="action">
+			                <input type="button" idx="${v.rpl_no}" value="댓글삭제" name="r_delete" class="action">`;
+			           } 
 
                    rcode +=`</p>
+                           </div>
 			                  </div>
 			                   <p class="p3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${content}</p></div></div><hr>`;
 		
 	})  //반복 끝
-	
+	    
 	//출력
 	    $(this).parents('.card').find('.reply-body').remove();
         $('.replytab').html(rcode);
@@ -161,7 +179,7 @@ String boardMemId = boardVO.getMem_id();
    </div>
 </div>
      <div id="insertRe" style="display:none"> 
-       &nbsp;&nbsp;&nbsp;&nbsp;<textarea id="retext" style="width :500px;"> </textarea>
+       &nbsp;&nbsp;&nbsp;&nbsp;<textarea id="retext" style="width :500px;"></textarea>
        &nbsp;&nbsp;<input type="button" class="action" name="replyInsert" value="댓글 작성" style="width:150px;"><br>
      </div>
 	<div class="replytab"></div>
