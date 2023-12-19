@@ -140,16 +140,16 @@
 			{
 			%>
 				<form class="logged-form" action="#">
-					<h4><%= adVo.getAdmin_name()%>관리자님 반갑습니다!</h4>
-					<input type="button" value="로그아웃"  onclick="location.href='<%=request.getContextPath()%>/member/logoutMember.do'"> 
+					<h4 class="hi"><%= adVo.getAdmin_name()%>관리자님 반갑습니다!</h4>
+					<input class="logoutbtn" type="button" value="로그아웃"  onclick="location.href='<%=request.getContextPath()%>/member/logoutMember.do'"> 
 				</form>
 			<%
 			} else if(memVo != null)
 			{
 			%>
 				<form class="logged-form" action="#">
-					<h4><%= memVo.getMem_name()%>님 반갑습니다!</h4>
-					<input type="button" value="로그아웃"  onclick="location.href='<%=request.getContextPath()%>/member/logoutMember.do'"> 
+					<h4 class="hi"><%= memVo.getMem_name()%>님 반갑습니다!</h4>
+					<input class="logoutbtn" type="button" value="로그아웃"  onclick="location.href='<%=request.getContextPath()%>/member/logoutMember.do'"> 
 				</form>
 			<%
 			}
