@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>회원탈퇴 페이지</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <link rel= "stylesheet"  href="<%=request.getContextPath()%>/css/withdraw.css">
 <script>
 
@@ -64,13 +65,11 @@ $(() => {
     <form id="withdrawform">
         <div>
             <img src="<%=request.getContextPath()%>/images/login/우는꿈돌이.png" class="round-image">
-            <div><h3>경고 : 탈퇴를 하셔도 작성했던 게시글은 남아있습니다. (게시판, 후기 등등)</h3></div>
-            
-           <div>비밀번호를 다시 한 번 입력하세요.</div>
+            <div><h3>경고 : 탈퇴를 하셔도 작성했던 게시글은 남아있습니다. (게시판, 후기 등등)<br>비밀번호를 다시 한 번 입력하세요.</h3></div>
            <div>비밀번호 확인
               <input type="password" id="checkPass" name="check_pass">
           </div>
-          <div>
+          <div style="display:flex; margin:5px;">
 	          <input type="button" id="withdrawbtn" class="btn" value="탈퇴">
 	          <input type="button" id="cancel" class="btn" value="탈퇴취소">
           </div>

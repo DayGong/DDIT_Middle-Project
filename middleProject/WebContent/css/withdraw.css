@@ -36,9 +36,16 @@ div{
 	font-family: 'GmarketSansMedium';
 	border:1px gray;
 }
+input{
+	width: 190px;
+	height: 40px;
+	padding-left: 10px;
+}
 #container {
     text-align: center;
     margin-top: 50px; /* 위쪽 여백 조절 */
+    max-width: 100%; /* 내용이 수평으로 넘치지 않도록 최대 너비 설정 */
+    overflow-x: hidden; /* 가로 스크롤 막대가 표시되면 가로 스크롤 막기 */
 }
 
 .center-content {
@@ -86,7 +93,7 @@ div{
   border-color: #FFFFFF;
   font-family: 'Cafe24SsurroundAir';  
 }
-.withdrawbtn{
+#withdrawbtn{
     display: block;
     margin: 0 auto;
     text-align: center;
@@ -97,7 +104,7 @@ div{
 	font-size: 18px;
     
 }
-.cancel{
+#cancel{
     display: block;
     margin: 0 auto;
     text-align: center;
@@ -107,4 +114,7 @@ div{
 	border: 1px solid red;
 	font-size: 18px;
 	
+}
+body {
+    overflow: hidden; /* 수직 및 수평 스크롤 막대 숨기기 */
 }
