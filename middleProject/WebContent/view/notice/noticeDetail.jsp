@@ -37,22 +37,15 @@ $(document).ready(function() {
 <body>
  	<div class="card-body">
 		<div class="table-responsive"> 
-		<table class="table table-bordered" id="dataTable" width="100%"	cellspacing="0">
-			<tr>
-				<th>번호</th>
-				<th>제목</th>
-				<th>내용</th>
-				<th>작성날짜</th>
-				<th>조회수</th>
-				<th>첨부</th>
+		<table class="table" id="dataTable" width="100%"	cellspacing="0">
+			<tr class="table-light">
+				<td colspan="2"><%=noticeVO.getNoticeTitle()%></td>
 			</tr>	
 			<tr>
-				<td><%=noticeVO.getNoticeNo()%></td>
-				<td><%=noticeVO.getNoticeTitle()%></td>
-				<td><%=noticeVO.getNoticeContent()%></td>
-				<td><%=noticeVO.getNoticeDate()%></td>
-				<td><%=noticeVO.getNoticeHits()%></td>
-				<td><%=noticeVO.getNoticeFile()%></td>
+				<td><%=noticeVO.getNoticeDate()%></td><td>조회 <%=noticeVO.getNoticeHits()%></td> 
+			</tr>
+			<tr height = "300px">
+				<td colspan="2"><%=noticeVO.getNoticeContent()%></td>
 			</tr>
 				
 				<a align="right" href="<%=request.getContextPath() %>/notice/list.do">[목록으로]</a>
