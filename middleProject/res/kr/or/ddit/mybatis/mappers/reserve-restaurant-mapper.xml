@@ -44,7 +44,7 @@
             	ORDER BY rr.rest_rsv_date DESC
         	) res
         	<![CDATA[
-			WHERE ROWNUM <= 5;
+			WHERE ROWNUM <= 5
 			]]>
 	</select>
 	

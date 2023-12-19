@@ -40,7 +40,7 @@ addMemberRestaurantReserve = function(memId)
 		 success: function(res)
 		 {
 			var restaurantReserveList = null;
-			if (res == null)
+			if (res == null || res == 0)
 			{
 				restaurantReserveList += `
 				<tr>
@@ -49,7 +49,6 @@ addMemberRestaurantReserve = function(memId)
 				`;
 			} else 
 			{				 
-				console.log(res);
 				$.each(res, function(i, v)
 				{
 					restaurantReserveList += `
@@ -149,16 +148,15 @@ addMemberRestaurantReserveCancel = function(memId)
 		 success: function(res)
 		 {
 			var restaurantReserveCancelList = null;
-			if (res == null)
+			if (res == null || res == 0)
 			{
 				restaurantReserveCancelList += `
 				<tr>
-					<td colspan="6">예약 목록이 없습니다.</td>
+					<td colspan="6">취소 및 만료 목록이 없습니다.</td>
 				</tr>
 				`;
 			} else 
 			{				 
-				console.log(res);
 				$.each(res, function(i, v)
 				{
 					restaurantReserveCancelList += `

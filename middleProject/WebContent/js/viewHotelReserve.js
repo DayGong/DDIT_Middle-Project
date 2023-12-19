@@ -48,7 +48,6 @@ addMemberHotelReserve = function(memId)
 				`;
 			} else 
 			{				 
-				console.log(res);
 				$.each(res, function(i, v)
 				{
 					hotelReserveList += `
@@ -64,7 +63,6 @@ addMemberHotelReserve = function(memId)
 									onclick="hotelReserveCancel(this.id)"></td>
 					 </tr>
 					 `;
-					console.log(`${v.HOTEL_RSV_NO}`);
 				 })
 			 }
 		
