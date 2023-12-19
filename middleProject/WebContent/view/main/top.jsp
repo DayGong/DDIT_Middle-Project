@@ -43,10 +43,10 @@
 		
 	<ul id="gnb">
 		<li class="dept1">
-			<a href="#" role="button">대전알리미</a>
+			<a href="<%=path %>/view/daejeonStory/daejeonOrigin.jsp" role="button">대전알리미</a>
 			<ul class="inner_menu">
 				<li class="dept2">
-					<a href="#">대전이야기</a>
+					<a href="<%=path %>/view/daejeonStory/daejeonOrigin.jsp">대전이야기</a>
 				</li>
 				<li class="dept2">
 					<a href="#">여행도우미</a>

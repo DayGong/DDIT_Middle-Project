@@ -11,8 +11,17 @@
 <script src="<%= path %>/js/jquery-3.7.1.min.js"></script>
 <script src="<%= path %>/js/slideText.js"></script>
 <link rel="stylesheet" href="<%= path %>/css/slideText.css">
+
+<!-- 공통 js -->
+<script type="text/javascript" src="<%= path %>/js/common.js"></script>
+<!-- 공통 css -->
+<link rel="stylesheet" href="<%= path %>/css/common.css">
+
 </head>
 <body>
+
+<!-- 상단 메뉴바 -->
+<jsp:include page="/view/main/top.jsp"/>
 
 <div class="container scroll_wrap">
     <div class="scroll_on type_left">
@@ -21,7 +30,7 @@
     </div>
     
     <div class="scroll_on type_right flexSide">
-    	<div style="width: 25%"></div>
+    	<div style="width: 14%"></div>
     	<div style="width: 500px">
     		<p>1914년 <br> 대전군(大田郡)이 형성된 당시</p>
     		<br>
@@ -40,7 +49,7 @@
     </div>
     
     <div class="scroll_on type_top flexSide">
-    	<div style="width: 25%"></div>
+    	<div style="width: 14%"></div>
     	<div style="width: 500px">
 		    <p>1905년 대전역이 세워지자</p>
 		    <br>
@@ -62,7 +71,7 @@
     </div>
 	
     <div class="scroll_on type_bottom flexSide">
-    	<div style="width: 25%"></div>
+    	<div style="width: 14%"></div>
     	<div style="width: 500px">
     		<span>
     		대전면은 1931년 ‘대전읍(邑)’으로 개편되었다가 1935년 ‘대전부(府)’로 승격되면서 
@@ -80,6 +89,13 @@
 	<div style="height: 300px">
 	</div>
 </div>
+
+<div class="moveTopBtn">
+	<img alt="상단 이동 버튼" src="<%= path %>/images/icon/scrollToTop.png">
+</div>
+
+<!-- 하단 메뉴바 삽입 -->
+<jsp:include page="/view/main/bottom.jsp"/>
 
 </body>
 </html>
