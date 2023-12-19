@@ -7,25 +7,50 @@
     <meta charset="UTF-8">
     <title>마이페이지</title>
 <link rel= "stylesheet"  href="<%=request.getContextPath()%>/css/memberForm.css">
+<%
+   // 세션에 저장한 데이터 가져오기
+   MemberVO memVo = (MemberVO)session.getAttribute("loginMember");
+%>
+<script>
+<%
+   if(memVo == null){
+%>
+   alert("로그인이 필요합니다. 로그인 페이지로 이동합니다.");
+   window.location.href = '<%=request.getContextPath()%>/view/login_out/loginMain.jsp';
+<%
+   }
+%>
+function changeIframe(url, title) {
+    document.getElementById('myIframe').src = url;
+ }
+</script>
+
 </head>
 <body>
     <!-- 상단 메뉴바 -->
     <jsp:include page="/view/main/top.jsp"/>
    
-   <div id="mypage"><h1 class="mypage">마이페이지</h1></div>
+   <div id="mypage"><h1 class="mypage"><b>마이페이지</b></h1></div>
     <div class="container">
         <div id="left">
             <!-- 왼쪽에 오는 내정보 -->
-            <div class="mem-info" style="width: 300px;">
-                <div><h2>내정보</h2></div>
-                <img src="<%=request.getContextPath()%>/images/login/꿈돌2.png" style="width: 170px; height: 170px;">
-                <div class="user-details">
-                    <!-- 회원 정보 내용 추가 -->
+            <div class="mem-info" style="width: 340px;">
+                <div><h2><b>내정보</b></h2></div>
+                <div class="image-wrapper">
+                <img src="<%=request.getContextPath()%>/images/login/루돌푸꿈돌.png" class="round-image" >
                 </div>
-            <div id="mem-info" style="display: flex; flex-direction: column;align-items: flex-start;">
-                   <a href="<%=request.getContextPath()%>/member/updateMember.do">회원수정</a>
+                <div class="mem-details" style="padding:10px;text-align: left;height: 130px;">
+                    <!-- 회원 정보 내용 추가 -->
+                    <p> 이름 : <%=memVo.getMem_name()%></p>  
+					<p> ID : <%=memVo.getMem_id()%></p>  
+					<p> 주소 : <%=memVo.getMem_addr()%></p>  
+                </div>
+            <div id="mem-info-link" style="padding:10px; height:40px;">
+           	
+                   <a href="#" onclick="changeIframe('<%=request.getContextPath()%>/member/updateMember.do')">회원수정</a>
                    <a href="<%=request.getContextPath()%>/member/logoutMember.do">로그아웃</a>
-                   <a href="<%=request.getContextPath()%>/view/withdraw/memberWithdraw.jsp">탈퇴</a>
+                   <a href="#" onclick="changeIframe('<%=request.getContextPath()%>/view/withdraw/memberWithdraw.jsp')">탈퇴</a>
+            	
             </div>            
             </div>
         </div>
@@ -33,21 +58,25 @@
         <div id="right">
             <!-- 상단에 오는 카테고리 -->
             <div class="category-container">
-                <div class="category-item"><a href="#" onclick="changeIframe('<%=request.getContextPath()%>/test.jsp','식당예약')">식당예약 </a></div>
-                <div class="category-item"><a href="#" onclick="changeIframe('<%=request.getContextPath()%>/test.jsp','숙소예약')">숙소예약</a></div>
+                <div class="category-item"><a href="#" onclick="changeIframe('<%=request.getContextPath()%>/view/member/viewRestaurantReserve.jsp')" >식당예약 </a></div>
+                <div class="category-item"><a href="#" onclick="changeIframe('<%=request.getContextPath()%>/view/member/viewHotelReserve.jsp')">숙소예약</a></div>
             </div>
 
-            <!-- 정보 표시되는 어쩌구 -->
+            <!-- 정보 표시 -->
             <div class="maincolumn">
-                <h2 id="categoryTitle"> 원하시는 항목을 선택하세요</h2>
+                <h3 id="categoryTitle"> 원하시는 항목을 선택하세요</h3>
                 <div class="card">
-                    <!-- 내용 추가 -->
+         		<iframe id ="myIframe" name ="itr" >
+         		</iframe>
+         			<p>대전에 오신걸 환영합니다 ~</p>
                 </div>
             </div>
         </div>
     </div>
 
+<div class="exclude-css">
     <!-- 하단 메뉴바 삽입 -->
     <jsp:include page="/view/main/bottom.jsp"/>
+</div>
 </body>
 </html>
