@@ -1,13 +1,32 @@
 @charset "UTF-8";
 
+@font-face {
+    font-family: 'Shilla_CultureB-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/Shilla_CultureB-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Cafe24SsurroundAir';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SsurroundAir.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .scroll_wrap {
 	overflow: hidden;
 }
 
 .scroll_on {
 	padding:50px 0;
-	font-size: 24px;
-	font-weight: 800; /* 숫자가 클수록 글씨가 얇아짐 */
 	text-align: center;
 	opacity: 0;
 	transition: all 1s;
@@ -33,3 +52,28 @@
 .scroll_on.type_right {
 	transform: translate(50px, 0);
 }
+
+.scroll_on h2 {
+	font-family: 'Shilla_CultureB-Bold';
+	font-size: 60px;
+}
+
+.scroll_on p {
+	font-family: 'Cafe24SsurroundAir';
+	font-size: 33px;
+}
+
+.scroll_on span {
+	font-family: 'GmarketSansMedium';
+}
+
+.scroll_on figcaption {
+	font-family: 'GmarketSansMedium';
+}
+
+.flexSide {
+	display: flex;
+	flex-direction: row;
+	text-align: left;
+}
+
