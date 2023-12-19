@@ -88,7 +88,7 @@
 					<a href="#">공지게시판</a>
 				</li>
 				<li class="dept2">
-					<a href="#">후기게시판</a>
+					<a href="#">자유게시판</a>
 				</li>
 			</ul>
 		</li>

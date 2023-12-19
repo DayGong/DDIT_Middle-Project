@@ -55,6 +55,13 @@ public class BoardVO {
 		return "BoardVO [brd_no=" + brd_no + ", brd_title=" + brd_title + ", brd_content=" + brd_content + ", brd_hits="
 				+ brd_hits + ", brd_date=" + brd_date + ", brd_file=" + brd_file + ", mem_id=" + mem_id + "]";
 	}
+	public BoardVO(int brd_no, String brd_title, String brd_content) {
+		super();
+		this.brd_no = brd_no;
+		this.brd_title = brd_title;
+		this.brd_content = brd_content;
+	}
+	
 	public BoardVO(int brd_no, String brd_title, String brd_content, int brd_hits, String brd_date, String brd_file,
 			String mem_id) {
 		super();

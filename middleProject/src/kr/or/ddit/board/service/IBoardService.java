@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import kr.or.ddit.vo.BoardVO;
+import kr.or.ddit.vo.NoticeVO;
 import kr.or.ddit.vo.PageVO;
 
 public interface IBoardService {
@@ -11,7 +12,7 @@ public interface IBoardService {
 	public List<BoardVO> getAllBoard();
 	public BoardVO getBoard(int no);
 	public int deleteBoard(int no);
-	public int updateHits(int num);
+	public int updateHits(int no);
 	public int updateBoard(BoardVO boardVO);
 	public int insertBoard(BoardVO boardVO);
 //	public PageVO getPageInfo(int spage, String stype, String sword);

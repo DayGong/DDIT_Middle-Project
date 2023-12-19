@@ -25,17 +25,14 @@ public class BoardInsertController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		
-		//int no = Integer.parseInt(request.getParameter("notice_no"));
-		String title = request.getParameter("board_title");
-		String content = request.getParameter("board_content");
+		String title = request.getParameter("brd_title");
+		String content = request.getParameter("brd_content");
 		
 		IBoardService service = BoardServiceImpl.getInstance();
 		
-		BoardVO boardVO = new BoardVO();
-		boardVO.setBrd_title(title);
-		boardVO.setBrd_content(content);
+		BoardVO boardVO = new BoardVO(title, content);
 		
-		service.insertBoard(boardVO);
+		int cnt = service.insertBoard(boardVO);
 		
 		response.sendRedirect(request.getContextPath()+"/board/list.do");
 	}

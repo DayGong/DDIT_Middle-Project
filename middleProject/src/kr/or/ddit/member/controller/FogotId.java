@@ -31,11 +31,19 @@ public class FogotId extends HttpServlet {
 		// 서비스 메소드 호출
 		String id = service.getID(memMail);
 		
+		if (id != null) {
+        // 메일 주소에 해당하는 아이디를 찾았을 경우
 		// 앞에 5자리 제외 *로 표현 메서드 호출
 		String maskId = MaskingUtil.maskId(id);
 		
 		//마스킹된 아이디를 request에 저장
 		request.setAttribute("id", maskId);
+		
+		 } else {
+        // 메일 주소에 해당하는 아이디를 찾지 못했을 경우
+        // 실패를 저장
+        request.setAttribute("check", "false");
+	        }
 		
 		// view페이지로 이동
 		request.getRequestDispatcher("/view/login_out/getId.jsp").forward(request, response);

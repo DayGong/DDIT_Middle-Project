@@ -1,5 +1,12 @@
 @charset "UTF-8";
 
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 ul li, ol li {
 	list-style: none;
 }
@@ -19,18 +26,29 @@ ul li, ol li {
 }
 
 .login-form input[type="button"] {
+	font-family: 'GmarketSansMedium';
 	padding: 8px 16px; 
 	border-radius: 3px;
 	border: none;
 	cursor: pointer;
-	font-weight: bold;
+	font-weight: nomal;
+	font-size: 15px;
 	background-color: #007bff; 
 	color:white;     
 }
 
 /* 새로운 css */
 
-#gnb a {
+li.dept1 > a {
+font-family: 'GmarketSansMedium';
+	font-size: 25px;
+	text-decoration: none;
+	color: inherit;
+}
+
+li.dept2 > a  {
+	font-family: 'GmarketSansMedium';
+	font-size: 19px;
 	text-decoration: none;
 	color: inherit;
 }
@@ -43,6 +61,9 @@ ul li, ol li {
 	position: relative;
 }
 
+#form login-form{
+	font-family: 'GmarketSansMedium';
+}
 #header #gnb {
 	display: flex;
 	z-index: 99;
@@ -56,7 +77,7 @@ ul li, ol li {
 }
 
 #header #gnb>.dept1>a.active {
-	color: red;
+	color: #0080ff;
 	font-weight: bold
 }
 
@@ -79,10 +100,15 @@ ul li, ol li {
 	font-weight: bold
 }
 
+
 .hd_bg {
-	background: #fff;
+	background: #fff url("../images/banner/꿈도리.jpg") fixed;
+	background-size: 250px 200px; /* 이미지의 크기를 조절합니다 */
+	background-attachment: scroll;
+	background-repeat: no-repeat; /* 이미지를 반복하지 않도록 설정합니다 */
+	background-position: right 60px center;
 	width: 100%;
-	height: 0;
+	height: 0px;
 	left: 0;
 	z-index: 3;
 	position: absolute;

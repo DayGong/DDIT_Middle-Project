@@ -3,11 +3,10 @@
 /* .carousel-container {
 	margin-top: 130px;	
 } */
-
 @font-face {
-    font-family: 'HSGyoulnoonkot';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/HSGyoulnoonkot.woff') format('woff');
-    font-weight: normal;
+    font-family: 'MonoplexKRNerd-BoldItalic';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_Monoplex-nerd@1.0/MonoplexKRNerd-BoldItalic.woff2') format('woff2');
+    font-weight: 700;
     font-style: normal;
 }
 
@@ -44,7 +43,7 @@
 .fix-text > h3{
 	color: #fce345; /* 텍스트 색상 설정 */
     font-size : 80px;
-    font-family: 'HSGyoulnoonkot';
+    font-family: 'MonoplexKRNerd-BoldItalic';
 }
 
 .fix-text > p{

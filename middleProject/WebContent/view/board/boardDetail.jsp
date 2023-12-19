@@ -3,6 +3,7 @@
     pageEncoding="UTF-8"%>
 <%
 	BoardVO boardVO = (BoardVO) request.getAttribute("boardVO");
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -42,8 +43,8 @@
 			<tr align="right">
 				<td colspan="5">
 				<a href="<%=request.getContextPath() %>/board/list.do">[목록으로]</a>
-				<a href="<%=request.getContextPath() %>/board/update.do?boardNo=<%=boardVO.getBrd_no() %>">[게시글 수정]</a>
-				<a href="./delete.do?boardNo=<%=boardVO.getBrd_no() %>">[게시글 삭제]</a>
+				<a href="<%=request.getContextPath() %>/board/update.do?brd_no=<%=boardVO.getBrd_no() %>">[게시글 수정]</a>
+				<a href="./delete.do?brd_no=<%=boardVO.getBrd_no() %>">[게시글 삭제]</a>
 				</td>
 			</tr>
 		</table>

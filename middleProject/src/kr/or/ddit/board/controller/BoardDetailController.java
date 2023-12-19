@@ -18,7 +18,7 @@ public class BoardDetailController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		int no = Integer.parseInt(request.getParameter("brd_No"));
+		int no = Integer.parseInt(request.getParameter("brd_no"));
 		IBoardService boardService = BoardServiceImpl.getInstance();
 		BoardVO boardVO = boardService.getBoard(no);
 		request.setAttribute("boardVO", boardVO);

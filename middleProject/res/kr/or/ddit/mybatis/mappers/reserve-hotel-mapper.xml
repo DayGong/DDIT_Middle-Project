@@ -44,7 +44,7 @@
             		ORDER BY hr.hotel_rsv_startdate DESC
         	) res
         	<![CDATA[
-			WHERE ROWNUM <= 5;
+			WHERE ROWNUM <= 5
 			]]>
 	</select>
 	

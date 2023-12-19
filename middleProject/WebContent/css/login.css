@@ -20,9 +20,7 @@
   box-sizing: border-box;
 }
 
-a, input, p, span {
-	font-family: 'GmarketSansMedium';
-}
+
 
 body {
   background: #f6f5f7;
@@ -38,6 +36,7 @@ h1 {
   font-weight: bold;
   margin: 0;
   font-family: 'Cafe24SsurroundAir';
+  
 }
 
 h2 {
@@ -127,6 +126,9 @@ input {
 }
 .form-input{
   font-family: 'GmarketSansMedium';
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .form-container {

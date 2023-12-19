@@ -19,6 +19,8 @@
 <!-- 식당 예약 목록 띄울 div (식당 예약 창에 띄움)-->
 <div id="memberRestaurantReserveList"></div>
 
+<hr>
+
 <!-- 식당 예약 취소 목록 띄울 div (식당 예약 창에 띄움)-->
 <div id="memberRestaurantCancelReserveList"></div>
 </body>

@@ -234,9 +234,24 @@ function displayTour(){
 				}); 
 					// 리스트에 아이템 추가
 			var listItem = $('<li class="lists"></li>')
-				.html(`<p>장소 이름: ${item.tour_name}</p><p>주소: ${item.tour_addr}</p><p>타입: ${item.tour_tp_nm}</p><div class="adminPlace" style="display:none" name="${item.tour_no}">
+					.html(`	       <table>
+        									<tr>
+        										<td rowspan="2">
+        											<div class="tour_img_div">
+        												<img src="${path}/images/tour/${item.tour_img}"
+        													style="width: 100px; height: 100px;
+        														border-radius: 70%;">
+        											</div>
+        										</td>
+        										<td>${item.tour_name}</td>
+        									</tr>
+        									<tr>
+        										<td>${item.tour_addr}</td>
+        									</tr>
+        								<div class="adminPlace" style="display:none" name="${item.tour_no}">
 				<input type="button" class="cateBtn" name="tourDelete" value="삭제">
-                <input type="button" class="cateBtn" name="tourUpdate" value="수정"></div> <p><hr>`);
+                <input type="button" class="cateBtn" name="tourUpdate" value="수정"></div>
+        								</table> <hr>`);
 				// 클릭 이벤트 추가
 				listItem.on('click', function() {
 					infowindows.forEach(function(window) {
@@ -420,9 +435,24 @@ function displayOneTour(dong){
 				}); 
 					// 리스트에 아이템 추가
 			var listItem = $('<li class="lists"></li>')
-				.html(`<p>장소 이름: ${item.tour_name}</p><p>주소: ${item.tour_addr}</p><p>타입: ${item.tour_tp_nm}</p><div class="adminPlace" style="display:none" name="${item.tour_no}">
+				.html(`	       <table>
+        									<tr>
+        										<td rowspan="2">
+        											<div class="tour_img_div">
+        												<img src="${path}/images/tour/${item.tour_img}"
+        													style="width: 100px; height: 100px;
+        														border-radius: 70%;">
+        											</div>
+        										</td>
+        										<td>${item.tour_name}</td>
+        									</tr>
+        									<tr>
+        										<td>${item.tour_addr}</td>
+        									</tr>
+        								<div class="adminPlace" style="display:none" name="${item.tour_no}">
 				<input type="button" class="cateBtn" name="tourDelete" value="삭제">
-                <input type="button" class="cateBtn" name="tourUpdate" value="수정"></div> <p><hr>`);
+                <input type="button" class="cateBtn" name="tourUpdate" value="수정"></div>
+        								</table> <hr>`);
 				// 클릭 이벤트 추가
 				listItem.on('click', function() {
 					infowindows.forEach(function(window) {
@@ -488,9 +518,24 @@ function searchByTourName(dong){
 				}); 
 					// 리스트에 아이템 추가
 			var listItem = $('<li class="lists"></li>')
-				.html(`<p>장소 이름: ${item.tour_name}</p><p>주소: ${item.tour_addr}</p><p>타입: ${item.tour_tp_nm}</p><div class="adminPlace" style="display:none" name="${item.tour_no}">
+				.html(`	       <table>
+        									<tr>
+        										<td rowspan="2">
+        											<div class="tour_img_div">
+        												<img src="${path}/images/tour/${item.tour_img}"
+        													style="width: 100px; height: 100px;
+        														border-radius: 70%;">
+        											</div>
+        										</td>
+        										<td>${item.tour_name}</td>
+        									</tr>
+        									<tr>
+        										<td>${item.tour_addr}</td>
+        									</tr>
+        								<div class="adminPlace" style="display:none" name="${item.tour_no}">
 				<input type="button" class="cateBtn" name="tourDelete" value="삭제">
-                <input type="button" class="cateBtn" name="tourUpdate" value="수정"></div> <p><hr>`);
+                <input type="button" class="cateBtn" name="tourUpdate" value="수정"></div>
+        								</table> <hr>`);
 				// 클릭 이벤트 추가
 				listItem.on('click', function() {
 					infowindows.forEach(function(window) {

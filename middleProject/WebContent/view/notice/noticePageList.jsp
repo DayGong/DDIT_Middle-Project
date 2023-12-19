@@ -65,8 +65,8 @@
 <body>
 <div class="card-body">
     <div class="table-responsive">
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-            <tr>
+        <table class="table " id="dataTable" width="100%" cellspacing="0">
+            <tr class="table-light">
                 <th>번호</th>
                 <th>제목</th>
                 <th>작성날짜</th>

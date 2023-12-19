@@ -49,12 +49,15 @@ public class FogotPass extends HttpServlet {
 			// 회원 정보를 DB에 insert한다.
 			int cnt = service.updatePass(memVo);
 			
+			
 			if(cnt>0) 
 			{
 				System.out.println("임시번호 발급 완료");
+				
 			}else 
 			{
 				System.out.println("임시번호 발급 실패");
+				request.setAttribute("check", "false");
 			}
 			
 		} catch (Exception e) {
@@ -62,7 +65,7 @@ public class FogotPass extends HttpServlet {
 		}
 		
 		// view페이지로 이동
-		request.getRequestDispatcher("/view/login_out/loginMain.jsp").forward(request, response);
+		request.getRequestDispatcher("/view/login_out/getPassword.jsp").forward(request, response);
 		
 	
 	

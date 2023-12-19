@@ -4,24 +4,41 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>아이디 찾기</title>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<link rel= "stylesheet"  href="<%=request.getContextPath()%>/css/getIds.css">
 </head>
 <%	// 서블릿에서 저장 데이터를 꺼내기
 	String code = (String)request.getAttribute("code");
 	String result = (String)request.getAttribute("id");
+	String check = (String)request.getAttribute("check");
 %>
 <body>
+<!-- 상단 메뉴바 -->
+<jsp:include page="/view/main/top.jsp"/>
+
 <!-- 저장된 아이디 데이터가 없으면 -->
 <%
 if(result ==null)
-{
+	/* db에서도 못찾았다면 오류알림창나오게하기 */
+{	if("false".equals(check))
+	{
 %>
+   <script>
+    swal({title: "아이디 찾기 실패!",  text: "다시 입력해주세요", icon: "error"});
+    </script>
+	<%} %>
 	<!-- 메일주소로 아이디 찾기 -->
+	<div class="container">
 	<form action="<%=request.getContextPath()%>/member/fogotId.do" method="post">
-	가입시 입력한 메일주소를 입력해주세요<br><br>
-	<input type="text" name="memMail" placeholder="메일주소" style="width:200px; height:20px;">
-	<input type="submit" value="확인">
+	<img src="<%=request.getContextPath()%>/images/login/꿈돌2.png" style="width:170px; height:170px;">
+	<br><br><h1>아이디 찾기</h1><br>
+	<h2>가입시 입력한 메일주소를 입력해주세요</h2><br>
+	<input type="text" name="memMail" placeholder="메일주소" style="width: 300px;"><br>
+	<br><button type="submit">확인</button>
 	</form>
+	</div>
 	
 <%
 // 아이디 데이터가 있으면
@@ -29,10 +46,13 @@ if(result ==null)
 {
 %>
 	<!-- 아이디 알려주고 로그인하러가는 버튼 -->
-	
-	<h3>회원님의 아이디는 <%=request.getAttribute("id")%>입니다.</h3><br>
-
-	<a href="<%=request.getContextPath()%>/view/login_out/loginMain.jsp">로그인하러가기</a>
+	<script>
+    swal({title: "아이디 찾기 성공!",  text: "아이디는 '<%=request.getAttribute("id")%>'입니다", icon: "success"
+    }).then(function() 
+    {
+    window.location.href = "<%=request.getContextPath()%>/view/login_out/loginMain.jsp"; 
+    });
+    </script>
 <%
 } 
 %>

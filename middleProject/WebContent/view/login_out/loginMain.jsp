@@ -119,7 +119,7 @@
 		<input type="text" id="memId" class="form-input" name="memId" placeholder="아이디">
 		</div>
 		<div class="input password">
-	    <input type="password" id="password" class="form-input" name="pass" placeholder="비밀번호" style="margin: 10px 0 0 30px;">
+	    <input type="password" id="password" class="form-input" name="pass" placeholder="비밀번호" style="margin: 10px 0 0 -5px; width: 240px;">
 	    <div class="eyes">
 	        <i class="fa fa-eye-slash fa-lg"></i>
 	    </div>
@@ -130,7 +130,7 @@
 		    <span id="check" style="color: red; margin-top: 10px;">로그인 오류 또는 비회원입니다</span>
 		<% } %>
 		
-		<button type="submit" style="margin-top: 10px; ">로그인</button>
+		<button type="submit" style="margin-top: 10px; width: 225px; height: 40px; padding : 0;">로그인</button>
     	<!-- 카카오 로그인 -->
 		<a id="kakao-login-btn"></a>
 		<div id="result"></div>
