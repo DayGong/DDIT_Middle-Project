@@ -20,8 +20,10 @@
 <!-- 공통 css -->
 <link rel="stylesheet" href="<%= path %>/css/common.css">
 
+<link rel="icon" href="./images/icon/꿈돌5-1.png" type="image/x-icon"> 
 </head>
 <body>
+<!--	빠비콘  -->
 
 <!-- 상단 메뉴바 -->
 <jsp:include page="/view/main/top.jsp"/>
