@@ -4,20 +4,17 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<<<<<<< HEAD
+
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/memberForm.css">
 
 <!-- 예쁜 Alert창 -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <%
-=======
-<% 
->>>>>>> branch 'master' of https://github.com/DayGong/DDIT_MiddleProject
+
    // 세션에 저장한 데이터 가져오기
    MemberVO memVo = (MemberVO)session.getAttribute("loginMember");
 %>
-<<<<<<< HEAD
 <script>
 document.addEventListener("DOMContentLoaded", function() {
 <%
@@ -38,7 +35,6 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 </script>
-=======
     <meta charset="UTF-8">
     <title>마이페이지</title>
     <style>
@@ -84,7 +80,6 @@ h1 {
 }
 
 </style>
->>>>>>> branch 'master' of https://github.com/DayGong/DDIT_MiddleProject
 </head>
 <body>
 <!-- 상단 메뉴바 -->
