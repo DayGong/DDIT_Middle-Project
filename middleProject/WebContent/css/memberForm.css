@@ -25,17 +25,13 @@
 }
 
 
-/* body { */
-/*     font-family: 'GmarketSansMedium'; */
-/*     background-color: #f4f4f4; */
-/* } */
 .container {
     display: flex;
     max-width: 1300px;
-    margin: 20px auto;
+    margin: 100px 200px; auto;
     padding: 20px;
     background-color: #fff;
- border: 1px solid #ccc; 
+/* 	border: 1px solid #ccc; */
     border-radius: 10px;
     
 }
@@ -62,33 +58,44 @@ h1.mypage {
     font-family: 'Cafe24SsurroundAir';
     font-weight: bold;
     font-size: 60px;
-    margin-top: 100px;
     text-align: center;
+    box-shadow: inset 0px -15px 0px 0px #fbc680;/* spread 값을 음수로 설정하여 좌우 길이를 짧게 조절 */
+    margin: 0 800px;
+    line-height: 90px;
 }
 h2{
 	font-family: 'Cafe24SsurroundAir';	
 }
 iframe{
 	width: 800px;
-	height: 730px;
+	height: 1000px;
 	
 }
 
-.card p{
+.cate p{
 	text-align: center;
 }
-.category-container {
-    display: flex;
-    justify-content : center;
-}
+
 .mem-details p{
 	font-family: 'GmarketSansMedium';
 	font-size: 20px;
+	text-align: center;
 }
 
 .category-item {
-    margin-right: 10px;
-    transition: all 0.3s ease;
+    margin:30px 0 0 10px;
+	font-family: 'GmarketSansMedium';
+	border-radius: 10px;
+	border: 1px solid #0080ff;
+	background-color: #0080ff;
+	color: #FFFFFF;
+	font-size: 20px;
+	font-weight: normal;
+	padding: 12px 65px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
 }
 
 .maincolumn {
@@ -98,36 +105,26 @@ iframe{
 	margin:10px;
 }
 
-#mem-info-link a{
-	font-size:1.1rem;
-	text-decoration: none;
-	flex-direction: column;
-	align-items: flex-start;
-	margin: 10px;
+#mem-info-link a {
+    font-family: 'GmarketSansMedium';
+    font-weight: normal;
+    font-size: 20px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* 수정: 수직 가운데 정렬 */
+    flex-direction: column;
+    margin: 10px;
+    line-height: 2.5;
 }
+
 #mem-info-link #item{
 	display: flex;
 	height:20px;
 	weight:40px;	
 }
 
-.category-container a{
-	text-decoration: none;
-	font-size:1.5rem;
-	padding:10px;
-	width:500px;
-	height:300px;
-	color:#333;
-	transition:color 0.3s ease-in-out;
-}
-.category-container a:hover{
-	color:black;
-	background-color: rgb(194, 197, 223);
-    cursor: pointer;
-}
-.category-container a {
-    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
-}
+
 .categoryTitle {
 	margin:20px;
 }
@@ -146,6 +143,7 @@ iframe{
     align-content: center;
     background: #fefbf4;
     justify-content: center;
+    margin-left: 40px;
 }
 
 .round-image {

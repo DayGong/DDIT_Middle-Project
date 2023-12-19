@@ -76,29 +76,28 @@
 					%>
                 </div>
             <div id="mem-info-link" style="padding:10px; height:40px;">
+            	<!-- 상단에 오는 카테고리 -->
+	            <div class="category-container">
+	            	<button class="category-item" type="button" onclick="changeIframe('<%=request.getContextPath()%>/view/member/viewRestaurantReserve.jsp')">식당예약</button>
+	            	<button class="category-item" type="button" onclick="changeIframe('<%=request.getContextPath()%>/view/member/viewHotelReserve.jsp')"> 숙소예약</button>
+	            </div>
            	
                    <a href="#" onclick="changeIframe('<%=request.getContextPath()%>/member/updateMember.do')">회원수정</a>
                    <a href="<%=request.getContextPath()%>/member/logoutMember.do">로그아웃</a>
-                   <a href="#" onclick="changeIframe('<%=request.getContextPath()%>/view/withdraw/memberWithdraw.jsp')">탈퇴</a>
+                   <a href="#" onclick="changeIframe('<%=request.getContextPath()%>/view/withdraw/memberWithdraw.jsp')">탈퇴하기</a>
+                   
             	
             </div>            
             </div>
         </div>
 
         <div id="right">
-            <!-- 상단에 오는 카테고리 -->
-            <div class="category-container">
-                <div class="category-item"><a href="#" onclick="changeIframe('<%=request.getContextPath()%>/view/member/viewRestaurantReserve.jsp')" >식당예약 </a></div>
-                <div class="category-item"><a href="#" onclick="changeIframe('<%=request.getContextPath()%>/view/member/viewHotelReserve.jsp')">숙소예약</a></div>
-            </div>
 
             <!-- 정보 표시 -->
             <div class="maincolumn">
-                <h3 id="categoryTitle"> 원하시는 항목을 선택하세요</h3>
-                <div class="card">
+                <div class="cate">
          		<iframe id ="myIframe" name ="itr" >
          		</iframe>
-         			<p>대전에 오신걸 환영합니다 ~</p>
                 </div>
             </div>
         </div>

@@ -85,6 +85,9 @@ select{
 	width: 280px;
 	border-bottom: 1px solid #cfcfcf;
 }
+.form-group {
+	line-height: 2;
+}
 #domain-text {
   width: 130px;
   padding-left: 10px;
@@ -115,7 +118,8 @@ select{
 }
 
 .btn {
-    font-family: 'Cafe24SsurroundAir';
+	font-family: 'GmarketSansMedium';
+	font-weight: normal;
     border-radius: 10px;
     border: 1px solid #0080ff;
     background-color: #0080ff;
