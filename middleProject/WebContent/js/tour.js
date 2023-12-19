@@ -243,10 +243,10 @@ function displayTour(){
         														border-radius: 70%;">
         											</div>
         										</td>
-        										<td>${item.tour_name}</td>
+        										<td class ="cont">${item.tour_name}</td>
         									</tr>
         									<tr>
-        										<td>${item.tour_addr}</td>
+        										<td class ="cont">${item.tour_addr}</td>
         									</tr>
         								<div class="adminPlace" style="display:none" name="${item.tour_no}">
 				<input type="button" class="cateBtn" name="tourDelete" value="삭제">
@@ -321,7 +321,13 @@ function displayTour(){
             
 	    }
         if(cate=="insertsend"){	
-         fdata= $('#wform').serializeJSON();
+        var formData = $('#wform').serializeArray(); // 폼 데이터를 배열로 가져옴
+        var fdata = {};
+
+         $(formData).each(function(i, v){
+         fdata[v.name] = v.value; // 각각의 폼 데이터를 JSON 객체에 추가
+           });
+
          if(jpgname !=""){
          fdata['tour_img'] = jpgname;
          insertTour(fdata);
@@ -341,37 +347,19 @@ function displayTour(){
           tourDelete(tno);
           window.location.reload();
          } 
-         if(cate =="tourUpdate"){
-	      	 //수정 모달 창을 띄운다.
-			 //본문의 내용을 가져온다.
-	          
-			  vparents= $(this).parents('.lists');
-	        
-			  vplacename= $(vparents).find('p:eq(0)').text().trim().split(':')[1].trim();;
-			  vaddr=$(vparents).find('p:eq(1)').text().trim().split(':')[1].trim();;
-			  vtype=$(vparents).find('p:eq(2)').text().trim().split(':')[1].trim();;
-	          vno = $(vparents).find('.adminPlace').attr('name');
-			   
-			   /*alert(vtype);
-			   alert(vplacename);*/
-			  //모달창에 출력 
-			  
-			 $('#uform #utour_tp_nm').val(vtype);
-			 $('#uform #utour_name').val(vplacename);
-			 $('#uform #utour_no').val(vno);
-			
-			 $('#uform #utour_addr').val(vaddr);
-			
-			 
-			 //수정모달창에 본문의 내용을 출력한다. -제목, 이름, 이메일, 내용,비밀번호
-			 $("#uModal").modal('show');
-		   }
+ 
 			 if(cate=="updatesend"){				
-			 udata= $('#uform').serializeJSON();
+		    formData = $('#uform').serializeArray(); // 폼 데이터를 배열로 가져옴
+            udata = {};
+
+           $(formData).each(function(i, v){
+           udata[v.name] = v.value; // 각각의 폼 데이터를 JSON 객체에 추가
+           });
              if(jpgname !=""){
              udata['tour_img'] = jpgname; 
              console.log(udata);
-             UpdateTour(udata);  
+             UpdateTour(udata);
+               window.location.reload(); 
 		      }	
           }    
             if(cate=="tourList"){ //주요관광지 버튼 누르면
@@ -386,8 +374,32 @@ function displayTour(){
 	        
 		     location.href = `${mypath}/hotel/hotelboard/hotelMain.jsp`;
              } 
+             if(cate =="tourUpdate"){ 
+	            	 //수정 모달 창을 띄운다.
+			 //본문의 내용을 가져온다.
+	          $('#result2').css("display","none"); 
+			  vparents= $(this).parents('.lists');
+	        
+			  vplacename= $(vparents).find('.cont:eq(0)').text().trim();
+			  vaddr=$(vparents).find('.cont:eq(1)').text().trim();
+			  
+	          vno = $(vparents).find('.adminPlace').attr('name');
+			   
+			   /*alert(vtype);
+			   alert(vplacename);*/
+			  //모달창에 출력 
+			  
+			 
+			 $('#uform #utour_name').val(vplacename);
+			 $('#uform #utour_no').val(vno);
+			
+			 $('#uform #utour_addr').val(vaddr);
+			
+			 
+			 //수정모달창에 본문의 내용을 출력한다. -제목, 이름, 이메일, 내용,비밀번호
+			 $("#uModal").modal('show');   
 
-
+          }
  
 })// cateBtn 끝
  
@@ -400,6 +412,7 @@ function displayTour(){
              searchByTourName(sword);
 		   
 })
+
 function displayOneTour(dong){	
 	  daeDong=dong; 
       resetMap();
@@ -451,7 +464,7 @@ function displayOneTour(dong){
         									</tr>
         								<div class="adminPlace" style="display:none" name="${item.tour_no}">
 				<input type="button" class="cateBtn" name="tourDelete" value="삭제">
-                <input type="button" class="cateBtn" name="tourUpdate" value="수정"></div>
+                <input type="button" class="cateBtn tourUpdate" name="tourUpdate" value="수정"></div>
         								</table> <hr>`);
 				// 클릭 이벤트 추가
 				listItem.on('click', function() {
@@ -620,7 +633,7 @@ function clearMarkers() {
 					});
 					infowindow.open(map, marker);
 					infowindows.push(infowindow);
-					detailTour(item);
+			
     		        map.panTo(coords);                    
 				setTimeout(function() {
 				infowindow.close();
