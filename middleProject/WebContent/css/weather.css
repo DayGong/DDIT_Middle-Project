@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
   
 .weather {
     border: 1px solid #B0E0E6;
@@ -11,8 +12,9 @@
  
     height: 150px;
     width: 120px;
-    font-family: 'Orbit-Regular';
+    font-family: 'Cafe24SsurroundAir';
     line-height: normal;
+    font-weight:bold;
     
     position: absolute;
     top: 20%;
@@ -32,9 +34,10 @@
     margin:10px;
 }
 
+/*중간용*/
 @font-face {
-	font-family: 'Orbit-Regular';
-	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/Orbit-Regular.woff2') format('woff2');
-	font-weight: normal;
-	font-style: normal;
-}  
+    font-family: 'Cafe24SsurroundAir';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SsurroundAir.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

@@ -86,7 +86,7 @@ $(()=>{
 		if(!(idPattern.test(idvalue)))
 		{
 			// ID값이 정규식과 일치하지 않을 경우
-			$('#spanid').html("다시 입력해주세요").css('color','red');
+			$('#spanid').html("ID는 영문자와 숫자 조합으로 6~15글자여야 합니다.").css('color','red');
 			$('#checkid').prop('disabled', true);		// checkid 활성화
 		}
 		else
@@ -130,24 +130,27 @@ $(()=>{
 	});
 	
 	// password
-	$('#pass2').on('keyup', function()
-	{
-		let pass1 = $("#pass1").val();
-		let pass2 = $("#pass2").val();
-		
-		// 비밀번호 재확인
-		if(pass1 != "" || pass2 != "")
-		{
-			if(pass1 == pass2)
-			{
-				$("#spanpass").html('일치');
-				$("#spanpass").css('color', 'green');
-			} else
-			{
-				$("#spanpass").html('불일치');
-				$("#spanpass").css('color', 'red');
-			}
-		}
+	$('#pass2').on('keyup', function() {
+	    let pass1 = $("#pass1").val();
+	    let pass2 = $(this).val().trim();
+	
+	    // 비밀번호 재확인 및 유효성 검사
+	    if (pass1 !== "" || pass2 !== "") {
+	        if (pass1 === pass2) {
+	            $("#spanpass").html('일치');
+	            $("#spanpass").css('color', 'green');
+	
+	            // 비밀번호 유효성 검사 (영문자와 숫자 조합으로 6~15글자)
+	            let passPattern = /^[a-zA-Z0-9]{6,15}$/;
+	            if (!passPattern.test(pass2)) {
+	                $("#spanpass").html('비밀번호는 영문자와 숫자 조합으로 6~15글자여야 합니다.');
+	                $("#spanpass").css('color', 'red');
+	            }
+	        } else {
+	            $("#spanpass").html('불일치');
+	            $("#spanpass").css('color', 'red');
+	        }
+	    }
 	});
 
 	// 이름 형식체크

@@ -27,17 +27,27 @@ $(() => {
             success: function(res) {
             	if(res.flag == "성공") {
 	                // 성공 시 이동할 경로 지정
-	                swal({
-		                title: "탈퇴했습니다!",
-		                text: "안녕히가세요.",
-		                icon: "success"
-		            }).then(() => {
-	                	window.location.href = '<%=request.getContextPath()%>/index.jsp';
-		            });
-            	}
+                    // 로그아웃을 수행하는 코드 추가
+                    $.ajax({
+                        url: "<%=request.getContextPath()%>/member/logoutMember.do", // 로그아웃 URL
+                        type: 'post',
+                        success: function() {
+                            swal({
+                                title: "탈퇴했습니다!",
+                                text: "안녕히가세요.",
+                                icon: "success"
+                            }).then(() => {
+                                window.open('<%=request.getContextPath()%>/index.jsp', '_blank');
+                            });
+                        },
+                        error: function(xhr) {
+                            alert("로그아웃 에러 상태 : " + xhr.status);
+                        }
+                    });
+                }
             },
             error: function(xhr) {
-                alert("에러 상태 : " + xhr.status);                
+                alert("에러 상태 : " + xhr.status);
             }
         });     
     });
@@ -49,7 +59,7 @@ $(() => {
               text: "마이페이지로 돌아갑니다.",
               icon: "error"
           }).then(() => {
-        window.location.href = '<%=request.getContextPath()%>/view/member/memberForm.jsp';
+        	  window.open('<%=request.getContextPath()%>/view/member/memberForm.jsp', '_blank');
           });
     });
 });
@@ -61,13 +71,13 @@ $(() => {
 %>
 <input type ="hidden" name ="mem_id" value="<%=memVo.getMem_id()%>">
 <div id="container" class="center-content">
-    <h2><b>회원탈퇴</b></h2>
+    <h1><b>회원 탈퇴</b></h1>
     <form id="withdrawform">
         <div>
             <img src="<%=request.getContextPath()%>/images/login/우는꿈돌이.png" class="round-image">
             <div><h3>경고 : 탈퇴를 하셔도 작성했던 게시글은 남아있습니다. (게시판, 후기 등등)<br>비밀번호를 다시 한 번 입력하세요.</h3></div>
-           <div>비밀번호 확인
-              <input type="password" id="checkPass" name="check_pass">
+           <div>
+              <input type="password" placeholder="비밀번호 확인" id="checkPass" name="check_pass">
           </div>
           <div style="display:flex; margin:5px;">
 	          <input type="button" id="withdrawbtn" class="btn" value="탈퇴">

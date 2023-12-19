@@ -23,7 +23,7 @@
     font-style: normal;
 }
 
-h2{
+h1{
 	font-family: 'Cafe24SsurroundAir';
     color:#3a89fc;
 }
@@ -35,11 +35,17 @@ div{
 	text-align: center;
 	font-family: 'GmarketSansMedium';
 	border:1px gray;
+	
 }
 input{
-	width: 190px;
-	height: 40px;
-	padding-left: 10px;
+	width: 130px;
+	height: 30px;
+	background-color: #eee;
+	border: none;
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 100%;
+	font-family: 'GmarketSansMedium';
 }
 #container {
     text-align: center;

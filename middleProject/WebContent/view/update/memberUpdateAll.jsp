@@ -20,14 +20,14 @@ $(()=>{
 	$('#updatebtn').on('click',function()
 		{
 			// 각 입력란의 값을 가져옴
-			var input1 = $('#pass2').val();
-			var input2 = $('#name').val();
-			var input3 = $('#tel').val();
-			var input4 = $('#domain-list').val();
-			var input5 = $('#postcode').val();
-			var input6 = $('#extraAddress').val();
-			var input7 = $('#roadAddress').val();
-			var input8 = $('#detailAddress').val();
+			var input1 = $('#pass2').val().trim();
+			var input2 = $('#name').val().trim();
+			var input3 = $('#tel').val().trim();
+			var input4 = $('#domain-list').val().trim();
+			var input5 = $('#postcode').val().trim();
+			var input6 = $('#extraAddress').val().trim();
+			var input7 = $('#roadAddress').val().trim();
+			var input8 = $('#detailAddress').val().trim();
 			
 			if (input1.trim() === '' || input2.trim() === '' || input3.trim() === '' || 
 				    input4.trim() === '' || input5.trim() === '' || input6.trim() === '' || 
@@ -58,7 +58,7 @@ $(()=>{
 		                text: "마이페이지로 돌아갑니다.",
 		                icon: "success"
 		            }).then(() => {
-						window.location.href = '<%=request.getContextPath()%>/view/member/memberForm.jsp';
+		            	window.open('<%=request.getContextPath()%>/view/member/memberForm.jsp', '_blank');
 		            });
 				},
 				error : function(xhr)
@@ -74,22 +74,27 @@ $(()=>{
 		});
 	
 	// password
-	$('#pass2').on('keyup', function()
-	{
-		let pass1 = $("#pass1").val();
-		let pass2 = $("#pass2").val();
-		
-		// 비밀번호 재확인
-		if(pass1 != "" || pass2 != "")
-		{
-			if(pass1 == pass2)
-			{
-				$("#spanpass").html('일치').css('color', 'green');
-			} else
-			{
-				$("#spanpass").html('불일치').css('color', 'red');
-			}
-		}
+	$('#pass2').on('keyup', function() {
+	    let pass1 = $("#pass1").val();
+	    let pass2 = $(this).val().trim();
+	
+	    // 비밀번호 재확인 및 유효성 검사
+	    if (pass1 !== "" || pass2 !== "") {
+	        if (pass1 === pass2) {
+	            $("#spanpass").html('일치');
+	            $("#spanpass").css('color', 'green');
+	
+	            // 비밀번호 유효성 검사 (영문자와 숫자 조합으로 6~15글자)
+	            let passPattern = /^[a-zA-Z0-9]{6,15}$/;
+	            if (!passPattern.test(pass2)) {
+	                $("#spanpass").html('비밀번호는 영문자와 숫자 조합으로 6~15글자여야 합니다.');
+	                $("#spanpass").css('color', 'red');
+	            }
+	        } else {
+	            $("#spanpass").html('불일치');
+	            $("#spanpass").css('color', 'red');
+	        }
+	    }
 	});
 
 	// 이름 형식체크
