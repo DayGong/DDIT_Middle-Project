@@ -8,6 +8,7 @@
 	<!-- DB 연결 정보가 저장된 'dbinfo.properties' 파일에 대한 정보 구성하기 -->
 	<properties resource="kr/or/ddit/mybatis/config/dbinfo.properties"/>
 
+
 	<!-- 기본 설정 -->
 	<settings>
 		<!-- 데이터 null로 전달되면 빈칸으로 처리하지 말고 NULL로 처리하라는 뜻 -->
@@ -29,6 +30,7 @@
         <typeAlias type="kr.or.ddit.vo.NoticeVO" alias="noticeVO"/>
         <typeAlias type="kr.or.ddit.vo.FileInfoVO" alias="fileVo"/>
         <typeAlias type="kr.or.ddit.vo.BoardVO" alias="boardVo"/>
+        <typeAlias type="kr.or.ddit.vo.ReplyVO" alias="replyVo"/>
 	</typeAliases>
 
 	<!-- DB 연결을 위한 설정 -->

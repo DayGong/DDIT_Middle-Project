@@ -4,6 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%
+	String check = (String)session.getAttribute("check");
     List<BoardVO> boardList = (List<BoardVO>) request.getAttribute("boardList");
     int currentPage = (request.getParameter("page") != null) ? Integer.parseInt(request.getParameter("page")) : 1;
     int totalBoards = (boardList != null) ? boardList.size() : 0;
@@ -16,6 +17,10 @@
         currentPageBoards = boardList.subList(startIndex, endIndex + 1);
     }
     String path = request.getContextPath();
+    String ss = null;
+    if(check!=null){
+    	ss=check;
+    }
 %>
 <!DOCTYPE html>
 <html>
@@ -29,6 +34,7 @@
             crossorigin="anonymous"></script>
     <script type="text/javascript" src="<%= path %>/js/jquery-3.7.1.min.js"></script>
     <script type="text/javascript">
+    ss=<%=ss%>;
         function updateHitAndRedirect(brd_no) {
             $.ajax({
                 url: '<%= request.getContextPath() %>/board/hit.do',
@@ -47,18 +53,23 @@
                 dataType: 'json'
             });
         }
+        $(()=>{
+        	if(ss==true){
+        		$('#boardInsertA').css('display','block');
+        	}
+        })
     </script>
 </head>
 <body>
 <div class="card-body">
     <div class="table-responsive">
         <table class="table" id="dataTable" width="100%" cellspacing="0">
-            <tr>
+            <tr class="table-light">
                 <th>번호</th>
                 <th>제목</th>
                 <th>작성날짜</th>
                 <th>조회수</th>
-                <th>첨부</th>
+                <th>작성자</th>
             </tr>
             <% if (totalBoards == 0) { %>
                 <tr>
@@ -71,11 +82,12 @@
                         <td><%=boardVO.getBrd_title()%></td>
                         <td><%=boardVO.getBrd_date()%></td>
                         <td><%=boardVO.getBrd_hits()%></td>
+                        <td><%=boardVO.getMem_id()%></td>
                         <td>  </td>
                     </tr>
                 <% }
             } %>
-                <a align="right" href="<%=request.getContextPath() %>/board/insert.do">[게시글쓰기]</a></td>
+                <a align="right" href="<%=request.getContextPath() %>/board/insert.do" style='display:none' id='boardInsertA'>[게시글쓰기]</a></td>
             </tr>
         </table>
 
