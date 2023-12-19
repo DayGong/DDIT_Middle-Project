@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>한밭 지킴이</title>
+<title>한밭 지킴이</title> 
 <link rel="icon" href="../images/icon/꿈돌5-1.png" type="image/x-icon">
 
 <script src="<%=request.getContextPath()%>/js/jquery-3.7.1.min.js"></script>
