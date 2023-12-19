@@ -7,6 +7,7 @@
 	String mem_id = (String) session.getAttribute("mem_id");
 	String path = request.getContextPath();
 	String ss = (check != null && check.equals("true")) ? "check" : "";
+	String boardMemId = boardVO.getMem_id();
 %>
 <!DOCTYPE html>
 <html>
@@ -51,14 +52,19 @@
 			<tr height = "300px">
 			<td colspan="2"><%=boardVO.getBrd_content()%></td>
 			</tr>
+		</table>
 			
-			<a align="right" href="<%=request.getContextPath() %>/board/list.do">[목록으로]</a>
+			<%
+            if (ss.equals("check") && mem_id != null && mem_id.equals(boardMemId)) {
+            %>
 			<a align="right" href="<%=request.getContextPath() %>/board/update.do?brd_no=<%=boardVO.getBrd_no() %>"
 				style="display:none;" class="boardMineA">[게시글 수정]</a>
-				<a align="right" href="./delete.do?brd_no=<%=boardVO.getBrd_no() %>"
+			<a align="right" href="./delete.do?brd_no=<%=boardVO.getBrd_no() %>"
 				style="display:none;" class="boardMineA">[게시글 삭제]</a>
-			
-		</table>
+			<% 
+			} 
+			%>
+			<a align="right" href="<%=request.getContextPath() %>/board/list.do">[목록으로]</a>
 	</div>
 </div>
 </body>
