@@ -4,123 +4,50 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/memberForm.css">
-
-<!-- 예쁜 Alert창 -->
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-<%
-
-   // 세션에 저장한 데이터 가져오기
-   MemberVO memVo = (MemberVO)session.getAttribute("loginMember");
-%>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-<%
-	if(memVo == null){
-%>
-		swal
-		({
-			title: "로그인이 필요합니다.", 
-			text: "로그인 페이지로 이동합니다.", 
-			icon: "info"
-		}).then(function()
-		{
-			window.location.href = '<%=request.getContextPath()%>/view/login_out/loginMain.jsp';
-		})
-<%
-	}
-%>
-});
-
-</script>
     <meta charset="UTF-8">
     <title>마이페이지</title>
-    <style>
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-.container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-    text-align: center;
-    color: #333;
-}
-
-.user-info {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.user-info img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-}
-
-.user-details {
-    text-align: center;
-    color: #777;
-}
-
-</style>
+<link rel= "stylesheet"  href="<%=request.getContextPath()%>/css/memberForm.css">
 </head>
 <body>
-<!-- 상단 메뉴바 -->
-<jsp:include page="/view/main/top.jsp"/>
-<div class="container">
-    <h1>마이페이지</h1>
-    <div class="user-info">
-        <img src="<%=request.getContextPath()%>/images/login/꿈돌2.png" style="width:170px; height:170px;">
-     <div class="user-details">
-<p>* 이름 : <%=memVo.getMem_name()%></p>  
-<p>* ID : <%=memVo.getMem_id()%></p>  
-<p>* 주소 : <%=memVo.getMem_addr()%></p>  
-      </div>
-            <br>
-<a href="<%=request.getContextPath()%>/member/updateMember.do">회원수정</a>
-<a href="<%=request.getContextPath()%>/member/logoutMember.do">로그아웃</a> 
-<a href="<%=request.getContextPath()%>/view/withdraw/memberWithdraw.jsp">탈퇴</a>
-        
+    <!-- 상단 메뉴바 -->
+    <jsp:include page="/view/main/top.jsp"/>
+   
+   <div id="mypage"><h1 class="mypage">마이페이지</h1></div>
+    <div class="container">
+        <div id="left">
+            <!-- 왼쪽에 오는 내정보 -->
+            <div class="mem-info" style="width: 300px;">
+                <div><h2>내정보</h2></div>
+                <img src="<%=request.getContextPath()%>/images/login/꿈돌2.png" style="width: 170px; height: 170px;">
+                <div class="user-details">
+                    <!-- 회원 정보 내용 추가 -->
+                </div>
+            <div id="mem-info" style="display: flex; flex-direction: column;align-items: flex-start;">
+                   <a href="<%=request.getContextPath()%>/member/updateMember.do">회원수정</a>
+                   <a href="<%=request.getContextPath()%>/member/logoutMember.do">로그아웃</a>
+                   <a href="<%=request.getContextPath()%>/view/withdraw/memberWithdraw.jsp">탈퇴</a>
+            </div>            
+            </div>
+        </div>
+
+        <div id="right">
+            <!-- 상단에 오는 카테고리 -->
+            <div class="category-container">
+                <div class="category-item"><a href="#" onclick="changeIframe('<%=request.getContextPath()%>/test.jsp','식당예약')">식당예약 </a></div>
+                <div class="category-item"><a href="#" onclick="changeIframe('<%=request.getContextPath()%>/test.jsp','숙소예약')">숙소예약</a></div>
+            </div>
+
+            <!-- 정보 표시되는 어쩌구 -->
+            <div class="maincolumn">
+                <h2 id="categoryTitle"> 원하시는 항목을 선택하세요</h2>
+                <div class="card">
+                    <!-- 내용 추가 -->
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-<div class= "alltop" style="margin-top: 130px;">
-	<div class="row">
-	<div>
-  		<h2>마이페이지</h2>
-		<div class="category-container"> 
-			<div class="category-item"><a href="#" onclick = "changeIframe('<%=request.getContextPath()%>/view/member/memberinfo.jsp','내정보')">내정보</a></div>
-	      	<div class="category-item"><a href="#" onclick = "changeIframe('<%=request.getContextPath()%>/test.jsp','예약조회')">예약조회 </a></div>
-	      	<div class="category-item"><a href="#" onclick = "changeIframe('<%=request.getContextPath()%>/view/member/viewHotelReserve.jsp','예약조회')">예약조회 </a></div>
-	      	<div class="category-item"><a href="#" onclick = "changeIframe('<%=request.getContextPath()%>/test.jsp','내 캘린더')">내 캘린더</a></div>
-    	</div>
-   	</div>
-  
-  	<div class="maincolumn">
-  		<h2 id ="categoryTitle"> 원하시는 항목을 선택하세요</h2>
-    	<div class="card">
-      	<iframe id ="myIframe" name ="itr"></iframe>
-     	<p>열심히 해볼게요 화이팅!</p>
-      	</div>
-    </div>
-   </div>
-<!-- 하단 메뉴바 삽입 -->
-<jsp:include page="/view/main/bottom.jsp"/>
+
+    <!-- 하단 메뉴바 삽입 -->
+    <jsp:include page="/view/main/bottom.jsp"/>
 </body>
 </html>
