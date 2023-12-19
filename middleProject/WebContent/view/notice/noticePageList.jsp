@@ -57,7 +57,7 @@
         $(()=>{
         	
         	if (ss==true){
-        		$('#noticeInsertA').css('display','block');
+        		$('#noticeInsertBtn').css('display', 'block');
         	}
         })
     </script>
@@ -90,11 +90,13 @@
                 <% }
             } %>
             
-                <a align="right" href="<%=request.getContextPath() %>/notice/insert.do" style='display:none' id='noticeInsertA'>[게시글쓰기]</a></td>
+              <div align="right" style='display:none' id='noticeInsertBtn'>
+    <a class="btn btn-primary" href="<%=request.getContextPath() %>/notice/insert.do">게시글쓰기</a>
+</div>
         </table>
 
         <div align="center">
-            <ul class="pagination">
+            <ul class="pagination justify-content-center">
                 <% if (currentPage > 1) { %>
                     <li class="page-item">
                         <a class="page-link" href="?page=<%=currentPage - 1%>" aria-label="Previous">

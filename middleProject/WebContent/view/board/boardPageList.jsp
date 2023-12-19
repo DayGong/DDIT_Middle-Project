@@ -55,7 +55,7 @@
         }
         $(()=>{
         	if(ss==true){
-        		$('#boardInsertA').css('display','block');
+        		$('#boardInsertBtn').css('display','block');
         	}
         })
     </script>
@@ -83,16 +83,18 @@
                         <td><%=boardVO.getBrd_date()%></td>
                         <td><%=boardVO.getBrd_hits()%></td>
                         <td><%=boardVO.getMem_id()%></td>
-                        <td>  </td>
+                       
                     </tr>
                 <% }
             } %>
-                <a align="right" href="<%=request.getContextPath() %>/board/insert.do" style='display:none' id='boardInsertA'>[게시글쓰기]</a></td>
-            </tr>
+            	<div align="right" style='display:none' id='boardInsertBtn'>
+                <a class="btn btn-primary" href="<%=request.getContextPath() %>/board/insert.do">게시글쓰기</a>
+                </div>
+           
         </table>
 
         <div align="center">
-            <ul class="pagination">
+            <ul class="pagination justify-content-center">
                 <% if (currentPage > 1) { %>
                     <li class="page-item">
                         <a class="page-link" href="?page=<%=currentPage - 1%>" aria-label="Previous">

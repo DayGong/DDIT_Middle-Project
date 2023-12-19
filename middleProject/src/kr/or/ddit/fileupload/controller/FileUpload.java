@@ -48,7 +48,6 @@ public class FileUpload extends HttpServlet {
 		  // Get방식으로 요청하면 fileUploadForm.jsp로 forwarding한다.
 		   request.getRequestDispatcher("/basic/fileupload/fileUploadForm.jsp").forward(request, response);
 		
-		
 	}//doGet()메서드 끝
 
 	
