@@ -48,7 +48,33 @@ String boardMemId = boardVO.getMem_id();
 	       <% if (ss.equals("check") && isAdmin) { %>
 	         $('.boardMineA').addClass('btn btn-primary').css('display', 'inline-block');
 	     <% } %>
+	     
+	     <%  if(ss.equals("check")){ %>
+	    	 $('#insertRe').css("display","block");
+	    	 <% } %>
+		     
 	     ReplyListServer();
+	     
+	    	
+	    		$(document).on('click','.action',function(){
+	    			cate=$(this).attr('name');
+	    			gthis=$(this);
+	    			reply.brd_no=brdNo;
+	    			reply.rpl_content= $('#retext').val().replace(/<br>/g, '\n').trim();
+	    			
+	    			reply.mem_id="<%=mem_id%>";
+	
+	    			if(cate=="replyInsert"){
+	    				
+	    				writeReply();
+	    			    $('#retext').val(" ");
+	    				
+	    				
+	    			}
+	    			
+	    	})
+
+	     
 	   });
 
 	 ReplyListServer=function(){
@@ -65,7 +91,7 @@ String boardMemId = boardVO.getMem_id();
 					content=v.rpl_content;
 					content=content.replaceAll(/\n/g,"<br>");
 
-				rcode+=`
+				rcode+= `
 		               <div class="reply-body">
 			            <div class='p12' >
 			              <p class="p1">
@@ -134,8 +160,10 @@ String boardMemId = boardVO.getMem_id();
       </table>
    </div>
 </div>
-
-     <input type="button" class="action" name="replyInsert" value="댓글 작성" style="width:150px;"><br>
+     <div id="insertRe" style="display:none"> 
+       &nbsp;&nbsp;&nbsp;&nbsp;<textarea id="retext" style="width :500px;"> </textarea>
+       &nbsp;&nbsp;<input type="button" class="action" name="replyInsert" value="댓글 작성" style="width:150px;"><br>
+     </div>
 	<div class="replytab"></div>
 </div>
 </body>
