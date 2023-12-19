@@ -30,7 +30,7 @@
   </ul>
 
   <!-- 공지게시판 -->
-  <div class="tab-content">
+  <div  align="center" class="tab-content">
     <div id="home" class="container tab-pane active"><br>
   		<iframe class="mainIframe" name="notice" src="<%=request.getContextPath() %>/notice/list.do"></iframe> 
     </div>
