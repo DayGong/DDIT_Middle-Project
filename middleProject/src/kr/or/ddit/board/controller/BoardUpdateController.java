@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import kr.or.ddit.board.service.IBoardService;
 import kr.or.ddit.board.service.BoardServiceImpl;
+import kr.or.ddit.board.service.IBoardService;
 import kr.or.ddit.vo.BoardVO;
-import kr.or.ddit.vo.NoticeVO;
+
 
 @WebServlet("/board/update.do")
 public class BoardUpdateController extends HttpServlet {

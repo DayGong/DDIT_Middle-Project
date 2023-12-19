@@ -88,7 +88,7 @@ public class BoardDaoImpl implements IBoardDao {
 		int cnt = 0;
 		SqlSession session = MybatisUtil.getSqlSession();
 		try {
-			cnt = session.update("board.updateNotice", boardVO);
+			cnt = session.update("board.updateBoard", boardVO);
 			
 			session.commit();
 		} catch (Exception e) {

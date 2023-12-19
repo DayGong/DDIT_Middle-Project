@@ -54,7 +54,7 @@
                         <th>첨부</th>
                     </tr>
                     <tr>
-                        <td><input type="text" name="notice_no" value="<%=noticeVO.getNoticeNo()%>" readonly/></td>
+                        <td><%=noticeVO.getNoticeNo()%></td>
                         <td><input type="text" name="notice_title" value="<%=noticeVO.getNoticeTitle()%>"></td>
                         <td><textarea name="notice_content"><%=noticeVO.getNoticeContent()%></textarea></td>
                         <td><%=noticeVO.getNoticeDate()%></td>
