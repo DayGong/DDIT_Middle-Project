@@ -77,7 +77,7 @@ $(() => {
             <img src="<%=request.getContextPath()%>/images/login/우는꿈돌이.png" class="round-image">
             <div><h3>경고 : 탈퇴를 하셔도 작성했던 게시글은 남아있습니다. (게시판, 후기 등등)<br>비밀번호를 다시 한 번 입력하세요.</h3></div>
            <div>
-              <input type="password" placeholder="비밀번호 입력" id="checkPass" name="check_pass">
+              <input type="password" placeholder="비밀번호 입력" id="checkPass" name="check_pass" style="width:200px;">
           </div>
           <div style="display:flex; margin-top:30px;">
              <input type="button" id="withdrawbtn" class="btn" value="탈퇴">
