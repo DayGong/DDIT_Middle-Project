@@ -4,15 +4,20 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+<<<<<<< HEAD
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/memberForm.css">
 
 <!-- 예쁜 Alert창 -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <%
+=======
+<% 
+>>>>>>> branch 'master' of https://github.com/DayGong/DDIT_MiddleProject
    // 세션에 저장한 데이터 가져오기
    MemberVO memVo = (MemberVO)session.getAttribute("loginMember");
 %>
+<<<<<<< HEAD
 <script>
 document.addEventListener("DOMContentLoaded", function() {
 <%
@@ -33,6 +38,53 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 </script>
+=======
+    <meta charset="UTF-8">
+    <title>마이페이지</title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.user-info {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-info img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.user-details {
+    text-align: center;
+    color: #777;
+}
+
+</style>
+>>>>>>> branch 'master' of https://github.com/DayGong/DDIT_MiddleProject
 </head>
 <body>
 <!-- 상단 메뉴바 -->
