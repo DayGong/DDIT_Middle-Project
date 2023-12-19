@@ -87,7 +87,7 @@
 
 <!-- 공연 관련 내용 jsp -->
 
-<jsp:include page="/view/main/scrollup.jsp"/>
+
 
 <!-- 동영상 자동 재생(height 자동 조절 안 됨 - 수정해보다가 안 되면 발표 화면에 맞춰서 고정값 넣기) -->
 <div class="container" id="videoArea">
