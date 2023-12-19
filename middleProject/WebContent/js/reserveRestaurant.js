@@ -60,8 +60,9 @@ showRestaurantDetailInfo = function(res)
 	
 	let infoCode = `
 	<div class="backImgDiv">
-		<img src="${path}/images/restaurant/${res.rest_img}">
+		<img id="img1" src="${path}/images/restaurant/${res.rest_img}">
 	</div>
+	<div id=modal4>
 	<h4 class="modal-title fix-text">${res.rest_name}</h4>
 	<div>
 		<table>
@@ -82,6 +83,7 @@ showRestaurantDetailInfo = function(res)
 	<div>
 		<input type="button" id="restaurant_rsv_btn" value="예약하기" onclick="reserveRestaurant()">
 	</div>
+	</div>
 	`;
 
 	$('#rest-right-modal-body').html(infoCode);
@@ -94,12 +96,11 @@ openRestaurantReserveForm = function(res)
 	let peopleMax = 4;	// 인원수 최대값
 	
 	let bodyCode = `
-	<div>
-		<h2>인원 선택</h2>
+		<h2 class="modal2">인원 선택</h2>
 		<input type="number" id="rest_rsv_count" name="rest_rsv_count" min="${peopleMin}" max="${peopleMax}" value="${peopleMin}">
 	</div>
 	<div>
-		<h2>예약 날짜 선택</h2>
+		<br><h2 class="modal2">예약 날짜 선택</h2>
 		<div id="restDateDiv">
 			<div id="restRsvDate">
 				<input type="date" id="rest_rsv_date" name="rest_rsv_date" 
@@ -124,7 +125,7 @@ getTimeSelectList = function(res)
 	let endTime = res.rest_time.trim().slice(-5,-3);
 	
 	var strHours = `
-	<label for="rest_rsv_time">예약 시간 선택</label><br>
+	<br><label for="rest_rsv_time" class="modal3">예약 시간 선택</label><br>
 	<select name="rest_rsv_time" id="rest_rsv_time" size="10">`;
 	
 	for(var i = openTime ; i <= endTime; i++)
