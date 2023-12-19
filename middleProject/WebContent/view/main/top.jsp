@@ -49,7 +49,7 @@
 					<a href="<%=path %>/view/daejeonStory/daejeonOrigin.jsp">대전이야기</a>
 				</li>
 				<li class="dept2">
-					<a href="#">여행도우미</a>
+					<a href="<%=path %>/view/daejeonStory/daejeonCommentator.jsp">여행도우미</a>
 				</li>
 			</ul>
 		</li>
