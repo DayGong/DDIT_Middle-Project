@@ -5,7 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>한밭 지킴이</title>
+<link rel="icon" href="../images/icon/꿈돌5-1.png" type="image/x-icon">
+
 <script src="<%=request.getContextPath()%>/js/jquery-3.7.1.min.js"></script>
 <script src="<%=request.getContextPath() %>/js/culture.js"></script> 
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
