@@ -1,9 +1,9 @@
 package kr.or.ddit.board.dao;
 
 import java.util.List;
-import java.util.Map;
 
 import kr.or.ddit.vo.BoardVO;
+import kr.or.ddit.vo.ReplyVO;
 
 public interface IBoardDao {
 
@@ -14,6 +14,9 @@ public interface IBoardDao {
 	public int updateBoard(BoardVO boardVO);
 	public int insertBoard(BoardVO boardVO);
 //	public int getTotalCount(Map<String, Object> map);
-	
+	public List<ReplyVO> selectReply(int num);
+	public int deleteReply(int num);
+	public int updateReply(ReplyVO vo);
+	public int insertReply(ReplyVO vo);
 	
 }	

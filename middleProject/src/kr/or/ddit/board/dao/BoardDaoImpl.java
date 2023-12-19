@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import kr.or.ddit.util.MybatisUtil;
 import kr.or.ddit.vo.BoardVO;
+import kr.or.ddit.vo.ReplyVO;
 
 public class BoardDaoImpl implements IBoardDao {
 
@@ -112,6 +113,67 @@ public class BoardDaoImpl implements IBoardDao {
 			e.printStackTrace();
 		}finally {
 			session.close();
+		}
+		return cnt;
+	}
+
+	@Override
+	public List<ReplyVO> selectReply(int num) {
+		 List<ReplyVO> list=null;
+	     SqlSession sess= MybatisUtil.getSqlSession();
+	     try {
+			 list= sess.selectList("board.selectReply",num);
+		} catch (Exception e) {
+		e.printStackTrace();
+		}finally {
+			sess.commit();
+			sess.close();
+		}
+		return list;
+	}
+
+	@Override
+	public int deleteReply(int num) {
+		 int cnt=0;
+	     SqlSession sess= MybatisUtil.getSqlSession();
+	     try {
+			 cnt= sess.delete("board.deleteReply",num);
+		} catch (Exception e) {
+		e.printStackTrace();
+		}finally {
+			sess.commit();
+			sess.close();
+		}
+		return cnt;
+	}
+
+	@Override
+	public int updateReply(ReplyVO vo) {
+		 int cnt=0;
+	     SqlSession sess= MybatisUtil.getSqlSession();
+	     try {
+			cnt= sess.update("board.updateReply",vo);
+		} catch (Exception e) {
+		e.printStackTrace();
+		}finally {
+			sess.commit();
+			sess.close();
+		}
+		return cnt;
+		
+	}
+
+	@Override
+	public int insertReply(ReplyVO vo) {
+		 int cnt=0;
+	     SqlSession sess= MybatisUtil.getSqlSession();
+	     try {
+			 cnt= sess.insert("board.insertReply",vo);
+		} catch (Exception e) {
+		e.printStackTrace();
+		}finally {
+			sess.commit();
+			sess.close();
 		}
 		return cnt;
 	}

@@ -41,6 +41,8 @@
                 <div class "cul_no_div" style="display :none;">${v.cul_no} </div>
                 <h5 class="cul_title">${v.cul_name}</h5>
                 <p class="cul_des"> ${v.cul_perfomer}</p>
+                <p class="cul_des"> ${v.cul_place}</p>
+                <p class="cul_des"> ${v.cul_date}</p>
                 <div class="cul_mon"> ${v.cul_host}</div> 
                 </div>            
                 </div>`;
@@ -230,6 +232,8 @@ $(()=>{
                 <div class "cul_no_div" style="display :none;">${v.cul_no} </div>
                 <h5 class="cul_title">${v.cul_name}</h5>
                 <p class="cul_des"> ${v.cul_perfomer}</p>
+                <p class="cul_des"> ${v.cul_place}</p>
+                <p class="cul_des"> ${v.cul_date}</p>
                 <div class="cul_mon"> ${v.cul_host}</div> 
                 </div>            
                 </div>`;
