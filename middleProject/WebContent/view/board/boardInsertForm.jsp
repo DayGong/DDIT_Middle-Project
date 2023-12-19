@@ -4,6 +4,8 @@
      pageEncoding="UTF-8"%>
       <% 
 BoardVO boardVO = (BoardVO) request.getAttribute("boardVO");
+    String mem_id = (String)session.getAttribute("mem_id");
+    
  %> 
  <!DOCTYPE html> 
  <html>
@@ -15,6 +17,8 @@ BoardVO boardVO = (BoardVO) request.getAttribute("boardVO");
     <div>
      <h1>게시판 작성</h1> 
      <form id="boardInsertForm" action="<%=request.getContextPath() %>/board/insert.do" method="post"> 
+         <label for="mem_id">작성자</label>
+         <input type="text" name="mem_id" value="<%=mem_id %>" style="border:none" readonly/>
          <label for="title">제목:</label>
          <input type="text" id="title" name="brd_title"><br>
     
@@ -32,3 +36,4 @@ function complete() {
      </script>
  </body> 
  </html> 
+ 

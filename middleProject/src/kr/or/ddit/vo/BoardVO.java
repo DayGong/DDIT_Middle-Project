@@ -75,7 +75,8 @@ public class BoardVO {
 	}
 	
 	
-	public BoardVO(String title, String content) {
+	public BoardVO(String mem_id, String title, String content) {
+		this.mem_id = mem_id;
 		this.brd_title = title;
 		this.brd_content = content;
 	}

@@ -27,10 +27,11 @@ public class BoardInsertController extends HttpServlet {
 		
 		String title = request.getParameter("brd_title");
 		String content = request.getParameter("brd_content");
+		String mem_id = request.getParameter("mem_id");
 		
 		IBoardService service = BoardServiceImpl.getInstance();
 		
-		BoardVO boardVO = new BoardVO(title, content);
+		BoardVO boardVO = new BoardVO(mem_id, title, content);
 		
 		int cnt = service.insertBoard(boardVO);
 		
