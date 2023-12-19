@@ -73,7 +73,7 @@ public class BoardDaoImpl implements IBoardDao {
 		int cnt = 0;
 		SqlSession session = MybatisUtil.getSqlSession();
 		try {
-			cnt = session.update("notice.updateHits", no);
+			cnt = session.update("board.updateHits", no);
 			session.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -88,7 +88,7 @@ public class BoardDaoImpl implements IBoardDao {
 		int cnt = 0;
 		SqlSession session = MybatisUtil.getSqlSession();
 		try {
-			cnt = session.update("notice.updateNotice", boardVO);
+			cnt = session.update("board.updateNotice", boardVO);
 			
 			session.commit();
 		} catch (Exception e) {
@@ -116,21 +116,6 @@ public class BoardDaoImpl implements IBoardDao {
 		return cnt;
 	}
 
-//	@Override
-//	public int getTotalCount(Map<String, Object> map) {
-//		SqlSession session = MybatisUtil.getSqlSession();
-//		
-//		int res = 0;
-//		
-//		try {
-//			res = session.selectOne("notice.getTotalCount", map);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}finally {
-//			session.close();
-//		}
-//		return res;
-//	}
 	
 	
 }	//BoardDaoImpl 끝

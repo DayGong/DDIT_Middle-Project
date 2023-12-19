@@ -29,14 +29,14 @@
             crossorigin="anonymous"></script>
     <script type="text/javascript" src="<%= path %>/js/jquery-3.7.1.min.js"></script>
     <script type="text/javascript">
-        function updateHitAndRedirect(boardNo) {
+        function updateHitAndRedirect(brd_no) {
             $.ajax({
                 url: '<%= request.getContextPath() %>/board/hit.do',
                 type: 'get',
-                data: {"boardNo": boardNo},
+                data: {"brd_no": brd_no},
                 success: function (res) {
                     if (res.result === "success") {
-                        window.location.href = '<%= request.getContextPath() %>/board/detail.do?boardNo=' + boardNo;
+                        window.location.href = '<%= request.getContextPath() %>/board/detail.do?brd_no=' + brd_no;
                     } else {
                         alert("조회수 업데이트에 실패했습니다.");
                     }

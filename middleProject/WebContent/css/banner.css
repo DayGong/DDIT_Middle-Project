@@ -17,8 +17,6 @@
     font-style: normal;
 }
 
-
-
 .carousel-inner{
     width:100%;
     height:800px;
@@ -44,7 +42,7 @@
 
 .fix-text > h3{
 	color: #fce345; /* 텍스트 색상 설정 */
-    font-size : 80px;
+    font-size : 80px;"WebContent/css/banner.css"
     font-family: 'MonoplexKRNerd-BoldItalic';
 }
 

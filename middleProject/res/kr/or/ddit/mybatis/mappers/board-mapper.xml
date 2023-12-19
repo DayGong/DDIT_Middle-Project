@@ -40,8 +40,8 @@
 	<!-- 게시글 작성  -->
  <insert id="insertBoard" parameterType="boardVO">
   insert into board
-		(brd_no,brd_title,brd_content,brd_hits,brd_date,brd_file,mem_id)
-		values(board_seq.nextval,#{brd_title},#{brd_content},0,sysdate,'test12')
+		(brd_no,brd_title,brd_content,brd_hits,brd_date,mem_id)
+		values(board_seq.nextval,#{brd_title},#{brd_content},0,sysdate,#{mem_id})
  </insert>
  
  <!-- 게시글 페이징 -->
