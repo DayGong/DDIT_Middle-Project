@@ -12,7 +12,7 @@
 
 .input .eyes {
     position: relative; /* 수정된 부분 */
-    margin-left: 30px; /* 필요에 따라 간격 조절 */
+    margin: 15px 0 0 -10px; /* 필요에 따라 간격 조절 */
 }
 
 .input .eyes i {

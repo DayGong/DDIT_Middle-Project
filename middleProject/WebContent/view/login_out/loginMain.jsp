@@ -119,7 +119,7 @@
 		<input type="text" id="memId" class="form-input" name="memId" placeholder="아이디">
 		</div>
 		<div class="input password">
-	    <input type="password" id="password" class="form-input" name="pass" placeholder="비밀번호" style="margin: 10px 0 0 30px;">
+	    <input type="password" id="password" class="form-input" name="pass" placeholder="비밀번호" style="margin: 10px 0 0 -5px; width: 240px;">
 	    <div class="eyes">
 	        <i class="fa fa-eye-slash fa-lg"></i>
 	    </div>
