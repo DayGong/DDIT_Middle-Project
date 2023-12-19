@@ -130,7 +130,7 @@
 		    <span id="check" style="color: red; margin-top: 10px;">로그인 오류 또는 비회원입니다</span>
 		<% } %>
 		
-		<button type="submit" style="margin-top: 10px; ">로그인</button>
+		<button type="submit" style="margin-top: 10px; width: 225px; height: 40px; padding : 0;">로그인</button>
     	<!-- 카카오 로그인 -->
 		<a id="kakao-login-btn"></a>
 		<div id="result"></div>
