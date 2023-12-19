@@ -4,10 +4,41 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+<<<<<<< HEAD
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/memberForm.css">
+
+<!-- 예쁜 Alert창 -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<%
+=======
 <% 
+>>>>>>> branch 'master' of https://github.com/DayGong/DDIT_MiddleProject
    // 세션에 저장한 데이터 가져오기
    MemberVO memVo = (MemberVO)session.getAttribute("loginMember");
 %>
+<<<<<<< HEAD
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+<%
+	if(memVo == null){
+%>
+		swal
+		({
+			title: "로그인이 필요합니다.", 
+			text: "로그인 페이지로 이동합니다.", 
+			icon: "info"
+		}).then(function()
+		{
+			window.location.href = '<%=request.getContextPath()%>/view/login_out/loginMain.jsp';
+		})
+<%
+	}
+%>
+});
+
+</script>
+=======
     <meta charset="UTF-8">
     <title>마이페이지</title>
     <style>
@@ -53,6 +84,7 @@ h1 {
 }
 
 </style>
+>>>>>>> branch 'master' of https://github.com/DayGong/DDIT_MiddleProject
 </head>
 <body>
 <!-- 상단 메뉴바 -->
@@ -80,6 +112,7 @@ h1 {
 		<div class="category-container"> 
 			<div class="category-item"><a href="#" onclick = "changeIframe('<%=request.getContextPath()%>/view/member/memberinfo.jsp','내정보')">내정보</a></div>
 	      	<div class="category-item"><a href="#" onclick = "changeIframe('<%=request.getContextPath()%>/test.jsp','예약조회')">예약조회 </a></div>
+	      	<div class="category-item"><a href="#" onclick = "changeIframe('<%=request.getContextPath()%>/view/member/viewHotelReserve.jsp','예약조회')">예약조회 </a></div>
 	      	<div class="category-item"><a href="#" onclick = "changeIframe('<%=request.getContextPath()%>/test.jsp','내 캘린더')">내 캘린더</a></div>
     	</div>
    	</div>

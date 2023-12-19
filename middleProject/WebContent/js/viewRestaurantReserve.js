@@ -106,7 +106,7 @@ restaurantReserveCancel = function(rest_rsv_no)
 		},
 		success: function()
 		{
-			swal("식당 예약이 취소되었습니다.", "", "success");
+			swal("식당 예약이 취소되었습니다.", "success");
 			// location.href=`${path}/reserveBtnTemp.jsp`; // 이동할 회원 관리 페이지
 		},
 		error: function(xhr)

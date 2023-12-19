@@ -321,7 +321,7 @@ button:active {
 
  #boxandbutton{
  display: flex;
- align-items: center;"
+ align-items: center;
  
  }
 #search-container input[type="text"] {
@@ -334,7 +334,7 @@ button:active {
    background-color: #f9f8f4;
 }
 #searchBtn { 
-   width: width: 20%;
+   width: 20%;
     vertical-align: middle; /* 수직 정렬을 위한 설정 */
     color :white;
     font-family: 'GmarketSansMedium';
@@ -358,5 +358,9 @@ button:active {
    
 }
 
-
+/* 식당 상세 사진 */
+.backImgDiv img {
+	width: 300px;
+	height: 250px;
+}
     

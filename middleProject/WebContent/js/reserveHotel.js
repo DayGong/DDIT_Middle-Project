@@ -56,7 +56,9 @@ moveToHotelDetail = function(hotel_no, memId)
 showHotelDetailInfo = function(res) 
 {
 	let infoCode = `
-	<div class="backImgDiv" style="background-image: url('${path}/images/hotel/${res.hotel_img}');">
+		<div class="backImgDiv">
+			<img src="${path}/images/hotel/${res.hotel_img}">
+		</div>
 		<div class="infoDiv">
 			<h4 class="modal-title fix-text">${res.hotel_name}</h4>
 			<table>
@@ -78,7 +80,7 @@ showHotelDetailInfo = function(res)
 				</tr>
 			</table>
 		</div>
-	</div>
+	
 	<div> <!-- 카카오페이API 버튼 -->
 		<img src="${path}/images/icon/payment_icon_yellow_medium.png" 
 				id="payBtn" onclick="requestPay()">

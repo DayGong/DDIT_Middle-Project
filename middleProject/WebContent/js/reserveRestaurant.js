@@ -59,24 +59,25 @@ showRestaurantDetailInfo = function(res)
 {
 	
 	let infoCode = `
-	<div class="backImgDiv" style="background-image: url('${path}/images/restaurant/${res.rest_img}');">
-		<h4 class="modal-title fix-text">${res.rest_name}</h4>
-		<div>
-			<table>
-				<tr>
-					<td>주소</td>
-					<td>| ${res.rest_addr}</td>
-				</tr>
-				<tr>
-					<td>전화번호</td>
-					<td>| ${res.rest_tel}</td>
-				</tr>
-				<tr>
-					<td>운영시간</td>
-					<td>| ${res.rest_time}</td>
-				</tr>
-			</table>
-		</div>
+	<div class="backImgDiv">
+		<img src="${path}/images/restaurant/${res.rest_img}">
+	</div>
+	<h4 class="modal-title fix-text">${res.rest_name}</h4>
+	<div>
+		<table>
+			<tr>
+				<td>주소</td>
+				<td>| ${res.rest_addr}</td>
+			</tr>
+			<tr>
+				<td>전화번호</td>
+				<td>| ${res.rest_tel}</td>
+			</tr>
+			<tr>
+				<td>운영시간</td>
+				<td>| ${res.rest_time}</td>
+			</tr>
+		</table>
 	</div>
 	<div>
 		<input type="button" id="restaurant_rsv_btn" value="예약하기" onclick="reserveRestaurant()">

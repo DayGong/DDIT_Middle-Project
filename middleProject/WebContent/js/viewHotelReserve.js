@@ -7,22 +7,6 @@ const pathName = "/" + window.location.pathname.split("/")[1];
 const origin = window.location.origin;
 const path = origin + pathName;
 
-$(function() {
-	
-	// 숙소 예약 테이블 폼
-	memberHotelReserveForm();
-	
-	// 숙소 예약 List를 테이블 <tbody>에 넣기
-	addMemberHotelReserve();
-
-	// 숙소 예약 취소 테이블 폼
-	memberHotelReserveCancelForm();
-		
-	// 숙소 예약 취소 List를 테이블 <tbody>에 넣기
-	addMemberHotelReserveCancel();
-
-})
-
 // 숙소 예약 테이블 폼
 memberHotelReserveForm = function()
 {
@@ -40,8 +24,10 @@ memberHotelReserveForm = function()
 }
 
 // 숙소 예약 List를 테이블 <tbody>에 넣기
-addMemberHotelReserve = function()
+addMemberHotelReserve = function(memId)
 {
+	mem_id = memId;
+	
 	$.ajax
 	 ({
 		 url: `${path}/reserve/hotelMemberReserveList.do`,
@@ -53,7 +39,7 @@ addMemberHotelReserve = function()
 		 success: function(res)
 		 {
 			var hotelReserveList = null;
-			if (res == null)
+			if (res == null || res == 0)
 			{
 				hotelReserveList += `
 				<tr>
@@ -78,6 +64,7 @@ addMemberHotelReserve = function()
 									onclick="hotelReserveCancel(this.id)"></td>
 					 </tr>
 					 `;
+					console.log(`${v.HOTEL_RSV_NO}`);
 				 })
 			 }
 		
@@ -105,8 +92,14 @@ hotelReserveCancel = function(hotel_rsv_no)
 		},
 		success: function()
 		{
-			swal("숙소 예약이 취소되었습니다.", "", "success");
-			// location.href=`${path}/reserveBtnTemp.jsp`; // 이동할 회원 관리 페이지
+			swal
+			({
+				title: "숙소 예약이 취소되었습니다.", 
+				icon: "success"
+			}).then(function()
+			{
+				window.location.reload();
+			})
 		},
 		error: function(xhr)
 		{
@@ -132,24 +125,26 @@ memberHotelReserveCancelForm = function()
 }
 
 // 숙소 예약 취소 List를 테이블 <tbody>에 넣기
-addMemberHotelReserveCancel = function()
+addMemberHotelReserveCancel = function(memId)
 {
+	mem_id = memId;
+	
 	$.ajax
 	 ({
 		 url: `${path}/reserve/hotelMemberReserveCancelList.do`,
 		 type: 'POST',
 		 data: 
 		 {
-			 "mem_id" : mem_id
+			 "mem_id" : `${mem_id}`
 		 },
 		 success: function(res)
 		 {
 			var hotelReserveList = null;
-			if (res == null)
+			if (res == null || res == 0)
 			{
 				hotelReserveList += `
 				<tr>
-					<td colspan="8">예약 목록이 없습니다.</td>
+					<td colspan="8">취소 및 만료 목록이 없습니다.</td>
 				</tr>
 				`;
 			} else 
