@@ -8,16 +8,38 @@
 <title>Insert title here</title>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
      <link rel="stylesheet" href="<%=request.getContextPath()%>/css/updateMem.css">
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <script>
 $(()=>{
 	
 	// 수정버튼 클릭
 	$('#updatebtn').on('click',function()
 		{
+			// 각 입력란의 값을 가져옴
+			var input1 = $('#pass2').val();
+			var input2 = $('#name').val();
+			var input3 = $('#tel').val();
+			var input4 = $('#domain-list').val();
+			var input5 = $('#postcode').val();
+			var input6 = $('#extraAddress').val();
+			var input7 = $('#roadAddress').val();
+			var input8 = $('#detailAddress').val();
+			
+			if (input1.trim() === '' || input2.trim() === '' || input3.trim() === '' || 
+				    input4.trim() === '' || input5.trim() === '' || input6.trim() === '' || 
+				    input7.trim() === '' || input8.trim() === '') {
+				    swal({
+				        title: "입력란을 모두 채워주세요.",
+				        text: "다시 시도해주세요.",
+				        icon: "error"
+				    });
+		        return false;
+		    }
+		
 			vdata1 = $('#updateform').serialize();
 			console.log(vdata1);
 			
@@ -31,17 +53,23 @@ $(()=>{
 				dataType : 'json',
 				success : function(res)
 				{
-					//성공시 이동할 경로 지정
-					alert("수정 상태:"+res.flag);
-					$('#update').html(res.flag).css('color', 'red');
-					window.location.href = '<%=request.getContextPath()%>/view/member/memberForm.jsp';
+					swal({
+		                title: "정보수정에 성공했습니다!",
+		                text: "마이페이지로 돌아갑니다.",
+		                icon: "success"
+		            }).then(() => {
+						window.location.href = '<%=request.getContextPath()%>/view/member/memberForm.jsp';
+		            });
 				},
 				error : function(xhr)
 				{
-			
-					
-					alert("에러 상태 : " + xhr.status);				
-				}
+	            swal({
+	                title: "정보수정에 실패했습니다!",
+	                text: "다시 확인해주세요.",
+	                icon: "error"
+	            });
+	            return false;
+	        }
 			});	
 		});
 	
@@ -191,80 +219,94 @@ function prod1() {
 %>
 
 <div class="container">
-<h2>회원 정보 수정화면</h2>
+	<div class="header">
+		<div><b>회원 수정</b></div>
+	</div>
 <form id= "updateform">
 
 	<input type ="hidden" name ="mem_id" value="<%=memVo.getMem_id()%>">
 	
 
-	<div class="form-group">
-		<label for="id">* 아이디 <%=memVo.getMem_id() %> </label>         
-	</div>
-	
-	<div class="form-group">
-		<label for="pwd">* 비밀번호</label> 
-		<input type="password" class="form-control" id="pass1" name="mem_pass">
-	</div>
-       
-	<div class="form-group">
-		<label for="pwd">* 비밀번호확인</label> 
-        <input type="password" class="form-control" id="pass2">
-       	<span id="spanpass"></span>
-    </div>
-       
-	<div class="form-group">
-		<label for="name">* 이름</label>
-        <input type="text" class="form-control" id="name" name="mem_name">
-        <span id="spanname"></span>
-    </div>
-       
-    <div class="form-group">
-		<label for="tel">* 휴대폰번호</label> 
-        <input type="text" class="form-control" id="tel" name="mem_tel">
-        <span id="spantel"></span>
-   	</div>
+<div class="form-group" style="margin:10px 0 10px 0;">
+	<label for="id">아이디 <%=memVo.getMem_id() %> </label>         
+</div>
 
-	<div class="form-group">
-        <label for="mail">* 이메일</label>
-        <div class="email-input-group">
-            <input type="text" class="form-control" id="mail" name="mem_mail">
-            <span id="at">@</span>
-            <input type="text" class="form-control" id="domain-text" >
-            <select class="box" id="domain-list" name="domain">
-				<option value="type">직접입력</option>
-				<option value="naver.com">naver.com</option>
-                <option value="daum.net">daum.net</option>
-                <option value="gmail.com">gmail.com</option>
-                <option value="kakao.com">kakao.com</option>
-                <option value="nate.com">nate.com</option>
-            </select>
-        </div>
-	</div>      
- 
-	<div class="form-group" style="display: inline-block;">
-		<label for="zip">* 우편번호</label>
-        <input type="text" id="postcode" class="d_form mini" placeholder="우편번호">
-	</div>
-	  
-	<div style="display: inline-block;">
-		<input type="button" onclick="prod1()" value="우편번호 찾기" class="d_btn"><br><br>
-	</div>
-	
-      
-    <div class="form-group">
-		<label for="add1">* 주소</label> 
-		<input type="text" id="roadAddress" class="d_form std" placeholder="도로명주소" name="roadAddress"><br><br>
-		<input type="text" id="extraAddress" class="d_form" placeholder="참고항목" name="extraAddress"><br><br>
-	</div>
+           <div class="form-group">
+               <label for="pwd">비밀번호 </label> 
+               <input type="password" class="form-control" id="pass1" name="mem_pass">
+           </div>
+           
+           <div class="form-group">
+               <label for="pwd">비밀번호확인</label> 
+               <input type="password" class="form-control" id="pass2">
+           	<span id="spanpass"></span>
+           </div>
+           
+           <div class="form-group">
+               <label for="name">이름</label>
+               <input type="text" class="form-control" id="name" name="mem_name">
+               <span id="spanname"></span>
+           </div>
+           
+           <div class="form-group">
+               <label for="tel">휴대폰번호</label> 
+               <input type="text" class="form-control" id="tel" name="mem_tel">
+               <span id="spantel"></span>
+           </div>
 
-	<div class="form-group">
-		<label for="add2">* 상세주소</label> 
-        <input type="text" id="detailAddress" class="d_form" placeholder="상세주소" name="detailAddress"><br><br>
+         <div class="form-group">
+            <label for="mail">이메일</label>
+            
+            <table class="email-input-group">
+				<tr>
+	            <td>
+	                <input type="text" class="form-control" id="mail" name="mem_mail">
+	            </td>
+				<td>
+				@
+				</td>
+				<td>
+	                <input type="text" class="form-control" id="domain-text" >
+				</td>
+				
+				<td>
+					<select class="box" id="domain-list" name="domain">
+						<option value="type">직접입력</option>
+						<option value="naver.com">naver.com</option>
+	                    <option value="daum.net">daum.net</option>
+	                    <option value="gmail.com">gmail.com</option>
+	                    <option value="kakao.com">kakao.com</option>
+	                    <option value="nate.com">nate.com</option>
+                		</select>
+				</td>
+				
+				</tr>
+               </table>
+        </div>      
+
+       <div class="form-group" style="display: inline-block;">
+        	<label for="zip">주소</label>
+        	<table>
+         	<tr>
+         		<td>
+					<input type="text" id="postcode" class="form-control" placeholder="우편번호">
+         		</td>
+         		<td>
+					<input type="button" onclick="prod1()" value="우편번호 찾기" class="btn" id="postnum">
+         		</td>
+         	</tr>
+       		<tr>
+       			<td><input type="text" id="roadAddress" class="form-control" placeholder="도로명주소" name="roadAddress"></td>
+       			<td><input type="text" id="extraAddress" class="form-control" placeholder="참고항목" name="extraAddress"></td>
+       		</tr>
+        	</table>
+           <input type="text" id="detailAddress" class="form-control" placeholder="상세주소" name="detailAddress">
 	</div>
-    <br>
-    
-    <input type="button" id="updatebtn" value="저장">
-    <input type="reset" value="취소"> 
+   <br>
+    <div style="display:flex; margin:10px;">
+    <input class="btn" type="button" id="updatebtn" value="수정">
+    <input class="btn" type="reset" id="reset" value="취소"> 
+    </div>
     <span id="update"></span> 
 </form>
 </div>
