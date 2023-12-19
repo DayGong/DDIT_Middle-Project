@@ -257,7 +257,7 @@
 
 			<!-- 모달 하단(후기 출력) -->
 			<div class="modal-footer">
-				<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-danger" data-bs-dismiss="modal">닫기</button>
 			</div>
 		</div>
 	</div>

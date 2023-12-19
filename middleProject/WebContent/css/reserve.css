@@ -1,15 +1,57 @@
 @charset "UTF-8";
 
+
 @font-face {
-    font-family: 'MICEGothic Bold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic Bold.woff2') format('woff2');
-    font-weight: 700;
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
     font-style: normal;
 }
 
-/* 폰트 적용 */
-.titleSelect {
-	font-family: 'MICEGothic Bold';
+@font-face {
+    font-family: 'Cafe24SsurroundAir';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SsurroundAir.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+#rest-left-modal-body{
+	margin-left: 25px;
+}
+.modal-body div{
+	font-family: 'GmarketSansMedium';
+}
+
+.modal2{
+	font-family: 'Cafe24SsurroundAir';
+	font-size: 25px;
+	font-weight: bold;
+	
+}
+.modal3{
+	font-family: 'Cafe24SsurroundAir';
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 2; 
+}
+
+#modal4{
+	 margin: -30px 0 0 100px;
+	 
+	 
+}
+
+#restaurant_rsv_btn{
+	margin-left: 330px;
+	border-radius: 10px;
+	border: 1px solid #1a75ed;
+	background-color: #1a75ed;
+	color: #FFFFFF;
+	font-family: 'GmarketSansMedium';
+	font-size: 15px;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
 }
 
 /* 모달창 하단 close버튼 스타일 노란색으로 변경  */
@@ -36,8 +78,16 @@
 }
 
 .backImgDiv {
+	margin-left: 20px;
 	height: 500px;
 	background-size: cover;
+}
+
+#img1{
+	width:450px; 
+	height: 450px; 
+	border-radius: 10%; 
+	margin-left: 60px;
 }
 
 /* number 옆에 항상 화살표 보이게 설정 */
