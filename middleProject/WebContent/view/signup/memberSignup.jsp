@@ -39,7 +39,7 @@ $(()=>{
 			    swal({
 			        title: "입력란을 모두 채워주세요.",
 			        text: "다시 시도해주세요.",
-			        icon: "error"
+			        icon: "warning"
 			    });
 	        return false;
 	    }
@@ -61,18 +61,16 @@ $(()=>{
 	            swal({
 	                title: "회원가입에 성공했습니다!",
 	                text: "다시 로그인해주세요.",
-	                icon: "success"
-	            }).then(() => {
-	                window.location.href = '<%=request.getContextPath()%>/view/login_out/loginMain.jsp';
+	            }).then(function() 
+	            { window.location.href = '<%=request.getContextPath()%>/view/login_out/loginMain.jsp';
 	            });
 	        },
 	        error: function (xhr) {
 	            swal({
 	                title: "회원가입에 실패했습니다!",
 	                text: "다시 입력해주세요.",
-	                icon: "error"
+	                icon: "warning"
 	            });
-	            alert("에러 상태 : " + xhr.status);
 	            return false;
 	        }
 	    });
@@ -105,7 +103,7 @@ $(()=>{
 		// 입력 필드 비어있거나 공백인 경우 확인
 		if(idvalue.length<1)
 		{
-			swal({title: "ID를 입력하지 않았습니다.", text: "ID를 입력하세요!", icon: "error"});
+			swal({title: "ID를 입력하지 않았습니다.", text: "ID를 입력하세요!", icon: "warning"});
 // 			alert("ID를 입력하세요!");
 			return false;
 		}
