@@ -70,12 +70,13 @@
 
 </script>
 <body>
+
 	<div class="container">
-	<!-- 로고  -->
-	<div id="logo" onclick="location.href='<%=request.getContextPath()%>/index.jsp'">
-		<img src= "<%=request.getContextPath()%>/images/header/로고3.png" alt="대전관광" style="width:300px;">
-	</div>
-	
+		<!-- 로고  -->
+		<div id="logo" onclick="location.href='<%=request.getContextPath()%>/index.jsp'">
+			<img src= "<%=request.getContextPath()%>/images/header/로고3.png" alt="대전관광" style="width:300px;">
+		</div>
+		
         <!-- 회원서블릿에 저장된 데이터, 로그인오류정보 체크 -->
 	<%
     // 세션에 저장한 데이터 가져오기
@@ -84,45 +85,46 @@
     //로그인 성공, 실패 여부
     String check = (String)session.getAttribute("check");
 	%>
-
-	<!-- 관리자 로그인 탭 -->
-	<div class="form-container sign-in-container" style="margin-left: -40px;">
-	<!-- 로그인 안했거나 로그인  id 비밀번호가 틀렸을때    -->
-		<form action="<%=request.getContextPath()%>/admin/adminLogin.do" method="post">
-		<br><h1 style="font-size:30px; margin-left: 25px;"><b>관리자 로그인</b></h1><br>
-		<%  
-		    if(adVo == null)
-		    {session.invalidate();
-		%>
-		<div>
-        	<input type="text" id="adminId" class="form-input" name="adminId" placeholder="아이디">
-		</div>
-			<div class="input password" >
-	    <input type="password" id="password" class="form-input" name="adminPass" placeholder="비밀번호" style="margin-top: 10px;">
-	    <div class="eyes">
-	        <i class="fa fa-eye-slash fa-lg" style="margin-left: -80px;"></i>
-			</div>
-			</div>
-			
-	      	 <!-- 로그인 오류 메시지 -->
-	        <% if (check != null && check.equals("false")) 
-	        	{ %>
-	            <span id="check" style="color: red;">로그인 오류 또는 비관리자입니다</span><br><br>
-	        <% } %>
-			<button type="submit" style="margin: 10px 0 0 25px; ">로그인</button>
-		</form>   
-		<!-- 로그인 성공시 -->
-			<%
-				}else
-				{
+	
+		<!-- 관리자 로그인 탭 -->
+		<div class="form-container sign-in-container" style="margin-left: -40px;">
+		<!-- 로그인 안했거나 로그인  id 비밀번호가 틀렸을때    -->
+			<form action="<%=request.getContextPath()%>/admin/adminLogin.do" method="post">
+			<br><h1 style="font-size:30px; margin-left: 25px;"><b>관리자 로그인</b></h1><br>
+			<%  
+			    if(adVo == null)
+			    {session.invalidate();
 			%>
-			<script>
-				window.location.href = '<%=request.getContextPath()%>/index.jsp';
-			</script>
-			<%
-				}  
-			%>			
-    <!-- 관리자 로그인 탭 끝 -->
+			<div>
+	        	<input type="text" id="adminId" class="form-input" name="adminId" placeholder="아이디">
+			</div>
+				<div class="input password" >
+		    <input type="password" id="password" class="form-input" name="adminPass" placeholder="비밀번호" style="margin-top: 10px;">
+		    <div class="eyes">
+		        <i class="fa fa-eye-slash fa-lg" style="margin-left: -80px;"></i>
+				</div>
+				</div>
+				
+		      	 <!-- 로그인 오류 메시지 -->
+		        <% if (check != null && check.equals("false")) 
+		        	{ %>
+		            <span id="check" style="color: red;">로그인 오류 또는 비관리자입니다</span><br><br>
+		        <% } %>
+				<button type="submit" style="margin: 10px 0 0 25px; ">로그인</button>
+			</form>   
+			<!-- 로그인 성공시 -->
+				<%
+					}else
+					{
+				%>
+				<script>
+					window.location.href = '<%=request.getContextPath()%>/index.jsp';
+				</script>
+				<%
+					}  
+				%>			
+	    <!-- 관리자 로그인 탭 끝 -->
+	    </div>
 	</div>
 </body>
 </html>
