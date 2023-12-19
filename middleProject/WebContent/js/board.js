@@ -33,3 +33,32 @@ UpdateHitServer  = function(){
 	
 	
 }
+
+
+
+
+function writeReply(){
+	   $.ajax({
+		  url:`${mypath}/reply/replyWrite.do`,
+          data: reply,
+          type:'post',
+          success :function(res){
+	          if(res.flag=="성공"){
+		 alert("댓글쓰기 성공!!");
+	       ReplyListServer();
+         
+	
+	}else{
+		 alert("댓글쓰기 실패!!");
+	}
+         },
+         error: function(xhr){
+	      alert(xhr.status);
+         },
+         dataType :'json'
+	})
+
+}
+
+
+ 
