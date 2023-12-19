@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>비밀번호 찾기</title>
+<link rel="icon" href="../images/icon/꿈돌5-1.png" type="image/x-icon">
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <link rel= "stylesheet"  href="<%=request.getContextPath()%>/css/getPass.css">
 </head>

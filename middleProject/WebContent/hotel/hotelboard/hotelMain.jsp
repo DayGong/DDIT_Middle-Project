@@ -7,7 +7,9 @@
 <head>
 <meta charset="UTF-8">
 
-<title>Insert title here</title>
+<title>한밭지킴이</title>
+<link rel="icon" href="../images/icon/꿈돌5-1.png" type="image/x-icon">
+
 <script src="<%=request.getContextPath() %>/js/jquery-3.7.1.min.js"></script>
 <script src="<%=request.getContextPath() %>/js/jquery.serializejson.min.js"></script>
 <script src="<%=request.getContextPath() %>/js/hotel.js"></script>
@@ -17,7 +19,6 @@
 
 <link rel= "stylesheet"  href="<%=request.getContextPath() %>/css/hotel.css">
 <link rel= "stylesheet"  href="<%=request.getContextPath() %>/css/reserve.css">
-
 <!-- 카카오페이API script -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>

@@ -5,6 +5,7 @@
 <html lang="ko">
 <head>
   <title>관리자 로그인</title>
+  <link rel="icon" href="../images/icon/꿈돌5-1.png" type="image/x-icon">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel= "stylesheet"  href="<%=request.getContextPath()%>/css/adminLogins.css">

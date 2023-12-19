@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>아이디 찾기</title>
+<link rel="icon" href="../images/icon/꿈돌5-1.png" type="image/x-icon">
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <link rel= "stylesheet"  href="<%=request.getContextPath()%>/css/getIds.css">
 </head>
@@ -56,5 +57,8 @@ if(result ==null)
 <%
 } 
 %>
+
+<!-- 하단 메뉴바 삽입 -->
+<jsp:include page="/view/main/bottom.jsp"/>
 </body>
 </html>
