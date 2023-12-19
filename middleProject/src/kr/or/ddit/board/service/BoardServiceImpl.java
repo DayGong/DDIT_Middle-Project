@@ -8,6 +8,7 @@ import kr.or.ddit.board.dao.BoardDaoImpl;
 import kr.or.ddit.board.dao.IBoardDao;
 import kr.or.ddit.vo.BoardVO;
 import kr.or.ddit.vo.PageVO;
+import kr.or.ddit.vo.ReplyVO;
 
 public class BoardServiceImpl implements IBoardService {
 
@@ -53,6 +54,26 @@ public class BoardServiceImpl implements IBoardService {
 	@Override
 	public int insertBoard(BoardVO boardVO) {
 		return boardDao.insertBoard(boardVO);
+	}
+
+	@Override
+	public List<ReplyVO> selectReply(int num) {	
+		return boardDao.selectReply(num);
+	}
+
+	@Override
+	public int deleteReply(int num) {
+		return boardDao.deleteReply(num);
+	}
+
+	@Override
+	public int updateReply(ReplyVO vo) {
+        return boardDao.updateReply(vo);
+	}
+
+	@Override
+	public int insertReply(ReplyVO vo) {
+        return boardDao.insertReply(vo);
 	}
 
 	

@@ -67,5 +67,43 @@ select count(*) from board
 	</update>
 	
 	
+	
+	
+	
+	<!--         댓글에 대한 쿼리문                 -->
+	
+	
+	   
+    <!--  댓글 저장 -->
+    
+      <insert id="insertReply" parameterType="replyVo">
+         insert into reply (rpl_no, rpl_content, mem_id, brd_no, rpl_date )
+         values(REPLY_SEQ.nextval, #{rpl_content}, #{mem_id},#{brd_no},sysdate)
+      </insert>
+ 
+ 
+    <!--  댓글 리스트 -->
+    
+     <select id="selectReply" parameterType="int" resultType="replyVo">
+       select * from reply where brd_no = #{brd_no}
+     </select>
+     
+    <!--  댓글 삭제-->
+    
+    <delete id="deleteReply" parameterType="int">
+      delete from reply where rpl_no = #{rpl_no}
+    </delete> 
+    
+    <!--  댓글 수정-->
+    
+    <update id="updateReply" parameterType="replyVo">
+       update reply set rpl_content =#{rpl_content}, rpl_date = sysdate
+       where rpl_no = #{rpl_no}                      
+    </update>
+  
+	
+	
+	
+	
 </mapper>
 
