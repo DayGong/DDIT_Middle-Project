@@ -90,6 +90,7 @@
             console.log(vadmin);   
             data={};
             mypath='<%=request.getContextPath()%>';  
+            path='<%=request.getContextPath()%>';  
         var markers = [];
         // 지도 객체 생성 및 설정
         var mapContainer = document.getElementById('map'),

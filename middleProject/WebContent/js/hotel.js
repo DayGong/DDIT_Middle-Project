@@ -198,9 +198,7 @@ function placesSearchCB(data, status, pagination)
 		gthis=$(this);
 	  
 		if(cate=="daeAll"){
-			  clearMarkers();
-             $('#placesList').empty(); 
-			displayHotel();		
+		    location.href = `${mypath}/hotel/hotelboard/hotelMain.jsp`; 
 		}
 	    if(cate=="daeYou"){
 		      clearMarkers();
@@ -283,8 +281,22 @@ function displayOneHotel(dong){
 				}); 
 					// 리스트에 아이템 추가
 			var listItem = $('<li></li>')
-				.html(`<p>장소 이름: ${item.hotel_name}</p><p>주소: ${item.hotel_addr}</p><p>타입: ${item.hotel_tel}</p><p><hr>`);
-
+					.html(`    	<table>
+    									<tr>
+    										<td rowspan="2">
+    											<div id="hotel_img_div">
+    												<img src="${path}/images/hotel/${item.hotel_img}"
+    													style="width: 100px; height: 100px;
+    														border-radius: 70%;">
+    											</div>
+    										</td>
+    										<td>${item.hotel_name}</td>
+    									</tr>
+    									<tr>
+    										<td>${item.hotel_addr}</td>
+    									</tr>
+    								</table>
+    								<hr>`);		
 				// 클릭 이벤트 추가
 				listItem.on('click', function() {
 					infowindows.forEach(function(window) {
@@ -349,7 +361,22 @@ function searchByHotelName(dong){
 				}); 
 					// 리스트에 아이템 추가
 			var listItem = $('<li></li>')
-			.html(`<p>숙소 이름: ${item.hotel_name}</p><p>주소: ${item.hotel_addr}</p><p>전화번호: ${item.hotel_tel}</p><p><hr>`);
+							.html(`    	<table>
+    									<tr>
+    										<td rowspan="2">
+    											<div id="hotel_img_div">
+    												<img src="${path}/images/hotel/${item.hotel_img}"
+    													style="width: 100px; height: 100px;
+    														border-radius: 70%;">
+    											</div>
+    										</td>
+    										<td>${item.hotel_name}</td>
+    									</tr>
+    									<tr>
+    										<td>${item.hotel_addr}</td>
+    									</tr>
+    								</table>
+    								<hr>`);		
 
 				// 클릭 이벤트 추가
 				listItem.on('click', function() {
@@ -486,7 +513,22 @@ function viewHotelTour(){
 				}); 
 					// 리스트에 아이템 추가
 			var listItem = $('<li></li>')
-				.html(`<p>숙소명: ${item.hotel_name}</p><p>주소: ${item.hotel_addr}</p><p>전화번호: ${item.hotel_tel}</p><p><hr>`);
+									.html(`    	<table>
+    									<tr>
+    										<td rowspan="2">
+    											<div id="hotel_img_div">
+    												<img src="${path}/images/hotel/${item.hotel_img}"
+    													style="width: 100px; height: 100px;
+    														border-radius: 70%;">
+    											</div>
+    										</td>
+    										<td>${item.hotel_name}</td>
+    									</tr>
+    									<tr>
+    										<td>${item.hotel_addr}</td>
+    									</tr>
+    								</table>
+    								<hr>`);		
 
 				// 클릭 이벤트 추가
 				listItem.on('click', function() {

@@ -175,7 +175,7 @@
 	        						}); 
 		        					// 리스트에 아이템 추가
 		        					var listItem = $('<li></li>')
-    								.html(`
+    								.html(`    										
     								<table>
     									<tr>
     										<td rowspan="2">

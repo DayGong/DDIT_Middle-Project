@@ -60,10 +60,11 @@
 &nbsp;&nbsp;<img src="<%=request.getContextPath() %>/images/culture/cul_cul.png" style="width:100px; height:100px;">
 </div>
 
-<hr>     
-<div id= "mainview" >
+    
+<div id= "mainview" class='centered-content' >
 <div id ="result1"></div>  <!-- 문화 리스트 출력되는 자리 -->
-<div id ="pagelist"></div> <!-- 페이지 버튼이 출력되는 자리 --> 
+<br><br>
+<div id ="pagelist" class='centered-content'></div> <!-- 페이지 버튼이 출력되는 자리 --> 
 <div id ="result2"></div>  <!-- offcanvas 폼이 출력되는 자리 -->
  </div> 
 </body>

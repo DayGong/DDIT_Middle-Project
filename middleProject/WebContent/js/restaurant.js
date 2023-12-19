@@ -315,7 +315,23 @@ function displayDongRes(dong)
 						}); 
 						// 리스트에 아이템 추가
 						var listItem = $('<li></li>')
-									.html(`<p>식당 이름: ${item.rest_name}</p><p>주소: ${item.rest_addr}</p><p>전화번호: ${item.rest_tel}</p><p><hr>`);
+									.html(`
+        								<table>
+        									<tr>
+        										<td rowspan="2">
+        											<div id="rest_img_div">
+        												<img src="${path}/images/restaurant/${item.rest_img}"
+        													style="width: 100px; height: 100px;
+        														border-radius: 70%;">
+        											</div>
+        										</td>
+        										<td>${item.rest_name}</td>
+        									</tr>
+        									<tr>
+        										<td>${item.rest_addr}</td>
+        									</tr>
+        								</table>
+        								<hr>`);
 	
 						// 클릭 이벤트 추가
 						listItem.on('click', function() 
@@ -383,7 +399,23 @@ function searchByResName(dong)
 				}); 
 					// 리스트에 아이템 추가
 			var listItem = $('<li></li>')
-				.html(`<p>식당 이름: ${item.rest_name}</p><p>주소: ${item.rest_addr}</p><p>전화번호: ${item.rest_tel}</p><p><hr>`);
+									.html(`
+        								<table>
+        									<tr>
+        										<td rowspan="2">
+        											<div id="rest_img_div">
+        												<img src="${path}/images/restaurant/${item.rest_img}"
+        													style="width: 100px; height: 100px;
+        														border-radius: 70%;">
+        											</div>
+        										</td>
+        										<td>${item.rest_name}</td>
+        									</tr>
+        									<tr>
+        										<td>${item.rest_addr}</td>
+        									</tr>
+        								</table>
+        								<hr>`);
 
 				// 클릭 이벤트 추가
 				listItem.on('click', function() {

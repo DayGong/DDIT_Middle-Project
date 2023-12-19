@@ -25,14 +25,14 @@
   flex-wrap : wrap;
   width: 100%;
   min-height:100%;
+  text-align: center;
   
 }
 .cul{
   width:25%;
   height: 100%;
- 
   margin-bottom : 4%;
-  border: 1px solid black; 
+  margin : 3px;
 }
 .cul_img_div {
     text-align: center;
@@ -75,7 +75,7 @@
   background : #0B5ED9;
   color : white;
   border-radius : 10px;
-  padding :5px;
+  padding :8px;
   font-family: 'Cafe24SsurroundAir';
 }
 
@@ -119,16 +119,24 @@
   font-family: 'GmarketSansMedium';
 }
 .big-buttons{
-  display: flex; /* 요소들을 가로로 나란히 배치하기 위해 Flexbox 사용 */
-  flex-direction: column; /* 요소들을 세로로 배치 */
-  padding: 20px; /* 간격을 조절할 수 있는 패딩 설정 */
-  width: 15%; /* 오른쪽 15%만큼의 너비를 가지도록 설정 */ 
-  float: left; /* 왼쪽으로 부유(floated) */
+	margin-left:2%;	
+	display: flex; /* 요소들을 가로로 나란히 배치하기 위해 Flexbox 사용 */
+	flex-direction: column; /* 요소들을 세로로 배치 */
+	padding: 20px; /* 간격을 조절할 수 있는 패딩 설정 */
+	width: 15%; /* 오른쪽 15%만큼의 너비를 가지도록 설정 */ 
+	float: left; /* 왼쪽으로 부유(floated) */
 }
 .big-buttons button:active {
-  transform: scale(0.95);
+	transform: scale(0.95);
 }
 #mainview {
-  margin-left: 15%; /* 버튼 너비와 동일한 여백을 설정하여 겹치지 않게 함 */
+	margin-left: 25%; /* 버튼 너비와 동일한 여백을 설정하여 겹치지 않게 함 */
   }
+#pagelist {
+	
+	margin-left :30%;	
+}  
+
+
+
 
