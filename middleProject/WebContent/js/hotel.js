@@ -279,6 +279,10 @@ function displayOneHotel(dong){
 				kakao.maps.event.addListener(marker, 'mouseout', function() {
 				infowindow.close();
 				}); 
+				
+				kakao.maps.event.addListener(marker, 'click', function() {
+				moveToHotelDetail(`${item.hotel_no}`, `${mem_id}`);
+				}); 				
 					// 리스트에 아이템 추가
 			var listItem = $('<li></li>')
 					.html(`    	<table>
@@ -358,6 +362,10 @@ function searchByHotelName(dong){
 
 				kakao.maps.event.addListener(marker, 'mouseout', function() {
 				infowindow.close();
+				}); 
+				
+				kakao.maps.event.addListener(marker, 'click', function() {
+				moveToHotelDetail(`${item.hotel_no}`, `${mem_id}`);
 				}); 
 					// 리스트에 아이템 추가
 			var listItem = $('<li></li>')
@@ -510,7 +518,11 @@ function viewHotelTour(){
 
 				kakao.maps.event.addListener(marker, 'mouseout', function() {
 				infowindow.close();
-				}); 
+				});
+				
+				kakao.maps.event.addListener(marker, 'click', function() {
+				moveToHotelDetail(`${item.hotel_no}`, `${mem_id}`);
+				}); 				 
 					// 리스트에 아이템 추가
 			var listItem = $('<li></li>')
 									.html(`    	<table>

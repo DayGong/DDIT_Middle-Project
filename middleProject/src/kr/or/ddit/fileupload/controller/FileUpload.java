@@ -56,7 +56,7 @@ public class FileUpload extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		
 		// 업로드한 파일이 저장될 폴더 설정
-		String uploadPath="d:/d_other/uploadFiles";
+		String uploadPath=request.getContextPath()+"/images/tour";
 		
 		// 저장될 폴더가 없으면 새로 만든다.
 		File file= new File(uploadPath);

@@ -173,6 +173,11 @@
 	        						{
 	        							infowindow.close();
 	        						}); 
+	        						
+	        						kakao.maps.event.addListener(marker, 'click', function()
+	        						{
+	        						     moveToHotelDetail(`${item.hotel_no}`, '<%= mem_id %>');
+	        						}); 	        						
 		        					// 리스트에 아이템 추가
 		        					var listItem = $('<li></li>')
     								.html(`    										
