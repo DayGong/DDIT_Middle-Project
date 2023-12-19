@@ -45,32 +45,32 @@
         <div class="card-body">
             <div class="table-responsive"> 
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <tr>
+                <tr  bgcolor="#dcdcdc">
                         <th>번호</th>
-                        <th>제목</th>
-				<!--    <th>작성자</th> -->
-                        <th>내용</th>
+                        <td><input type="text" name="brd_no" value="<%=boardVO.getBrd_no()%>" style="border:none; background-color:#dcdcdc " readonly/></td>
                         <th>작성날짜</th>
-                        <th>조회수</th>
-                        <th>첨부</th>
-                    </tr>
-                    <tr>
-                    
-                        <td><input type="text" name="brd_no" value="<%=boardVO.getBrd_no()%>" style="border:none" readonly/></td>
-                        <td><input type="text" name="brd_title" value="<%=boardVO.getBrd_title()%>"></td>
-                        <td><textarea name="brd_content"><%=boardVO.getBrd_content()%></textarea></td>
                         <td><%=boardVO.getBrd_date()%></td>
-                        <td><%=boardVO.getBrd_hits()%></td>
-                        <td>-</td>
+                         <th >조회</th>
+                        <td ><%=boardVO.getBrd_hits()%></td>
                     </tr>
+                    <tr  bgcolor="#dcdcdc">
+                        <td style="background-color: #ffffff">제목</td>
+                        <td style="background-color: #ffffff"><input type="text"  name="brd_title"  value="<%=boardVO.getBrd_title()%>" style="border:0 solid black;"></td>
+                       
+                    </tr>
+                        <th>내용</th>
+                   
+                        <td colspan="5"><textarea  name="brd_content" maxlength="3000" style="height:350px; resize:none; width:990px; border:0 solid black;"><%=boardVO.getBrd_content()%></textarea></td>
+                
                     <tr align="right">
                         <td colspan="6">
-                            <button type="submit">수정 완료</button>
-                            <a href="<%=request.getContextPath() %>/board/list.do">[목록으로]</a>
-                            <a href="./delete.do?brd_no=<%=boardVO.getBrd_no() %>">[게시글 삭제]</a>
+                            <button class="btn btn-primary" type="submit">수정 완료</button>
+                            <button  class="btn btn-primary" type="button" onclick="location.href='<%=request.getContextPath() %>/board/list.do'"> 목록 </button>
+                            <button  class="btn btn-primary" type="button" onclick="if(confirm('정말 삭제하시겠습니까?')) location.href='./delete.do?brd_no=<%=boardVO.getBrd_no() %>'"> 삭제 </button>
                         </td>
                     </tr>
                 </table>
+                <font size="2px" color="red">수정은 "제목"과 "내용"만 수정이 가능합니다</font>
             </div>
         </div>
     </form>
