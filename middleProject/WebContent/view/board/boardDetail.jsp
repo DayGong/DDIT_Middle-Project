@@ -8,6 +8,7 @@
 	String path = request.getContextPath();
 	String ss = (check != null && check.equals("true")) ? "check" : "";
 	String boardMemId = boardVO.getMem_id();
+    boolean isAdmin = (mem_id != null && mem_id.equals(boardMemId));
 %>
 <!DOCTYPE html>
 <html>
@@ -25,12 +26,11 @@
 	crossorigin="anonymous"></script>
 	<script type="text/javascript" src="<%= path %>/js/jquery-3.7.1.min.js"></script>
 	<script type="text/javascript">
-	var ss = '<%=ss %>';
 	
 	$(document).ready(function(){
-		if(ss === 'check'){
-			$('.boardMineA').css('display', 'block');
-		}
+		 <% if (ss.equals("check") && isAdmin) { %>
+         $('.boardMineA').addClass('btn btn-primary').css('display', 'inline-block');
+     <% } %>
 	});
 	</script>
 
@@ -39,6 +39,7 @@
 <body>
  	<div class="card-body">
 		<div class="table-responsive"> 
+		 <button class="btn btn-primary" onclick="location.href='<%=request.getContextPath() %>/board/list.do'">목록으로</button>
 		<table class="table" id="dataTable" width="100%"	cellspacing="0">
 			<tr class="table-light">
 			<td colspan="2"><%=boardVO.getBrd_title()%></td>
@@ -52,19 +53,17 @@
 			<tr height = "300px">
 			<td colspan="2"><%=boardVO.getBrd_content()%></td>
 			</tr>
-		</table>
 			
-			<%
-            if (ss.equals("check") && mem_id != null && mem_id.equals(boardMemId)) {
-            %>
-			<a align="right" href="<%=request.getContextPath() %>/board/update.do?brd_no=<%=boardVO.getBrd_no() %>"
-				style="display:none;" class="boardMineA">[게시글 수정]</a>
-			<a align="right" href="./delete.do?brd_no=<%=boardVO.getBrd_no() %>"
-				style="display:none;" class="boardMineA">[게시글 삭제]</a>
-			<% 
-			} 
-			%>
-			<a align="right" href="<%=request.getContextPath() %>/board/list.do">[목록으로]</a>
+		<tr>
+                    <% if (ss.equals("check") && isAdmin) { %>
+                        <td colspan="2">
+                            <button class="boardMineA" onclick="location.href='<%=request.getContextPath() %>/board/update.do?brd_no=<%=boardVO.getBrd_no() %>'">게시글 수정</button>
+                            <button class="boardMineA" onclick="if(confirm('정말 삭제하시겠습니까?')) location.href='./delete.do?brd_no=<%=boardVO.getBrd_no() %>'">게시글 삭제</button>
+                        </td>
+                    <% } %>
+                </tr>
+			
+		</table>
 	</div>
 </div>
 </body>

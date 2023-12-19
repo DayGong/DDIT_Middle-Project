@@ -5,7 +5,7 @@
 NoticeVO noticeVO = (NoticeVO) request.getAttribute("noticeVO");
 String admin = (String) session.getAttribute("admin");
 String path = request.getContextPath();
-String ss = (admin != null && admin.equals("true")) ? "admin" : ""; // 수정
+boolean isAdmin = (admin != null && admin.equals("true"));
    	
 %>
 <!DOCTYPE html>
@@ -24,12 +24,11 @@ String ss = (admin != null && admin.equals("true")) ? "admin" : ""; // 수정
 	crossorigin="anonymous"></script>
 	 <script type="text/javascript" src="<%= path %>/js/jquery-3.7.1.min.js"></script>
 <script type="text/javascript">
-var ss = '<%= ss %>';
 
 $(document).ready(function() {
-    if (ss === 'admin') {
-        $('.noticeAdminA').css('display', 'block');
-    }
+	 <% if (isAdmin) { %>
+	 $('.noticeAdminA').addClass('btn btn-primary').css('display', 'inline-block');
+   <% } %>
 });
 </script>
 </head>
@@ -37,6 +36,8 @@ $(document).ready(function() {
 <body>
  	<div class="card-body">
 		<div class="table-responsive"> 
+         <button class="btn btn-primary" onclick="location.href='<%=request.getContextPath() %>/notice/list.do'">목록으로</button>
+        
 		<table class="table" id="dataTable" width="100%"	cellspacing="0">
 			<tr class="table-light">
 				<td colspan="2"><%=noticeVO.getNoticeTitle()%></td>
@@ -47,13 +48,16 @@ $(document).ready(function() {
 			<tr height = "300px">
 				<td colspan="2"><%=noticeVO.getNoticeContent()%></td>
 			</tr>
-				
-				<a align="right" href="<%=request.getContextPath() %>/notice/list.do">[목록으로]</a>
-				<a align="right" href="<%=request.getContextPath() %>/notice/update.do?noticeNo=<%=noticeVO.getNoticeNo() %>" 
-				style="display:none;" class="noticeAdminA">[게시글 수정]</a>
-				<a align="right" href="./delete.do?noticeNo=<%=noticeVO.getNoticeNo() %>" 
-				style="display:none;" class="noticeAdminA">[게시글 삭제]</a>
-				
+			   <% if (isAdmin) { %>
+           <tr align="right">
+           <td colspan="2">
+                        <button class="noticeAdminA" onclick="location.href='<%=request.getContextPath() %>/notice/update.do?noticeNo=<%=noticeVO.getNoticeNo() %>'">게시글 수정</button>
+                        <button class="noticeAdminA" onclick="if(confirm('정말 삭제하시겠습니까?')) location.href='./delete.do?noticeNo=<%=noticeVO.getNoticeNo() %>'">게시글 삭제</button>
+                   </td>
+                    <% } %>
+                       
+                 
+			</tr>	
 			
 		</table>
 	</div>

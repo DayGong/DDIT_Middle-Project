@@ -89,6 +89,7 @@
                     </tr>
                 <% }
             } %>
+            
                 <a align="right" href="<%=request.getContextPath() %>/notice/insert.do" style='display:none' id='noticeInsertA'>[게시글쓰기]</a></td>
         </table>
 
