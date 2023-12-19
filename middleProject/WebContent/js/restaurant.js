@@ -6,6 +6,9 @@
 mypath='<%=request.getContextPath()%>';
 mem_id='<%= memVo.getMem_id() %>';
   
+
+
+
 function placesSearchCB(data, status, pagination) 
 {
 	if (status === kakao.maps.services.Status.OK) 
@@ -311,8 +314,12 @@ function displayDongRes(dong)
 	
 						kakao.maps.event.addListener(marker, 'mouseout', function() 
 						{
-							infowindow.close();
+							infowindow.close();							
 						}); 
+						kakao.maps.event.addListener(marker, 'click', function() 
+						{
+							 moveToRestaurantDetail(`${item.rest_no}`, `${mem_id}`);   
+				         }); 
 						// 리스트에 아이템 추가
 						var listItem = $('<li></li>')
 									.html(`
@@ -397,6 +404,10 @@ function searchByResName(dong)
 				kakao.maps.event.addListener(marker, 'mouseout', function() {
 				infowindow.close();
 				}); 
+				kakao.maps.event.addListener(marker, 'click', function() {
+			    moveToRestaurantDetail(`${item.rest_no}`, `${mem_id}`);   
+				}); 
+				
 					// 리스트에 아이템 추가
 			var listItem = $('<li></li>')
 									.html(`
@@ -519,7 +530,7 @@ $(document).on("click","#tashuBtn",function()	// 타슈api를 불러와서 타�
 							infowindows.push(infowindow);
 					
 							// 식당 모달 창
-							moveToRestaurantDetail(`${item.rest_no}`, `${mem_id}`); 
+						
         			
     		        		map.panTo(coords);                    
 							setTimeout(function() 

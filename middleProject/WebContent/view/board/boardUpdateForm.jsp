@@ -55,9 +55,10 @@
                         <th>첨부</th>
                     </tr>
                     <tr>
-                        <td><input type="text" name="notice_no" value="<%=boardVO.getBrd_no()%>" readonly/></td>
-                        <td><input type="text" name="notice_title" value="<%=boardVO.getBrd_title()%>"></td>
-                        <td><textarea name="notice_content"><%=boardVO.getBrd_content()%></textarea></td>
+                    
+                        <td><input type="text" name="brd_no" value="<%=boardVO.getBrd_no()%>" style="border:none" readonly/></td>
+                        <td><input type="text" name="brd_title" value="<%=boardVO.getBrd_title()%>"></td>
+                        <td><textarea name="brd_content"><%=boardVO.getBrd_content()%></textarea></td>
                         <td><%=boardVO.getBrd_date()%></td>
                         <td><%=boardVO.getBrd_hits()%></td>
                         <td>-</td>
@@ -65,7 +66,7 @@
                     <tr align="right">
                         <td colspan="6">
                             <button type="submit">수정 완료</button>
-                            <a href="<%=request.getContextPath() %>/notice/list.do">[목록으로]</a>
+                            <a href="<%=request.getContextPath() %>/board/list.do">[목록으로]</a>
                             <a href="./delete.do?brd_no=<%=boardVO.getBrd_no() %>">[게시글 삭제]</a>
                         </td>
                     </tr>

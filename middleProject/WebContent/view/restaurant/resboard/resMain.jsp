@@ -62,7 +62,8 @@
         <button class="cateBtn" name="daeDong" >동구</button>
         <button class="cateBtn" name="daeDae" >대덕구</button>
         <!-- 다른 세부 카테고리 버튼들도 유사하게 추가 -->
-        </div>
+        </div><br>
+        &nbsp;&nbsp;<img src="<%=request.getContextPath() %>/images/tour/tour_rest.png">  
         </div>        
         
         <hr>
@@ -179,6 +180,10 @@
         							{
         								infowindow.close();
         							}); 
+        							kakao.maps.event.addListener(marker, 'click', function() 
+        							{
+        							    moveToRestaurantDetail(`${item.rest_no}`, `${mem_id}`);   
+        						    }); 
         							// 리스트에 아이템 추가
         							var listItem = $('<li></li>')
         								.html(`
