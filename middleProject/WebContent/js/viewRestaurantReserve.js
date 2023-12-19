@@ -7,25 +7,7 @@ const pathName = "/" + window.location.pathname.split("/")[1];
 const origin = window.location.origin;
 const path = origin + pathName;
 
-$(function() 
-{
-	
-	// 식당 날짜가 지나면 예약이 지난 것으로 되는 것
-	changeDateReserveState();
-		
-	// 식당 예약 테이블 폼
-	memberRestaurantReserveForm();
-		
-	// 식당 예약 List를 테이블 <tbody>에 넣기
-	addMemberRestaurantReserve();
-		
-	// 식당 예약 취소 테이블 폼
-	memberRestaurantReserveCancelForm();
-		
-	// 식당 예약 취소 List를 테이블 <tbody>에 넣기
-	addMemberRestaurantReserveCancel();
-	
-})
+
 
 // 식당 예약 테이블 폼
 memberRestaurantReserveForm = function()
@@ -43,8 +25,10 @@ memberRestaurantReserveForm = function()
 }
 
 // 식당 예약 List를 테이블 <tbody>에 넣기
-addMemberRestaurantReserve = function()
+addMemberRestaurantReserve = function(memId)
 {
+	mem_id = memId;
+	
 	$.ajax
 	 ({
 		 url: `${path}/reserve/restaurantMemberReserveList.do`,
@@ -150,8 +134,10 @@ changeDateReserveState = function()
  }
 
 // 식당 예약 취소 List를 테이블 <tbody>에 넣기
-addMemberRestaurantReserveCancel = function()
+addMemberRestaurantReserveCancel = function(memId)
 {
+	mem_id = memId;
+	
 	$.ajax
 	 ({
 		 url: `${path}/reserve/restaurantMemberReserveCancelList.do`,
