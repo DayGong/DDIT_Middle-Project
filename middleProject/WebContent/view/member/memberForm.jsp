@@ -4,25 +4,36 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>마이페이지</title>
-<link rel= "stylesheet"  href="<%=request.getContextPath()%>/css/memberForm.css">
+<meta charset="UTF-8">
+<title>마이페이지</title>
+	<link rel= "stylesheet"  href="<%=request.getContextPath()%>/css/memberForm.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
 <%
    // 세션에 저장한 데이터 가져오기
    MemberVO memVo = (MemberVO)session.getAttribute("loginMember");
 %>
 <script>
 <%
-   if(memVo == null){
+	if(memVo == null){
 %>
-   alert("로그인이 필요합니다. 로그인 페이지로 이동합니다.");
-   window.location.href = '<%=request.getContextPath()%>/view/login_out/loginMain.jsp';
+	swal({
+	    title: "로그인이 필요합니다.",
+	    text: "로그인 페이지로 돌아갑니다.",
+	    icon: "warning"
+	}).then(() => {
+		window.location.href = '<%=request.getContextPath()%>/view/login_out/loginMain.jsp';
+	});
+	
 <%
-   }
+	}
 %>
-function changeIframe(url, title) {
-    document.getElementById('myIframe').src = url;
- }
+</script>
+<script>
+	function changeIframe(url, title) {
+	document.getElementById('myIframe').src = url;
+}
 </script>
 
 </head>
@@ -41,9 +52,27 @@ function changeIframe(url, title) {
                 </div>
                 <div class="mem-details" style="padding:10px;text-align: left;height: 130px;">
                     <!-- 회원 정보 내용 추가 -->
+                    <%
+                    	if(memVo != null){
+                    %>
                     <p> 이름 : <%=memVo.getMem_name()%></p>  
 					<p> ID : <%=memVo.getMem_id()%></p>  
-					<p> 주소 : <%=memVo.getMem_addr()%></p>  
+					<p> 주소 : <%=memVo.getMem_addr()%></p>
+					<%
+                    	}else{
+					%>
+					<script>
+						swal({
+					    title: "로그인이 필요합니다.",
+					    text: "로그인 페이지로 돌아갑니다.",
+					    icon: "warning"
+					}).then(() => {
+						window.location.href = '<%=request.getContextPath()%>/view/login_out/loginMain.jsp';
+					});
+					</script>
+					<%
+                    	}
+					%>
                 </div>
             <div id="mem-info-link" style="padding:10px; height:40px;">
            	
