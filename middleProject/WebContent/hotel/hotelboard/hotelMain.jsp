@@ -92,25 +92,6 @@
         </div>
     </div>
     
-    
-	<!-- 상세정보 The Modal -->
-	<div class="modal" id="wModal">
-		<div class="modal-dialog">
-    		<div class="modal-content">
-				<div class="modal-header">
-        			<h4 class="modal-title">호텔 상세정보</h4>
-       				<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            	</div>
-
-				<div class="modal-body"></div>
-				
-				<div class="modal-footer">
-        			<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-				</div>
-
-			</div>
-		</div>
-	</div> 
 
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=81f61c0a7b90a0b0dfd08d8188731b77&libraries=services"></script>
@@ -250,7 +231,7 @@
 
 				<!-- 모달 하단(후기 출력) -->
 				<div class="modal-footer">
-					<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-danger" data-bs-dismiss="modal">닫기</button>
 				</div>
 			</div>
 		</div>

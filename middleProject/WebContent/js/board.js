@@ -11,7 +11,7 @@ UpdateHitServer  = function(){
 		data : {"num" : vidx},
 		success : function(res){
 			
-			//성공 했ㅇ다면 
+			//성공 했다면 
 			if(res.flag== "성공"){
 				
 				//조회수의 위치값 검색 

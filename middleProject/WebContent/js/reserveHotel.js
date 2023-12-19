@@ -57,7 +57,7 @@ showHotelDetailInfo = function(res)
 {
 	let infoCode = `
 		<div class="backImgDiv">
-			<img src="${path}/images/hotel/${res.hotel_img}">
+			<img id="img2" src="${path}/images/hotel/${res.hotel_img}">
 		</div>
 		<div class="infoDiv">
 			<h4 class="modal-title fix-text">${res.hotel_name}</h4>
@@ -81,7 +81,7 @@ showHotelDetailInfo = function(res)
 			</table>
 		</div>
 	
-	<div> <!-- 카카오페이API 버튼 -->
+	<div id="kakao"> <!-- 카카오페이API 버튼 -->
 		<img src="${path}/images/icon/payment_icon_yellow_medium.png" 
 				id="payBtn" onclick="requestPay()">
 	</div>
@@ -99,27 +99,27 @@ openHotelReserveForm = function()
 	
 	let bodyCode = `
 	<div>
-		<h2>인원 선택</h2>
+		<h2 class="modalh1">인원 선택</h2>
 		<input type="number" id="rsv_count" name="rsv_count" oninput="changeRoomState()"
 				min="${peopleMin}" max="${peopleMax}" value="${peopleMin}">
 	</div>
 	<div>
-		<h2>숙박 날짜 선택</h2>
+		<br><br><h2 class="modalh1" style="line-height:0.5;">숙박 날짜 선택</h2>
 		<div id="addDateDiv">
 			<div id="dateStartForm">
-				<h5>시작일</h5>
+				<br><h5 class="modalh2" style="line-height:0.5;">시작일</h5>
 				<input type="date" id="select_start_date" name="hotel_rsv_startdate" 
 						min="${year}-${month}-${dayZero}" value="${year}-${month}-${dayZero}">
 			</div>
 			<div id="dateEndForm">
-				<h5>종료일</h5>
+				<br><h5 class="modalh2" style="line-height:0.5;">종료일</h5>
 				<input type="date" id="select_end_date" name="hotel_rsv_enddate" value="${year}-${month}-${dayZero}">
 			</div>
 		</div>
 	</div>
 	<div>
 		<div id="addRoomDiv">
-			<label for="hotel_rsv_room" class="form-label">
+			<br><label for="hotel_rsv_room" class="form-label">
 				객실 선택
 			</label>
 			<div class="form_radio_btn">

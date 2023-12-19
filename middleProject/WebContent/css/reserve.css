@@ -21,13 +21,13 @@
 	font-family: 'GmarketSansMedium';
 }
 
-.modal2{
+.modal2, .modalh1{
 	font-family: 'Cafe24SsurroundAir';
 	font-size: 25px;
 	font-weight: bold;
 	
 }
-.modal3{
+.modal3, .modalh2{
 	font-family: 'Cafe24SsurroundAir';
 	font-size: 20px;
 	font-weight: bold;
@@ -38,6 +38,12 @@
 	 margin: -30px 0 0 100px;
 	 
 	 
+}
+.form-label{
+	font-family: 'Cafe24SsurroundAir';
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 0.5; 
 }
 
 #restaurant_rsv_btn{
@@ -59,6 +65,10 @@
 	background: #1a75ed;
 	border: 1px solid #1a75ed;
 	color: white;		
+}
+
+#left-modal-body{
+	margin-left: 25px;
 }
 
 /* 모달창 중간 부분 폼과 상세정보가 양옆으로 나오도록 구역 설정*/
@@ -83,11 +93,26 @@
 	background-size: cover;
 }
 
+
 #img1{
-	width:450px; 
+	width: 450px; 
 	height: 450px; 
 	border-radius: 10%; 
 	margin-left: 60px;
+}
+
+#img2{
+	width: 450px; 
+	height: 450px; 
+	border-radius: 10%; 
+	margin-left: -150px;
+}
+
+#kakao{
+	margin: 0 0 0 250px;
+}
+.infoDiv{
+	margin: -30px 0 0 -110px;
 }
 
 /* number 옆에 항상 화살표 보이게 설정 */
@@ -98,7 +123,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 #rsv_count {
-	width: 300px;
+	width: 100px;
 	height: 30px;
 	font-size: 15px;
 	border-style: solid;
