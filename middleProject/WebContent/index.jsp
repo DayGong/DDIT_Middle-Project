@@ -86,6 +86,7 @@
 </div><!-- 메인 이미지 슬라이드 css 끝 -->
 
 <!-- 축제 관련 내용 jsp -->
+<jsp:include page="/view/main/mainUsedCulture.jsp"/>
 
 <!-- 공연 관련 내용 jsp -->
 

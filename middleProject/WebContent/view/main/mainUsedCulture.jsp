@@ -28,7 +28,8 @@ $(function()
 			<p> 대전의 축제<br>봐볼래유? </p>
 		</div>
 		<div>
-			<div id="locationCultureDiv" style="width: 100px; height:100px;">
+			<div id="locationCultureDiv" style="width: 100px; height:100px;" 
+				onclick="location.href='<%=request.getContextPath()%>/cultureboard/cultureMain.jsp'">
 				<img alt="화살표" src="<%= request.getContextPath() %>/images/icon/right.png">
 			</div>
 		</div>
