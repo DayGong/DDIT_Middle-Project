@@ -203,10 +203,17 @@ if (vo != null)
 <body>
 	<div class="card-body">
 		<div class="table-responsive">
+<<<<<<< HEAD
 		<a href="<%=request.getContextPath()%>/board/list.do">
 			    <img src="<%=request.getContextPath() %>/images/icon/메뉴아이콘.png" alt="메뉴" style="width:20px; height:20px; float:right;"/>
 			</a>
 			
+=======
+			<a href="<%=request.getContextPath()%>/board/list.do">
+			    <img src="<%=request.getContextPath() %>/images/icon/메뉴아이콘.png" alt="메뉴" style="width:20px; height:20px; float:right;"/>
+			</a>
+		
+>>>>>>> branch 'master' of https://github.com/DayGong/DDIT_MiddleProject
 			<table class="table" id="dataTable" width="100%" cellspacing="0">
 				<tr class="table-light">
 					<td colspan="2"><%=boardVO.getBrd_title()%>
