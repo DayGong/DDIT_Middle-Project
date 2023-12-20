@@ -34,7 +34,7 @@ $(function()
 {
 	
 	// 식당 날짜가 지나면 예약이 지난 것으로 되는 것
-	changeDateReserveState();
+	// changeDateReserveState();
 		
 	// 식당 예약 List를 테이블 <tbody>에 넣기
 	addMemberRestaurantReserve('<%= mem_id %>');
