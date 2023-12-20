@@ -44,18 +44,17 @@
  <form action="<%=request.getContextPath() %>/board/update.do" method="post"> <!-- 수정된 데이터를 처리할 서블릿 경로 지정 -->
         <div class="card-body">
             <div class="table-responsive"> 
+                <font size="2px" color="red">수정은 "제목"과 "내용"만 수정이 가능합니다</font>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <tr  bgcolor="#dcdcdc">
+                <tr  bgcolor="#dcdcdc" align="center">
                         <th>번호</th>
-                        <td><input type="text" name="brd_no" value="<%=boardVO.getBrd_no()%>" style="border:none; background-color:#dcdcdc " readonly/></td>
-                        <th>작성날짜</th>
-                        <td><%=boardVO.getBrd_date()%></td>
-                         <th >조회</th>
-                        <td ><%=boardVO.getBrd_hits()%></td>
+                        <td align="left"><input type="text" name="brd_no" value="<%=boardVO.getBrd_no()%>" style="border:none; background-color:#dcdcdc " readonly/></td>
+                        <td></td>
+                        <td align="right" style="word-spacing:7px; "><font style="font-weight: bolder">작성날짜</font>  <%=boardVO.getBrd_date()%> <font style="font-weight: bolder">조회</font>  <%=boardVO.getBrd_hits()%></td>
                     </tr>
                     <tr  bgcolor="#dcdcdc">
-                        <td style="background-color: #ffffff">제목</td>
-                        <td style="background-color: #ffffff"><input type="text"  name="brd_title"  value="<%=boardVO.getBrd_title()%>" style="border:0 solid black;"></td>
+                        <td style="background-color: #ffffff"><font style="font-weight: bolder">제목</font></td>
+                        <td style="background-color: #ffffff" colspan="5"><input type="text"  name="brd_title"  value="<%=boardVO.getBrd_title()%>" style="border:0 solid black;width:1000px;"></td>
                        
                     </tr>
                         <th>내용</th>
@@ -70,7 +69,6 @@
                         </td>
                     </tr>
                 </table>
-                <font size="2px" color="red">수정은 "제목"과 "내용"만 수정이 가능합니다</font>
             </div>
         </div>
     </form>
