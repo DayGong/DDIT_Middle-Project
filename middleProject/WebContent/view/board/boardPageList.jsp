@@ -64,12 +64,12 @@
 <div class="card-body">
     <div class="table-responsive">
         <table class="table" id="dataTable" width="100%" cellspacing="0">
-            <tr class="table-light">
-                <th>번호</th>
-                <th>제목</th>
-                <th>작성날짜</th>
-                <th>조회수</th>
-                <th>작성자</th>
+            <tr class="table-light" align="center" >
+                <th>No</th>
+                <th >제목</th>
+                <th >작성날짜</th>
+                <th >조회수</th>
+                <th >작성자</th>
             </tr>
             <% if (totalBoards == 0) { %>
                 <tr>
@@ -77,12 +77,12 @@
                 </tr>
             <% } else {
                 for (BoardVO boardVO : currentPageBoards) { %>
-                    <tr onclick="updateHitAndRedirect(<%=boardVO.getBrd_no()%>)" style="cursor:pointer">
-                        <td><%=boardVO.getBrd_no()%></td>
-                        <td><%=boardVO.getBrd_title()%></td>
-                        <td><%=boardVO.getBrd_date()%></td>
-                        <td><%=boardVO.getBrd_hits()%></td>
-                        <td><%=boardVO.getMem_id()%></td>
+                    <tr onclick="updateHitAndRedirect(<%=boardVO.getBrd_no()%>)" style="cursor:pointer" align="center">
+                        <td ><%=boardVO.getBrd_no()%></td>
+                        <td ><%=boardVO.getBrd_title()%></td>
+                        <td ><%=boardVO.getBrd_date()%></td>
+                        <td ><%=boardVO.getBrd_hits()%></td>
+                        <td ><%=boardVO.getMem_id()%></td>
                        
                     </tr>
                 <% }
