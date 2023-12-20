@@ -44,7 +44,7 @@
  <form action="<%=request.getContextPath() %>/board/update.do" method="post"> <!-- 수정된 데이터를 처리할 서블릿 경로 지정 -->
         <div class="card-body">
             <div class="table-responsive"> 
-                <font size="2px" color="red">수정은 "제목"과 "내용"만 수정이 가능합니다</font>
+                <font size="2px" color="red">"제목"과 "내용"만 수정이 가능합니다</font>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <tr  bgcolor="#dcdcdc" align="center">
                         <th>번호</th>
