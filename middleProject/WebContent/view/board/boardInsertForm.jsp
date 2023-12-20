@@ -40,6 +40,9 @@ BoardVO boardVO = (BoardVO) request.getAttribute("boardVO");
 
     <script>
         function complete() {
+        	const contentTextArea = document.getElementById("content");
+            const content = contentTextArea.value.replace(/\n/g, "<br>");
+            contentTextArea.value = content;
             swal("글 작성이 완료되었습니다.");
             document.getElementById("boardInsertForm").submit(); 
         }

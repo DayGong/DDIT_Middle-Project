@@ -59,11 +59,11 @@
                     </tr>
                         <th>내용</th>
                    
-                        <td colspan="5"><textarea  name="brd_content" maxlength="3000" style="height:350px; resize:none; width:990px; border:0 solid black;"><%=boardVO.getBrd_content()%></textarea></td>
+                        <td colspan="5"><textarea id="content" name="brd_content" maxlength="3000" style="height:350px; resize:none; width:990px; border:0 solid black;"><%=boardVO.getBrd_content()%></textarea></td>
                 
                     <tr align="right">
                         <td colspan="6">
-                            <button class="btn btn-primary" type="submit">수정 완료</button>
+                            <button class="btn btn-primary" type="submit" onclick="complete()">수정 완료</button>
                             <button  class="btn btn-primary" type="button" onclick="location.href='<%=request.getContextPath() %>/board/list.do'"> 목록 </button>
                             <button  class="btn btn-primary" type="button" onclick="if(confirm('정말 삭제하시겠습니까?')) location.href='./delete.do?brd_no=<%=boardVO.getBrd_no() %>'"> 삭제 </button>
                         </td>
@@ -72,5 +72,18 @@
             </div>
         </div>
     </form>
+    <script>
+	 function complete() {
+     	const contentTextArea = document.getElementById("content");
+         const content = contentTextArea.value.replace(/\n/g, "<br>");
+         contentTextArea.value = content;
+         swal("글 작성이 완료되었습니다.");
+         document.getElementById("boardInsertForm").submit(); // 작성완료 버튼 클릭 시 form을 submit할 수 있도록 추가
+     }
+        window.onload = function() {
+            var textarea = document.querySelector("textarea[name='brd_content']");
+            textarea.value = textarea.value.replace(/<br>/g, "\n");
+        }
+    </script>
 </body>
 </html>
