@@ -322,6 +322,7 @@ button:active {
  align-items: center;
  
  }
+ 
 #search-container input[type="text"] {
     width: calc(100% - 80px);
     margin-right: 10px;

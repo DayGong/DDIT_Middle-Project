@@ -106,12 +106,12 @@ openHotelReserveForm = function()
 	<div>
 		<br><br><h2 class="modalh1" style="line-height:0.5;">숙박 날짜 선택</h2>
 		<div id="addDateDiv">
-			<div id="dateStartForm">
+			<div id="dateStartForm" class="dateDiv">
 				<br><h5 class="modalh2" style="line-height:0.5;">시작일</h5>
 				<input type="date" id="select_start_date" name="hotel_rsv_startdate" 
 						min="${year}-${month}-${dayZero}" value="${year}-${month}-${dayZero}">
 			</div>
-			<div id="dateEndForm">
+			<div id="dateEndForm" class="dateDiv">
 				<br><h5 class="modalh2" style="line-height:0.5;">종료일</h5>
 				<input type="date" id="select_end_date" name="hotel_rsv_enddate" value="${year}-${month}-${dayZero}">
 			</div>

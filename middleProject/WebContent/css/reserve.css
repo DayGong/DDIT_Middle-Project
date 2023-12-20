@@ -123,7 +123,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 #rsv_count, #rest_rsv_count {
-	width: 100px;
+	width: 150px;
 	height: 30px;
 	font-size: 15px;
 	border-style: solid;
@@ -173,6 +173,8 @@ input[type="number"]::-webkit-outer-spin-button {
 	background: #1a75ed;
 	color: #fff;
 }
+
+
 
 /* Hover 설정 */
 .form_radio_btn label:hover {
@@ -224,3 +226,13 @@ table.reserveTable td {
 .spaceDiv {
 	margin-top: 100px;
 }
+
+.dateDiv input[type=date] {
+	border-radius: 30px;
+	border: 2px solid lightgray;
+}
+
+.dateDiv input[type=date]:focus {
+	border: 2px solid lightgray;
+}
+

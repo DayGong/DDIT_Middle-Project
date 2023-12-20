@@ -102,7 +102,7 @@ openRestaurantReserveForm = function(res)
 	<div>
 		<br><h2 class="modal2">예약 날짜 선택</h2>
 		<div id="restDateDiv">
-			<div id="restRsvDate">
+			<div id="restRsvDate" class="dateDiv">
 				<input type="date" id="rest_rsv_date" name="rest_rsv_date" 
 						oninput="restaurantReservedTime(${res.rest_no}, this.value)"
 						min="${year}-${month}-${dayZero}" value="${year}-${month}-${dayZero}">
@@ -126,7 +126,8 @@ getTimeSelectList = function(res)
 	
 	var strHours = `
 	<br><label for="rest_rsv_time" class="modal3">예약 시간 선택</label><br>
-	<select name="rest_rsv_time" id="rest_rsv_time" size="10">`;
+	<select name="rest_rsv_time" id="rest_rsv_time" size="10"
+		style="width: 150px; border-radius: 10px; padding-left: 10px; border: 2px solid lightgray;">`;
 	
 	for(var i = openTime ; i <= endTime; i++)
 	{
