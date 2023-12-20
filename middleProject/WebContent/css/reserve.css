@@ -236,3 +236,33 @@ table.reserveTable td {
 	border: 2px solid lightgray;
 }
 
+#addMemberHotelReserve input[type=button],
+#addMemberRestaurantReserve input[type=button]
+{
+	font-family: 'GmarketSansMedium'; 
+	border-radius: 10px;
+	border: 1px solid #0080ff;
+	background-color: #0080ff;
+	color: #FFFFFF;
+	font-size: 10px;
+	font-weight: normal;
+	padding: 5px 10px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
+
+#addMemberHotelReserveCancel input[type=button],
+#addMemberRestaurantReserveCancel input[type=button] {
+	font-family: 'GmarketSansMedium'; 
+	border-radius: 10px;
+	border: 1px solid gray;
+	background-color: gray;
+	color: #FFFFFF;
+	font-size: 10px;
+	font-weight: normal;
+	padding: 5px 10px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
