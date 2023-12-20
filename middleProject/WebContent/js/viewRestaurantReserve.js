@@ -7,23 +7,6 @@ const pathName = "/" + window.location.pathname.split("/")[1];
 const origin = window.location.origin;
 const path = origin + pathName;
 
-
-
-// 식당 예약 테이블 폼
-memberRestaurantReserveForm = function()
-{
-	restaurantForm = `
-	<table border="1">
-		<tr>
-			<td>식당예약번호</td><td>식당명</td><td>예약날짜</td>
-			<td>예약시간</td><td>인원수</td><td></td>
-		</tr>
-		<tbody id="addMemberRestaurantReserve"></tbody>
-	</table>`;
-
-	$('#memberRestaurantReserveList').html(restaurantForm);
-}
-
 // 식당 예약 List를 테이블 <tbody>에 넣기
 addMemberRestaurantReserve = function(memId)
 {
@@ -44,7 +27,7 @@ addMemberRestaurantReserve = function(memId)
 			{
 				restaurantReserveList += `
 				<tr>
-					<td colspan="6">예약 목록이 없습니다.</td>
+					<td colspan="6" style="color: gray; text-align: center;">예약 목록이 없습니다.</td>
 				</tr>
 				`;
 			} else 
@@ -89,8 +72,13 @@ restaurantReserveCancel = function(rest_rsv_no)
 		},
 		success: function()
 		{
-			swal("식당 예약이 취소되었습니다.", "success");
-			// location.href=`${path}/reserveBtnTemp.jsp`; // 이동할 회원 관리 페이지
+			swal({
+				title: "식당 예약이 취소되었습니다.",
+				icon: "success"
+			}).then(function()
+			{
+				window.location.reload();
+			})
 		},
 		error: function(xhr)
 		{
@@ -117,21 +105,6 @@ changeDateReserveState = function()
 	})
 }
 
-// 식당 예약 취소 테이블 폼
- memberRestaurantReserveCancelForm = function()
- {
-	restaurantCancelForm = `
-	<table border="1">
-		<tr>
-			<td>식당예약번호</td><td>식당명</td><td>예약날짜</td>
-			<td>예약시간</td><td>인원수</td><td></td>
-		</tr>
-		<tbody id="addMemberRestaurantReserveCancel"></tbody>
-	</table>`;
-
-	$('#memberRestaurantCancelReserveList').html(restaurantCancelForm);
- }
-
 // 식당 예약 취소 List를 테이블 <tbody>에 넣기
 addMemberRestaurantReserveCancel = function(memId)
 {
@@ -152,7 +125,7 @@ addMemberRestaurantReserveCancel = function(memId)
 			{
 				restaurantReserveCancelList += `
 				<tr>
-					<td colspan="6">취소 및 만료 목록이 없습니다.</td>
+					<td colspan="6" style="color: gray; text-align: center;">취소 및 만료 목록이 없습니다.</td>
 				</tr>
 				`;
 			} else 
