@@ -281,9 +281,9 @@ if (vo != null)
 						<br>
 						<br> <label>내용&nbsp;&nbsp;</label>
 						<textarea id="rpl_content" name="rpl_content" class="txt"></textarea>
-						><br>
+						<br>
 						<br> <br> <br> <input type="button" value="확인"
-							name="updatesend" class="action">
+							name="updatesend" class="action" >
 
 					</form>
 				</div>
@@ -291,7 +291,7 @@ if (vo != null)
 				<!-- Modal footer -->
 				<div class="modal-footer">
 					<button type="button" class="btn btn-danger"
-						data-bs-dismiss="modal">Close</button>
+						data-bs-dismiss="modal" style="background-color: #0080ff; border:none;">Close</button>
 				</div>
 
 			</div>
