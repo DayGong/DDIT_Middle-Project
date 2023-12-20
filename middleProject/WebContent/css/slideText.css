@@ -121,7 +121,8 @@
 }
 
 .hrefBtn button {
-	font-family: 'EliceDigitalBaeum_Bold';
+	font-family: 'Cafe24SsurroundAir';
+	font-weight: bold;
 	font-size: 20px;
 	text-decoration: none;
 	color: white;
@@ -166,6 +167,11 @@
 	text-align: left;
 }
 
+#placeDiv > table > tbody > tr {
+	border-color: lightgray;
+    border-style: solid;
+    border-width: thin;
+}
 #placeDiv > table > thead > tr > td {
 	border-bottom: 1px solid rgba(0,0,0,.1);
 	background: #1a75ed;

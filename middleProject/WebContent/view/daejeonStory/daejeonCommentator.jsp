@@ -26,27 +26,33 @@
 <div class="container scroll_wrap">
 	<div class="scroll_on type_top">
 		<h4>문화관광해설사란?</h4>
+		<br>
+		<br>
+		<br>
 		<img src="<%= path %>/images/upSlide/daejeonTour1.jpg"
 			style="width: 800px; height: 500px; border-radius: 0px 70px;">
 	</div>
 	<div class="scroll_on type_right flexSide">
 		<div id="textSmall" style="width: 1300px;">
-			<p>
-				우리 지역을 방문한 관광객들에게  관광지에 대한 이해와 체험 기회를 제공하기 위하여 역사, 문화, 자연 등 관광자원 전반에 대한 전문적인 해설을 도와주는 사람을 말합니다.
+			<p style="text-align:center;">
+				우리 지역을 방문한 관광객들에게  관광지에 대한 <br>
+				이해와 체험 기회를 제공하기 위하여 <br>
+				역사, 문화, 자연 등 관광자원 전반에 대한  <br>
+				전문적인 해설을 도와주는 사람을 말합니다. <br>
 			</p>
 		</div>
 	</div>
-
-	<div class="scroll_on type_top">
+<br><br>
+	<div class="scroll_on type_top" >
 		<h4>배치현황</h4>
 	</div>
 	<div class="scroll_on type_top flexSide" id="placeDiv">
-        <table border="1">
+        <table border="1" style="text-align:center;">
 			<thead>
 				<tr>
-					<th>권역명</th>
-					<th>배치장소</th>
-					<th>비고</th>
+					<th style="text-align:center;">권역명</th>
+					<th style="text-align:center;">배치장소</th>
+					<th style="text-align:center;">비고</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -114,24 +120,32 @@
 	</div>
 	
 	<div class="scroll_on type_right flexSide">
-		<div class="flexSide" id="daejeonImg" style="background-image: url('<%= path %>/images/upSlide/daejeonTour2.jpg');">
-			<div class="stateDiv">
-				<strong>활동기간</strong>
-	            <ul>
-	                <li>연중무휴 원칙(신정ㆍ설ㆍ추석 명절 휴무)</li>
-	                <li>1일 7시간(10:00~17:00)근무 <br>
-	                    (단재 신채호 생가지는 16:00까지)
+		<div class="flexSide" id="daejeonImg" style="background-image: url('<%= path %>/images/upSlide/daejeonTour2.jpg'); border-radius: 10%">
+			<div class="stateDiv" style="text-align:center;">
+				<strong id="st1" style="margin-left:-10px;">활동기간</strong>
+				<br><br><br>
+	            <ul class="ul1" style="margin-left:-40px;">
+	                <li>연중무휴 원칙<br>
+	                (신정ㆍ설ㆍ추석 명절 휴무)</li>
+	                <li>1일 7시간<br>
+	                (10:00~17:00)근무 <br>
+	                (단재 신채호 생가지는 16:00까지)
 	                </li>
-	                <li>동절기 2개월간(1, 12월)은 실내 근무가 가능한 관광지만 활동</li>
+	                <li>동절기 2개월간(1, 12월)은 <br>
+	                실내 근무가 가능한 관광지만 활동</li>
 	            </ul>
 			</div>
-			<div class="stateDiv">
-				<strong>근무방법</strong>
-				<ul>
+			<div class="stateDiv" style="text-align:center;">
+				<strong id="st2" style="margin-left:-10px;">근무방법</strong>
+				<br><br><br>
+				<ul class="ul1" style="margin-left:-40px;">
 	                <li>권역별 1~3명 상시배치 근무원칙</li>
-	                <li>해설시간 : 1일 3회 / 오전 10시, 오후 2시, 오후 4시</li>
-	                <li>배치장소, 관광객 수요 등에 따라 탄력적 조정 배치<br>
-                                        ※ 단체관광객(10명 이상) 예약 신청 시 현장 동행 해설
+	                <li>해설시간 : 1일 3회 <br>
+	              	  오전 10시, 오후 2시, 오후 4시</li>
+	                <li>배치장소, 관광객 수요 등에 <br>
+	               	 따라 탄력적 조정 배치<br>
+                                        ※ 단체관광객(10명 이상) 예약 <br>
+                                        신청 시 현장 동행 해설
                 	</li>
            	 	</ul>
 			</div>
@@ -142,10 +156,12 @@
 		<h4>예약안내</h4>
 	</div>
 	
-	<div class="scroll_on type_top flexSide">
+	<div class="scroll_on type_top flexSide" style="text-align:center;">
 		<div class="stateDiv rsvDiv" id="leftDiv">
-			<strong>해설신청방법 및 안내전화</strong>
-            <ul class="grn">
+			<br><br>
+			<strong id="st3">해설신청방법 및 안내전화</strong>
+			<br><br>
+            <ul class="grn" style="text-align:center; margin-left:-30px;">
                 <li>
                     <strong>대전광역시 관광마케팅과</strong><br>
                     042)270-3981
@@ -160,9 +176,11 @@
                 </li>
             </ul>
 		</div>
-		<div class="stateDiv rsvDiv" style="">
-			<strong>기타 관광안내</strong>
-            <ul>
+		<div class="stateDiv rsvDiv" style="text-align:center;">
+			<br><br>
+			<strong id="st4">기타 관광안내</strong>
+			<br><br>
+            <ul class="grn" style="text-align:center; margin-left:-30px;">
                 <li>대전종합관광안내소 : 042) 861-1330</li>
                 <li>트래블라운지 : 042) 221-1905</li>
                 <li>서대전역 관광안내소 : 042) 523-1338</li>

@@ -1,5 +1,12 @@
 @charset "UTF-8";
 
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* 헤더용 */
 @font-face {
     font-family: 'EliceDigitalBaeum_Bold';
@@ -35,6 +42,25 @@
 a {
 	text-decoration: none;
 	color: inherit;
+}
+
+#st1, #st2{
+	font-family: 'GmarketSansMedium';
+	font-size: 30px;
+}
+
+#st3, #st4{
+	font-family: 'GmarketSansMedium';
+	font-size: 30px;
+}
+
+.ul1{
+	font-family: 'GmarketSansMedium';
+}
+
+.grn{
+	font-family: 'GmarketSansMedium';
+	
 }
 
 /* 위로 가기 버튼 화면 고정 */
