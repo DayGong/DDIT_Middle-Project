@@ -85,7 +85,6 @@
 	            </div>
            	
                    <a href="#" onclick="changeIframe('<%=request.getContextPath()%>/member/updateMember.do')">회원수정</a>
-                   <a href="<%=request.getContextPath()%>/member/logoutMember.do">로그아웃</a>
                    <a href="#" onclick="changeIframe('<%=request.getContextPath()%>/view/withdraw/memberWithdraw.jsp')">탈퇴하기</a>
                    
             	

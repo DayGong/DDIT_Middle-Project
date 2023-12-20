@@ -1,4 +1,4 @@
-<%@page import="kr.or.ddit.vo.MemberVO"%>
+<%@page import="kr.or.ddit.vo.AdminVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,21 +9,19 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/memberInfo.css">
 <%
    // 세션에 저장한 데이터 가져오기
-   MemberVO memVo = (MemberVO)session.getAttribute("loginMember");
+	AdminVO adVo = (AdminVO)session.getAttribute("loginAdmin");
 %>
-</head> 
+</head>
 <body>
 <div id ="container">
-<h1>내 정보</h1>
+<h1>관리자 정보</h1>
 	<div id="mapper" >
 	<%
-		if(memVo != null){
+		if(adVo != null){
 	%>
-		<p> 이름    : <%=memVo.getMem_name()%></p>  
-		<p> 아이디 : <%=memVo.getMem_id()%></p>
-		<p> 연락처 : <%=memVo.getMem_tel() %>
-		<p> 주소    : <%=memVo.getMem_addr()%></p>
-		<p> 이메일 : <%=memVo.getMem_mail()%></p>
+		<p> 이름    : <%=adVo.getAdmin_name()%></p>  
+		<p> 아이디 : <%=adVo.getAdmin_id()%></p>
+		<p> 이메일 : <%=adVo.getAdmin_mail()%></p>
 		
 	<%
 		}else{
@@ -36,5 +34,6 @@
 	</div>
 	<span><img src="<%=request.getContextPath()%>/images/login/스판그림.png"></span>
 </div>
+
 </body>
 </html>
