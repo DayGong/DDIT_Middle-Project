@@ -205,8 +205,9 @@ if (vo != null)
 <body>
 	<div class="card-body">
 		<div class="table-responsive">
-			<button class="btn btn-primary"
-				onclick="location.href='<%=request.getContextPath()%>/board/list.do'">목록으로</button>
+			<div id="menu" onclick="location.href='<%=request.getContextPath()%>/board/list.do'">
+			<img src= "<%=request.getContextPath() %>/images/icon/메뉴아이콘.png" alt="메뉴" style="width:20px; height:20px; margin-left: 1080px; margin-bottom: 20px;">
+		</div>
 			<table class="table" id="dataTable" width="100%" cellspacing="0">
 				<tr class="table-light">
 					<td colspan="2"><%=boardVO.getBrd_title()%>
