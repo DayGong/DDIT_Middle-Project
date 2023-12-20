@@ -154,7 +154,7 @@ if (vo != null)
 			data : {"bonum" : brdNo}, 
 			success :function(res){
 				rcode="";
-				$("iframe[name=board]",window.top.document).css("height", (window.top.frames["board"].document.body.scrollHeight+(res.length * 130))+'px' );
+				$("iframe[name=board]",window.top.document).css("height", (window.top.frames["board"].document.body.scrollHeight+(res.length * 110))+'px' );
 				
 				$.each(res,function(i,v){
 					
@@ -258,10 +258,10 @@ if (vo != null)
 		</div>
 		<h3>댓글</h3>
 	</div>
-	<div id="insertRe" style="display: none;">
-		<textarea id="retext" style="width: 600px;" ></textarea>&nbsp;
-		<input type="button" class="action" name="replyInsert" id="replyInsert"
-			value="댓글 작성" style="width: 100px;"><br><br>
+	<div id="insertRe" style="display: none">
+		<textarea id="retext" style="width: 500px;"></textarea>
+		&nbsp;&nbsp;<input type="button" class="action" name="replyInsert"
+			value="댓글 작성" style="width: 150px;"><br>
 	</div>
 	<div class="replytab"></div>
 	</div>
