@@ -154,7 +154,7 @@ if (vo != null)
 			data : {"bonum" : brdNo}, 
 			success :function(res){
 				rcode="";
-				$("iframe[name=board]",window.top.document).css("height", (window.top.frames["board"].document.body.scrollHeight+(res.length * 110))+'px' );
+				$("iframe[name=board]",window.top.document).css("height", (window.top.frames["board"].document.body.scrollHeight+(res.length * 130))+'px' );
 				
 				$.each(res,function(i,v){
 					
@@ -205,21 +205,25 @@ if (vo != null)
 <body>
 	<div class="card-body">
 		<div class="table-responsive">
-			<button class="btn btn-primary"
-				onclick="location.href='<%=request.getContextPath()%>/board/list.do'">목록으로</button>
+			<a href="<%=request.getContextPath()%>/board/list.do">
+			    <img src="<%=request.getContextPath() %>/images/icon/메뉴아이콘.png" alt="메뉴" style="width:20px; height:20px; float:right;"/>
+			</a>
+		
 			<table class="table" id="dataTable" width="100%" cellspacing="0">
 				<tr class="table-light">
 					<td colspan="2"><%=boardVO.getBrd_title()%>
 							<%
 						if (ss.equals("check") && isAdmin) {
 					%>
+					 	<a href="<%=request.getContextPath()%>/board/update.do?brd_no=<%=boardVO.getBrd_no()%>" >
+						    <img src="<%=request.getContextPath() %>/images/icon/수정.png" alt="수정" style="width:20px; height:20px; float:right; margin:5px;"/>
+						</a>
+						&nbsp;
+						<a href="javascript:void(0);" onclick="if(confirm('정말 삭제하시겠습니까?')) location.href='./delete.do?brd_no=<%=boardVO.getBrd_no()%>'">
+						    <img src="<%=request.getContextPath() %>/images/icon/삭제.png" alt="삭제" style="width:20px; height:20px; float:right; margin:5px;"/>
+						</a>
 					 
-						<button class="boardMineA"
-							onclick="location.href='<%=request.getContextPath()%>/board/update.do?brd_no=<%=boardVO.getBrd_no()%>'" style="float: right;">게시글
-							수정</button>
-						<button class="boardMineA"
-							onclick="if(confirm('정말 삭제하시겠습니까?')) location.href='./delete.do?brd_no=<%=boardVO.getBrd_no()%>'" style="float: right;">게시글
-							삭제</button>
+					</td> 
 				
 					<%
 						}
@@ -227,8 +231,9 @@ if (vo != null)
                       
                             <button class="btn btn-primary" onclick="location.href='<%=request.getContextPath() %>/board/update.do?brd_no=<%=boardVO.getBrd_no() %>'" style="float: right;">게시글 수정</button>
                             <button class="btn btn-primary" onclick="if(confirm('정말 삭제하시겠습니까?')) location.href='./delete.do?brd_no=<%=boardVO.getBrd_no() %>'" style="float: right;">게시글 삭제</button>
-                        
+                        </td>
                     <% } %>
+                    
 				</tr>
 				<tr>
 					<td colspan="2"><%=boardVO.getMem_id()%></td>
@@ -253,10 +258,10 @@ if (vo != null)
 		</div>
 		<h3>댓글</h3>
 	</div>
-	<div id="insertRe" style="display: none">
-		<textarea id="retext" style="width: 500px;"></textarea>
-		&nbsp;&nbsp;<input type="button" class="action" name="replyInsert"
-			value="댓글 작성" style="width: 150px;"><br>
+	<div id="insertRe" style="display: none;">
+		<textarea id="retext" style="width: 600px;" ></textarea>&nbsp;
+		<input type="button" class="action" name="replyInsert" id="replyInsert"
+			value="댓글 작성" style="width: 100px;"><br><br>
 	</div>
 	<div class="replytab"></div>
 	</div>
