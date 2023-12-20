@@ -27,7 +27,7 @@ public class ReplyUpdate extends HttpServlet {
 		
 		  ReplyVO vo= new ReplyVO();
 	      int renum=Integer.parseInt(request.getParameter("rpl_no"));
-	      String cont= request.getParameter("cont");
+	      String cont= request.getParameter("rpl_content");
 		  vo.setRpl_no(renum);
 		  vo.setRpl_content(cont);    //replyVo에 넣기
 		  
