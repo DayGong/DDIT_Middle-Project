@@ -92,35 +92,6 @@
             <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
         </div>
     </div>
-    
-    
-  <!-- 상세정보 The Modal -->
-<div class="modal" id="wModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-     
-      <div class="modal-header">
-        <h4 class="modal-title">호텔 상세정보</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        
-     
-      </div>
-
-      
-      <div class="modal-body">        
-       
-      </div>
-
-     
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-      </div>
-
-    </div>
-  </div>
-</div> 
-
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e849d9640ad67395b31b38844f71b8eb&libraries=services"></script>
 <script>
@@ -184,7 +155,8 @@
         							}); 
         							kakao.maps.event.addListener(marker, 'click', function() 
         							{
-        							    moveToRestaurantDetail(`${item.rest_no}`, `${mem_id}`);   
+        								console.log("첫번째 resMain.jsp의 mem_id Test ==> " + '<%= mem_id %>');
+        							    moveToRestaurantDetail(`${item.rest_no}`, '<%= mem_id %>');   
         						    }); 
         							// 리스트에 아이템 추가
         							var listItem = $('<li></li>')
@@ -215,6 +187,8 @@
         								});
         								infowindow.open(map, marker);
         								infowindows.push(infowindow);
+        								
+        								console.log("resMain.jsp의 mem_id Test ==> " + '<%= mem_id %>');
         							
         								// 식당 모달창 호출
         								moveToRestaurantDetail(`${item.rest_no}`, '<%= mem_id %>');   

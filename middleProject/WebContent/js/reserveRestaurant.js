@@ -196,6 +196,7 @@ reserveRestaurant = function()
 	} else
 	{
 		console.log('rest_time: ' + rest_rsv_time);
+		console.log('mem_id: ' + mem_id);
 		if ( rest_rsv_time == null || rest_rsv_time == "null" )
 		{
 			swal({

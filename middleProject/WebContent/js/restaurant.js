@@ -5,7 +5,6 @@
 
 mypath='<%=request.getContextPath()%>';
 mem_id='<%= memVo.getMem_id() %>';
-  
 
 
 
@@ -153,40 +152,6 @@ function addMarker(position, idx, places)
 		markers = [];
 	}
 
-        // 페이지네이션을 표시하는 함수
-   /*     function displayPagination(pagination) {
-            var paginationEl = document.getElementById('pagination'),
-                fragment = document.createDocumentFragment(),
-                i;
-
-            // totalCount와 itemsPerPage가 있다고 가정
-            var totalCount = 100; // API로 받아온 데이터의 총 개수
-            var itemsPerPage = 10; // 페이지당 보여줄 아이템의 개수
-            var totalPages = Math.ceil(totalCount / itemsPerPage); // 총 페이지 수 
-            
-            while (paginationEl.hasChildNodes()) {
-                paginationEl.removeChild(paginationEl.lastChild);
-            }
-
-            for (i = 1; i <= pagination.last; i++) {
-                var el = document.createElement('a');
-                el.href = "#";
-                el.innerHTML = i;
-
-                if (i === pagination.current) {
-                    el.className = 'on';
-                } else {
-                    el.onclick = (function(i) {
-                        return function() {
-                            pagination.gotoPage(i);
-                        }
-                    })(i);
-                }
-
-                fragment.appendChild(el);
-            }
-            paginationEl.appendChild(fragment);
-        } */
 
 // 인포윈도우를 표시하는 함수
 function displayInfowindow(marker, title, address, phone) 
@@ -211,6 +176,9 @@ function removeAllChildNods(el)
 
 $(()=>
 {
+	  
+	console.log("restaurant.js의 mem_id ==> " + `${mem_id}`);
+
 	$(document).on('click','.cateBtn' ,function()
 	{
 		cate=$(this).attr('name');
@@ -318,6 +286,8 @@ function displayDongRes(dong)
 						}); 
 						kakao.maps.event.addListener(marker, 'click', function() 
 						{
+							//////////////////////////////////////////////////////////
+							console.log(`restaurant.js의 323번째 줄 mem_id ${mem_id}`)
 							 moveToRestaurantDetail(`${item.rest_no}`, `${mem_id}`);   
 				         }); 
 						// 리스트에 아이템 추가
@@ -351,6 +321,8 @@ function displayDongRes(dong)
 							infowindows.push(infowindow);
 						
 							// 식당 모달 창
+							/////////////////////////////////////////////////////////
+							console.log(`restaurant.js의 358번째 줄 mem_id ${mem_id}`)
 							moveToRestaurantDetail(`${item.rest_no}`, `${mem_id}`);     
 						
 	    		        	map.panTo(coords);                    
@@ -405,6 +377,8 @@ function searchByResName(dong)
 				infowindow.close();
 				}); 
 				kakao.maps.event.addListener(marker, 'click', function() {
+					////////////////////////////////////////////////////////
+					console.log(`restaurant.js의 415번째 줄 mem_id ${mem_id}`)
 			    moveToRestaurantDetail(`${item.rest_no}`, `${mem_id}`);   
 				}); 
 				
@@ -437,6 +411,8 @@ function searchByResName(dong)
 					infowindows.push(infowindow);
 					
 					// 식당 모달 창
+					//////////////////////////////////////////////////////////////
+					console.log(`restaurant.js의 449번째 줄 mem_id ${mem_id}`)
 					moveToRestaurantDetail(`${item.rest_no}`, `${mem_id}`);     
 						
     		        map.panTo(coords);                     
@@ -529,9 +505,6 @@ $(document).on("click","#tashuBtn",function()	// 타슈api를 불러와서 타�
 							infowindow.open(map, marker);
 							infowindows.push(infowindow);
 					
-							// 식당 모달 창
-						
-        			
     		        		map.panTo(coords);                    
 							setTimeout(function() 
 							{

@@ -135,41 +135,6 @@ function placesSearchCB(data, status, pagination)
             markers = [];
         }
 
-        // 페이지네이션을 표시하는 함수
-   /*     function displayPagination(pagination) {
-            var paginationEl = document.getElementById('pagination'),
-                fragment = document.createDocumentFragment(),
-                i;
-
-            // totalCount와 itemsPerPage가 있다고 가정
-            var totalCount = 100; // API로 받아온 데이터의 총 개수
-            var itemsPerPage = 10; // 페이지당 보여줄 아이템의 개수
-            var totalPages = Math.ceil(totalCount / itemsPerPage); // 총 페이지 수 
-            
-            while (paginationEl.hasChildNodes()) {
-                paginationEl.removeChild(paginationEl.lastChild);
-            }
-
-            for (i = 1; i <= pagination.last; i++) {
-                var el = document.createElement('a');
-                el.href = "#";
-                el.innerHTML = i;
-
-                if (i === pagination.current) {
-                    el.className = 'on';
-                } else {
-                    el.onclick = (function(i) {
-                        return function() {
-                            pagination.gotoPage(i);
-                        }
-                    })(i);
-                }
-
-                fragment.appendChild(el);
-            }
-            paginationEl.appendChild(fragment);
-        } */
-
      // 인포윈도우를 표시하는 함수
         function displayInfowindow(marker, title, address, phone) {
             var content = '<div style="padding:20px;z-index:1;">' +
@@ -193,6 +158,9 @@ function placesSearchCB(data, status, pagination)
 	
 
   $(()=>{
+	
+	console.log("hotel.js의 mem_id ==> " + `${mem_id}`);
+	
 	$(document).on('click','.cateBtn' ,function(){
 		cate=$(this).attr('name');
 		gthis=$(this);
@@ -281,7 +249,9 @@ function displayOneHotel(dong){
 				}); 
 				
 				kakao.maps.event.addListener(marker, 'click', function() {
-				moveToHotelDetail(`${item.hotel_no}`, `${mem_id}`);
+					//////////////////////////////////////////////////////////
+					console.log(`hotel.js의 253번째 줄 mem_id ${mem_id}`)
+					moveToHotelDetail(`${item.hotel_no}`, `${mem_id}`);
 				}); 				
 					// 리스트에 아이템 추가
 			var listItem = $('<li></li>')
@@ -310,6 +280,8 @@ function displayOneHotel(dong){
 					infowindows.push(infowindow);
 					
 					// 호텔 모달창 출력
+					//////////////////////////////////////////////////////////
+					console.log(`hotel.js의 284번째 줄 mem_id ${mem_id}`)
 					moveToHotelDetail(`${item.hotel_no}`, `${mem_id}`);
 					
     		        map.panTo(coords);                    
@@ -365,7 +337,9 @@ function searchByHotelName(dong){
 				}); 
 				
 				kakao.maps.event.addListener(marker, 'click', function() {
-				moveToHotelDetail(`${item.hotel_no}`, `${mem_id}`);
+					//////////////////////////////////////////////////////////
+					console.log(`hotel.js의 341번째 줄 mem_id ${mem_id}`)
+					moveToHotelDetail(`${item.hotel_no}`, `${mem_id}`);
 				}); 
 					// 리스트에 아이템 추가
 			var listItem = $('<li></li>')
@@ -395,6 +369,8 @@ function searchByHotelName(dong){
 					infowindows.push(infowindow);
 					
 					// 호텔 모달창 출력
+					//////////////////////////////////////////////////////////
+					console.log(`hotel.js의373번째 줄 mem_id ${mem_id}`)
 					moveToHotelDetail(`${item.hotel_no}`, `${mem_id}`);
         			
     		        map.panTo(coords);                     
@@ -521,7 +497,9 @@ function viewHotelTour(){
 				});
 				
 				kakao.maps.event.addListener(marker, 'click', function() {
-				moveToHotelDetail(`${item.hotel_no}`, `${mem_id}`);
+					//////////////////////////////////////////////////////////
+					console.log(`hotel.js의 501번째 줄 mem_id ${mem_id}`)
+					moveToHotelDetail(`${item.hotel_no}`, `${mem_id}`);
 				}); 				 
 					// 리스트에 아이템 추가
 			var listItem = $('<li></li>')
@@ -551,6 +529,8 @@ function viewHotelTour(){
 					infowindows.push(infowindow);
 					
 					// 호텔 모달창 출력
+					//////////////////////////////////////////////////////////
+					console.log(`hotel.js의 533번째 줄 mem_id ${mem_id}`)
 					moveToHotelDetail (`${item.hotel_no}`, `${mem_id}`);   
         			
     		        map.panTo(coords);                     
