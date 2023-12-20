@@ -7,22 +7,6 @@ const pathName = "/" + window.location.pathname.split("/")[1];
 const origin = window.location.origin;
 const path = origin + pathName;
 
-// 숙소 예약 테이블 폼
-memberHotelReserveForm = function()
-{
-	hotelReserveForm = `
-		<table border='1'>
-	 		<tr>
-	 			<td>예약번호</td><td>숙소명</td><td>예약시작일</td><td>예약종료일</td>
-	 			<td>인원수</td><td>객실정보</td><td>결제금액</td><td></td>
-	 		</tr>
-	 		<tbody id="addMemberHotelReserve"></tbody>
-		 </table>
-	`;
-	
-	$('#memberHotelReserveList').html(hotelReserveForm);
-}
-
 // 숙소 예약 List를 테이블 <tbody>에 넣기
 addMemberHotelReserve = function(memId)
 {
@@ -43,7 +27,7 @@ addMemberHotelReserve = function(memId)
 			{
 				hotelReserveList += `
 				<tr>
-					<td colspan="8">예약 목록이 없습니다.</td>
+					<td colspan="8" style="color: gray; text-align: center;">예약 목록이 없습니다.</td>
 				</tr>
 				`;
 			} else 
@@ -106,22 +90,6 @@ hotelReserveCancel = function(hotel_rsv_no)
 	})
 }
 
-// 숙소 예약 취소 테이블 폼
-memberHotelReserveCancelForm = function()
-{
-	hotelReserveCancelForm = `
-		<table border='1'>
-	 		<tr>
-	 			<td>예약번호</td><td>숙소명</td><td>예약시작일</td><td>예약종료일</td>
-	 			<td>인원수</td><td>객실정보</td><td>결제금액</td><td></td>
-	 		</tr>
-	 		<tbody id="addMemberHotelReserveCancel"></tbody>
-		 </table>
-	`;
-	
-	$('#memberHotelCancelList').html(hotelReserveCancelForm);
-}
-
 // 숙소 예약 취소 List를 테이블 <tbody>에 넣기
 addMemberHotelReserveCancel = function(memId)
 {
@@ -142,7 +110,7 @@ addMemberHotelReserveCancel = function(memId)
 			{
 				hotelReserveList += `
 				<tr>
-					<td colspan="8">취소 및 만료 목록이 없습니다.</td>
+					<td colspan="8" style="color: gray; text-align: center;">취소 및 만료 목록이 없습니다.</td>
 				</tr>
 				`;
 			} else 

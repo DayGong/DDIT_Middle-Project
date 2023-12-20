@@ -24,21 +24,16 @@
 <script src="<%= path %>/js/jquery-3.7.1.min.js"></script>
 <script src="<%= path %>/js/viewHotelReserve.js"></script>
 
+<link rel="stylesheet" href="<%= path %>/css/reserve.css">
+
 <!-- 예쁜 Alert창 -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <script>
 $(function() {
-	
-	// 숙소 예약 테이블 폼
-	memberHotelReserveForm();
-	
+
 	// 숙소 예약 List를 테이블 <tbody>에 넣기
 	addMemberHotelReserve('<%= mem_id %>');
-	
-	
-	// 숙소 예약 취소 테이블 폼
-	memberHotelReserveCancelForm();
 		
 	// 숙소 예약 취소 List를 테이블 <tbody>에 넣기
 	addMemberHotelReserveCancel('<%= mem_id %>');
@@ -49,9 +44,43 @@ $(function() {
 </head>
 <body>
 <!-- 숙소 예약 목록 띄울 div-->
-<div id="memberHotelReserveList"></div>
+<div id="memberHotelReserveList">
+	<table class="reserveTable">
+		<thead>
+			<tr>
+				<th>예약번호</th>
+				<th>숙소명</th>
+				<th>예약시작일</th>
+				<th>예약종료일</th>
+				<th>인원수</th>
+				<th>객실정보</th>
+				<th>결제금액</th>
+				<th></th>
+	 		</tr>
+	 	<thead>
+	 	<tbody id="addMemberHotelReserve"></tbody>
+	</table>
+</div>
+
+<div class="spaceDiv"></div>
 
 <!-- 숙소 예약 취소 및 완료 목록을 띄울 div -->
-<div id="memberHotelCancelList"></div>
+<div id="memberHotelCancelList">
+	<table class="reserveTable">
+		<thead>
+		 	<tr>
+		 		<th>예약번호</th>
+		 		<th>숙소명</th>
+		 		<th>예약시작일</th>
+		 		<th>예약종료일</th>
+		 		<th>인원수</th>
+		 		<th>객실정보</th>
+		 		<th>결제금액</th>
+		 		<th></th>
+		 	</tr>
+	 	</thead>
+	 	<tbody id="addMemberHotelReserveCancel"></tbody>
+	</table>
+</div>
 </body>
 </html>

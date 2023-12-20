@@ -37,11 +37,15 @@
     
   <!-- 자유게시판 -->  
     <div id="menu1" class="container tab-pane active"><br>
-  		<iframe class="mainIframe" name="board" src="<%=request.getContextPath() %>/board/list.do"></iframe> 
+<!--     	 onload="this.style.height=(this.contentWindow.document.body.scrollHeight+100)+'px';" -->
+  		<iframe class="mainIframe" name="board" scrolling="no" src="<%=request.getContextPath() %>/board/list.do"></iframe> 
     </div>
   </div>
   
 </div>
+<br>
+<br>
+<br>
 <!-- 하단 메뉴바 삽입 -->
 <jsp:include page="/view/main/bottom.jsp"/>
 </body>
