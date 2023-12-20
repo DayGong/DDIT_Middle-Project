@@ -154,7 +154,7 @@ if (vo != null)
 			data : {"bonum" : brdNo}, 
 			success :function(res){
 				rcode="";
-				$("iframe[name=board]",window.top.document).css("height", (window.top.frames["board"].document.body.scrollHeight+(res.length * 110))+'px' );
+				$("iframe[name=board]",window.top.document).css("height", (window.top.frames["board"].document.body.scrollHeight+(res.length * 200))+'px' );
 				
 				$.each(res,function(i,v){
 					
