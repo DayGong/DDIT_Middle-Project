@@ -85,10 +85,7 @@
 			<a href="<%=request.getContextPath()%>/view/notice/mainboard.jsp">게시판</a>
 			<ul class="inner_menu">
 				<li class="dept2">
-					<a href="#">공지게시판</a>
-				</li>
-				<li class="dept2">
-					<a href="#">자유게시판</a>
+					<a href="<%=request.getContextPath()%>/view/notice/mainboard.jsp">공지/자유<br>게시판</a>
 				</li>
 			</ul>
 		</li>
@@ -106,10 +103,7 @@
 			<a href="<%=request.getContextPath()%>/view/member/memberForm.jsp">마이페이지</a>
 			<ul class="inner_menu">
 				<li class="dept2">
-					<a href="#">내정보</a>
-				</li>
-				<li class="dept2">
-					<a href="#">예약조회</a>
+					<a href="<%=request.getContextPath()%>/view/member/memberForm.jsp">내정보</a>
 				</li>
 			</ul>
 		<%

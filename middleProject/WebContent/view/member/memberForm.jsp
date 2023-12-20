@@ -58,7 +58,6 @@
                     %>
                     <p> 이름 : <%=memVo.getMem_name()%></p>  
 					<p> 아이디 : <%=memVo.getMem_id()%></p>  
-					<p> 주소 : <%=memVo.getMem_addr()%></p>
 					<%
                     	}else{
 					%>

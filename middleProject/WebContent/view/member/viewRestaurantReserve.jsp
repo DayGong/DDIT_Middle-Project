@@ -22,7 +22,7 @@
 
 %>
 <script src="<%= path %>/js/jquery-3.7.1.min.js"></script>
-<script src="<%= path %>/js/viewRestaurantReserve.js"></script>
+<script src="<%= path %>/js/viewRestaurantReserve.js?version=1"></script>
 
 <!-- 예쁜 Alert창 -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
