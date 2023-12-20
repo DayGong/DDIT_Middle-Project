@@ -6,7 +6,9 @@
 <head>
 <meta charset="UTF-8">
 
-<title>마이페이지</title>
+<title>대전 관광 홈페이지</title>
+<link rel="icon" href="<%=request.getContextPath()%>/images/icon/꿈돌5-1.png" type="image/x-icon">  
+
 	<link rel= "stylesheet"  href="<%=request.getContextPath()%>/css/memberForm.css">
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -47,7 +49,8 @@
         <div id="left">
             <!-- 왼쪽에 오는 내정보 -->
             <div class="mem-info" style="width: 340px;">
-                <div><h2><b>내정보</b></h2></div>
+            <br>
+<!--                 <div><h2><b>내정보</b></h2></div> -->
                 <div class="image-wrapper">
                 <img src="<%=request.getContextPath()%>/images/login/루돌푸꿈돌.png" class="round-image" >
                 </div>
@@ -87,7 +90,7 @@
                    
             	
             </div>            
-            </div> 
+            </div>  
         </div>
 
         <div id="right">
@@ -95,7 +98,7 @@
             <!-- 정보 표시 -->
             <div class="maincolumn">
                 <div class="cate">
-         		<iframe id ="myIframe" name ="itr" >
+         		<iframe src="memberInfo.jsp" id ="myIframe" name ="itr" target=>
          		</iframe>
                 </div>
             </div>
@@ -106,4 +109,4 @@
 <jsp:include page="/view/main/bottom.jsp"/>
 </div>
 </html>
-</body>
+</body> 

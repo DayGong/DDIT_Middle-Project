@@ -122,7 +122,7 @@ input[type="number"]::-webkit-outer-spin-button {
     opacity: 1;
 }
 
-#rsv_count {
+#rsv_count, #rest_rsv_count {
 	width: 100px;
 	height: 30px;
 	font-size: 15px;
@@ -195,6 +195,7 @@ table.reserveTable {
 }
 
 table.reserveTable thead th {
+	font-family: 'Cafe24SsurroundAir';
 	padding: 10px;
 	font-weight: bold;
 	vertical-align: top;
@@ -203,6 +204,7 @@ table.reserveTable thead th {
 }
 
 table.reserveTable tbody th {
+	font-family: 'GmarketSansMedium';
 	width: 150px;
 	padding: 10px;
 	font-weight: bold;
@@ -212,6 +214,7 @@ table.reserveTable tbody th {
 }
 
 table.reserveTable td {
+	font-family: 'GmarketSansMedium';
 	width: 350px;
 	padding: 10px;
 	vertical-align: top;
