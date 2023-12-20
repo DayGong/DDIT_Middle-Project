@@ -54,8 +54,8 @@
         </div>
         <br><br><br>
         <div id="mapinsert" style="display:none">
-        	관리자 메뉴
-				<button class="cateBtn"  name="mapinsert" >명소 추가</button>
+        	관리자 메뉴&nbsp;
+				<button class="cateBtn"  name="mapinsert" style="border:none;"><div style="margin-top:2px;">명소 추가</div></button>
 			</div>
 		<img src="<%=request.getContextPath() %>/images/tour/tour_tour2.png">  
 	</div> 
