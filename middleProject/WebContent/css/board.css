@@ -29,6 +29,10 @@
 		border-radius: 4px;
 		font-size: 15px;
 	}
+	#replyInsert{
+	  margin-bottom: 10px;
+	}
+	
 	
 	.modal-dialog {
 		padding: 20px;
@@ -57,5 +61,16 @@
 		background-color: #0080ff;
  		color: white;	
 	}
-	
-	
+
+#retext,#replyInsert {
+    display: inline-block;
+    font-size: 16px;
+    vertical-align: middle; /* 요소들의 수직 정렬을 위해 사용할 수 있습니다. */
+    /* 그 외에 필요한 스타일을 추가할 수 있습니다. */
+}
+
+	#retext{	
+		border: 1px solid #ccc;
+		border-radius: 5px;
+		resize:none;
+	}
