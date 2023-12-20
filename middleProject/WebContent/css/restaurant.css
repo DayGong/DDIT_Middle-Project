@@ -328,7 +328,7 @@ button:active {
     margin-right: 10px;
     font-family: 'GmarketSansMedium';
     border-radius: 10px; 
-	border-color: black;
+	border: 2px solid lightgray;
 }
 
 #search-container {
