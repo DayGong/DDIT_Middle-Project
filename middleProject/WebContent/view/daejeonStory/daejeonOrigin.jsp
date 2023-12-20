@@ -7,7 +7,9 @@
 <%
 	String path = request.getContextPath();
 %>
-<title>대전의 유래</title>
+<title>대전 관광 홈페이지</title>
+<link rel="icon" href="<%= path %>/images/icon/꿈돌5-1.png" type="image/x-icon">  
+
 <script src="<%= path %>/js/jquery-3.7.1.min.js"></script>
 <script src="<%= path %>/js/slideText.js"></script>
 <link rel="stylesheet" href="<%= path %>/css/slideText.css">
@@ -31,7 +33,7 @@
     
     <div class="scroll_on type_right flexSide">
     	<div style="width: 14%"></div>
-    	<div style="width: 500px">
+    	<div style="width: 500px; margin-right: 10px;">
     		<p>1914년 <br> 대전군(大田郡)이 형성된 당시</p>
     		<br>
     		<span>
@@ -50,7 +52,7 @@
     
     <div class="scroll_on type_top flexSide">
     	<div style="width: 14%"></div>
-    	<div style="width: 500px">
+    	<div style="width: 500px; margin-right: 10px;">
 		    <p>1905년 대전역이 세워지자</p>
 		    <br>
 		    <span>
@@ -72,7 +74,7 @@
 	
     <div class="scroll_on type_bottom flexSide">
     	<div style="width: 14%"></div>
-    	<div style="width: 500px">
+    	<div style="width: 500px; margin-right: 10px;">
     		<span>
     		대전면은 1931년 ‘대전읍(邑)’으로 개편되었다가 1935년 ‘대전부(府)’로 승격되면서 
 			명실상부한 ‘도시’로서의 위상을 갖게 된 것이다.
@@ -86,7 +88,7 @@
     	</div>
 	</div>
 	
-	<div style="height: 300px">
+	<div style="height: 100px">
 	</div>
 </div>
 
