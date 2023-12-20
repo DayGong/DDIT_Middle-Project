@@ -4,7 +4,9 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>Login</title>
+<title>한밭 지킴이</title>
+<link rel="icon" href="<%= request.getContextPath() %>/images/icon/꿈돌5-1.png" type="image/x-icon">
+
 <link rel= "stylesheet"  href="<%=request.getContextPath()%>/css/login.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
