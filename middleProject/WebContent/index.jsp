@@ -85,7 +85,7 @@
 	</div>
 </div><!-- 메인 이미지 슬라이드 css 끝 -->
 
-<!-- 날씨 API -->
+<!-- 날씨 API --> 
 <jsp:include page="/view/weather/weather.jsp"/>
 
 <!-- 배너2 -->
@@ -97,6 +97,10 @@
 
 <!-- 공연 관련 내용 jsp -->
 
+<br>
+<br>
+<br>
+<br>
 
 <!-- 동영상 자동 재생(height 자동 조절 안 됨 - 수정해보다가 안 되면 발표 화면에 맞춰서 고정값 넣기) -->
 <div class="container" id="videoArea">
