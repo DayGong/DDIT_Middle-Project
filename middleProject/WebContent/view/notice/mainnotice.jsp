@@ -22,21 +22,21 @@
   <!-- 탭선택 -->
   <ul class="nav nav-pills justify-content-center" role="tablist">
     <li class="nav-item">
-      <a class="nav-link" data-toggle="pill" href="#home">공지게시판</a>
+      <a class="nav-link active" data-toggle="pill" href="#home">공지게시판</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link active" data-toggle="pill" href="#menu1">자유게시판</a>
+      <a class="nav-link" data-toggle="pill" href="#menu1">자유게시판</a>
     </li>
   </ul>
 
   <!-- 공지게시판 -->
   <div  align="center" class="tab-content">
-    <div id="home" class="container tab-pane fade"><br>
+    <div id="home" class="container tab-pane active"><br>
   		<iframe class="mainIframe" name="notice" src="<%=request.getContextPath() %>/notice/list.do"></iframe> 
     </div>
     
   <!-- 자유게시판 -->  
-    <div id="menu1" class="container tab-pane active"><br>
+    <div id="menu1" class="container tab-pane fade"><br>
   		<iframe class="mainIframe" name="board" src="<%=request.getContextPath() %>/board/list.do"></iframe> 
     </div>
   </div>

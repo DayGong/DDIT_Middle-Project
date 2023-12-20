@@ -82,10 +82,13 @@
 			</ul>
 		</li>
 		<li class="dept1">
-			<a href="<%=request.getContextPath()%>/view/notice/mainboard.jsp">게시판</a>
+			<a href="<%=request.getContextPath()%>/view/notice/mainnotice.jsp">게시판</a>
 			<ul class="inner_menu">
 				<li class="dept2">
-					<a href="<%=request.getContextPath()%>/view/notice/mainboard.jsp">공지/자유<br>게시판</a>
+					<a href="<%=request.getContextPath()%>/view/notice/mainnotice.jsp">공지게시판</a>
+					</li>
+					<li class="dept2">
+					<a href="<%=request.getContextPath()%>/view/notice/mainboard.jsp">자유게시판</a>
 				</li>
 			</ul>
 		</li>
