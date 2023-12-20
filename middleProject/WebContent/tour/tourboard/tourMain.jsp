@@ -16,7 +16,7 @@
 </head>
 
 <%
-  String getAdmin= (String)session.getAttribute("check");
+  String getAdmin= (String)session.getAttribute("admin");
    String admin=null;
   if(getAdmin!=null) admin=getAdmin;
 	  

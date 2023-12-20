@@ -69,7 +69,7 @@ function deleteReply(vidx){
 	          if(res.flag=="성공"){
 	    
 		 alert("삭제 성공!!");
-	     
+	     $(this).parents('.reply-body').remove();
           
 	        
 	}else{
@@ -97,7 +97,7 @@ ReplyUpdateServer =function(){
 		   //화면을 수정
          if(res.flag=="성공"){
 	
-	         $(vp3).html(modiout);
+	        
 				}         
             
 		},

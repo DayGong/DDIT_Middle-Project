@@ -71,8 +71,9 @@ boolean isAdmin = (mem_id != null && mem_id.equals(boardMemId));
 	    		    cate=$(this).attr('name');
 	    			gthis=$(this);
 	    			vnum=$(this).attr('idx');
-	    			
+	    			reply.rpl_no=vnum;
 	    			reply.brd_no=brdNo;
+	    			
 	    			reply.rpl_content= $('#retext').val().replace(/<br>/g, '\n').trim();
 	    			
 	    			reply.mem_id="<%=mem_id%>";
@@ -84,7 +85,7 @@ boolean isAdmin = (mem_id != null && mem_id.equals(boardMemId));
 	    			}
 	    			if(cate=="r_delete"){	
 	    			 deleteReply(vnum);
-	    			 $(this).parents('.reply-body').remove();
+	    			
 	    			 ReplyListServer();
 	    	         }
 	    			if(cate=="r_update"){
@@ -96,6 +97,8 @@ boolean isAdmin = (mem_id != null && mem_id.equals(boardMemId));
 	   			     
 	   			      $('#rpl_content').val(mcont);
 	   			      $('#mem_id').val(`${uvo.mem_id}`);
+	   			      $('#bnno').val(`${reply.rpl_no}`);
+	   			      
 	   			      $('#mem_id').prop('readonly', true);
 	    			  $("#uModal").modal('show');
 	    			  	
@@ -104,12 +107,15 @@ boolean isAdmin = (mem_id != null && mem_id.equals(boardMemId));
 	    			
 	    			if(cate=="updatesend"){
 	    		    modicont= $('#rpl_content').val();
+	    		    bnno= $('#bnno').val();
 	    		    modiout= modicont.replaceAll(/\n/g, "<br>");
-	    		    vp3=$("p3",this);
+	    		    vp3=$(this).parents(".reply-body");
 	    		    reply.rpl_content= modicont;
 	    		    
-	  			    reply.rpl_no= vidx;
+	  			    reply.rpl_no= bnno;
 	  			    ReplyUpdateServer();
+	  			    $("#uModal").modal('hide');
+	  			    $(vp3).find('.p3').html(modiout);
 	    			}
 	    			
 
