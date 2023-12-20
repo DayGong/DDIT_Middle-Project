@@ -120,7 +120,7 @@
 	</div>
 	
 	<div class="scroll_on type_right flexSide">
-		<div class="flexSide" id="daejeonImg" style="background-image: url('<%= path %>/images/upSlide/daejeonTour2.jpg'); border-radius: 10%">
+		<div class="flexSide" id="daejeonImg" style="background-image: url('<%= path %>/images/upSlide/daejeonTour2.jpg'); border-radius: 20px">
 			<div class="stateDiv" style="text-align:center;">
 				<strong id="st1" style="margin-left:-10px;">활동기간</strong>
 				<br><br><br>
