@@ -11,7 +11,7 @@
 <script src="<%=request.getContextPath() %>/js/mainUsedCulture.js"></script>
 
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/mainUsedCulture.css"/>
-
+ 
 <script type="text/javascript">
 $(function()
 {

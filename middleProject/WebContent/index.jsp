@@ -85,7 +85,7 @@
 	</div>
 </div><!-- 메인 이미지 슬라이드 css 끝 -->
 
-<!-- 날씨 API -->
+<!-- 날씨 API --> 
 <jsp:include page="/view/weather/weather.jsp"/>
 
 <!-- 배너2 -->
