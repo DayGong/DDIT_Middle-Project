@@ -68,7 +68,7 @@
 					%>
 					<div>
 				<!-- 관리자 일괄 체크 아웃 -->
-					<input type="button" id="doAllCheckout" value="일괄 체크 아웃" onclick="managerAllCheckout()">
+					<input type="button" id="doAllCheckout" value="숙소 체크 아웃" onclick="managerAllCheckout()">
 				    </div>
                 </div>           
             </div>  
