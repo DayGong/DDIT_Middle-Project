@@ -89,7 +89,7 @@
 <jsp:include page="/view/weather/weather.jsp"/>
 
 <!-- 배너2 -->
-<img src="<%= path %>/images/banner/배너2.png" style="margin:100px 350px 100px 350px">
+<img src="<%= path %>/images/banner/배너2.png" style="margin:100px 0 100px 350px">
 
 
 <!-- 축제 관련 내용 jsp -->
