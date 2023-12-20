@@ -42,6 +42,9 @@
   </div>
   
 </div>
+<br>
+<br>
+<br>
 <!-- 하단 메뉴바 삽입 -->
 <jsp:include page="/view/main/bottom.jsp"/>
 </body>
