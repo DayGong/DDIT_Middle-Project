@@ -205,22 +205,25 @@ if (vo != null)
 <body>
 	<div class="card-body">
 		<div class="table-responsive">
-			<div id="menu" onclick="location.href='<%=request.getContextPath()%>/board/list.do'">
-			<img src= "<%=request.getContextPath() %>/images/icon/메뉴아이콘.png" alt="메뉴" style="width:20px; height:20px; margin-left: 1080px; margin-bottom: 20px;">
-		</div>
+			<a href="<%=request.getContextPath()%>/board/list.do">
+			    <img src="<%=request.getContextPath() %>/images/icon/메뉴아이콘.png" alt="메뉴" style="width:20px; height:20px; float:right;"/>
+			</a>
+		
 			<table class="table" id="dataTable" width="100%" cellspacing="0">
 				<tr class="table-light">
 					<td colspan="2"><%=boardVO.getBrd_title()%>
 							<%
 						if (ss.equals("check") && isAdmin) {
 					%>
+					 	<a href="<%=request.getContextPath()%>/board/update.do?brd_no=<%=boardVO.getBrd_no()%>" >
+						    <img src="<%=request.getContextPath() %>/images/icon/수정.png" alt="수정" style="width:20px; height:20px; float:right; margin:5px;"/>
+						</a>
+						&nbsp;
+						<a href="javascript:void(0);" onclick="if(confirm('정말 삭제하시겠습니까?')) location.href='./delete.do?brd_no=<%=boardVO.getBrd_no()%>'">
+						    <img src="<%=request.getContextPath() %>/images/icon/삭제.png" alt="삭제" style="width:20px; height:20px; float:right; margin:5px;"/>
+						</a>
 					 
-						<button class="boardMineA"
-							onclick="location.href='<%=request.getContextPath()%>/board/update.do?brd_no=<%=boardVO.getBrd_no()%>'" style="float: right;">게시글
-							수정</button>
-						<button class="boardMineA"
-							onclick="if(confirm('정말 삭제하시겠습니까?')) location.href='./delete.do?brd_no=<%=boardVO.getBrd_no()%>'" style="float: right;">게시글
-							삭제</button>
+					</td>
 				
 					<%
 						}
@@ -228,8 +231,9 @@ if (vo != null)
                       
                             <button class="btn btn-primary" onclick="location.href='<%=request.getContextPath() %>/board/update.do?brd_no=<%=boardVO.getBrd_no() %>'" style="float: right;">게시글 수정</button>
                             <button class="btn btn-primary" onclick="if(confirm('정말 삭제하시겠습니까?')) location.href='./delete.do?brd_no=<%=boardVO.getBrd_no() %>'" style="float: right;">게시글 삭제</button>
-                        
+                        </td>
                     <% } %>
+                    
 				</tr>
 				<tr>
 					<td colspan="2"><%=boardVO.getMem_id()%></td>
