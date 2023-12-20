@@ -67,9 +67,9 @@ function deleteReply(vidx){
           type:'post',
           success :function(res){
 	          if(res.flag=="성공"){
-	    
+	   
 		 alert("삭제 성공!!");
-	     $(this).parents('.reply-body').remove();
+	     $(this).parents('.card').find('.reply-body').empty();
           
 	        
 	}else{

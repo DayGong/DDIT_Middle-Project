@@ -42,7 +42,7 @@ boolean isAdmin = (mem_id != null && mem_id.equals(boardMemId));
 	<script type="text/javascript">
 	var ss = '<%=ss %>';
 	uvo=<%=sess%>;
-	 
+	gthis=this;
 	 mypath='<%=request.getContextPath()%>';
 	 vaction=  $(this).attr('name');
 	 vidx= $(this).attr('idx');//글 번호
@@ -85,11 +85,13 @@ boolean isAdmin = (mem_id != null && mem_id.equals(boardMemId));
 	    			}
 	    			if(cate=="r_delete"){	
 	    			 deleteReply(vnum);
+	    			 window.location.reload();
+
+	    			 
 	    			
-	    			 ReplyListServer();
 	    	         }
 	    			if(cate=="r_update"){
-	    				
+	    			vp2=$(this).parents('.reply-body').find('.p3');	
 	    			vp3= $(this).parents('.reply-body').find('.p3').html().trim();    	
 	   			       
 	   			      mcont = vp3.replaceAll(/<br>/g,"\n");                 
@@ -115,7 +117,7 @@ boolean isAdmin = (mem_id != null && mem_id.equals(boardMemId));
 	  			    reply.rpl_no= bnno;
 	  			    ReplyUpdateServer();
 	  			    $("#uModal").modal('hide');
-	  			    $(vp3).find('.p3').html(modiout);
+	  			    $(vp2).html(modiout);
 	    			}
 	    			
 
