@@ -101,11 +101,7 @@
 		{
 		%>
 			<a href="<%=request.getContextPath()%>/view/member/memberForm.jsp">마이페이지</a>
-			<ul class="inner_menu">
-				<li class="dept2">
-					<a href="<%=request.getContextPath()%>/view/member/memberForm.jsp">내정보</a>
-				</li> 
-			</ul>
+			
 		<%
 		}
 		%>

@@ -45,19 +45,20 @@
 .cul_img{
 	
   min-height:100%;
-
-  
   width:95%;
   height:100%;
   object-fit: cover;
 }
 .cul_title{
-  font-size : 1.3rem;
-  font-weight: 600;
+  font-size : 2.3rem;
+  font-weight: 1000;
   margin : 4%;
+  font-family: 'Cafe24SsurroundAir';
+
 }
 .cul_des{
-  font-size : 0.8rem;
+  font-size : 1.6rem;
+  font-weight: 50;
   margin : 2% 3% 2% 4%;
 }
 .cul_mon{

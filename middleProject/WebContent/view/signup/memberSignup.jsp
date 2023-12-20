@@ -176,7 +176,7 @@ $(()=>{
 		
 		if(!telPattern.test(telvalue))
 		{
-			$('#spantel').html('핸드폰 번호를 확인 해주세요.').css('color','red');
+			$('#spantel').html('"-"를 포함해서 입력해주세요.').css('color','red');
 		}else
 		{
 			$('#spantel').html("");
