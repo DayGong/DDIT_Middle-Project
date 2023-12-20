@@ -30,6 +30,7 @@ if (vo != null)
 <title>게시판 상세보기</title>
 <script type="text/javascript" src="<%=path%>/js/jquery-3.7.1.min.js"></script>
 <script type="text/javascript" src="<%=path%>/js/board.js"></script>
+<link rel= "stylesheet"  href="<%=request.getContextPath() %>/css/board.css">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"

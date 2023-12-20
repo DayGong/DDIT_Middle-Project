@@ -349,7 +349,9 @@ function displayTour(){
           window.location.reload();
             
          } 
- 
+
+
+
 			 if(cate=="updatesend"){				
 		    formData = $('#uform').serializeArray(); // 폼 데이터를 배열로 가져옴
             udata = {};
