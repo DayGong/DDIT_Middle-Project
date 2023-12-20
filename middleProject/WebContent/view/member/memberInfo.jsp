@@ -11,7 +11,7 @@
    // 세션에 저장한 데이터 가져오기
    MemberVO memVo = (MemberVO)session.getAttribute("loginMember");
 %>
-</head>
+</head> 
 <body>
 <div id ="container">
 <h1>내 정보</h1>
