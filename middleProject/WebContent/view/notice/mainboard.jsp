@@ -4,7 +4,7 @@
 <html lang="kr">
 <head>
 <title>한밭 지킴이</title> 
-<link rel="icon" href="./images/icon/꿈돌5-1.png" type="image/x-icon"> 
+<link rel="icon" href="<%= request.getContextPath() %>/images/icon/꿈돌5-1.png" type="image/x-icon">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
