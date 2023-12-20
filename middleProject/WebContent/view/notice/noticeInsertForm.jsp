@@ -30,6 +30,9 @@
 
     <script>
         function complete() {
+        	const contentTextArea = document.getElementById("content");
+            const content = contentTextArea.value.replace(/\n/g, "<br>");
+            contentTextArea.value = content;
             swal("글 작성이 완료되었습니다.");
             document.getElementById("noticeInsertForm").submit(); // 작성완료 버튼 클릭 시 form을 submit할 수 있도록 추가
         }
