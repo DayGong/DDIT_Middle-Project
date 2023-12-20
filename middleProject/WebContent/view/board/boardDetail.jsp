@@ -2,33 +2,34 @@
 <%@page import="com.google.gson.Gson"%>
 <%@page import="kr.or.ddit.vo.BoardVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-  <%@ page isELIgnored="true" %>   
+	pageEncoding="UTF-8"%>
+<%@ page isELIgnored="true"%>
 <%
-BoardVO boardVO = (BoardVO) request.getAttribute("boardVO");
+	BoardVO boardVO = (BoardVO) request.getAttribute("boardVO");
 String check = (String) session.getAttribute("check");
 String admin = (String) session.getAttribute("admin");
 String mem_id = (String) session.getAttribute("mem_id");
 String path = request.getContextPath();
 String ss = (check != null && check.equals("true")) ? "check" : "";
 String boardMemId = boardVO.getMem_id();
-MemberVO vo= (MemberVO) session.getAttribute("loginMember");                                     
+MemberVO vo = (MemberVO) session.getAttribute("loginMember");
 boolean isAdmin = (mem_id != null && mem_id.equals(boardMemId));
+boolean isrealAdmin = (admin != null && admin.equals("true"));
 
- String sess= null;
- //vo객체를 json데이터로 변경
- Gson gson= new Gson();
- if(vo!=null) sess=gson.toJson(vo);
-
+String sess = null;
+//vo객체를 json데이터로 변경
+Gson gson = new Gson();
+if (vo != null)
+	sess = gson.toJson(vo);
 %>
-   
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>게시판 상세보기</title>
-	<script type="text/javascript" src="<%= path %>/js/jquery-3.7.1.min.js"></script>
-	<script type="text/javascript" src="<%= path %>/js/board.js"></script>
+<script type="text/javascript" src="<%=path%>/js/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="<%=path%>/js/board.js"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -38,11 +39,14 @@ boolean isAdmin = (mem_id != null && mem_id.equals(boardMemId));
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 	crossorigin="anonymous"></script>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-	<script type="text/javascript">
-	var ss = '<%=ss %>';
-	var vadmin ='<%=admin %>';
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript">
+	var ss = '<%=ss%>';
+	var vadmin ='<%=admin%>';
 	uvo=<%=sess%>;	
 	gthis=this;
 	 mypath='<%=request.getContextPath()%>';
@@ -58,13 +62,13 @@ boolean isAdmin = (mem_id != null && mem_id.equals(boardMemId));
 	 
 	 reply ={}; //필요할때마다 동적으로 속성과 메소드를 추가할수있다 댓글 저장시 사용 
 	 $(document).ready(function(){
-	       <% if (ss.equals("check") && isAdmin) { %>
+	       <%if (ss.equals("check") && isAdmin) {%>
 	         $('.boardMineA').addClass('btn btn-primary').css('display', 'inline-block');
-	     <% } %>
+	     <%}%>
 	     
-	     <%  if(ss.equals("check")){ %>
+	     <%if (ss.equals("check")) {%>
 	    	 $('#insertRe').css("display","block");
-	    	 <% } %>
+	    	 <%}%>
 		     
 	     ReplyListServer();
 	     
@@ -197,75 +201,100 @@ boolean isAdmin = (mem_id != null && mem_id.equals(boardMemId));
 </head>
 
 <body>
-    <div class="card-body">
-      <div class="table-responsive"> 
-       <button class="btn btn-primary" onclick="location.href='<%=request.getContextPath() %>/board/list.do'">목록으로</button>
-      <table class="table" id="dataTable" width="100%"   cellspacing="0">
-         <tr class="table-light">
-         <td colspan="2"><%=boardVO.getBrd_title()%></td>
-         </tr>
-         <tr>
-         <td colspan="2"><%=boardVO.getMem_id()%></td>
-         </tr>
-         <tr>
-         <td><%=boardVO.getBrd_date()%></td>  <td>조회 <%=boardVO.getBrd_hits()%></td>
-         </tr>
-         <tr height = "300px">
-         <td colspan="2"><%=boardVO.getBrd_content()%></td>
-         </tr>
-         
-      <tr>
-                    <% if (ss.equals("check") && isAdmin) { %>
-                        <td colspan="2">
-                            <button class="boardMineA" onclick="location.href='<%=request.getContextPath() %>/board/update.do?brd_no=<%=boardVO.getBrd_no() %>'">게시글 수정</button>
-                            <button class="boardMineA" onclick="if(confirm('정말 삭제하시겠습니까?')) location.href='./delete.do?brd_no=<%=boardVO.getBrd_no() %>'">게시글 삭제</button>
+	<div class="card-body">
+		<div class="table-responsive">
+			<button class="btn btn-primary"
+				onclick="location.href='<%=request.getContextPath()%>/board/list.do'">목록으로</button>
+			<table class="table" id="dataTable" width="100%" cellspacing="0">
+				<tr class="table-light">
+					<td colspan="2"><%=boardVO.getBrd_title()%></td>
+				</tr>
+				<tr>
+					<td colspan="2"><%=boardVO.getMem_id()%></td>
+				</tr>
+				<tr>
+					<td><%=boardVO.getBrd_date()%></td>
+					<td>조회 <%=boardVO.getBrd_hits()%></td>
+				</tr>
+				<tr height="300px">
+					<td colspan="2"><%=boardVO.getBrd_content()%></td>
+				</tr>
+
+				<tr>
+					<%
+						if (ss.equals("check") && isAdmin) {
+					%>
+					<td colspan="2" align="right">
+						<button class="boardMineA"
+							onclick="location.href='<%=request.getContextPath()%>/board/update.do?brd_no=<%=boardVO.getBrd_no()%>'">게시글
+							수정</button>
+						<button class="boardMineA"
+							onclick="if(confirm('정말 삭제하시겠습니까?')) location.href='./delete.do?brd_no=<%=boardVO.getBrd_no()%>'">게시글
+							삭제</button>
+					</td>
+					<%
+						}
+					%>
+				</tr>
+				<tr>
+                    <% if (ss.equals("check") && isrealAdmin) { %>
+                        <td colspan="2" align="right">
+                            <button class="btn btn-primary" onclick="location.href='<%=request.getContextPath() %>/board/update.do?brd_no=<%=boardVO.getBrd_no() %>'">게시글 수정</button>
+                            <button class="btn btn-primary" onclick="if(confirm('정말 삭제하시겠습니까?')) location.href='./delete.do?brd_no=<%=boardVO.getBrd_no() %>'">게시글 삭제</button>
                         </td>
                     <% } %>
                 </tr>
-         
-      </table>
-   </div>
-</div>
-     <div id="insertRe" style="display:none"> 
-       <textarea id="retext" style="width :500px;"></textarea>
-       &nbsp;&nbsp;<input type="button" class="action" name="replyInsert" value="댓글 작성" style="width:150px;"><br>
-     </div>
+				
+				
+				
+				
+
+			</table>
+		</div>
+	</div>
+	<div id="insertRe" style="display: none">
+		<textarea id="retext" style="width: 500px;"></textarea>
+		&nbsp;&nbsp;<input type="button" class="action" name="replyInsert"
+			value="댓글 작성" style="width: 150px;"><br>
+	</div>
 	<div class="replytab"></div>
-</div>
+	</div>
 
 	<!-- 댓글수정 The Modal -->
-<div class="modal" id="uModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
+	<div class="modal" id="uModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
 
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">댓글 수정</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">댓글 수정</h4>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+				</div>
 
-      <!-- Modal body -->
-      <div class="modal-body">
-        <form name="uform" id ="uform">
-              <input type ="hidden" id="bnno" name="bnno" class="txt">
-           <label>아이디 </label>
-           <input type ="text" id="mem_id" name="mem_id" class="txt"><br><br><br>
-           <label>내용&nbsp;&nbsp;</label>
-           <textarea  id="rpl_content" name="rpl_content" class="txt"></textarea>><br><br> 
-           <br> <br>
-           <input type="button" value="확인" name="updatesend" class="action">
-           
-         </form>         
-      </div>
-      
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-      </div>
+				<!-- Modal body -->
+				<div class="modal-body">
+					<form name="uform" id="uform">
+						<input type="hidden" id="bnno" name="bnno" class="txt"> <label>아이디
+						</label> <input type="text" id="mem_id" name="mem_id" class="txt"><br>
+						<br>
+						<br> <label>내용&nbsp;&nbsp;</label>
+						<textarea id="rpl_content" name="rpl_content" class="txt"></textarea>
+						><br>
+						<br> <br> <br> <input type="button" value="확인"
+							name="updatesend" class="action">
 
-    </div>
-  </div>
-</div>
+					</form>
+				</div>
+
+				<!-- Modal footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger"
+						data-bs-dismiss="modal">Close</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
 
 
 
