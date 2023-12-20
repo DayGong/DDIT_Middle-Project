@@ -28,7 +28,7 @@
 .container {
     display: flex;
     max-width: 1300px;
-    margin: 100px 200px; auto;
+    margin: 100px 200px auto;
     padding: 20px;
     background-color: #fff;
 /* 	border: 1px solid #ccc; */
@@ -99,7 +99,7 @@ iframe{
 	text-transform: uppercase;
 	transition: transform 80ms ease-in;
 }
-}
+
 
 .maincolumn {
     margin-top: 20px;
@@ -124,7 +124,7 @@ iframe{
 #mem-info-link #item{
 	display: flex;
 	height:20px;
-	weight:40px;	
+	width:40px;	
 }
 
 
