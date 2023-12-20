@@ -193,7 +193,7 @@
         											<div id="rest_img_div">
         												<img src="${path}/images/restaurant/${item.rest_img}"
         													style="width: 100px; height: 100px;
-        														border-radius: 70%;">
+        														border-radius: 70%; margin-right:10px;">
         											</div>
         										</td>
         										<td>${item.rest_name}</td>

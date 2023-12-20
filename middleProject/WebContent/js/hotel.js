@@ -291,7 +291,7 @@ function displayOneHotel(dong){
     											<div id="hotel_img_div">
     												<img src="${path}/images/hotel/${item.hotel_img}"
     													style="width: 100px; height: 100px;
-    														border-radius: 70%;">
+    														border-radius: 70%; margin-right:10px;">
     											</div>
     										</td>
     										<td>${item.hotel_name}</td>
@@ -375,7 +375,7 @@ function searchByHotelName(dong){
     											<div id="hotel_img_div">
     												<img src="${path}/images/hotel/${item.hotel_img}"
     													style="width: 100px; height: 100px;
-    														border-radius: 70%;">
+    														border-radius: 70%; margin-right:10px;">
     											</div>
     										</td>
     										<td>${item.hotel_name}</td>
@@ -531,7 +531,7 @@ function viewHotelTour(){
     											<div id="hotel_img_div">
     												<img src="${path}/images/hotel/${item.hotel_img}"
     													style="width: 100px; height: 100px;
-    														border-radius: 70%;">
+    														border-radius: 70%; margin-right:10px;">
     											</div>
     										</td>
     										<td>${item.hotel_name}</td>
