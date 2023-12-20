@@ -24,12 +24,12 @@ public class SendPassMail {
 		final String to = memMail; // 수신자 이메일 주소 입력
 		
 		// 수신받았을때의 이메일 제목
-		final String subject = "대전관광 홈페이지의 임시 비밀번호 입니다~~"; // 이메일 제목 입력
+		final String subject = "안녕하세요~! 한밭지킴이 임시 비밀번호 입니다."; // 이메일 제목 입력
 		
 		
 		
 		// 이메일 발신시 보낼 메세지( str : 임시비밀번호)
-		final String body = "임시번호는 : "+ getNewPass(); // 이메일 내용 입력
+		final String body = "임시 비밀번호는 "+ getNewPass() +"입니다! :)"; // 이메일 내용 입력
 		
 		
 		// 호스트주소 , 포트 번호 는 첨부한 이미지 참고 
