@@ -88,7 +88,7 @@
    
 
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=81f61c0a7b90a0b0dfd08d8188731b77&libraries=services"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e849d9640ad67395b31b38844f71b8eb&libraries=services"></script>
 
 <script>
             vadmin=<%=admin%>;

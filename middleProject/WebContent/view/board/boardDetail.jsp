@@ -97,9 +97,10 @@ if (vo != null)
                          
 	    			}
 	    			if(cate=="r_delete"){	
-	    			 deleteReply(vnum);
+	    			   if(confirm('정말 삭제하시겠습니까?'))	{
+	    					 deleteReply(vnum);
 	    			 window.location.reload();
-
+	    			   }
 	    			 
 	    			
 	    	         }
