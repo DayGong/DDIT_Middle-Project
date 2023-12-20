@@ -87,11 +87,15 @@
 
 <!-- 날씨 API -->
 <jsp:include page="/view/weather/weather.jsp"/>
+
+<!-- 배너2 -->
+<img src="<%= path %>/images/banner/배너2.png" style="margin:100px 350px 100px 350px">
+
+
 <!-- 축제 관련 내용 jsp -->
 <jsp:include page="/view/main/mainUsedCulture.jsp"/>
 
 <!-- 공연 관련 내용 jsp -->
-
 
 
 <!-- 동영상 자동 재생(height 자동 조절 안 됨 - 수정해보다가 안 되면 발표 화면에 맞춰서 고정값 넣기) -->
