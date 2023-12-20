@@ -21,9 +21,9 @@
 <div class="container">
     <br>
   <!-- 탭선택 -->
-  <ul class="nav nav-pills justify-content-center" role="tablist">
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="pill" href="#home">공지게시판</a>
+  <ul class="nav nav-pills justify-content-center" role="tablist" >
+    <li class="nav-item" >
+      <a class="nav-link" data-toggle="pill" href="#home" >공지게시판</a>
     </li>
     <li class="nav-item">
       <a class="nav-link active" data-toggle="pill" href="#menu1">자유게시판</a>
