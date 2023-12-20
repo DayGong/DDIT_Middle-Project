@@ -24,7 +24,7 @@
 	<select id="getMemberRestaurantReserve" parameterType="string" resultType="map">
 		SELECT * FROM restaurant_reserve rr, restaurant r
 		WHERE r.rest_no = rr.rest_no 
-			AND rr.mem_id = 'a001'	
+			AND rr.mem_id = #{mem_id}	
 			AND rr.rest_rsv_state = 1
         ORDER BY rr.rest_rsv_date ASC
 	</select>
@@ -40,7 +40,7 @@
         		SELECT *
             	FROM restaurant_reserve rr
             	JOIN restaurant r ON r.rest_no = rr.rest_no
-            	WHERE rr.mem_id = 'a001' AND rr.rest_rsv_state = 0
+            	WHERE rr.mem_id = #{mem_id} AND rr.rest_rsv_state = 0
             	ORDER BY rr.rest_rsv_date DESC
         	) res
         	<![CDATA[
