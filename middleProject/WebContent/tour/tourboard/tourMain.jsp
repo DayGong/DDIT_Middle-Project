@@ -5,14 +5,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>대전 관광 홈페이지</title>
+<link rel="icon" href="<%= request.getContextPath() %>/images/icon/꿈돌5-1.png" type="image/x-icon">
+
 <script src="<%=request.getContextPath() %>/js/jquery-3.7.1.min.js"></script>
 <script src="<%=request.getContextPath() %>/js/jquery.serializejson.min.js"></script>
 
-<link rel= "stylesheet"  href="<%=request.getContextPath() %>/css/tour.css">
-<script src="<%=request.getContextPath() %>/js/tour.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="<%=request.getContextPath() %>/js/tour.js"></script>
+
+<link rel= "stylesheet"  href="<%=request.getContextPath() %>/css/tour.css">
 </head>
 
 <%
