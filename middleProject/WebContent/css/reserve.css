@@ -185,3 +185,39 @@ input[type="number"]::-webkit-outer-spin-button {
 	color: #666;
 }
 /* 객실 선택 라디오 버튼 설정 끝 */
+
+/* 예약 테이블 css */
+table.reserveTable {
+	width: 100%;
+	border-collapse: collapse;
+	text-align: left;
+	line-height: 1.5;
+}
+
+table.reserveTable thead th {
+	padding: 10px;
+	font-weight: bold;
+	vertical-align: top;
+	color: #1a75ed;
+	border-bottom: 3px solid #1a75ed;
+}
+
+table.reserveTable tbody th {
+	width: 150px;
+	padding: 10px;
+	font-weight: bold;
+	vertical-align: top;
+	border-bottom: 1px solid #ccc;
+	background: #f3f6f7;
+}
+
+table.reserveTable td {
+	width: 350px;
+	padding: 10px;
+	vertical-align: top;
+	border-bottom: 1px solid #ccc;
+}
+
+.spaceDiv {
+	margin-top: 100px;
+}
