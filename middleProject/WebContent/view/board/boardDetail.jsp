@@ -306,8 +306,5 @@ if (vo != null)
 		</div>
 	</div>
 
-
-
-
 </body>
 </html>
