@@ -124,7 +124,11 @@ $(()=>{
 			},
 			success : function(res)
 			{
-				$('#spanid').html(res.sw).css('color','red');	
+				if ("사용가능 합니다." == res.sw) {
+					$('#spanid').html(res.sw).css('color','blue');
+				} else {
+					$('#spanid').html(res.sw).css('color','red');
+				}
 			}
 		});
 	});
