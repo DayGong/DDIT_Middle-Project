@@ -43,11 +43,13 @@ $(document).ready(function() {
 			<tr class="table-light">
 				<td colspan="2"><%=noticeVO.getNoticeTitle()%>
 				<% if (isAdmin) { %>
-           
-           
-                        <button class="noticeAdminA" onclick="location.href='<%=request.getContextPath() %>/notice/update.do?noticeNo=<%=noticeVO.getNoticeNo() %>'" style="float: right;">게시글 수정</button>
-                        <button class="noticeAdminA" onclick="if(confirm('정말 삭제하시겠습니까?')) location.href='./delete.do?noticeNo=<%=noticeVO.getNoticeNo() %>'" style="float: right;">게시글 삭제</button>
-                   
+           			<a href="<%=request.getContextPath()%>/notice/update.do?noticeNo=<%=noticeVO.getNoticeNo()%>" >
+						    <img src="<%=request.getContextPath() %>/images/icon/수정.png" alt="수정" style="width:20px; height:20px; float:right; margin:5px;"/>
+						</a>
+						&nbsp;
+						<a href="javascript:void(0);" onclick="if(confirm('정말 삭제하시겠습니까?')) location.href='./delete.do?noticeNo=<%=noticeVO.getNoticeNo()%>'">
+						    <img src="<%=request.getContextPath() %>/images/icon/삭제.png" alt="삭제" style="width:20px; height:20px; float:right; margin:5px;"/>
+						</a>
                     <% } %>
 			</tr>	
 			<tr>

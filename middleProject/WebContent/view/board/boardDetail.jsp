@@ -228,9 +228,13 @@ if (vo != null)
 					<%
 						}
 					if (ss.equals("check") && isrealAdmin) { %>
-                      
-                            <button class="btn btn-primary" onclick="location.href='<%=request.getContextPath() %>/board/update.do?brd_no=<%=boardVO.getBrd_no() %>'" style="float: right;">게시글 수정</button>
-                            <button class="btn btn-primary" onclick="if(confirm('정말 삭제하시겠습니까?')) location.href='./delete.do?brd_no=<%=boardVO.getBrd_no() %>'" style="float: right;">게시글 삭제</button>
+                      <a href="<%=request.getContextPath()%>/board/update.do?brd_no=<%=boardVO.getBrd_no()%>" >
+						    <img src="<%=request.getContextPath() %>/images/icon/수정.png" alt="수정" style="width:20px; height:20px; float:right; margin:5px;"/>
+						</a>
+						&nbsp;
+						<a href="javascript:void(0);" onclick="if(confirm('정말 삭제하시겠습니까?')) location.href='./delete.do?brd_no=<%=boardVO.getBrd_no()%>'">
+						    <img src="<%=request.getContextPath() %>/images/icon/삭제.png" alt="삭제" style="width:20px; height:20px; float:right; margin:5px;"/>
+						</a>
                         </td>
                     <% } %>
                     
@@ -259,12 +263,12 @@ if (vo != null)
 		<h3>댓글</h3>
 	</div>
 	<div id="insertRe" style="display: none">
-		<textarea id="retext" style="width: 500px;"></textarea>
+		<textarea id="retext" style="width: 85%;"></textarea>
 		&nbsp;&nbsp;<input type="button" class="action" name="replyInsert"
 			value="댓글 작성" style="width: 150px;"><br>
 	</div>
 	<div class="replytab"></div>
-	</div>
+	
 
 	<!-- 댓글수정 The Modal -->
 	<div class="modal" id="uModal">
