@@ -86,7 +86,7 @@ $(()=>{
 		if(!(idPattern.test(idvalue)))
 		{
 			// ID값이 정규식과 일치하지 않을 경우
-			$('#spanid').html("다시 입력해주세요").css('color','red');
+			$('#spanid').html("ID는 영문자와 숫자 조합으로 6~15글자여야 합니다.").css('color','red');
 			$('#checkid').prop('disabled', true);		// checkid 활성화
 		}
 		else
