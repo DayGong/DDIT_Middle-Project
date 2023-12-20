@@ -203,11 +203,35 @@ if (vo != null)
 <body>
 	<div class="card-body">
 		<div class="table-responsive">
-			<button class="btn btn-primary"
-				onclick="location.href='<%=request.getContextPath()%>/board/list.do'">목록으로</button>
+		<a href="<%=request.getContextPath()%>/board/list.do">
+			    <img src="<%=request.getContextPath() %>/images/icon/메뉴아이콘.png" alt="메뉴" style="width:20px; height:20px; float:right;"/>
+			</a>
+			
 			<table class="table" id="dataTable" width="100%" cellspacing="0">
 				<tr class="table-light">
-					<td colspan="2"><%=boardVO.getBrd_title()%></td>
+					<td colspan="2"><%=boardVO.getBrd_title()%>
+							<%
+						if (ss.equals("check") && isAdmin) {
+					%>
+					 	<a href="<%=request.getContextPath()%>/board/update.do?brd_no=<%=boardVO.getBrd_no()%>" >
+						    <img src="<%=request.getContextPath() %>/images/icon/수정.png" alt="수정" style="width:20px; height:20px; float:right; margin:5px;"/>
+						</a>
+						&nbsp;
+						<a href="javascript:void(0);" onclick="if(confirm('정말 삭제하시겠습니까?')) location.href='./delete.do?brd_no=<%=boardVO.getBrd_no()%>'">
+						    <img src="<%=request.getContextPath() %>/images/icon/삭제.png" alt="삭제" style="width:20px; height:20px; float:right; margin:5px;"/>
+						</a>
+					 
+					</td>
+				
+					<%
+						}
+					if (ss.equals("check") && isrealAdmin) { %>
+                      
+                            <button class="btn btn-primary" onclick="location.href='<%=request.getContextPath() %>/board/update.do?brd_no=<%=boardVO.getBrd_no() %>'" style="float: right;">게시글 수정</button>
+                            <button class="btn btn-primary" onclick="if(confirm('정말 삭제하시겠습니까?')) location.href='./delete.do?brd_no=<%=boardVO.getBrd_no() %>'" style="float: right;">게시글 삭제</button>
+                        </td>
+                    <% } %>
+                    
 				</tr>
 				<tr>
 					<td colspan="2"><%=boardVO.getMem_id()%></td>
@@ -220,37 +244,17 @@ if (vo != null)
 					<td colspan="2"><%=boardVO.getBrd_content()%></td>
 				</tr>
 
-				<tr>
-					<%
-						if (ss.equals("check") && isAdmin) {
-					%>
-					<td colspan="2" align="right">
-						<button class="boardMineA"
-							onclick="location.href='<%=request.getContextPath()%>/board/update.do?brd_no=<%=boardVO.getBrd_no()%>'">게시글
-							수정</button>
-						<button class="boardMineA"
-							onclick="if(confirm('정말 삭제하시겠습니까?')) location.href='./delete.do?brd_no=<%=boardVO.getBrd_no()%>'">게시글
-							삭제</button>
-					</td>
-					<%
-						}
-					%>
-				</tr>
-				<tr>
-                    <% if (ss.equals("check") && isrealAdmin) { %>
-                        <td colspan="2" align="right">
-                            <button class="btn btn-primary" onclick="location.href='<%=request.getContextPath() %>/board/update.do?brd_no=<%=boardVO.getBrd_no() %>'">게시글 수정</button>
-                            <button class="btn btn-primary" onclick="if(confirm('정말 삭제하시겠습니까?')) location.href='./delete.do?brd_no=<%=boardVO.getBrd_no() %>'">게시글 삭제</button>
-                        </td>
-                    <% } %>
-                </tr>
-				
+			
+			
+			
+			
 				
 				
 				
 
 			</table>
 		</div>
+		<h3>댓글</h3>
 	</div>
 	<div id="insertRe" style="display: none">
 		<textarea id="retext" style="width: 500px;"></textarea>
@@ -279,7 +283,7 @@ if (vo != null)
 						<br>
 						<br> <label>내용&nbsp;&nbsp;</label>
 						<textarea id="rpl_content" name="rpl_content" class="txt"></textarea>
-						><br>
+						<br>
 						<br> <br> <br> <input type="button" value="확인"
 							name="updatesend" class="action">
 
@@ -289,7 +293,7 @@ if (vo != null)
 				<!-- Modal footer -->
 				<div class="modal-footer">
 					<button type="button" class="btn btn-danger"
-						data-bs-dismiss="modal">Close</button>
+						data-bs-dismiss="modal" style="background-color: #0080ff; border:none;">Close</button>
 				</div>
 
 			</div>
