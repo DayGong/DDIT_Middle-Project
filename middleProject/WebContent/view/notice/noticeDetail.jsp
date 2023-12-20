@@ -36,9 +36,9 @@ $(document).ready(function() {
 <body>
  	<div class="card-body">
 		<div class="table-responsive"> 
-         <div id="menu" onclick="location.href='<%=request.getContextPath()%>/notice/list.do'">
-			<img src= "<%=request.getContextPath() %>/images/icon/메뉴아이콘.png" alt="메뉴" style="width:20px; height:20px; margin-left: 1080px; margin-bottom: 20px;">
-		</div>
+         <a href="<%=request.getContextPath()%>/notice/list.do">
+    <img src="<%=request.getContextPath() %>/images/icon/메뉴아이콘.png" alt="메뉴" style="width:20px; height:20px; float:right;"/>
+</a>
 		<table class="table" id="dataTable" width="100%"	cellspacing="0">
 			<tr class="table-light">
 				<td colspan="2"><%=noticeVO.getNoticeTitle()%>
