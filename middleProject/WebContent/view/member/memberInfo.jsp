@@ -16,10 +16,22 @@
 <div id ="container">
 <h1>내 정보</h1>
 	<div id="mapper" >
+	<%
+		if(memVo != null){
+	%>
 		<p> 이름    : <%=memVo.getMem_name()%></p>  
 		<p> 아이디 : <%=memVo.getMem_id()%></p>
 		<p> 주소    : <%=memVo.getMem_addr()%></p>
 		<p> 이메일 : <%=memVo.getMem_mail()%></p>
+		
+	<%
+		}else{
+			
+	%>
+		<p></p>
+	<%
+		}
+	%>	
 	</div>
 	<span><img src="<%=request.getContextPath()%>/images/login/스판그림.png"></span>
 </div>

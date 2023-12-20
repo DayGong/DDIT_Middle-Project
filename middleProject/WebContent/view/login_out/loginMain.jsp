@@ -18,6 +18,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <style type="text/css">
  iframe {
@@ -38,7 +39,12 @@
     {
     	$('#yes').on('click', function () {
             if (!$('#chk').prop('checked')) { // 올바른 ID를 사용하여 체크박스에 액세스
-                alert("이용약관에 동의체크를 해주세요.");
+            	
+            	swal({
+			        title: "개인정보 동의가 필요합니다.",
+			        text: "이용약관에 동의 체크를 해주세요.",
+			        icon: "warning"
+			    });
             	return false;
             }else{
                 window.open('<%= request.getContextPath() %>/view/signup/memberSignup.jsp');
