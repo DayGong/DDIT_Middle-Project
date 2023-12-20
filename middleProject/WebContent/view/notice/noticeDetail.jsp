@@ -41,7 +41,14 @@ $(document).ready(function() {
 		</div>
 		<table class="table" id="dataTable" width="100%"	cellspacing="0">
 			<tr class="table-light">
-				<td colspan="2"><%=noticeVO.getNoticeTitle()%></td>
+				<td colspan="2"><%=noticeVO.getNoticeTitle()%>
+				<% if (isAdmin) { %>
+           
+           
+                        <button class="noticeAdminA" onclick="location.href='<%=request.getContextPath() %>/notice/update.do?noticeNo=<%=noticeVO.getNoticeNo() %>'" style="float: right;">게시글 수정</button>
+                        <button class="noticeAdminA" onclick="if(confirm('정말 삭제하시겠습니까?')) location.href='./delete.do?noticeNo=<%=noticeVO.getNoticeNo() %>'" style="float: right;">게시글 삭제</button>
+                   
+                    <% } %>
 			</tr>	
 			<tr>
 				<td><%=noticeVO.getNoticeDate()%></td><td>조회 <%=noticeVO.getNoticeHits()%></td> 
@@ -49,13 +56,7 @@ $(document).ready(function() {
 			<tr height = "300px">
 				<td colspan="2"><%=noticeVO.getNoticeContent()%></td>
 			</tr>
-			   <% if (isAdmin) { %>
-           <tr align="right">
-           <td colspan="2">
-                        <button class="noticeAdminA" onclick="location.href='<%=request.getContextPath() %>/notice/update.do?noticeNo=<%=noticeVO.getNoticeNo() %>'">게시글 수정</button>
-                        <button class="noticeAdminA" onclick="if(confirm('정말 삭제하시겠습니까?')) location.href='./delete.do?noticeNo=<%=noticeVO.getNoticeNo() %>'">게시글 삭제</button>
-                   </td>
-                    <% } %>
+			   
                        
                  
 			</tr>	
