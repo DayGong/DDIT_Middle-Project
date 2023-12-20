@@ -36,7 +36,7 @@
                  
               code+=
                `<div class="cul" data-cul_no="${v.cul_no}">                   
-                <div class="cul_img_div"><img src="${mypath}/images/culture/${v.cul_img}" class="cul_img"></div>
+                <div class="cul_img_div"><img src="${mypath}/images/culture/${v.cul_img}" class="cul_img" style="height:500px;"></div>
                 <div class="hidden-text" style="opacity:0;">
                 <div class "cul_no_div" style="display :none;">${v.cul_no} </div>
                 <h5 class="cul_title">${v.cul_name}</h5>
