@@ -322,20 +322,22 @@ button:active {
 
  #boxandbutton{
  display: flex;
- align-items: center;"
+ align-items: center;
  
  }
 #search-container input[type="text"] {
     width: calc(100% - 80px);
     margin-right: 10px;
     font-family: 'GmarketSansMedium';
+	border-radius: 10px; 
+	border-color: black;
 }
 
 #search-container {
    background-color: #f9f8f4;
 }
 #searchBtn { 
-	width: width: 20%;
+	width: 20%;
     vertical-align: middle; /* 수직 정렬을 위한 설정 */
     color :white;
     font-family: 'GmarketSansMedium';
@@ -400,4 +402,3 @@ hr {
 .offcanvas-body a:hover {
     text-decoration: underline;
 }
-  
