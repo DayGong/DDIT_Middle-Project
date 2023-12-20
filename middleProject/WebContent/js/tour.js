@@ -344,10 +344,14 @@ function displayTour(){
          }
          if(cate=="tourDelete"){
 	      tno= $(this).parent().attr("name");
+         if(confirm('정말 삭제하시겠습니까?'))
           tourDelete(tno);
           window.location.reload();
+            
          } 
- 
+
+
+
 			 if(cate=="updatesend"){				
 		    formData = $('#uform').serializeArray(); // 폼 데이터를 배열로 가져옴
             udata = {};
