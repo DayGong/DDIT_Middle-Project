@@ -7,7 +7,7 @@
 <%
 	String path = request.getContextPath();
 %>
-<title>대전 관광 홈페이지</title>
+<title>한밭 지킴이</title>
 <link rel="icon" href="<%= path %>/images/icon/꿈돌5-1.png" type="image/x-icon">  
 
 <script src="<%= path %>/js/jquery-3.7.1.min.js"></script>
