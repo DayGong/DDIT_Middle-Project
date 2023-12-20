@@ -240,7 +240,7 @@ function displayTour(){
         											<div class="tour_img_div">
         												<img src="${path}/images/tour/${item.tour_img}"
         													style="width: 100px; height: 100px;
-        														border-radius: 70%;">
+        														border-radius: 70%; margin-right:10px;">
         											</div>
         										</td>
         										<td class ="cont">${item.tour_name}</td>
@@ -454,7 +454,7 @@ function displayOneTour(dong){
         											<div class="tour_img_div">
         												<img src="${path}/images/tour/${item.tour_img}"
         													style="width: 100px; height: 100px;
-        														border-radius: 70%;">
+        														border-radius: 70% margin-right:10px;">
         											</div>
         										</td>
         										<td>${item.tour_name}</td>
@@ -537,7 +537,7 @@ function searchByTourName(dong){
         											<div class="tour_img_div">
         												<img src="${path}/images/tour/${item.tour_img}"
         													style="width: 100px; height: 100px;
-        														border-radius: 70%;">
+        														border-radius: 70% margin-right:10px;">
         											</div>
         										</td>
         										<td>${item.tour_name}</td>

@@ -37,7 +37,7 @@
     
   <!-- 자유게시판 -->  
     <div id="menu1" class="container tab-pane fade"><br>
-  		<iframe class="mainIframe" name="board" src="<%=request.getContextPath() %>/board/list.do"></iframe> 
+  		<iframe class="mainIframe" name="board" scrolling="no" src="<%=request.getContextPath() %>/board/list.do"></iframe> 
     </div>
   </div>
   

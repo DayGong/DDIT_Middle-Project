@@ -7,6 +7,7 @@
 <%
 BoardVO boardVO = (BoardVO) request.getAttribute("boardVO");
 String check = (String) session.getAttribute("check");
+String admin = (String) session.getAttribute("admin");
 String mem_id = (String) session.getAttribute("mem_id");
 String path = request.getContextPath();
 String ss = (check != null && check.equals("true")) ? "check" : "";
@@ -41,7 +42,8 @@ boolean isAdmin = (mem_id != null && mem_id.equals(boardMemId));
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript">
 	var ss = '<%=ss %>';
-	uvo=<%=sess%>;
+	var vadmin ='<%=admin %>';
+	uvo=<%=sess%>;	
 	gthis=this;
 	 mypath='<%=request.getContextPath()%>';
 	 vaction=  $(this).attr('name');
@@ -75,8 +77,15 @@ boolean isAdmin = (mem_id != null && mem_id.equals(boardMemId));
 	    			reply.brd_no=brdNo;
 	    			
 	    			reply.rpl_content= $('#retext').val().replace(/<br>/g, '\n').trim();
-	    			
-	    			reply.mem_id="<%=mem_id%>";
+	    			formem_id="<%=mem_id%>";
+	    			if(vadmin=='true'){
+	    				reply.mem_id="관리자";
+	    			}else{
+	    				
+	    			reply.mem_id=formem_id;
+	    			}
+	     
+	    				
 	
 	    			if(cate=="replyInsert"){	    				
 	    				writeReply();
@@ -98,7 +107,13 @@ boolean isAdmin = (mem_id != null && mem_id.equals(boardMemId));
 	    			   	
 	   			     
 	   			      $('#rpl_content').val(mcont);
+	   			      if(vadmin=='true'){
+	   			    	$('#mem_id').val("id변경불가"); 
+	   			      }else{
+	   			    	  
 	   			      $('#mem_id').val(`${uvo.mem_id}`);
+	   			      }
+	   			      
 	   			      $('#bnno').val(`${reply.rpl_no}`);
 	   			      
 	   			      $('#mem_id').prop('readonly', true);
@@ -151,7 +166,7 @@ boolean isAdmin = (mem_id != null && mem_id.equals(boardMemId));
 			              <div class="button-container" style="display: flex; justify-content: flex-end;">
 			              <p class="p2">`;
                              
-                       if( uvo !=null && uvo.mem_id == v.mem_id ){
+                       if( uvo !=null && uvo.mem_id == v.mem_id || vadmin=='true'){
 			          rcode+=`<input type="button" idx="${v.rpl_no}" value="댓글수정" name="r_update" class="action">
 			                <input type="button" idx="${v.rpl_no}" value="댓글삭제" name="r_delete" class="action">`;
 			           } 
