@@ -30,7 +30,6 @@ if (vo != null)
 <title>게시판 상세보기</title>
 <script type="text/javascript" src="<%=path%>/js/jquery-3.7.1.min.js"></script>
 <script type="text/javascript" src="<%=path%>/js/board.js"></script>
-<link rel= "stylesheet"  href="<%=request.getContextPath() %>/css/board.css">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -98,10 +97,9 @@ if (vo != null)
                          
 	    			}
 	    			if(cate=="r_delete"){	
-	    			   if(confirm('정말 삭제하시겠습니까?'))	{
-	    					 deleteReply(vnum);
+	    			 deleteReply(vnum);
 	    			 window.location.reload();
-	    			   }
+
 	    			 
 	    			
 	    	         }
@@ -205,31 +203,11 @@ if (vo != null)
 <body>
 	<div class="card-body">
 		<div class="table-responsive">
-			<div id="menu" onclick="location.href='<%=request.getContextPath()%>/board/list.do'">
-			<img src= "<%=request.getContextPath() %>/images/icon/메뉴아이콘.png" alt="메뉴" style="width:20px; height:20px; margin-left: 1080px; margin-bottom: 20px;">
-		</div>
+			<button class="btn btn-primary"
+				onclick="location.href='<%=request.getContextPath()%>/board/list.do'">목록으로</button>
 			<table class="table" id="dataTable" width="100%" cellspacing="0">
 				<tr class="table-light">
-					<td colspan="2"><%=boardVO.getBrd_title()%>
-							<%
-						if (ss.equals("check") && isAdmin) {
-					%>
-					 
-						<button class="boardMineA"
-							onclick="location.href='<%=request.getContextPath()%>/board/update.do?brd_no=<%=boardVO.getBrd_no()%>'" style="float: right;">게시글
-							수정</button>
-						<button class="boardMineA"
-							onclick="if(confirm('정말 삭제하시겠습니까?')) location.href='./delete.do?brd_no=<%=boardVO.getBrd_no()%>'" style="float: right;">게시글
-							삭제</button>
-				
-					<%
-						}
-					if (ss.equals("check") && isrealAdmin) { %>
-                      
-                            <button class="btn btn-primary" onclick="location.href='<%=request.getContextPath() %>/board/update.do?brd_no=<%=boardVO.getBrd_no() %>'" style="float: right;">게시글 수정</button>
-                            <button class="btn btn-primary" onclick="if(confirm('정말 삭제하시겠습니까?')) location.href='./delete.do?brd_no=<%=boardVO.getBrd_no() %>'" style="float: right;">게시글 삭제</button>
-                        
-                    <% } %>
+					<td colspan="2"><%=boardVO.getBrd_title()%></td>
 				</tr>
 				<tr>
 					<td colspan="2"><%=boardVO.getMem_id()%></td>
@@ -242,17 +220,37 @@ if (vo != null)
 					<td colspan="2"><%=boardVO.getBrd_content()%></td>
 				</tr>
 
-			
-			
-                
-					
+				<tr>
+					<%
+						if (ss.equals("check") && isAdmin) {
+					%>
+					<td colspan="2" align="right">
+						<button class="boardMineA"
+							onclick="location.href='<%=request.getContextPath()%>/board/update.do?brd_no=<%=boardVO.getBrd_no()%>'">게시글
+							수정</button>
+						<button class="boardMineA"
+							onclick="if(confirm('정말 삭제하시겠습니까?')) location.href='./delete.do?brd_no=<%=boardVO.getBrd_no()%>'">게시글
+							삭제</button>
+					</td>
+					<%
+						}
+					%>
+				</tr>
+				<tr>
+                    <% if (ss.equals("check") && isrealAdmin) { %>
+                        <td colspan="2" align="right">
+                            <button class="btn btn-primary" onclick="location.href='<%=request.getContextPath() %>/board/update.do?brd_no=<%=boardVO.getBrd_no() %>'">게시글 수정</button>
+                            <button class="btn btn-primary" onclick="if(confirm('정말 삭제하시겠습니까?')) location.href='./delete.do?brd_no=<%=boardVO.getBrd_no() %>'">게시글 삭제</button>
+                        </td>
+                    <% } %>
+                </tr>
+				
 				
 				
 				
 
 			</table>
 		</div>
-		<h3>댓글</h3>
 	</div>
 	<div id="insertRe" style="display: none">
 		<textarea id="retext" style="width: 500px;"></textarea>
@@ -281,9 +279,9 @@ if (vo != null)
 						<br>
 						<br> <label>내용&nbsp;&nbsp;</label>
 						<textarea id="rpl_content" name="rpl_content" class="txt"></textarea>
-						<br>
+						><br>
 						<br> <br> <br> <input type="button" value="확인"
-							name="updatesend" class="action" >
+							name="updatesend" class="action">
 
 					</form>
 				</div>
@@ -291,7 +289,7 @@ if (vo != null)
 				<!-- Modal footer -->
 				<div class="modal-footer">
 					<button type="button" class="btn btn-danger"
-						data-bs-dismiss="modal" style="background-color: #0080ff; border:none;">Close</button>
+						data-bs-dismiss="modal">Close</button>
 				</div>
 
 			</div>
