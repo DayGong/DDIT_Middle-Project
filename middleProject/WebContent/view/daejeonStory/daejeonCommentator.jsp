@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>문화관광해설사</title>
+<title>한밭 지킴이</title>
 <%
 	String path = request.getContextPath();
 %>

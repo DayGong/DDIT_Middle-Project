@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>한밭 지킴이</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/memberInfo.css">
 <%
    // 세션에 저장한 데이터 가져오기

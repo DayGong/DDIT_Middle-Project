@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>대전 관광 홈페이지</title>
+<title>한밭 지킴이</title>
 <link rel="icon" href="./images/icon/꿈돌5-1.png" type="image/x-icon">  
 <% 
 	String path = request.getContextPath();	// 상위 경로를 변수로 선언
@@ -23,8 +23,6 @@
 
 </head>
 <body>
-
-
 
 
 <!-- 상단 메뉴바 -->
