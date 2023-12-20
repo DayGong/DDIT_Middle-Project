@@ -104,7 +104,7 @@
 			<ul class="inner_menu">
 				<li class="dept2">
 					<a href="<%=request.getContextPath()%>/view/member/memberForm.jsp">내정보</a>
-				</li>
+				</li> 
 			</ul>
 		<%
 		}

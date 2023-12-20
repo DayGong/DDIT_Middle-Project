@@ -5,6 +5,7 @@
       <% 
 BoardVO boardVO = (BoardVO) request.getAttribute("boardVO");
     String mem_id = (String)session.getAttribute("mem_id");
+    if(mem_id==null){mem_id = "관리자";}
     
  %> 
  <!DOCTYPE html> 

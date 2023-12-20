@@ -135,7 +135,7 @@ select{
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} 
 
 .btn:active {
   transform: scale(0.95);
