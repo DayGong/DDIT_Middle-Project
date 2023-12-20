@@ -1,12 +1,30 @@
 @charset "UTF-8";
 
-
+@font-face {
+    font-family: 'Cafe24SsurroundAir';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SsurroundAir.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 
 .nav-pills > .nav-item > .active {
+font-family: 'Cafe24SsurroundAir';
   color: rgb(73, 80, 102) !important;
-  background-color: rgb(194, 197, 223) !important;   
+  background-color: #fbc680 !important;   
+  font-size : 1.7rem;
 }
+.nav-pills > .nav-item{
+	font-family: 'Cafe24SsurroundAir';
+	font-size : 1.7rem;
+	
+}
+
+.nav-pills > .nav-item .nav-link{
+	width : 170px;
+
+	}
+	
 .mainIframe{
 	width: 90%;
 	height: 600px;
