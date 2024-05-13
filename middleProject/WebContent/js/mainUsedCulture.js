@@ -9,9 +9,11 @@ const path = origin + pathName;
 
 ListImg = function()
 {
+	// console.log("ListImg 확인");
+	
 	$.ajax	// ajax로 DB에 있는 데이터를 가져옴
 	({                    
-		url : `${path}/culture/mainUsedCulture.do`,
+		url : `/culture/mainUsedCulture.do`,
 		type: "post",
 		dataType: "json",
 		success :function (res)
@@ -20,7 +22,7 @@ ListImg = function()
 			$.each(res,function(i,v)
 			{
 				code+=
-               `<img src="${path}/images/culture/${v.cul_img}" id="${v.cul_no}"
+               `<img src="/images/culture/${v.cul_img}" id="${v.cul_no}"
 					style="width:300px; height: 500px;">`;
 			})  
 			$('#culture_img').html(code);

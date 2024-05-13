@@ -22,16 +22,16 @@ moveToRestaurantDetail = function(restNo, memId)
 	mem_id = memId;
 	rest_no = restNo;
 	
-	$.ajax
-	({
-		url: `${path}/reserve/restaurantReserve.do`,
+	let restData = {
+		"rest_no" : rest_no
+	}; 
+	
+	$.ajax({
+		url: `/reserve/restaurantReserve.do`,
 		type: 'GET',
-		data: 
-		{
-			"rest_no" : rest_no
-		},
-		success: function(res)
-		{
+		data: restData,
+		dataType: 'json',
+		success: function(res) {
 			$('#restaurantDetailModal').modal('show');
 				
 			// 식당의 상세 정보를 띄우는 메소드
@@ -46,45 +46,40 @@ moveToRestaurantDetail = function(restNo, memId)
 			// select에 예약 시간 disable을 당일 날짜로 처음 보여주기위해 사용
 			restaurantReservedTime(res.rest_no, `${year}-${month}-${dayZero}`);
 		},
-		error: function(xhr)
-		{
-			alert('오류 상태: ' + xhr.status);
-		},
-		dataType: 'json'
-	})
+		error: function(xhr) {
+			alert('식당 상세보기 모달창 설정 => 오류 상태: ' + xhr.status);
+		}
+	});
 }
 
 // 식당 상세 정보를 띄우는 메소드
-showRestaurantDetailInfo = function(res)
-{
-	
+showRestaurantDetailInfo = function(res) {
 	let infoCode = `
-	<div class="backImgDiv">
-		<img id="img1" src="${path}/images/restaurant/${res.rest_img}">
-	</div>
-	<div id=modal4>
-	<h4 class="modal-title fix-text">${res.rest_name}</h4>
-	<div>
-		<table>
-			<tr>
-				<td>주소</td>
-				<td>| ${res.rest_addr}</td>
-			</tr>
-			<tr>
-				<td>전화번호</td>
-				<td>| ${res.rest_tel}</td>
-			</tr>
-			<tr>
-				<td>운영시간</td>
-				<td>| ${res.rest_time}</td>
-			</tr>
-		</table>
-	</div>
-	<div>
-		<input type="button" id="restaurant_rsv_btn" value="예약하기" onclick="reserveRestaurant()">
-	</div>
-	</div>
-	`;
+		<div class="backImgDiv">
+			<img id="img1" src="/images/restaurant/${res.rest_img}">
+		</div>
+		<div id=modal4>
+			<h4 class="modal-title fix-text">${res.rest_name}</h4>
+			<div>
+				<table>
+					<tr>
+						<td>주소</td>
+						<td>| ${res.rest_addr}</td>
+					</tr>
+					<tr>
+						<td>전화번호</td>
+						<td>| ${res.rest_tel}</td>
+					</tr>
+					<tr>
+						<td>운영시간</td>
+						<td>| ${res.rest_time}</td>
+					</tr>
+				</table>
+			</div>
+			<div>
+				<input type="button" id="restaurant_rsv_btn" value="예약하기" onclick="reserveRestaurant()">
+			</div>
+		</div>`;
 
 	$('#rest-right-modal-body').html(infoCode);
 }
@@ -151,7 +146,7 @@ restaurantReservedTime = function(rest_no, selectedDate)
 {
 	$.ajax
 	({
-		url: `${path}/reserve/restaurantGetTime.do`,
+		url: `/reserve/restaurantGetTime.do`,
 		type: 'POST',
 		data:
 		{
@@ -191,12 +186,10 @@ reserveRestaurant = function()
 			title: "로그인이 필요합니다.", text: "로그인 페이지로 이동합니다.", icon: "error"
 		}).then(function() 
 		{
-			window.location.href = `${jspath}/view/login_out/loginMain.jsp`;
+			window.location.href = `/view/login_out/loginMain.jsp`;
 		})
 	} else
 	{
-		console.log('rest_time: ' + rest_rsv_time);
-		console.log('mem_id: ' + mem_id);
 		if ( rest_rsv_time == null || rest_rsv_time == "null" )
 		{
 			swal({
@@ -209,7 +202,7 @@ reserveRestaurant = function()
 		} else {
 			$.ajax
 			({
-				url: `${path}/reserve/restaurantReserve.do`,
+				url: `/reserve/restaurantReserve.do`,
 				type: 'POST',
 				data: 
 				{

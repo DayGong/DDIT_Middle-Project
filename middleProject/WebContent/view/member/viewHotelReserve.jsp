@@ -18,18 +18,18 @@
 		mem_id = null;
 	} else {
 		mem_id = memVo.getMem_id();
+		System.out.println("mem_id ==> " + mem_id);
 	}
-
 %>
 <script src="<%= path %>/js/jquery-3.7.1.min.js"></script>
-<script src="<%= path %>/js/viewHotelReserve.js"></script>
+<script src="<%= path %>/js/viewHotelReserve.js?version=1"></script>
 
 <link rel="stylesheet" href="<%= path %>/css/reserve.css">
 
 <!-- 예쁜 Alert창 -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-<script>
+<script type="text/javascript">
 $(function() {
 
 	// 숙소 예약 List를 테이블 <tbody>에 넣기
@@ -49,12 +49,12 @@ $(function() {
 		<thead>
 			<tr>
 				<th>예약번호</th>
-				<th>숙소명</th>
-				<th>예약시작일</th>
-				<th>예약종료일</th>
-				<th>인원수</th>
-				<th>객실정보</th>
-				<th>결제금액</th>
+				<th style="width: 15%">숙소명</th>
+				<th style="width: 15%">예약시작일</th>
+				<th style="width: 15%">예약종료일</th>
+				<th style="width: 10%">인원수</th>
+				<th style="width: 10%">객실정보</th>
+				<th style="width: 10%">결제금액</th>
 				<th></th>
 	 		</tr>
 	 	<thead>

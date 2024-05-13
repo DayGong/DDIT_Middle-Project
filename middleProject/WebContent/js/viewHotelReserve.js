@@ -10,11 +10,12 @@ const path = origin + pathName;
 // 숙소 예약 List를 테이블 <tbody>에 넣기
 addMemberHotelReserve = function(memId)
 {
+	
 	mem_id = memId;
 	
 	$.ajax
 	 ({
-		 url: `${path}/reserve/hotelMemberReserveList.do`,
+		 url: `/reserve/hotelMemberReserveList.do`,
 		 type: 'POST',
 		 data: 
 		 {
@@ -66,7 +67,7 @@ hotelReserveCancel = function(hotel_rsv_no)
 {
 	$.ajax
 	({
-		url: `${path}/reserve/hotelReserveCancel.do`,
+		url: `/reserve/hotelReserveCancel.do`,
 		type: 'POST',
 		data:
 		{
@@ -97,7 +98,7 @@ addMemberHotelReserveCancel = function(memId)
 	
 	$.ajax
 	 ({
-		 url: `${path}/reserve/hotelMemberReserveCancelList.do`,
+		 url: `/reserve/hotelMemberReserveCancelList.do`,
 		 type: 'POST',
 		 data: 
 		 {

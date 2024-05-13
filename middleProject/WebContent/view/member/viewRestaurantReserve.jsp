@@ -22,7 +22,7 @@
 
 %>
 <script src="<%= path %>/js/jquery-3.7.1.min.js"></script>
-<script src="<%= path %>/js/viewRestaurantReserve.js?version=1"></script>
+<script src="<%= path %>/js/viewRestaurantReserve.js?version=2"></script>
 
 <link rel="stylesheet" href="<%= path %>/css/reserve.css">
 
@@ -30,19 +30,15 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <script>
-$(function() 
-{
-	
-	// 식당 날짜가 지나면 예약이 지난 것으로 되는 것
-	// changeDateReserveState();
+	$(function() {
+			
+		// 식당 예약 List를 테이블 <tbody>에 넣기
+		addMemberRestaurantReserve('<%= mem_id %>');
+			
+		// 식당 예약 취소 List를 테이블 <tbody>에 넣기
+		addMemberRestaurantReserveCancel('<%= mem_id %>');
 		
-	// 식당 예약 List를 테이블 <tbody>에 넣기
-	addMemberRestaurantReserve('<%= mem_id %>');
-		
-	// 식당 예약 취소 List를 테이블 <tbody>에 넣기
-	addMemberRestaurantReserveCancel('<%= mem_id %>');
-	
-})
+	})
 </script>
 
 </head>

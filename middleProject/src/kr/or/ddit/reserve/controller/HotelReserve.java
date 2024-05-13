@@ -32,6 +32,7 @@ public class HotelReserve extends HttpServlet
 		
 		request.setAttribute("hotelVo", hotelVo);
 		
+//		System.out.println("hotelReserve.do에 왔음");
 		request.getRequestDispatcher("/view/reserve/hotelInfoReturn.jsp").forward(request, response);
 	}
 

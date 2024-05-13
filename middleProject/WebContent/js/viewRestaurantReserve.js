@@ -14,7 +14,7 @@ addMemberRestaurantReserve = function(memId)
 	
 	$.ajax
 	 ({
-		 url: `${path}/reserve/restaurantMemberReserveList.do`,
+		 url: `/reserve/restaurantMemberReserveList.do`,
 		 type: 'POST',
 		 data: 
 		 {
@@ -52,7 +52,7 @@ addMemberRestaurantReserve = function(memId)
 		 },
 		 error: function(xhr)
 		 {
-			 console.log('숙소 예약 리스트 불러오기 오류 ==> ' + xhr);
+			 console.log('숙소 예약 리스트 불러오기 오류 ==> ', xhr);
 		 },
 		 dataType: 'json'
 	 })
@@ -64,7 +64,7 @@ restaurantReserveCancel = function(rest_rsv_no)
 {
 	$.ajax
 	({
-		url: `${path}/reserve/restaurantReserveCancel.do`,
+		url: `/reserve/restaurantReserveCancel.do`,
 		type: 'POST',
 		data:
 		{
@@ -92,7 +92,7 @@ changeDateReserveState = function()
 {
 	$.ajax
 	({
-		url: `${path}/reserve/restaurantMemberReserveList.do`,
+		url: `/reserve/restaurantMemberReserveList.do`,
 		type: 'GET',
 		success: function() 
 		{
@@ -112,7 +112,7 @@ addMemberRestaurantReserveCancel = function(memId)
 	
 	$.ajax
 	 ({
-		 url: `${path}/reserve/restaurantMemberReserveCancelList.do`,
+		 url: `/reserve/restaurantMemberReserveCancelList.do`,
 		 type: 'POST',
 		 data: 
 		 {

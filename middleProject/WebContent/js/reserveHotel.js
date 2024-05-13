@@ -19,11 +19,12 @@ const path = origin + pathName;
 // 숙소 상세보기 모달창 설정
 moveToHotelDetail = function(hotel_no, memId)
 {
+	// console.log("호텔 모달창 호출 함수 경로 => " + `${path}/reserve/hotelReserve.do`);
 	mem_id = memId;
 	
 	$.ajax
 	({
-		url: `${path}/reserve/hotelReserve.do`,
+		url: `/reserve/hotelReserve.do`,
 		type: 'GET',
 		data: 
 		{
@@ -40,9 +41,6 @@ moveToHotelDetail = function(hotel_no, memId)
 			
 			// 숙박 예약폼을 띄우는 메소드
 			openHotelReserveForm();
-			
-			// 남은 객실 체크
-			// checkRoom(`${year}-${month}-${dayZero}`, `${year}-${month}-${dayZero}`);
 		},
 		error: function(xhr)
 		{
@@ -57,7 +55,7 @@ showHotelDetailInfo = function(res)
 {
 	let infoCode = `
 		<div class="backImgDiv">
-			<img id="img2" src="${path}/images/hotel/${res.hotel_img}">
+			<img id="img2" src="/images/hotel/${res.hotel_img}">
 		</div>
 		<div class="infoDiv">
 			<h4 class="modal-title fix-text">${res.hotel_name}</h4>
@@ -82,8 +80,7 @@ showHotelDetailInfo = function(res)
 		</div>
 	
 	<div id="kakao"> <!-- 카카오페이API 버튼 -->
-		<img src="${path}/images/icon/payment_icon_yellow_medium.png" 
-				id="payBtn" onclick="requestPay()">
+		<img id="payBtn" onclick="requestPay()" src="/images/icon/payment_icon_yellow_medium.png">
 	</div>
 	`;
 
@@ -107,19 +104,22 @@ openHotelReserveForm = function()
 		<br><br><h2 class="modalh1" style="line-height:0.5;">숙박 날짜 선택</h2>
 		<div id="addDateDiv">
 			<div id="dateStartForm" class="dateDiv">
-				<br><h5 class="modalh2" style="line-height:0.5;">시작일</h5>
+				<br/>
+				<h5 class="modalh2" style="line-height:0.5;">시작일</h5>
 				<input type="date" id="select_start_date" name="hotel_rsv_startdate" 
 						min="${year}-${month}-${dayZero}" value="${year}-${month}-${dayZero}">
 			</div>
 			<div id="dateEndForm" class="dateDiv">
-				<br><h5 class="modalh2" style="line-height:0.5;">종료일</h5>
+				<br/>
+				<h5 class="modalh2" style="line-height:0.5;">종료일</h5>
 				<input type="date" id="select_end_date" name="hotel_rsv_enddate" value="${year}-${month}-${dayZero}">
 			</div>
 		</div>
 	</div>
 	<div>
 		<div id="addRoomDiv">
-			<br><label for="hotel_rsv_room" class="form-label">
+			<br/>
+			<label for="hotel_rsv_room" class="form-label">
 				객실 선택
 			</label>
 			<div class="form_radio_btn">
@@ -158,19 +158,6 @@ changeRoomState = function()
 		$('#room_four').prop('checked', true);
 	}	
 }
-
-/*
-// 빈 객실 수를 구해 표시하는 이벤트
-$(document).on('input', '#select_end_date', function()
-{
-	let start = $('#select_start_date').val();
-	let end = $('#select_end_date').val();
-		
-	// 예약이 끝나면 객실 수를 되돌려야하는데 어떻게 할 지 생각해보기
-	// 관리자페이지에서 일괄 체크아웃
-	checkRoom(start, end);
-})
-*/
 
 // 해당하는 날짜에 남은 객실 수를 확인하는 메서드
 checkRoom = function(start, end)
@@ -236,9 +223,9 @@ requestPay = function()
 			주문번호 만들 때 "코드" + 현재 시간 등으로 만들기 위한 makemerchantUid
 		*/
 		var today = new Date();   
-		var hours = today.getHours(); // 시
-		var minutes = today.getMinutes();  // 분
-		var seconds = today.getSeconds();  // 초
+		var hours = today.getHours(); 		// 시
+		var minutes = today.getMinutes();  	// 분
+		var seconds = today.getSeconds();  	// 초
 		var milliseconds = today.getMilliseconds();
 		var makeMerchantUid = hours +  minutes + seconds + milliseconds;
 		
@@ -257,11 +244,11 @@ requestPay = function()
 	
 		IMP.request_pay
 		({
-			pg : 'kakaopay', 							// kcp: 미리 등록한 카드로 결제, kakaopay
+			pg : 'kakaopay', 																// kcp: 미리 등록한 카드로 결제, kakaopay
 			pay_method : 'card',
-			merchant_uid: hotelInfo.hotel_no +makeMerchantUid,  	// 주문번호
+			merchant_uid: hotelInfo.hotel_no +makeMerchantUid,  							// 주문번호
 			name : "[" + hotelInfo.hotel_name + "]" + room + startDate + "~" + endDate,		// 상품명
-			amount : totalAmt,							// 가격(결제 금액)
+			amount : totalAmt,																// 가격(결제 금액)
 			buyer_name : hotelInfo.hotel_name,
 			buyer_tel : hotelInfo.hotel_tel,
 			buyer_addr : hotelInfo.hotel_addr,
@@ -315,10 +302,7 @@ payAfterReserveHotel = function(reserveInfo)
 		},
 		success: function() 
 		{
-			// 예약 완료 후 객실 수가 1 차감되도록 작성(-2 되는 문제 발생)
-			// 객실 차감 전반적인 수정 필요(해당 날짜에만 객실이 -1되고 총 객실 수는 변함 없도록 DB 수정해야할 듯)
-			// 객실 예약 DB에 객실 수를 추가할까? 조금 더 고민해봐야 할 듯
-			// subtractHotelRoom(reserveInfo.hotel_no);
+			// 숙소 예약 성공
 		},
 		error: function(xhr) 
 		{
@@ -327,28 +311,3 @@ payAfterReserveHotel = function(reserveInfo)
 		dataType: 'json'
 	})
 }
-
-/*
-// 예약 완료 후 객실의 수를 -1하는 메서드 
-subtractHotelRoom = function(hotel_no)
-{
-	console.log("subroom 호출");
-	$.ajax
-	({
-		url: `${path}/reserve/hotelRoomCheck.do`,
-		type: 'POST',
-		data: 
-		{
-			"hotel_no" : hotel_no
-		},
-		success: function()
-		{
-			console.log(`객실 차감 완료`);
-		},
-		error: function(xhr)
-		{
-			console.log(`객실 차감을 실패했습니다. 에러 내용: ${xhr.status}`);
-		}
-	})
-}
-*/

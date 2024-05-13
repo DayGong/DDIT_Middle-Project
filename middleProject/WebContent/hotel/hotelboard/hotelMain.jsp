@@ -168,7 +168,7 @@
     									<tr>
     										<td rowspan="2">
     											<div id="hotel_img_div">
-    												<img src="${path}/images/hotel/${item.hotel_img}"
+    												<img src="/images/hotel/${item.hotel_img}"
     													style="width: 100px; height: 100px;
     														border-radius: 70%; margin-right:10px;">
     											</div>
