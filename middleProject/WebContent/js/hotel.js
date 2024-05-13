@@ -82,10 +82,10 @@ function getListItem(index, places) {
 	// jQuery를 이용하여 클릭 이벤트 추가
 	$(el).on('click', function() {
 		// 클릭한 장소에 대한 정보 출력
+		// console.log('도로명 주소:', places.road_address_name);
+		// console.log('지번 주소:', places.address_name);
+		// console.log('전화번호:', places.phone);
 		alert('장소 이름:'+ places.place_name);
-		console.log('도로명 주소:', places.road_address_name);
-		console.log('지번 주소:', places.address_name);
-		console.log('전화번호:', places.phone);
 	
 		// 지도에서 원하는 동작을 추가하고 싶은 경우, 아래에 추가 작성
 	});

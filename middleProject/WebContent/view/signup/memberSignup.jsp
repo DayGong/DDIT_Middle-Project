@@ -7,7 +7,6 @@
 	<link rel="icon" href="<%= request.getContextPath() %>/images/icon/꿈돌5-1.png" type="image/x-icon">
     
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<!--     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/signup.css">
     
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -21,7 +20,7 @@
 <script>
 $(()=>{
 	
-// 		가입하기
+	// 가입하기
 	$('#joinbtn').on('click', function()
 	{	
 		// 각 입력란의 값을 가져옴
@@ -49,10 +48,7 @@ $(()=>{
 		// 입력란이 모두 채워져 있을 때 실행되는 코드
 		vdata1=  $('#joinform').serialize();
 		
-		console.log(vdata1);
-		 
-		
-	// 	서버로 보내기
+		// 서버로 보내기
 		$.ajax
 		({
 			url : "<%=request.getContextPath()%>/member/signupMember.do",	
@@ -64,7 +60,8 @@ $(()=>{
 	                title: "회원가입에 성공했습니다!",
 	                text: "다시 로그인해주세요.",
 	            }).then(function() 
-	            { window.location.href = '<%=request.getContextPath()%>/view/login_out/loginMain.jsp';
+	            { 
+	            	window.location.href = '<%=request.getContextPath()%>/view/login_out/loginMain.jsp';
 	            });
 	        },
 	        error: function (xhr) {
@@ -106,7 +103,6 @@ $(()=>{
 		if(idvalue.length<1)
 		{
 			swal({title: "ID를 입력하지 않았습니다.", text: "ID를 입력하세요!", icon: "warning"});
-// 			alert("ID를 입력하세요!");
 			return false;
 		}
 		
@@ -119,8 +115,6 @@ $(()=>{
 			dataType: 'json',
 			error : function(xhr)
 			{
-	            console.error("에러 상태:", xhr.status);
-	            console.error("에러 내용:", xhr.responseText); // 추가: 서버에서 반환한 에러 메시지 확인
 	            alert("에러 상태 : " + xhr.status);
 			},
 			success : function(res)
@@ -211,22 +205,19 @@ $(()=>{
 
 // 우편 API
 function prod1() {
-    	 
- 	    var themeobj = {	    	   		
- 	    }
+	var themeobj = {}
 	
 	//실제 우편번호 API가 시작되는 코드
 	new daum.Postcode
-	({
-	        	
-//	 테마 설정값 호출
-	theme: themeobj, 
-	        	
-	// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+	({ 	
+		// 테마 설정값 호출
+		theme: themeobj, 
+
+		// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
     	oncomplete: function(data)
 		{
-		// 요청한 값들을 저장하는 변수
-   		// 삭제해도 우편번호API에는 지장X
+			// 요청한 값들을 저장하는 변수
+			// 삭제해도 우편번호API에는 지장X
 			var resultHTML = [];
 
             // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
@@ -253,8 +244,7 @@ function prod1() {
 				extraRoadAddr = ' (' + extraRoadAddr + ')';
             }
 
-            // 우편번호 검색해서 얻을 수 있는 data('key' , "value")를 <li>에 넣어서
-            //	사용시 찾아보기 좋게 정리함
+            // 우편번호 검색해서 얻을 수 있는 data('key' , "value")를 <li>에 넣어서 사용시 찾아보기 좋게 정리함
             for(var item in data)
 			{
 				resultHTML.push('<li><code class="data_key">'+item+'</code>: "'+data[item]+'"</li>');
@@ -275,8 +265,6 @@ function prod1() {
        }
     }).open();
 }
-
-
 </script>
 <body>
 	<!-- 로고  -->
@@ -285,22 +273,21 @@ function prod1() {
 	</div>
 	<div class="container">
 		<form id="joinform" method="post" enctype="multipart/form-data"
-			action="<%=request.getContextPath()%>/member/signupMember.do">
+			  action="<%=request.getContextPath()%>/member/signupMember.do">
 			<div class="header">
 				<div><b>회원 가입</b></div>
-<!--                 <div><b>정보를 입력해주세요.</b></div> -->
             </div>
             
             <div class="form-group">
-                <label for="id">아이디 </label>
-                <table>
+				<label for="id">아이디 </label>
+				<table>
 					<tr>
-		            <td>
-		                <input type="text" class="form-control" id="id" name="mem_id">
-		            </td>
-					<td>
-		                <input type="button" id="checkid" value="중복검사" class="btn">
-					</td>
+						<td>
+							<input type="text" class="form-control" id="id" name="mem_id">
+						</td>
+						<td>
+							<input type="button" id="checkid" value="중복검사" class="btn">
+						</td>
 					</tr>
                 </table>
 		        <span id="spanid"></span>
@@ -329,64 +316,58 @@ function prod1() {
                 <span id="spantel"></span>
             </div>
  
-          <div class="form-group">
-             <label for="mail">이메일</label>
-             
-             <table class="email-input-group">
+			<div class="form-group">
+				<label for="mail">이메일</label>
+				<table class="email-input-group">
 					<tr>
-		            <td>
-		                <input type="text" class="form-control" id="mail" name="mem_mail">
-		            </td>
-					<td>
-					@
-					</td>
-					<td>
-		                <input type="text" class="form-control" id="domain-text" >
-					</td>
-					
-					<td>
-						<select class="box" id="domain-list" name="domain">
-							<option value="type">직접입력</option>
-							<option value="naver.com">naver.com</option>
-		                    <option value="daum.net">daum.net</option>
-		                    <option value="gmail.com">gmail.com</option>
-		                    <option value="kakao.com">kakao.com</option>
-		                    <option value="nate.com">nate.com</option>
-                 		</select>
-					</td>
-					
+						<td>
+			                <input type="text" class="form-control" id="mail" name="mem_mail">
+			            </td>
+						<td>
+							@
+						</td>
+						<td>
+			                <input type="text" class="form-control" id="domain-text" >
+						</td>
+						<td>
+							<select class="box" id="domain-list" name="domain">
+								<option value="type">직접입력</option>
+								<option value="naver.com">naver.com</option>
+			                    <option value="daum.net">daum.net</option>
+			                    <option value="gmail.com">gmail.com</option>
+			                    <option value="kakao.com">kakao.com</option>
+			                    <option value="nate.com">nate.com</option>
+	                 		</select>
+						</td>
 					</tr>
-                </table>
-         </div>      
+				</table>
+			</div>     
 
-        <div class="form-group" style="display: inline-block;">
-         	<label for="zip">주소</label>
-         	<table>
-	         	<tr>
-	         		<td>
-						<input type="text" id="postcode" class="form-control" placeholder="우편번호">
-	         		</td>
-	         		<td>
-						<input type="button" onclick="prod1()" value="우편번호 찾기" class="btn" id="postnum">
-	         		</td>
-	         	</tr>
-        		<tr>
-        			<td><input type="text" id="roadAddress" class="form-control" placeholder="도로명주소" name="roadAddress"></td>
-        			<td><input type="text" id="extraAddress" class="form-control" placeholder="참고항목" name="extraAddress"></td>
-        		</tr>
-         	</table>
-            <input type="text" id="detailAddress" class="form-control" placeholder="상세주소" name="detailAddress">
-		</div>
+			<div class="form-group" style="display: inline-block;">
+				<label for="zip">주소</label>
+				<table>
+		         	<tr>
+		         		<td>
+							<input type="text" id="postcode" class="form-control" placeholder="우편번호">
+		         		</td>
+		         		<td>
+							<input type="button" onclick="prod1()" value="우편번호 찾기" class="btn" id="postnum">
+		         		</td>
+		         	</tr>
+	        		<tr>
+	        			<td><input type="text" id="roadAddress" class="form-control" placeholder="도로명주소" name="roadAddress"></td>
+	        			<td><input type="text" id="extraAddress" class="form-control" placeholder="참고항목" name="extraAddress"></td>
+	        		</tr>
+	         	</table>
+				<input type="text" id="detailAddress" class="form-control" placeholder="상세주소" name="detailAddress">
+			</div>
         
-        <div class="form-group">
-			
-		</div>
+			<div class="form-group"></div>
 
-        <br>
-		<button type="button" id="joinbtn" class="btn">가입하기</button>
-        <span id="join"></span> 
+			<br>
+			<button type="button" id="joinbtn" class="btn">가입하기</button>
+			<span id="join"></span> 
 		</form>
-    </div>
-    
+	</div>
 </body>
 </html>

@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,41 +22,44 @@
 <%
 if(result ==null)
 	/* db에서도 못찾았다면 오류알림창나오게하기 */
-{	if("false".equals(check))
+{
+	if("false".equals(check))
 	{
 %>
-   <script>
-    swal({title: "아이디 찾기 실패!",  text: "다시 입력해주세요", icon: "error"});
+	<script>
+		swal({title: "아이디 찾기 실패!",  text: "다시 입력해주세요", icon: "error"});
     </script>
-	<%} %>
+<%
+	}
+%>
 	<!-- 메일주소로 아이디 찾기 -->
 	<div class="container">
-	<form action="<%=request.getContextPath()%>/member/fogotId.do" method="post">
-	<img src="<%=request.getContextPath()%>/images/login/꿈돌2.png" style="width:170px; height:170px;">
-	<br><br><h1>아이디 찾기</h1><br>
-	<h2>가입시 입력한 메일주소를 입력해주세요</h2><br>
-	<input type="text" name="memMail" placeholder="메일주소" style="width: 300px;"><br>
-	<br><button type="submit">확인</button>
-	</form>
+		<form action="<%=request.getContextPath()%>/member/fogotId.do" method="post">
+			<img src="<%=request.getContextPath()%>/images/login/꿈돌2.png" style="width:170px; height:170px;">
+			<br><br><h1>아이디 찾기</h1><br>
+			<h2>가입시 입력한 메일주소를 입력해주세요</h2><br>
+			<input type="text" name="memMail" placeholder="메일주소" style="width: 300px;"><br>
+			<br><button type="submit">확인</button>
+		</form>
 	</div>
-	
 <%
-// 아이디 데이터가 있으면
-}else
-{
+	// 아이디 데이터가 있으면
+	}else
+	{
 %>
 	<!-- 아이디 알려주고 로그인하러가는 버튼 -->
 	<script>
-    swal({title: "아이디 찾기 성공!",  text: "아이디는 '<%=request.getAttribute("id")%>'입니다", icon: "success"
-    }).then(function() 
-    {
-    window.location.href = "<%=request.getContextPath()%>/view/login_out/loginMain.jsp"; 
-    });
+	    swal
+	    ({
+	    	title: "아이디 찾기 성공!",  text: "아이디는 '<%=request.getAttribute("id")%>'입니다", icon: "success"
+	    }).then(function() 
+	    {
+	    	window.location.href = "<%=request.getContextPath()%>/view/login_out/loginMain.jsp"; 
+	    });
     </script>
 <%
-} 
+	} 
 %>
-
 <!-- 하단 메뉴바 삽입 -->
 <jsp:include page="/view/main/bottom.jsp"/>
 </body>

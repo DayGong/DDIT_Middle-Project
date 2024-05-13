@@ -1,7 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="kr.or.ddit.vo.NoticeVO"%>
 <%@ page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%
 	String admin= (String)session.getAttribute("admin");
@@ -34,7 +34,7 @@
             crossorigin="anonymous"></script>
     <script type="text/javascript" src="<%= path %>/js/jquery-3.7.1.min.js"></script>
     <script type="text/javascript">
-    ss= <%=ss%>;
+    	ss= <%=ss%>;
         function updateHitAndRedirect(noticeNo) {
             $.ajax({
                 url: '<%= request.getContextPath() %>/notice/hit.do',
@@ -55,7 +55,6 @@
         }
         
         $(()=>{
-        	
         	if (ss==true){
         		$('#noticeInsertBtn').css('display', 'block');
         	}
@@ -84,15 +83,14 @@
                         <td><%=noticeVO.getNoticeTitle()%></td>
                         <td><%=noticeVO.getNoticeDate()%></td>
                         <td><%=noticeVO.getNoticeHits()%></td>
-                        <td>  </td>
-                       <!-- <td><%=noticeVO.getNoticeFile()%></td> --> 
+                        <td></td>
                     </tr>
                 <% }
             } %>
             
-              <div align="right" style='display:none' id='noticeInsertBtn'>
-    <a class="btn btn-primary" href="<%=request.getContextPath() %>/notice/insert.do">게시글쓰기</a>
-</div>
+			<div align="right" style='display:none' id='noticeInsertBtn'>
+				<a class="btn btn-primary" href="<%=request.getContextPath() %>/notice/insert.do">게시글쓰기</a>
+			</div>
         </table>
 
         <div align="center">

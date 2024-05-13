@@ -96,10 +96,7 @@ changeDateReserveState = function()
 	({
 		url: `/reserve/restaurantMemberReserveList.do`,
 		type: 'GET',
-		success: function() 
-		{
-			console.log('당일 이전 예약 상태 0으로 변경');
-		},
+		success: function() {},
 		error: function(xhr)
 		{
 			// console.log('식당 날짜가 지나면 예약이 0으로 되는 것 실패 ==> ' + xhr);

@@ -15,7 +15,6 @@
 <script type="text/javascript">
 $(function()
 {
-	console.log("확인");
 	ListImg();
 })
 </script>

@@ -1,10 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Tashu</title>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-3.7.1.min.js"></script>
 <script type="text/javascript">
 $(function(){
@@ -14,17 +13,15 @@ $(function(){
 			type : "get",
 			
 	        success : function(res){
-	        	console.log("res", res);
+	        	// console.log("res", res);
 	        },
 	        error : function(xhr){
-	        	console.log("error", xhr);
+	        	// console.log("error", xhr);
 	        },
 	        dataType : "json"
 		});
 	});
-	
 });
-
 </script>
 </head>
 <body>
