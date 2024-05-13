@@ -66,8 +66,12 @@
 </table>
 
 #### 4. 대전 안내 페이지
-<img src="https://github.com/DayGong/DDIT_MiddleProject/assets/142587274/010f9955-2e4f-49f9-9e8a-040a18a31269" width="500" height="550"/>
-<img src="https://github.com/DayGong/DDIT_MiddleProject/assets/142587274/9a30c72e-e58e-4cc2-9b0b-2a71531cd35c" width="500" height="550"/>
+<table border='0'>
+  <tr>
+    <td><img src="https://github.com/DayGong/DDIT_MiddleProject/assets/142587274/010f9955-2e4f-49f9-9e8a-040a18a31269" width="500" height="550"/></td>
+    <td><img src="https://github.com/DayGong/DDIT_MiddleProject/assets/142587274/9a30c72e-e58e-4cc2-9b0b-2a71531cd35c" width="500" height="550"/></td>
+  </tr>
+</table>
 
 #### 5. 메인 화면 축제 슬라이드
 ![slideImg](https://github.com/DayGong/DDIT_MiddleProject/assets/142587274/1c09eafa-be0f-4a6a-ac70-ec929774a251)
