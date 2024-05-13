@@ -19,7 +19,6 @@ const path = origin + pathName;
 // 숙소 상세보기 모달창 설정
 moveToHotelDetail = function(hotel_no, memId)
 {
-	// console.log("호텔 모달창 호출 함수 경로 => " + `${path}/reserve/hotelReserve.do`);
 	mem_id = memId;
 	
 	$.ajax
@@ -44,7 +43,7 @@ moveToHotelDetail = function(hotel_no, memId)
 		},
 		error: function(xhr)
 		{
-			console.log('숙박 업체 모달창 오류: ' + xhr.status);
+			// console.log('숙박 업체 모달창 오류: ' + xhr.status);
 		},
 		dataType: 'json'
 	})
@@ -184,7 +183,7 @@ checkRoom = function(start, end)
 		},
 		error: function(xhr)
 		{
-			console.log(xhr)
+			// console.log(xhr)
 		}
 	})
 	
@@ -193,12 +192,12 @@ checkRoom = function(start, end)
 // 두 날짜 사이의 일수를 구하는 메서드
 getDateDiff = (startDate, endDate) => 
 {
-  let start = new Date(startDate);
-  let end = new Date(endDate);
+	let start = new Date(startDate);
+	let end = new Date(endDate);
   
-  let diffDate = start.getTime() - end.getTime();
+	let diffDate = start.getTime() - end.getTime();
   
-  return Math.abs(diffDate / (1000 * 60 * 60 * 24)); // 밀리세컨 * 초 * 분 * 시 = 일
+	return Math.abs(diffDate / (1000 * 60 * 60 * 24)); // 밀리세컨 * 초 * 분 * 시 = 일
 }
 
 // 카카오페이를 요청하는 메서드
@@ -275,7 +274,7 @@ requestPay = function()
 				$('#hotelDetailModal').modal('hide');
 			} else 
 			{
-				console.log(`결제에 실패하였습니다. 에러 내용: ${rsp.error_msg}`);
+				// console.log(`결제에 실패하였습니다. 에러 내용: ${rsp.error_msg}`);
 			}
 		});
 	}
@@ -306,7 +305,7 @@ payAfterReserveHotel = function(reserveInfo)
 		},
 		error: function(xhr) 
 		{
-			console.log(`예약에 실패하였습니다. 에러 내용: ${xhr.status}`);
+			// console.log(`예약에 실패하였습니다. 에러 내용: ${xhr.status}`);
 		},
 		dataType: 'json'
 	})

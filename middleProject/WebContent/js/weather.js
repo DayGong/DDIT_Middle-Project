@@ -24,60 +24,60 @@ $.ajax
     dataType: 'json',
     type: 'GET',
     success: function(data) 
-		{
+	{
         var $Temp = Math.floor(data.main.temp) + '°C';
         var $city = data.name;
 
-    // 날씨 아이콘 변경
+    	// 날씨 아이콘 변경
     	const changeWeatherIcon = (description) =>
-			{
-	            let iconClass = '';
-	            let iconColor ='';
+		{
+            let iconClass = '';
+            let iconColor ='';
 
-	            if (description == 'clear sky')
-				{
-	                iconClass = 'fas fa-sun';
-	                iconColor = 'orange';
-	            }
-				else if (description == 'few clouds')
-				{
-	                iconClass = 'fas fa-cloud-sun';
-	                iconColor = 'gray';
-	            }
-				else if (description.includes('clouds') || !(description == 'few clouds'))
-				{
-	                iconClass = 'fas fa-cloud';
-	                iconColor = 'skyblue';
-	            }
-				else if (description.includes('rain'))
-				{
-	                iconClass = 'fas fa-cloud-rain';
-	                iconColor = 'skyblue';
-	            }
-				else if (description == 'thunderstorm')
-				{
-	                iconClass = 'fas fa-bolt';
-	                iconColor = 'gray';
-	            }
-				else if (description == 'snow')
-				{
-	                iconClass = 'fas fa-snowflake';
-	                iconColor = 'gray';
-	            }
-				else if (description == 'mist')
-				{
-	                iconClass = 'fas fa-water';
-	                iconColor = 'gray';
-	            }
-	            return { iconClass, iconColor };
+            if (description == 'clear sky')
+			{
+                iconClass = 'fas fa-sun';
+                iconColor = 'orange';
+            }
+			else if (description == 'few clouds')
+			{
+                iconClass = 'fas fa-cloud-sun';
+                iconColor = 'gray';
+            }
+			else if (description.includes('clouds') || !(description == 'few clouds'))
+			{
+                iconClass = 'fas fa-cloud';
+                iconColor = 'skyblue';
+            }
+			else if (description.includes('rain'))
+			{
+                iconClass = 'fas fa-cloud-rain';
+                iconColor = 'skyblue';
+            }
+			else if (description == 'thunderstorm')
+			{
+                iconClass = 'fas fa-bolt';
+                iconColor = 'gray';
+            }
+			else if (description == 'snow')
+			{
+                iconClass = 'fas fa-snowflake';
+                iconColor = 'gray';
+            }
+			else if (description == 'mist')
+			{
+                iconClass = 'fas fa-water';
+                iconColor = 'gray';
+            }
+            return { iconClass, iconColor };
         }
 
-    // 날씨 아이콘 추가 및 변경
-    const weatherDescription = data.weather[0].description;
-    const { iconClass, iconColor } = changeWeatherIcon(weatherDescription);
-    const iconHtml = '<i class="' + iconClass + '" style="color: ' + iconColor + ';"></i>';
-    $('.weather_icon').html(iconHtml);
-    $('.currTemp').html($Temp);
-    $('.city').html($city);
+	    // 날씨 아이콘 추가 및 변경
+	    const weatherDescription = data.weather[0].description;
+	    const { iconClass, iconColor } = changeWeatherIcon(weatherDescription);
+	    const iconHtml = '<i class="' + iconClass + '" style="color: ' + iconColor + ';"></i>';
+	    $('.weather_icon').html(iconHtml);
+	    $('.currTemp').html($Temp);
+	    $('.city').html($city);
 	}
 });

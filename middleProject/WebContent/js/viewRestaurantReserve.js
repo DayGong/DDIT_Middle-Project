@@ -1,5 +1,5 @@
 /**
- * 
+ * 회원이 식당 예약 리스트와 취소 리스트를 볼 때 사용하는 js
  */
 
 // 경로 path 설정
@@ -41,8 +41,10 @@ addMemberRestaurantReserve = function(memId)
 					 	<td>${v.REST_RSV_DATE}</td>
 					 	<td>${v.REST_RSV_TIME}</td>
 					 	<td>${v.REST_RSV_COUNT}</td>
-						<td><input type="button" value="예약 취소" id="${v.REST_RSV_NO}" 
-									onclick="restaurantReserveCancel(this.id)"></td>
+						<td>
+							<input type="button" value="예약 취소" id="${v.REST_RSV_NO}" 
+								   onclick="restaurantReserveCancel(this.id)">
+						</td>
 					 </tr>
 					 `;
 				 })
@@ -52,7 +54,7 @@ addMemberRestaurantReserve = function(memId)
 		 },
 		 error: function(xhr)
 		 {
-			 console.log('숙소 예약 리스트 불러오기 오류 ==> ', xhr);
+			 // console.log('숙소 예약 리스트 불러오기 오류 ==> ', xhr);
 		 },
 		 dataType: 'json'
 	 })
@@ -82,7 +84,7 @@ restaurantReserveCancel = function(rest_rsv_no)
 		},
 		error: function(xhr)
 		{
-			console.log('식당 예약 취소 실패 ==> ' + xhr);
+			// console.log('식당 예약 취소 실패 ==> ' + xhr);
 		}
 	})
 }
@@ -100,7 +102,7 @@ changeDateReserveState = function()
 		},
 		error: function(xhr)
 		{
-			console.log('식당 날짜가 지나면 예약이 0으로 되는 것 실패 ==> ' + xhr);
+			// console.log('식당 날짜가 지나면 예약이 0으로 되는 것 실패 ==> ' + xhr);
 		}
 	})
 }
@@ -149,9 +151,8 @@ addMemberRestaurantReserveCancel = function(memId)
 		 },
 		 error: function(xhr)
 		 {
-			 console.log('숙소 예약 리스트 불러오기 오류 ==> ' + xhr);
+			 // console.log('숙소 예약 리스트 불러오기 오류 ==> ' + xhr);
 		 },
 		 dataType: 'json'
 	 })
-
 }

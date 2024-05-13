@@ -1,7 +1,6 @@
 /**
- * 
+ * 카카오맵 api에 관련된 script들
  */
-// 카카오맵 api에 관련된 script들
 
 mypath='<%=request.getContextPath()%>';
 mem_id='<%= memVo.getMem_id() %>';
@@ -96,12 +95,9 @@ function getListItem(index, places)
 	{
 		// 클릭한 장소에 대한 정보 출력
 		alert('장소 이름:'+ places.place_name);
-		console.log('도로명 주소:', places.road_address_name);
-		console.log('지번 주소:', places.address_name);
-		console.log('전화번호:', places.phone);
-
-		// 원하는 동작을 추가하여 클릭한 리스트 아이템에 대해 특정 작업을 수행할 수 있습니다.
-		// 예를 들어, 클릭한 장소를 지도에서 강조 표시하는 등의 작업을 추가할 수 있습니다.
+		// console.log('도로명 주소:', places.road_address_name);
+		// console.log('지번 주소:', places.address_name);
+		// console.log('전화번호:', places.phone);
 	});
 
 	return el;
@@ -119,38 +115,38 @@ function addMarker(position, idx, places)
 			offset: new kakao.maps.Point(13, 37)
 		},
 		markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imgOptions),
-		 marker = new kakao.maps.Marker
+		marker = new kakao.maps.Marker
 		({
 			position: position,
 			image: markerImage
 		});
            
-		marker.setMap(map);
-		markers.push(marker);
+	marker.setMap(map);
+	markers.push(marker);
             
-		kakao.maps.event.addListener(marker, 'click', function() 
-		{
-			// 클릭된 마커의 인덱스를 가져옵니다.
-			var markerIndex = markers.indexOf(marker);
-
-			// 해당 마커에 대응하는 장소 정보를 가져옵니다.
-			var clickedPlace = data[markerIndex]; // data 배열에서 마커와 인덱스가 일치하는 장소 정보 가져오기
-
-			alert(clickedPlace.address_name); // 클릭된 마커에 연관된 장소 정보 확인
-		});
-
-		return marker;
-	}
-
-	// 모든 마커를 지도에서 제거하는 함수
-	function removeMarker() 
+	kakao.maps.event.addListener(marker, 'click', function() 
 	{
-		for (var i = 0; i < markers.length; i++) 
-		{
-			markers[i].setMap(null);
-		}
-		markers = [];
+		// 클릭된 마커의 인덱스를 가져옵니다.
+		var markerIndex = markers.indexOf(marker);
+
+		// 해당 마커에 대응하는 장소 정보를 가져옵니다.
+		var clickedPlace = data[markerIndex]; // data 배열에서 마커와 인덱스가 일치하는 장소 정보 가져오기
+
+		alert(clickedPlace.address_name); // 클릭된 마커에 연관된 장소 정보 확인
+	});
+
+	return marker;
+}
+
+// 모든 마커를 지도에서 제거하는 함수
+function removeMarker() 
+{
+	for (var i = 0; i < markers.length; i++) 
+	{
+		markers[i].setMap(null);
 	}
+	markers = [];
+}
 
 
 // 인포윈도우를 표시하는 함수
@@ -176,9 +172,6 @@ function removeAllChildNods(el)
 
 $(()=>
 {
-	  
-	console.log("restaurant.js의 mem_id ==> " + `${mem_id}`);
-
 	$(document).on('click','.cateBtn' ,function()
 	{
 		cate=$(this).attr('name');
@@ -286,10 +279,8 @@ function displayDongRes(dong)
 						}); 
 						kakao.maps.event.addListener(marker, 'click', function() 
 						{
-							//////////////////////////////////////////////////////////
-							console.log(`restaurant.js의 323번째 줄 mem_id ${mem_id}`)
 							 moveToRestaurantDetail(`${item.rest_no}`, `${mem_id}`);   
-				         }); 
+				        }); 
 						// 리스트에 아이템 추가
 						var listItem = $('<li></li>')
 									.html(`
@@ -321,8 +312,6 @@ function displayDongRes(dong)
 							infowindows.push(infowindow);
 						
 							// 식당 모달 창
-							/////////////////////////////////////////////////////////
-							console.log(`restaurant.js의 358번째 줄 mem_id ${mem_id}`)
 							moveToRestaurantDetail(`${item.rest_no}`, `${mem_id}`);     
 						
 	    		        	map.panTo(coords);                    
@@ -356,89 +345,83 @@ function searchByResName(dong)
 		data:{"dong":daeDong},
  		success: function(res){   // ajax로 가져온 json데이터 res를 for문으로 돌린다			    		   
 			res.forEach(function(item) { // tour_addr값을 주소로하여 마커를 찍는다
-			geocoder.addressSearch(item.rest_addr, function(result, status) {
- 			if (status === kakao.maps.services.Status.OK) {
-			var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
- 			var marker = new kakao.maps.Marker({
-			map: map,
-			position: coords
-			});
-			markers.push(marker);
-			var  infowindow = new kakao.maps.InfoWindow({
-				content: `<div id="infowindow" > 
-				${item.rest_name}<p>
-							</div>`
-				});
-				kakao.maps.event.addListener(marker, 'mouseover', function() {
-				infowindow.open(map, marker);
-				 });
-
-				kakao.maps.event.addListener(marker, 'mouseout', function() {
-				infowindow.close();
-				}); 
-				kakao.maps.event.addListener(marker, 'click', function() {
-					////////////////////////////////////////////////////////
-					console.log(`restaurant.js의 415번째 줄 mem_id ${mem_id}`)
-			    moveToRestaurantDetail(`${item.rest_no}`, `${mem_id}`);   
-				}); 
-				
-					// 리스트에 아이템 추가
-			var listItem = $('<li></li>')
-									.html(`
-        								<table>
-        									<tr>
-        										<td rowspan="2">
-        											<div id="rest_img_div">
-        												<img src="${path}/images/restaurant/${item.rest_img}"
-        													style="width: 100px; height: 100px;
-        														border-radius: 70%; margin-right:10px;">
-        											</div>
-        										</td>
-        										<td>${item.rest_name}</td>
-        									</tr>
-        									<tr>
-        										<td>${item.rest_addr}</td>
-        									</tr>
-        								</table>
-        								<hr>`);
-
-				// 클릭 이벤트 추가
-				listItem.on('click', function() {
-					infowindows.forEach(function(window) {
-					window.close();
-					});
-					infowindow.open(map, marker);
-					infowindows.push(infowindow);
-					
-					// 식당 모달 창
-					//////////////////////////////////////////////////////////////
-					console.log(`restaurant.js의 449번째 줄 mem_id ${mem_id}`)
-					moveToRestaurantDetail(`${item.rest_no}`, `${mem_id}`);     
+				geocoder.addressSearch(item.rest_addr, function(result, status) {
+		 			if (status === kakao.maps.services.Status.OK) {
+						var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+		 				var marker = new kakao.maps.Marker({
+							map: map,
+							position: coords
+						});
+						markers.push(marker);
+						var  infowindow = new kakao.maps.InfoWindow({
+							content: `<div id="infowindow" > 
+										${item.rest_name}<p>
+									</div>`
+						});
 						
-    		        map.panTo(coords);                     
-				setTimeout(function() {
-				infowindow.close();
-				 }, 3500);
-					}); 
-
-				// 리스트를 출력할 요소에 추가
-				$('#placesList').append(listItem);
-					 }
+						kakao.maps.event.addListener(marker, 'mouseover', function() {
+							infowindow.open(map, marker);
+						});
+		
+						kakao.maps.event.addListener(marker, 'mouseout', function() {
+							infowindow.close();
+						});
+						
+						kakao.maps.event.addListener(marker, 'click', function() {
+						    moveToRestaurantDetail(`${item.rest_no}`, `${mem_id}`);   
+						}); 
+						
+						// 리스트에 아이템 추가
+						var listItem = $('<li></li>')
+								.html(`
+									<table>
+										<tr>
+											<td rowspan="2">
+												<div id="rest_img_div">
+													<img src="${path}/images/restaurant/${item.rest_img}" style="width: 100px; height: 100px; border-radius: 70%; margin-right:10px;">
+												</div>
+											</td>
+											<td>${item.rest_name}</td>
+										</tr>
+										<tr>
+											<td>${item.rest_addr}</td>
+										</tr>
+									</table>
+									<hr>`);
+		
+						// 클릭 이벤트 추가
+						listItem.on('click', function() {
+							infowindows.forEach(function(window) {
+								window.close();
+							});
+							infowindow.open(map, marker);
+							infowindows.push(infowindow);
+							
+							// 식당 모달 창
+							moveToRestaurantDetail(`${item.rest_no}`, `${mem_id}`);     
+								
+		    		        map.panTo(coords);                     
+							setTimeout(function() {
+								infowindow.close();
+							}, 3500);
+						}); 
+		
+						// 리스트를 출력할 요소에 추가
+						$('#placesList').append(listItem);
+					}
 				});
 			});
-               
-				},
+		},
 		error: function(xhr){
 			alert(xhr.status);
-				},
+		},
 		dataType: 'json'			
-		})
-
-
+	})
 }
+
 function resetMap(){
-	  map.setCenter(new kakao.maps.LatLng(36.3519957, 127.39131469)); 
-      map.setLevel(6);
+	map.setCenter(new kakao.maps.LatLng(36.3519957, 127.39131469)); 
+	map.setLevel(6);
 }
 
 function clearMarkers() 

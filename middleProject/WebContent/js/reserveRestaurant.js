@@ -47,7 +47,7 @@ moveToRestaurantDetail = function(restNo, memId)
 			restaurantReservedTime(res.rest_no, `${year}-${month}-${dayZero}`);
 		},
 		error: function(xhr) {
-			alert('식당 상세보기 모달창 설정 => 오류 상태: ' + xhr.status);
+			// alert('식당 상세보기 모달창 설정 => 오류 상태: ' + xhr.status);
 		}
 	});
 }
@@ -138,7 +138,7 @@ getTimeSelectList = function(res)
 	
 	strHours += `</select>`;
  
-	 $("#selectTimeDiv").html(strHours);
+	$("#selectTimeDiv").html(strHours);
 }
 
 // 예약된 시간을 disabled하는 메서드
@@ -166,7 +166,7 @@ restaurantReservedTime = function(rest_no, selectedDate)
 			}
 		}, error: function(xhr)
 		{
-			console.log(xhr.status);
+			// console.log(xhr.status);
 		},
 		dataType: 'json'
 	})
@@ -224,7 +224,7 @@ reserveRestaurant = function()
 				},
 				error: function(xhr)
 				{
-					console.log(xhr);
+					// console.log(xhr);
 				}
 			})
 		}

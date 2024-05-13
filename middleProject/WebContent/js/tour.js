@@ -1,35 +1,19 @@
 /**
- * 
+ * 카카오맵 api에 관련된 script들
  */
-// 카카오맵 api에 관련된 script들
 
-
-
-
-    
- 
-	   mypath='<%=request.getContextPath()%>';   
-   /*
-      $(()=>{
-           if(data!=null){
-             	displayPlaces(data);
-             	displayPagination(pagination);
-           }else{
-        	   alert("검색 결과 없음");
-        	   return null;
-           }
-})*/
-       function placesSearchCB(data, status, pagination) {
-    	    if (status === kakao.maps.services.Status.OK) {
-    	       
-    	    	displayPlaces(data);
-    	        displayPagination(pagination);
-    	    } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
-    	        alert('검색 결과가 존재하지 않습니다.');
-    	    } else if (status === kakao.maps.services.Status.ERROR) {
-    	        alert('검색 결과 중 오류가 발생했습니다.');
-    	    }
-    	}
+mypath='<%=request.getContextPath()%>';   
+   
+function placesSearchCB(data, status, pagination) {
+	if (status === kakao.maps.services.Status.OK) {
+		displayPlaces(data);
+		displayPagination(pagination);
+	} else if (status === kakao.maps.services.Status.ZERO_RESULT) {
+		alert('검색 결과가 존재하지 않습니다.');
+	} else if (status === kakao.maps.services.Status.ERROR) {
+		alert('검색 결과 중 오류가 발생했습니다.');
+	}
+}
 
     
      // 장소 목록을 표시하는 함수

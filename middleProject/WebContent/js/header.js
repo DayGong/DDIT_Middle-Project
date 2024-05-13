@@ -1,7 +1,3 @@
-/**
- *
- */
-
 $(document).ready(function() 
 {
 	var gnb = $('#gnb');
@@ -86,11 +82,3 @@ function hasScrolled()
 	// lastScrollTop에 현재 스크롤위치를 지정한다.
 	lastScrollTop = st;
 }
-
-/* 추가로 웹페이지의 스크롤을 내렸을때를 감지해 코드를 실행시키는 함수입니다.
-$(window).scroll(function(){ 
-   if($(window).scrollTop() == $(document).height() - $(window).height()){ 
-      // 실행할 함수
-   } 
-});
-*/

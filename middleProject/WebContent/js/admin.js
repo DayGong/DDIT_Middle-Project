@@ -28,7 +28,7 @@ const path = origin + pathName;
 		},
 		error: function(xhr)
 		{
-			console.log('체크아웃 오류: ' + xhr);
+			// console.log('체크아웃 오류: ' + xhr);
 		}
 	 })
  }

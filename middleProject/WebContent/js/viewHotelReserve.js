@@ -10,7 +10,6 @@ const path = origin + pathName;
 // 숙소 예약 List를 테이블 <tbody>에 넣기
 addMemberHotelReserve = function(memId)
 {
-	
 	mem_id = memId;
 	
 	$.ajax
@@ -44,8 +43,10 @@ addMemberHotelReserve = function(memId)
 					 	<td>${v.HOTEL_RSV_COUNT}</td>
 					 	<td>${v.HOTEL_RSV_ROOM}</td>
 					 	<td>${v.HOTEL_TOTALAMT}</td>
-						<td><input type="button" value="예약 취소" id="${v.HOTEL_RSV_NO}" 
-									onclick="hotelReserveCancel(this.id)"></td>
+						<td>
+							<input type="button" value="예약 취소" id="${v.HOTEL_RSV_NO}" 
+								   onclick="hotelReserveCancel(this.id)">
+						</td>
 					 </tr>
 					 `;
 				 })
@@ -55,7 +56,7 @@ addMemberHotelReserve = function(memId)
 		 },
 		 error: function(xhr)
 		 {
-			 console.log('숙소 예약 리스트 불러오기 오류 ==> ' + xhr);
+			 // console.log('숙소 예약 리스트 불러오기 오류 ==> ' + xhr);
 		 },
 		 dataType: 'json'
 	 })
@@ -86,7 +87,7 @@ hotelReserveCancel = function(hotel_rsv_no)
 		},
 		error: function(xhr)
 		{
-			console.log('숙소 예약 취소 실패 ==> ' + xhr);
+			// console.log('숙소 예약 취소 실패 ==> ' + xhr);
 		}
 	})
 }
@@ -115,8 +116,7 @@ addMemberHotelReserveCancel = function(memId)
 				</tr>
 				`;
 			} else 
-			{				 
-				console.log(res);
+			{
 				$.each(res, function(i, v)
 				{
 					hotelReserveList += `
@@ -138,7 +138,7 @@ addMemberHotelReserveCancel = function(memId)
 		 },
 		 error: function(xhr)
 		 {
-			 console.log('숙소 예약 리스트 불러오기 오류 ==> ' + xhr);
+			 // console.log('숙소 예약 리스트 불러오기 오류 ==> ' + xhr);
 		 },
 		 dataType: 'json'
 	 })
