@@ -1,52 +1,52 @@
 @charset "UTF-8";
 
-
 @font-face {
-    font-family: 'GmarketSansMedium';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+	font-family: 'GmarketSansMedium';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
 }
 
 @font-face {
-    font-family: 'Cafe24SsurroundAir';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SsurroundAir.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+	font-family: 'Cafe24SsurroundAir';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SsurroundAir.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
 }
-#rest-left-modal-body{
+
+#rest-left-modal-body {
 	margin-left: 25px;
 }
-.modal-body div{
+
+.modal-body div {
 	font-family: 'GmarketSansMedium';
 }
 
-.modal2, .modalh1{
+.modal2, .modalh1 {
 	font-family: 'Cafe24SsurroundAir';
 	font-size: 25px;
 	font-weight: bold;
-	
 }
-.modal3, .modalh2{
+
+.modal3, .modalh2 {
 	font-family: 'Cafe24SsurroundAir';
 	font-size: 20px;
 	font-weight: bold;
-	line-height: 2; 
+	line-height: 2;
 }
 
-#modal4{
-	 margin: -30px 0 0 100px;
-	 
-	 
+#modal4 {
+	margin: -30px 0 0 100px;
 }
-.form-label{
+
+.form-label {
 	font-family: 'Cafe24SsurroundAir';
 	font-size: 20px;
 	font-weight: bold;
-	line-height: 0.5; 
+	line-height: 0.5;
 }
 
-#restaurant_rsv_btn{
+#restaurant_rsv_btn {
 	margin-left: 330px;
 	border-radius: 10px;
 	border: 1px solid #1a75ed;
@@ -64,10 +64,10 @@
 .modal-footer button {
 	background: #1a75ed;
 	border: 1px solid #1a75ed;
-	color: white;		
+	color: white;
 }
 
-#left-modal-body{
+#left-modal-body {
 	margin-left: 25px;
 }
 
@@ -78,13 +78,13 @@
 
 /* 모달 배경색 설정 */
 .modal-header, .modal-body, .modal-footer {
-	background-color:	#f9f8f4;	
+	background-color: #f9f8f4;
 }
 
 #left-modal-body, #right-modal-body {
 	flex-direction: row;
-	width:50%;
-	height:100%;
+	width: 50%;
+	height: 100%;
 }
 
 .backImgDiv {
@@ -93,33 +93,33 @@
 	background-size: cover;
 }
 
-
-#img1{
-	width: 450px; 
-	height: 450px; 
-	border-radius: 10%; 
+#img1 {
+	width: 450px;
+	height: 450px;
+	border-radius: 10%;
 	margin-left: 60px;
 }
 
-#img2{
-	width: 450px; 
-	height: 450px; 
-	border-radius: 10%; 
+#img2 {
+	width: 450px;
+	height: 450px;
+	border-radius: 10%;
 	margin-left: -150px;
 }
 
-#kakao{
+#kakao {
 	margin: 0 0 0 250px;
 }
-.infoDiv{
+
+.infoDiv {
 	margin: -30px 0 0 -110px;
 }
 
 /* number 옆에 항상 화살표 보이게 설정 */
-input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-inner-spin-button, 
 input[type="number"]::-webkit-outer-spin-button {
 	-webkit-appearance: inner-spin-button;
-    opacity: 1;
+	opacity: 1;
 }
 
 #rsv_count, #rest_rsv_count {
@@ -144,16 +144,16 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 /* 잔여 객실을 표시할 위치 설정 */
-.empty_room{
+.empty_room {
 	margin-left: 50%;
 }
 
 /* 객실 선택 라디오 버튼 설정 시작 */
 .form_radio_btn {
 	width: 47%;
-	height : 45px;
-    border: 1px solid #EAE7E7;
-    border-radius: 10px;
+	height: 45px;
+	border: 1px solid #EAE7E7;
+	border-radius: 10px;
 }
 
 .form_radio_btn input[type=radio] {
@@ -164,17 +164,15 @@ input[type="number"]::-webkit-outer-spin-button {
 	display: block;
 	border-radius: 10px;
 	margin: 0 auto;
-    text-align: center;
-    height: -webkit-fill-available;
-    line-height: 45px;
+	text-align: center;
+	height: -webkit-fill-available;
+	line-height: 45px;
 }
 
-.form_radio_btn input[type=radio]:checked + label {
+.form_radio_btn input[type=radio]:checked+label {
 	background: #1a75ed;
 	color: #fff;
 }
-
-
 
 /* Hover 설정 */
 .form_radio_btn label:hover {
@@ -182,7 +180,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 /* disabled 설정 */
-.form_radio_btn input[type=radio] + label {
+.form_radio_btn input[type=radio]+label {
 	background: #F9FAFC;
 	color: #666;
 }
@@ -236,10 +234,9 @@ table.reserveTable td {
 	border: 2px solid lightgray;
 }
 
-#addMemberHotelReserve input[type=button],
-#addMemberRestaurantReserve input[type=button]
-{
-	font-family: 'GmarketSansMedium'; 
+#addMemberHotelReserve input[type=button], 
+#addMemberRestaurantReserve input[type=button]	{
+	font-family: 'GmarketSansMedium';
 	border-radius: 10px;
 	border: 1px solid #0080ff;
 	background-color: #0080ff;
@@ -254,7 +251,7 @@ table.reserveTable td {
 
 #addMemberHotelReserveCancel input[type=button],
 #addMemberRestaurantReserveCancel input[type=button] {
-	font-family: 'GmarketSansMedium'; 
+	font-family: 'GmarketSansMedium';
 	border-radius: 10px;
 	border: 1px solid gray;
 	background-color: gray;
