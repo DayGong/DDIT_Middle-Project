@@ -29,12 +29,10 @@ public class WithdrawMember extends HttpServlet {
 		String checkPass = request.getParameter("check_pass");
 		// 받아온 회원정보를 VO에 저장하기.
 		MemberVO memVo = new MemberVO();
-
 		memVo.setMem_id(memId);
 		memVo.setMem_pass(checkPass);
 		 
 		if(memPass.equals(checkPass)) {
-			
 			// 회원 정보를 DB에 insert한다.
 			IMemberService service = MemberServiceImpl.getInstance();
 			int result= service.deleteMember(memVo); //결과값 받기
@@ -43,7 +41,5 @@ public class WithdrawMember extends HttpServlet {
 			request.setAttribute("result", result);
 			request.getRequestDispatcher("/view/result.jsp").forward(request, response);
 		}
-		
 	}
-
 }
