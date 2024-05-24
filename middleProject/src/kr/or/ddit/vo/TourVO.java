@@ -12,8 +12,6 @@ public class TourVO {
 	private int tour_x;
 	private int tour_y;
 	
-	
-	
 	public int getTour_x() {
 		return tour_x;
 	}
@@ -68,9 +66,5 @@ public class TourVO {
 	public void setTour_img(String tour_img) {
 		this.tour_img = tour_img;
 	}
-	
-	
-	
-	
-	
+
 }
