@@ -1,12 +1,12 @@
 package kr.or.ddit.vo;
 
 public class NoticeVO {
-	private int notice_no;
-	private String notice_title;
-	private String notice_content;
-	private int notice_hits;
-	private String notice_date;
-	private String notice_file;
+	private int notice_no;		// 공지번호
+	private String notice_title;	// 제목
+	private String notice_content;	// 내용
+	private int notice_hits;	// 조회수
+	private String notice_date;	// 작성날짜
+	private String notice_file;	// 파일
 	
 	public NoticeVO() {}
 	public NoticeVO(String notice_title, String notice_content) {
