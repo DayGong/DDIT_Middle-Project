@@ -16,12 +16,10 @@ import kr.or.ddit.resturant.service.IRestaurantService;
 import kr.or.ddit.resturant.service.RestaurantServiceImpl;
 import kr.or.ddit.vo.RestaurantVO;
 
-
 @WebServlet("/restaurant/resList.do")
 public class resList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		   request.setCharacterEncoding("utf-8");
 		   response.setCharacterEncoding("utf-8");		   
@@ -37,15 +35,9 @@ public class resList extends HttpServlet {
 		   out.write(res);
 		   out.flush();
 		
-		
-		
-		
-		
 	}
 
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
 		doGet(request, response);
 	}
 
