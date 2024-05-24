@@ -1,13 +1,13 @@
 package kr.or.ddit.vo;
 
 public class BoardVO {
-	private int brd_no;
-	private String brd_title;
-	private String brd_content;
-	private int brd_hits;
-	private String brd_date;
-	private String brd_file;
-	private String mem_id;
+	private int brd_no;		// 게시글번호
+	private String brd_title;	// 제목
+	private String brd_content;	// 내용
+	private int brd_hits;		// 조회수
+	private String brd_date;	// 작성날짜
+	private String brd_file;	// 파일
+	private String mem_id;		// 회원아이디
 	
 	public int getBrd_no() {
 		return brd_no;
