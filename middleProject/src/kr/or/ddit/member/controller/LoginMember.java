@@ -18,7 +18,6 @@ public class LoginMember extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
 
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		request.setCharacterEncoding("utf-8");
@@ -41,8 +40,6 @@ public class LoginMember extends HttpServlet
 		
 		HttpSession session = request.getSession();
 		
-
-		
 		//로그인성공+저장,로그인오류메세지를 위한 check,로그인을 어떤탭에서했는지저장
 		if(LoginMemberVo!=null &&LoginMemberVo.getMem_state()!=0) 
 		{
@@ -51,16 +48,15 @@ public class LoginMember extends HttpServlet
 			session.setAttribute("mem_id", memId);
 		}else 
 		{
-		//로그인 실패
+			//로그인 실패
 			session.setAttribute("check", "false");
 		}
+		
 		//view 페이지로 이동
 		request.getRequestDispatcher("/view/login_out/loginMain.jsp").forward(request, response);	
 	}
 
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
