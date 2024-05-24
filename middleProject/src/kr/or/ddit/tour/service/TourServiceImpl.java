@@ -20,47 +20,39 @@ public class TourServiceImpl implements ITourService {
 	    return service;
 	} //싱글톤 끝
 	
-	
 	@Override
 	public List<TourVO> selectTour() {
-		
 		return dao.selectTour();
 	}
 
 	@Override
 	public TourVO selectOneTour(int num) {
-		
 		return dao.selectOneTour(num);
 	}
 
 	@Override
 	public int insertTour(TourVO vo) {
-		
 		return dao.insertTour(vo);
 	}
 
 	@Override
 	public int deleteTour(int num) {
-		
 		return dao.deleteTour(num);
 	}
 
 	@Override
 	public int updateTour(TourVO vo) {
-		
 		return dao.updateTour(vo);
 	}
+	
 	@Override
 	public List<TourVO> selectDongTour(String dong) {
-		
 		return dao.selectDongTour(dong);
 	}
+	
 	@Override
 	public List<TourVO> selectNameTour(String dong) {
-		
 		return dao.selectNameTour(dong);
 	}
 
-	
-	
 }
