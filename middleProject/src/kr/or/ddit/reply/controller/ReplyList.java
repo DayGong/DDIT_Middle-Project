@@ -21,26 +21,24 @@ import kr.or.ddit.vo.ReplyVO;
 public class ReplyList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		   request.setCharacterEncoding("utf-8");
-		   response.setCharacterEncoding("utf-8");		   
-		   response.setContentType("application/json; charset=utf-8 ");
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");		   
+		response.setContentType("application/json; charset=utf-8 ");
+		
 		//전송 데이터 가져오기 -bonum
 		int bonum=Integer.parseInt(request.getParameter("bonum"));
 		//service객체 가져오기
-		   IBoardService service= BoardServiceImpl.getInstance();
+		IBoardService service= BoardServiceImpl.getInstance();
 		//service메소드 호출 -list
-		  List<ReplyVO> list= service.selectReply(bonum);
-          Gson gson =new Gson();
-          String res= gson.toJson(list);
-          PrintWriter out =response.getWriter();
-          out.write(res);
-		  out.flush();
-		  
-		  
-		  
+		List<ReplyVO> list= service.selectReply(bonum);
 		
+		Gson gson =new Gson();
+		String res= gson.toJson(list);
+		
+		PrintWriter out =response.getWriter();
+		out.write(res);
+		out.flush();
 	}
 
 }
