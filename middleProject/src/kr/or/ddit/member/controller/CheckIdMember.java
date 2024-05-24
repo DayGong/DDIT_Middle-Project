@@ -15,11 +15,11 @@ import kr.or.ddit.member.service.MemberServiceImpl;
 public class CheckIdMember extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		String memId = request.getParameter("id");	// 요청에서 id값 가지고 오기
+		// 요청에서 id값 가지고 오기
+		String memId = request.getParameter("id");	
 	
 		IMemberService service = MemberServiceImpl.getInstance();
 		
@@ -32,7 +32,6 @@ public class CheckIdMember extends HttpServlet {
 		// view페이지로 이동
 		request.getRequestDispatcher("/view/signup/checkId.jsp").forward(request, response);
 	}
-
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
