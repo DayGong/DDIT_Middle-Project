@@ -1,6 +1,5 @@
 package kr.or.ddit.hotel.controller;
 
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -17,12 +16,10 @@ import kr.or.ddit.hotel.service.HotelServiceImpl;
 import kr.or.ddit.hotel.service.IHotelSerivce;
 import kr.or.ddit.vo.HotelVO;
 
-
 @WebServlet("/hotel/hotelList.do")
 public class HotelList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		   request.setCharacterEncoding("utf-8");
 		   response.setCharacterEncoding("utf-8");		   
@@ -37,16 +34,9 @@ public class HotelList extends HttpServlet {
 		   PrintWriter out = response.getWriter();
 		   out.write(res);
 		   out.flush();
-		
-		
-		
-		
-		
 	}
 
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
 		doGet(request, response);
 	}
 
