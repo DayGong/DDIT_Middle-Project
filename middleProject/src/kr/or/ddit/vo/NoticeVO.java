@@ -8,23 +8,18 @@ public class NoticeVO {
 	private String notice_date;
 	private String notice_file;
 	
-	public NoticeVO() {
-		
-	}
+	public NoticeVO() {}
 	public NoticeVO(String notice_title, String notice_content) {
 		super();
 		this.notice_title = notice_title;
 		this.notice_content = notice_content;
 	}
-	
 	public NoticeVO(int noticeNo, String noticeTitle, String noticeContent) {  
 		super();
 		this.notice_no = noticeNo;
 		this.notice_title = noticeTitle;
 		this.notice_content = noticeContent;
-		
 	}
-
 
 	public int getNoticeNo() {
 		return notice_no;
@@ -74,6 +69,4 @@ public class NoticeVO {
 		this.notice_file = noticeFile;
 	}
 
-	
-	
 }	//NoticeVO 끝
