@@ -31,5 +31,4 @@ public class AdminVO {
 		this.admin_mail = admin_mail;
 	}
 	
-	
 }
