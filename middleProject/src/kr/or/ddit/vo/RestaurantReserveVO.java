@@ -1,13 +1,13 @@
 package kr.or.ddit.vo;
 
 public class RestaurantReserveVO {
-	private int rest_rsv_no;			// 식당예약번호
+	private int rest_rsv_no;		// 식당예약번호
 	private String rest_rsv_date;		// 예약날짜
 	private String rest_rsv_time;		// 예약시간
 	private int rest_rsv_count;		// 인원수
 	private int rest_rsv_state;		// 취소여부
-	private String mem_id;				// 회원아이디
-	private int rest_no;				// 식당번호
+	private String mem_id;			// 회원아이디
+	private int rest_no;			// 식당번호
 
 	public int getRest_rsv_no() {
 		return rest_rsv_no;
