@@ -12,9 +12,7 @@ import kr.or.ddit.vo.NoticeVO;
 public class NoticeDaoImpl implements INoticeDao {
 
 	private static INoticeDao noticeDao;
-	
 	public NoticeDaoImpl() {};
-	
 	public static INoticeDao getInstance() {
 		if(noticeDao==null) {
 			noticeDao = new NoticeDaoImpl();
@@ -117,21 +115,4 @@ public class NoticeDaoImpl implements INoticeDao {
 		return cnt;
 	}
 
-//	@Override
-//	public int getTotalCount(Map<String, Object> map) {
-//		SqlSession session = MybatisUtil.getSqlSession();
-//		
-//		int res = 0;
-//		
-//		try {
-//			res = session.selectOne("notice.getTotalCount", map);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}finally {
-//			session.close();
-//		}
-//		return res;
-//	}
-	
-	
 }	//NoticeDaoImpl 끝
