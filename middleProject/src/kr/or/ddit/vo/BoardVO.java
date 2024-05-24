@@ -8,6 +8,7 @@ public class BoardVO {
 	private String brd_date;
 	private String brd_file;
 	private String mem_id;
+	
 	public int getBrd_no() {
 		return brd_no;
 	}
@@ -52,18 +53,17 @@ public class BoardVO {
 	}
 	@Override
 	public String toString() {
-		return "BoardVO [brd_no=" + brd_no + ", brd_title=" + brd_title + ", brd_content=" + brd_content + ", brd_hits="
-				+ brd_hits + ", brd_date=" + brd_date + ", brd_file=" + brd_file + ", mem_id=" + mem_id + "]";
+		return "BoardVO [brd_no=" + brd_no + ", brd_title=" + brd_title + ", brd_content=" + brd_content + ", brd_hits=" + brd_hits + ", brd_date=" + brd_date + ", brd_file=" + brd_file + ", mem_id=" + mem_id + "]";
 	}
+	
+	public BoardVO() {}
 	public BoardVO(int brd_no, String brd_title, String brd_content) {
 		super();
 		this.brd_no = brd_no;
 		this.brd_title = brd_title;
 		this.brd_content = brd_content;
 	}
-	
-	public BoardVO(int brd_no, String brd_title, String brd_content, int brd_hits, String brd_date, String brd_file,
-			String mem_id) {
+	public BoardVO(int brd_no, String brd_title, String brd_content, int brd_hits, String brd_date, String brd_file, String mem_id) {
 		super();
 		this.brd_no = brd_no;
 		this.brd_title = brd_title;
@@ -73,16 +73,10 @@ public class BoardVO {
 		this.brd_file = brd_file;
 		this.mem_id = mem_id;
 	}
-	
-	
 	public BoardVO(String mem_id, String title, String content) {
 		this.mem_id = mem_id;
 		this.brd_title = title;
 		this.brd_content = content;
 	}
-	public BoardVO() {
-		// TODO Auto-generated constructor stub
-	}
-	
-	
+
 }
