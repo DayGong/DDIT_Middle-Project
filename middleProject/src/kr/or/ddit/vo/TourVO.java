@@ -2,13 +2,13 @@ package kr.or.ddit.vo;
 
 public class TourVO {
 
-	private int tour_no;
-	private String tour_tp_nm;
-	private String tour_name;
-	private String tour_addr;
-	private String tour_tel;
-	private String tour_url;
-	private String tour_img;
+	private int tour_no;		// 관광지번호
+	private String tour_tp_nm;	// 관광지구분
+	private String tour_name;	// 관광지명
+	private String tour_addr;	// 관광지주소
+	private String tour_tel;	// 관광지연락처
+	private String tour_url;	// 관광지URL
+	private String tour_img;	// 관광지이미지파일명
 	private int tour_x;
 	private int tour_y;
 	
