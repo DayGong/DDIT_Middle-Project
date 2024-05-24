@@ -14,9 +14,5 @@ public interface INoticeService {
 	public int updateHits(int num);
 	public int updateNotice(NoticeVO noticeVO);
 	public int insertNotice(NoticeVO vo);
-//	public PageVO getPageInfo(int spage, String stype, String sword);
-//	public int getTotalCount(Map<String, Object> map);
-//	public List<NoticeVO> selectByPage(Map<String, Object> map);
-	
 	
 }	//INoticeService 끝
