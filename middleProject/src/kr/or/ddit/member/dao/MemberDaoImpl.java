@@ -10,15 +10,11 @@ import kr.or.ddit.vo.MemberVO;
 public class MemberDaoImpl implements IMemberDao
 {
 	private SqlSession session;
-	 
 	private static MemberDaoImpl dao;
-	
 	private MemberDaoImpl() {}
-	
 	public static MemberDaoImpl getInstance()
 	{
 		if(dao==null) dao = new MemberDaoImpl();
-		
 		return dao;
 	}
 	// 싱글톤 끝.
@@ -82,6 +78,7 @@ public class MemberDaoImpl implements IMemberDao
 		{
 			if(session != null) session.close();
 		}
+		
 		return cnt;
 	} // deleteMember 끝
 
@@ -212,7 +209,5 @@ public class MemberDaoImpl implements IMemberDao
 		
 		return cnt;
 	} // updatePass 끝
-
-
-
+	
 }
