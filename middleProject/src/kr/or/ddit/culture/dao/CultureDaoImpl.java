@@ -2,22 +2,20 @@ package kr.or.ddit.culture.dao;
 
 import java.util.List;
 import java.util.Map;
-
 import org.apache.ibatis.session.SqlSession;
-
 import kr.or.ddit.util.MybatisUtil;
 import kr.or.ddit.vo.CultureVO;
 
 public class CultureDaoImpl implements ICultureDao {
 	private static  ICultureDao dao;
-    private CultureDaoImpl() {}     
+	private CultureDaoImpl() {}     
 	public static ICultureDao getInstance() {
 		if(dao==null) dao= new CultureDaoImpl();
 		return dao;
 	}  //singleton 패턴	
 			
 	@Override
-	public CultureVO selectOneCulture(int num) { //메서드 시작
+	public CultureVO selectOneCulture(int num) {
 		CultureVO vo= null;
 		SqlSession session= MybatisUtil.getSqlSession();
 		try {
@@ -135,5 +133,5 @@ public class CultureDaoImpl implements ICultureDao {
 		}
 		return list;
 	}//selectByPage 끝
-	
+
 }//class 끝
