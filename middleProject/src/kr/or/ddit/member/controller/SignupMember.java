@@ -8,11 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 import kr.or.ddit.member.service.IMemberService;
 import kr.or.ddit.member.service.MemberServiceImpl;
 import kr.or.ddit.vo.MemberVO;
-
 
 @WebServlet("/member/signupMember.do")
 public class SignupMember extends HttpServlet {
@@ -28,7 +26,7 @@ public class SignupMember extends HttpServlet {
 		String memTel= request.getParameter("mem_tel");
 		String memMail= request.getParameter("mem_mail")+"@"+request.getParameter("domain");
 		String memAddr= request.getParameter("roadAddress")+request.getParameter("extraAddress")+request.getParameter("detailAddress");
-	
+		
 		// 받아온 회원 정보를 VO에 저장하기.
 		MemberVO memVo = new MemberVO();
 		
