@@ -15,11 +15,9 @@ import kr.or.ddit.culture.service.CultureServiceImpl;
 import kr.or.ddit.culture.service.ICultureService;
 import kr.or.ddit.vo.CultureVO;
 
-
 @WebServlet("/selectOneCulture.do")
 public class SelectOneCulture extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		   request.setCharacterEncoding("utf-8");
@@ -36,9 +34,7 @@ public class SelectOneCulture extends HttpServlet {
 		   out.flush();
 	}
 
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

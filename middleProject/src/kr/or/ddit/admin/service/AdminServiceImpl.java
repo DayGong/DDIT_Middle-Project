@@ -26,6 +26,4 @@ public class AdminServiceImpl implements IAdminService
 		return dao.getLoginAdmin(adminVo);
 	}
 
-	
-
 }

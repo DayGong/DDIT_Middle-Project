@@ -1,13 +1,10 @@
 package kr.or.ddit.board.service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import kr.or.ddit.board.dao.BoardDaoImpl;
 import kr.or.ddit.board.dao.IBoardDao;
 import kr.or.ddit.vo.BoardVO;
-import kr.or.ddit.vo.PageVO;
 import kr.or.ddit.vo.ReplyVO;
 
 public class BoardServiceImpl implements IBoardService {
@@ -75,7 +72,5 @@ public class BoardServiceImpl implements IBoardService {
 	public int insertReply(ReplyVO vo) {
         return boardDao.insertReply(vo);
 	}
-
-	
 
 }	//BoardServiceImpl 끝

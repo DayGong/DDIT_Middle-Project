@@ -1,7 +1,5 @@
 package kr.or.ddit.fileupload.service;
 
-import java.util.List;
-
 import kr.or.ddit.vo.FileInfoVO;
 
 public interface IFileinfoService {
@@ -11,9 +9,11 @@ public interface IFileinfoService {
      * @param filevo db에 저장할 자료가 저장된 FileInfoVO객체
      * @return  작업성공: 1 ,실패 :0
      */
-    public int insertFileinfo (FileInfoVO vo);
-    	     
-   
-
+	/**
+	 * 
+	 * @param vo
+	 * @return
+	 */
+	public int insertFileinfo (FileInfoVO vo);
 	
 }

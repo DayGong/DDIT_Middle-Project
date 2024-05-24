@@ -33,8 +33,6 @@ public class BoardDeleteController extends HttpServlet {
 		session.setAttribute("msg", msg);
 		
 		response.sendRedirect(request.getContextPath()+"/board/list.do");
-		
-		
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

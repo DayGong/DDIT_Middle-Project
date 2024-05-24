@@ -12,7 +12,6 @@ import kr.or.ddit.board.service.BoardServiceImpl;
 import kr.or.ddit.board.service.IBoardService;
 import kr.or.ddit.vo.BoardVO;
 
-
 @WebServlet("/board/detail.do")
 public class BoardDetailController extends HttpServlet {
 

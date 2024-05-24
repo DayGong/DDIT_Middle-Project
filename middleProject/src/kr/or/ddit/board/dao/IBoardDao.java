@@ -13,7 +13,6 @@ public interface IBoardDao {
 	public int updateHits(int no);
 	public int updateBoard(BoardVO boardVO);
 	public int insertBoard(BoardVO boardVO);
-//	public int getTotalCount(Map<String, Object> map);
 	public List<ReplyVO> selectReply(int num);
 	public int deleteReply(int num);
 	public int updateReply(ReplyVO vo);

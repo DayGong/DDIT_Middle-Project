@@ -1,7 +1,6 @@
 package kr.or.ddit.admin.dao; 
 
 import kr.or.ddit.vo.AdminVO;
-import kr.or.ddit.vo.MemberVO;
 
 public interface IAdminDao {
 	/**

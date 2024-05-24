@@ -2,7 +2,6 @@ package kr.or.ddit.board.dao;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -54,12 +53,10 @@ public class BoardDaoImpl implements IBoardDao {
 	@Override
 	public int deleteBoard(int no) {
 		int cnt = 0;
-		
 		SqlSession session = MybatisUtil.getSqlSession();
 		
 		try {
 			cnt = session.delete("board.deleteBoard", no);
-			
 			session.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -90,7 +87,6 @@ public class BoardDaoImpl implements IBoardDao {
 		SqlSession session = MybatisUtil.getSqlSession();
 		try {
 			cnt = session.update("board.updateBoard", boardVO);
-			
 			session.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -103,7 +99,6 @@ public class BoardDaoImpl implements IBoardDao {
 	@Override
 	public int insertBoard(BoardVO boardVO) {
 		int cnt = 0;
-		
 		SqlSession session = MybatisUtil.getSqlSession();
 		
 		try {
@@ -119,12 +114,12 @@ public class BoardDaoImpl implements IBoardDao {
 
 	@Override
 	public List<ReplyVO> selectReply(int num) {
-		 List<ReplyVO> list=null;
-	     SqlSession sess= MybatisUtil.getSqlSession();
-	     try {
-			 list= sess.selectList("board.selectReply",num);
+		List<ReplyVO> list=null;
+		SqlSession sess= MybatisUtil.getSqlSession();
+		try {
+			list= sess.selectList("board.selectReply",num);
 		} catch (Exception e) {
-		e.printStackTrace();
+			e.printStackTrace();
 		}finally {
 			sess.commit();
 			sess.close();
@@ -134,12 +129,12 @@ public class BoardDaoImpl implements IBoardDao {
 
 	@Override
 	public int deleteReply(int num) {
-		 int cnt=0;
-	     SqlSession sess= MybatisUtil.getSqlSession();
-	     try {
-			 cnt= sess.delete("board.deleteReply",num);
+		int cnt=0;
+		SqlSession sess= MybatisUtil.getSqlSession();
+		try {
+			cnt= sess.delete("board.deleteReply",num);
 		} catch (Exception e) {
-		e.printStackTrace();
+			e.printStackTrace();
 		}finally {
 			sess.commit();
 			sess.close();
@@ -149,35 +144,32 @@ public class BoardDaoImpl implements IBoardDao {
 
 	@Override
 	public int updateReply(ReplyVO vo) {
-		 int cnt=0;
-	     SqlSession sess= MybatisUtil.getSqlSession();
-	     try {
+		int cnt=0;
+		SqlSession sess= MybatisUtil.getSqlSession();
+		try {
 			cnt= sess.update("board.updateReply",vo);
 		} catch (Exception e) {
-		e.printStackTrace();
+			e.printStackTrace();
 		}finally {
 			sess.commit();
 			sess.close();
 		}
 		return cnt;
-		
 	}
 
 	@Override
 	public int insertReply(ReplyVO vo) {
-		 int cnt=0;
-	     SqlSession sess= MybatisUtil.getSqlSession();
-	     try {
-			 cnt= sess.insert("board.insertReply",vo);
+		int cnt=0;
+		SqlSession sess= MybatisUtil.getSqlSession();
+		try {
+			cnt= sess.insert("board.insertReply",vo);
 		} catch (Exception e) {
-		e.printStackTrace();
+			e.printStackTrace();
 		}finally {
 			sess.commit();
 			sess.close();
 		}
 		return cnt;
 	}
-
-	
 	
 }	//BoardDaoImpl 끝

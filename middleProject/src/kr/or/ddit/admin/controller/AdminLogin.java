@@ -12,11 +12,9 @@ import kr.or.ddit.admin.service.AdminServiceImpl;
 import kr.or.ddit.admin.service.IAdminService;
 import kr.or.ddit.vo.AdminVO;
 
-
 @WebServlet("/admin/adminLogin.do")
 public class AdminLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
@@ -48,17 +46,14 @@ public class AdminLogin extends HttpServlet {
 			session.setAttribute("admin", "true");
 		}else
 		{
-		// 로그인 실패
+			// 로그인 실패
 			session.setAttribute("check", "false");
-			
 		}
-		//view 페이지로 이동
+			//view 페이지로 이동
 			request.getRequestDispatcher("/view/login_out/adminLogin.jsp").forward(request, response);	
 	}
 
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

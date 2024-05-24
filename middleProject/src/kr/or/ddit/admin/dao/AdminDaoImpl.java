@@ -8,7 +8,6 @@ import kr.or.ddit.vo.AdminVO;
 public class AdminDaoImpl implements IAdminDao
 {
 	private SqlSession session;
-	
 	private static AdminDaoImpl dao;
 	
 	private AdminDaoImpl() {}
