@@ -13,26 +13,14 @@ import kr.or.ddit.member.service.IMemberService;
 import kr.or.ddit.member.service.MemberServiceImpl;
 import kr.or.ddit.vo.MemberVO;
 
-
 @WebServlet("/member/updateMember.do")
 public class UpdateMember extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 회원ID에 맞는 회원정보를 검색해서 회원정보 수정폼에 보낸다.
-//		request.setCharacterEncoding("UTF-8");
-//		HttpSession session = request.getSession();
-//		MemberVO loginMemberVo = (MemberVO)session.getAttribute("loginMember");
-//		
-//		IMemberService service = MemberServiceImpl.getInstance();
-//		
-//		MemberVO memVo = service.getSelectMember(loginMemberVo.getMem_id());
-//		request.setAttribute(", o);
 		request.getRequestDispatcher("/view/update/memberUpdateAll.jsp").forward(request, response);
-		
 	}
-
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
