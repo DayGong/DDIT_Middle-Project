@@ -17,7 +17,7 @@ public class CultureServiceImpl implements ICultureService {
 	}
 	public static ICultureService getInstance() {
 		if(service==null) service = new CultureServiceImpl();
-	    return service;
+		return service;
 	} // singleton 끝 
 	
 	@Override
