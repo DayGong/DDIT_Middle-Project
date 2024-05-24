@@ -13,7 +13,5 @@ public interface INoticeDao {
 	public int updateHits(int noticeNo);
 	public int updateNotice(NoticeVO noticeVO);
 	public int insertNotice(NoticeVO noticeVO);
-//	public int getTotalCount(Map<String, Object> map);
-	
 	
 }	
