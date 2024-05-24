@@ -18,23 +18,21 @@ public class RestaurantServiceImpl implements IRestaurantService {
 	}
 	public static IRestaurantService getInstance() {
 		if(service==null) service = new RestaurantServiceImpl();
-	    return service;
+		return service;
 	} // singleton 끝 
-	
 	
 	@Override
 	public List<RestaurantVO> selectRestaurant() {
-		
 		return dao.selectRestaurant();
 	}
+	
 	@Override
 	public List<RestaurantVO> selectByDong(String dong) {
-		
 		return dao.selectByDong(dong);
 	}
+	
 	@Override
 	public List<RestaurantVO> selectByName(String name) {
-		
 		return dao.selectByName(name);
 	}
 }
