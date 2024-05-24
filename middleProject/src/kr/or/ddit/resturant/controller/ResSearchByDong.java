@@ -16,7 +16,6 @@ import kr.or.ddit.resturant.service.IRestaurantService;
 import kr.or.ddit.resturant.service.RestaurantServiceImpl;
 import kr.or.ddit.vo.RestaurantVO;
 
-
 @WebServlet("/restaurant/resSearchByDong.do")
 public class ResSearchByDong extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -37,14 +36,10 @@ public class ResSearchByDong extends HttpServlet {
 		   PrintWriter out = response.getWriter();
 		   out.write(res);
 		   out.flush();
-		
 
-		
 	}
 
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
