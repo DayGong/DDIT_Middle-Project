@@ -1,15 +1,15 @@
 package kr.or.ddit.vo;
 
 public class CultureVO {
-	private int cul_no;
-	private String cul_img;
-	private String cul_name;
-	private String cul_perfomer;
-	private String cul_place;
-	private String cul_date;
-	private String cul_host;
-	private int cul_state;
-	private int cul_tp_cd;
+	private int cul_no;		// 문화번호
+	private String cul_img;		// 문화이미지파일명
+	private String cul_name;	// 전시명
+	private String cul_perfomer;	// 전시자
+	private String cul_place;	// 장소
+	private String cul_date;	// 기간
+	private String cul_host;	// 주최
+	private int cul_state;		// 진행여부
+	private int cul_tp_cd;		// 구분번호
 	
 	public int getCul_no() {
 		return cul_no;
