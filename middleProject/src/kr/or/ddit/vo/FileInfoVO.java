@@ -9,7 +9,6 @@ public class FileInfoVO {
 	private long file_size;
 	private String file_date;
 	
-	
 	public int getFile_no() {
 		return file_no;
 	}
@@ -46,14 +45,10 @@ public class FileInfoVO {
 	public void setFile_date(String file_date) {
 		this.file_date = file_date;
 	}
+	
 	@Override
 	public String toString() {
-		return "FileInfoVO [file_no=" + file_no + ", file_writer=" + file_writer + ", origin_file_name="
-				+ origin_file_name + ", save_file_name=" + save_file_name + ", file_size=" + file_size + ", file_date="
-				+ file_date + "]";
+		return "FileInfoVO [file_no=" + file_no + ", file_writer=" + file_writer + ", origin_file_name=" + origin_file_name + ", save_file_name=" + save_file_name + ", file_size=" + file_size + ", file_date=" + file_date + "]";
 	}
-	
-	
-	
-	
+
 }
