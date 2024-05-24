@@ -11,8 +11,6 @@ public class CultureVO {
 	private int cul_state;
 	private int cul_tp_cd;
 	
-	
-	
 	public int getCul_no() {
 		return cul_no;
 	}
@@ -67,15 +65,10 @@ public class CultureVO {
 	public void setCul_tp_cd(int cul_tp_cd) {
 		this.cul_tp_cd = cul_tp_cd;
 	}
+	
 	@Override
 	public String toString() {
-		return "CultureVO [cul_no=" + cul_no + ", cul_img=" + cul_img + ", cul_name=" + cul_name + ", cul_perfomer="
-				+ cul_perfomer + ", cul_place=" + cul_place + ", cul_date=" + cul_date + ", cul_host=" + cul_host
-				+ ", cul_state=" + cul_state + ", cul_tp_cd=" + cul_tp_cd + "]";
+		return "CultureVO [cul_no=" + cul_no + ", cul_img=" + cul_img + ", cul_name=" + cul_name + ", cul_perfomer=" + cul_perfomer + ", cul_place=" + cul_place + ", cul_date=" + cul_date + ", cul_host=" + cul_host + ", cul_state=" + cul_state + ", cul_tp_cd=" + cul_tp_cd + "]";
 	}
-	
-	
-	
-	
 	
 }
