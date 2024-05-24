@@ -7,6 +7,7 @@ public class ReplyVO {
 	private String rpl_date;
 	private String mem_id;
 	private int brd_no;
+	
 	public int getRpl_no() {
 		return rpl_no;
 	}
@@ -39,9 +40,7 @@ public class ReplyVO {
 	}
 	@Override
 	public String toString() {
-		return "ReplyVO [rpl_no=" + rpl_no + ", rpl_content=" + rpl_content + ", rpl_date=" + rpl_date + ", mem_id="
-				+ mem_id + ", brd_no=" + brd_no + "]";
+		return "ReplyVO [rpl_no=" + rpl_no + ", rpl_content=" + rpl_content + ", rpl_date=" + rpl_date + ", mem_id=" + mem_id + ", brd_no=" + brd_no + "]";
 	}
-	
-	
+
 }
