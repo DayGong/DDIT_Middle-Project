@@ -10,20 +10,16 @@ public class MemberServiceImpl implements IMemberService
 {
 	
 	private static IMemberDao dao = MemberDaoImpl.getInstance();
-	
 	private static MemberServiceImpl service;
-	
 	private MemberServiceImpl()
 	{ 
 		dao = MemberDaoImpl.getInstance();
 	}
-	
 	public static IMemberService getInstance()
 	{
 		if(service==null) service = new MemberServiceImpl();
 		return service;
 	} // 싱글톤 끝.
-	
 	
 	@Override
 	public int insertMember(MemberVO memVo)
@@ -78,9 +74,5 @@ public class MemberServiceImpl implements IMemberService
 	{
 		return dao.updatePass(memVo);
 	}
-
-
-
-
 
 }
