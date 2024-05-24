@@ -2,11 +2,11 @@ package kr.or.ddit.vo;
 
 public class ReplyVO {
 	
-	private int rpl_no;
-	private String rpl_content;
-	private String rpl_date;
-	private String mem_id;
-	private int brd_no;
+	private int rpl_no;		// 댓글번호
+	private String rpl_content;	// 내용
+	private String rpl_date;	// 작성날짜
+	private String mem_id;		// 회원아이디
+	private int brd_no;		// 게시글번호
 	
 	public int getRpl_no() {
 		return rpl_no;
