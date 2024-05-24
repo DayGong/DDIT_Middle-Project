@@ -27,12 +27,9 @@ public class HotelReserve extends HttpServlet
 		IReserveHotelService service = ReserveHotelServiceImpl.getInstance();
 		
 		int hotel_no = Integer.parseInt(request.getParameter("hotel_no"));
-		
 		HotelVO hotelVo = service.getHotelInfo(hotel_no);
-		
 		request.setAttribute("hotelVo", hotelVo);
 		
-//		System.out.println("hotelReserve.do에 왔음");
 		request.getRequestDispatcher("/view/reserve/hotelInfoReturn.jsp").forward(request, response);
 	}
 
@@ -55,7 +52,6 @@ public class HotelReserve extends HttpServlet
 		IReserveHotelService service = ReserveHotelServiceImpl.getInstance();
 		
 		int result = service.reserveHotel(hotelRsvVo);
-		
 		request.setAttribute("result", result);
 		
 		request.getRequestDispatcher("/view/result.jsp").forward(request, response);
