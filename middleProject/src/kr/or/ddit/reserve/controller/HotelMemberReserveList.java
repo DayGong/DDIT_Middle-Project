@@ -23,9 +23,7 @@ public class HotelMemberReserveList extends HttpServlet {
 		IReserveHotelService service = ReserveHotelServiceImpl.getInstance();
 		
 		String mem_id = request.getParameter("mem_id");
-		
 		List<Map<String, String>> hotelRsvList = service.getMemberHotelReserve(mem_id);
-		System.out.println(hotelRsvList);
 		
 		request.setAttribute("hotelRsvList", hotelRsvList);
 		
