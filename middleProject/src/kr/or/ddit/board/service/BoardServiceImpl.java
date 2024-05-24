@@ -65,12 +65,12 @@ public class BoardServiceImpl implements IBoardService {
 
 	@Override
 	public int updateReply(ReplyVO vo) {
-        return boardDao.updateReply(vo);
+        	return boardDao.updateReply(vo);
 	}
 
 	@Override
 	public int insertReply(ReplyVO vo) {
-        return boardDao.insertReply(vo);
+        	return boardDao.insertReply(vo);
 	}
 
 }	//BoardServiceImpl 끝
